@@ -1,0 +1,80 @@
+<!--[admincategorymenu]-->
+<!--[include file="myprofile_admin_menu.htm"]-->
+
+<!--[pnajaxheader prototype="1" scriptacoulous="1"]-->
+
+<h1><!--[pnml name="_MYPROFILECONFIGURATION"]--></h1>
+
+<a href="<!--[pnmodurl modname="MyProfile" type="admin" func="addField"]-->"><!--[pnml name="_MYPROFILEADDNEWFIELD"]--></a><br /><br />
+
+<!--[if $fields gt 0]-->
+	<h3><!--[pnml name="_MYPROFILEEXISTINGFIELDS"]--></h3>
+	<!--[pnml name="_MYPROFILEMANAGEHOWTO"]-->
+	<p id="list-info"></p>
+	<ul id="myprofile_list" class="myprofile_sortablelist">
+	<!--[pnml name="_MYPROFILEISMANDATORY" assign="mandatory"]-->
+	<!--[pnml name="_MYPROFILEISOPTIONAL" assign="optional"]-->
+	<!--[foreach item="field" from=$fields]-->
+		<!--[if $field.fieldtype ne "SEPARATOR"]-->
+	    	<li class="myprofile_sortableitem" id="item_<!--[$field.id]-->">
+			<span class="myprofile_bold"><!--[$field.identifier|strtoupper]-->: </span> 
+			<!--[$field.fieldtype]-->; <!--[$field.mandatory|replace:0:$optional|replace:1:$mandatory]-->, 
+				<!--[if $field.public_status eq 0]--><!--[pnml name="_MYPROFILEALL"]--><!--[/if]-->
+			    <!--[if $field.public_status eq 1]--><!--[pnml name="_MYPROFILEREG"]--><!--[/if]-->
+			    <!--[if $field.public_status eq 2]--><!--[pnml name="_MYPROFILEADMIN"]--><!--[/if]-->
+			<br />
+			<!--[pnml name="_MYPROFILEDESCRIPTION"]--> "<span class="myprofile_italic"><!--[$field.description]--></span>"
+			<br />
+			<!--[if $field.fieldtype eq "STRING"]-->	
+				<!--[pnml name="_MYPROFILESTRINGLENGTH"]-->: <!--[$field.str_length]--> <!--[pnml name="_MYPROFILECHARS"]-->.<br />
+				<!--[if $field.list ne ""]-->
+					<!--[pnml name="_MYPROFILELIST"]-->: <span clas="myprofile_small"--><!--[$field.list]--></span><br />
+				<!--[/if]-->
+			<!--[/if]-->
+			<small><!--[$field.copyvalue]--></small>
+			<small><!--[$field.copyuidvalue]--></small>
+			<!--[pnml name="_MYPROFILEISACTIVE"]-->: <!--[$field.active|replace:1:yes|replace:0:no]-->, <!--[pnml name="_MYPROFILEISSHOWN"]-->: <!--[$field.shown|replace:1:yes|replace:0:no]-->.
+		<!--[else]-->
+		    <li class="myprofile_sortableseparator" id="item_<!--[$field.id]-->">
+			<span class="myprofile_bold"><!--[$field.identifier|strtoupper]-->: </span> 
+			<br /><span class="myprofile_italic"><!--[$field.description]--></span>
+		<!--[/if]-->
+		<br />
+		[<a href="<!--[pnmodurl modname="MyProfile" type="admin" func="fields" func="addField" id=$field.id]-->"><!--[pnml name="_MYPROFILEEDIT"]--></a>]
+		<br />
+		<noscript>
+			<br />
+			<!--[if $field.orderlink.up ne ""]-->
+				<form method="post" action="<!--[pnmodurl modname="MyProfile" type="admin" func="saveList"]-->" >
+				<input type="hidden" name="order" value="<!--[$field.orderlink.up]-->" />
+				<input type="submit" value="<!--[pnml name="_MYPROFILEMOVEUP"]-->" />
+				</form>
+			<!--[/if]-->
+			<!--[if $field.orderlink.down ne ""]-->
+				<form method="post" action="<!--[pnmodurl modname="MyProfile" type="admin" func="saveList"]-->" >
+				<input type="hidden" name="order" value="<!--[$field.orderlink.down]-->" />
+				<input type="submit" value="<!--[pnml name="_MYPROFILEMOVEDOWN"]-->" />
+				</form>
+			<!--[/if]-->
+		</noscript>
+	    </li>
+	<!--[/foreach]-->
+	</ul>
+	
+	<script type="text/javascript">
+	//<![CDATA[
+	Sortable.create("myprofile_list", {
+	  	onUpdate:function(){
+		  	new Ajax.Updater('list-info', '<!--[$ajaxurl]-->', {
+			    asynchronous:true, evalScripts:true, onComplete:function(request){
+					new Effect.Highlight("myprofile_list",{});
+				},
+				parameters:Sortable.serialize("myprofile_list")
+			})
+		}
+	})
+	//]]>
+	</script>
+<!--[/if]-->
+
+<!--[include file="myprofile_admin_footer.htm"]-->

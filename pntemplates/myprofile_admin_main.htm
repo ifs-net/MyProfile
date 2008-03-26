@@ -1,0 +1,63 @@
+<!--[admincategorymenu]-->
+
+<!--[include file="myprofile_admin_menu.htm"]-->
+
+<h1><!--[pnml name="_MYPROFILEBACKEND"]--></h1>
+<!--[pnml name="_MYPROFILEBACKENDDESCR"]-->
+<br /><br />
+
+<fieldset>
+<legend><!--[pnml name="_MYPROFILEGLOBALETTINGS"]--></legend>
+<!--[pnform]-->
+    <!--[pnformvalidationsummary]-->
+    <!--[pnformcheckbox id="notabs" checked="0"]--><!--[pnformlabel for="notabs" text="_MYPROFILENOTABS"]--><br /><br />
+    <!--[pnformcheckbox id="noverification" checked="0"]--><!--[pnformlabel for="noverification" text="_MYPROFILENOVERIFICATION"]--><br /><br />
+	<!--[pnformbutton commandName="update" text="_MYPROFILESAVECFG"]-->
+<!--[/pnform]-->
+
+</fieldset>
+
+<fieldset>
+<legend><!--[pnml name="_MYPROFILEEDITPROFILE"]--></legend>
+<form method="post" action="<!--[pnmodurl modname="pnProfile" type="admin" func="editProfile"]-->" >
+<!--[pnml name="_MYPROFILEEDITUNAME"]--><br />
+<input type="text" name="uname" /><br /><br />
+<!--[pnml name="_MYPROFILEEDITUID"]--><br />
+<input type="text" name="uid" /><br /><br />
+<input type="submit" value="<!--[pnml name="_MYPROFILEEDITPROFILETHEN"]-->" />
+</form>
+</fieldset>
+
+<fieldset>
+<legend><!--[pnml name="_MYPROFILESUPPORTMYPROFILE"]--></legend>
+<!--[pnml name="_MYPROFILEDONATE"]-->
+<form name="_xclick" action="https://www.paypal.com/de/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick" />
+<input type="hidden" name="business" value="florian.schiessl@ifs-net.de" />
+<input type="hidden" name="item_name" value="Donation for the MYPROFILE module" />
+<select name="amount">
+<option value="5">5&nbsp;</option>
+<option value="10" selected="selected">10&nbsp;</option>
+<option value="15">15&nbsp;</option>
+<option value="20">20&nbsp;</option>
+<option value="25">25&nbsp;</option>
+</select>
+<select name="currency_code">
+<option value="USD" selected="selected">USD&nbsp;</option>
+<option value="EUR">EUR&nbsp;</option>
+</select>
+<input type="submit" name="submit" value="<!--[pnml name="_MYPROFILEDONATETHIS"]-->"/>
+</form>
+</fieldset>
+
+<fieldset><legend><!--[pnml name="_MYPROFILEMAKEPROFILEMANDATORY"]--></legend>
+<!--[pnml name="_MYPROFILEMAKEPROFILEMANDATORYCODE"]--><br />
+<em>
+&lt;!--[pnmodapifunc modname="MyProfile" type="user" func="checkForAccount"]--&gt;
+</em>
+</fieldset>
+
+
+<br />
+
+<!--[include file="myprofile_admin_footer.htm"]-->

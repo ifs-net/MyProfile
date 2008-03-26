@@ -1,0 +1,109 @@
+<!--[include file="myprofile_user_header.htm"]-->
+
+<!--[pnajaxheader prototype="1"]-->
+
+<h1><!--[pnml name="_MYPROFILEMYPROFILE"]--></h1>
+<a href="<!--[pnmodurl modname="MyProfile" type="user" func="display" uid=$uid]-->"><!--[pnml name="_MYPROFILESHOWMYPROFILE"]--></a><br/><br/>
+
+<!--[pnform]-->
+<!--[pnformvalidationsummary]-->
+
+<!--[if $separators gt 0 and $notabs ne "1"]-->
+	<div id="myprofile_javascript" class="myprofile_javascript">						<!-- javascript begin -->
+	<div id="myprofile_showalltabs"><a href="#"><!--[pnml name="_MYPROFILESHOWWALLTABS"]--></a></div>
+	<div id="myprofile_tabmode"><a href="#"><!--[pnml name="_MYPROFILETABMODE"]--></a></div>
+	<div class="myprofile_tabheader" id="myprofile_tabheader">							<!-- tabheader begin -->
+	<!--[foreach from=$fields item="field"]-->
+		<!--[if $field.fieldtype eq "SEPARATOR"]-->
+			<div class="myprofile_tab" id="myprofile_tabheader<!--[$field.id]-->"> 		<!-- tabheader item begin -->
+				<!--[$field.identifier]-->
+			</div>																		<!-- tabheader item end -->
+		<!--[/if]-->
+	<!--[/foreach]-->
+	</div>																				<!-- tabheader end -->
+	<div class="myprofile_separator" id="myprofile_introtext">							<!-- separator begin -->
+	<div class="myprofile_tabcontent">													<!-- tabcontent begin -->
+	<h1><!--[pnml name="_MYPROFILEMYPROFILEDATA"]--></h1>
+	<!--[pnml name="_MYPROFILEMANAGEYOURDATA"]-->
+	</div>																				<!-- tabcontent end -->
+	<div class="myprofile_tabcontent_hidden" id="myprofile_tabinfotext">				<!-- tabcontent begin -->
+	<!--[pnml name="_MYPROFILEHOWTOUSETABS"]-->
+	</div>																				<!-- tabcontent end -->
+	</div>																				<!-- separator end -->
+	</div>																				<!-- javascript end -->
+<!--[/if]-->
+
+<div>																				<!-- dummy separator begin -->
+<div>																				<!-- dummy separator content begin -->
+<!--[foreach from=$fields item="field"]-->
+	<!--[if $field.fieldtype eq "SEPARATOR"]-->	
+		</div>																		<!-- dummy separator content end-->
+		</div>																		<!-- separator end -->
+		<div class="myprofile_separator" id="myprofile_tab<!--[$field.id]-->">		<!-- separator begin -->
+			<h1><!--[$field.identifier]--></h1>
+			<em><!--[$field.description]--></em>
+		<div class="myprofile_tabcontent">											<!-- separator content begin -->
+	<!--[else]-->
+		<div class="myprofile_formelement">											<!-- form item begin -->
+	    <!--[pnformlabel for=$field.identifier text=$field.description]-->:<br />
+		<!--[if $field.fieldtype eq "STRING" or $field.fieldtype == "TIMESTAMP"]-->
+			<!--[if $field.list eq ""]-->
+				<!--[pnformtextinput mandatory="1" id=$field.identifier maxLength=$field.str_length]-->
+				<!--[else]-->
+					<!--[if $field.dropdownitems ne '']-->
+					    <!--[pnformdropdownlist id=$field.identifier items=$field.dropdownitems]-->
+					<!--[else]-->
+						<!--[foreach from=$field.radioitems item=item]-->
+							<!--[pnformradiobutton id=$item.value dataField=$field.identifier mandatory="1"]--> <!--[pnformlabel text=$item.text for=$item.value]-->
+						<!--[/foreach]-->
+					<!--[/if]-->
+			<!--[/if]-->
+		<!--[/if]-->
+		<!--[if $field.fieldtype eq "SKYPEID"]--><!--[pnformtextinput id=$field.identifier mandatory=$field.mandatory maxLength="30"]--><!--[/if]-->
+		<!--[if $field.fieldtype eq "UIN"]--><!--[pnformintinput id=$field.identifier mandatory=$field.mandatory]--><!--[/if]-->
+		<!--[if $field.fieldtype eq "URL"]--><!--[pnformurlinput id=$field.identifier mandatory=$field.mandatory]--><!--[/if]-->
+		<!--[if $field.fieldtype eq "TEXTBOX"]--><!--[pnformtextinput id=$field.identifier mandatory=$field.mandatory textMode="multiline"]--><!--[/if]-->
+		<!--[if $field.fieldtype eq "INTEGER"]--><!--[pnformintinput id=$field.identifier minValue=$field.num_minvalue maxValue=$field.num_maxvalue mandatory=$field.mandatory]--><!--[/if]-->
+		<!--[if $field.fieldtype eq "FLOAT"]--><!--[pnformfloatinput id=$field.identifier minValue=$field.num_minvalue maxValue=$field.num_maxvalue mandatory=$field.mandatory]--><!--[/if]-->
+		<!--[if $field.fieldtype eq "DATE"]--><!--[pnformdateinput id=$field.identifier mandatory=$field.mandatory]--><!--[/if]-->
+		</div>																		<!-- form item end -->
+	<!--[/if]-->
+<!--[/foreach]-->
+</div>																				<!-- separator content end -->
+</div>																				<!-- separator end -->
+
+<div id="myprofile_submitbutton">
+<!--[pnformbutton commandName="update" text="_MYPROFILESAVE"]-->
+</div>
+<!--[/pnform]-->
+
+<!--[if $notabs ne "1"]-->
+<!-- some javascript that can not be stored in an static .js file -->
+<script type="text/javascript">
+	function myprofile_hideAllTabs() {
+<!--[foreach from=$fields item="field"]-->
+	<!--[if $field.fieldtype eq "SEPARATOR"]-->
+		$('myprofile_tab<!--[$field.id]-->').hide();
+		$('myprofile_tabheader<!--[$field.id]-->').addClassName('myprofile_tabnotselected').removeClassName('myprofile_tabselected');
+	<!--[/if]-->
+<!--[/foreach]-->
+	}
+	function myprofile_showAllTabs() {
+<!--[foreach from=$fields item="field"]-->
+	<!--[if $field.fieldtype eq "SEPARATOR"]-->
+		$('myprofile_tab<!--[$field.id]-->').show();
+	<!--[/if]-->
+<!--[/foreach]-->
+	}
+	myprofile_init_user_main();
+<!--[foreach from=$fields item="field"]-->
+	<!--[if $field.fieldtype eq "SEPARATOR"]-->
+		$('myprofile_tabheader<!--[$field.id]-->').observe('mouseover',function() {myprofile_tab_mouseover(<!--[$field.id]-->);});
+		$('myprofile_tabheader<!--[$field.id]-->').observe('mouseout',function() {myprofile_tab_mouseout(<!--[$field.id]-->);});
+		$('myprofile_tabheader<!--[$field.id]-->').observe('click',function() {myprofile_showTab(<!--[$field.id]-->);});
+	<!--[/if]-->
+<!--[/foreach]-->
+</script>
+<!-- some javascript end -->
+<!--[/if]-->
+<!--[include file="myprofile_user_footer.htm"]-->

@@ -1,0 +1,42 @@
+<!--[include file="myprofile_user_header.htm"]-->
+<h1><!--[pnml name="_MYPROFILEMYPROFILE"]--></h1>
+<!--[pnml name="_MYPROFILEYOURSETTINGS"]--><br /><br />
+<!--[pnform]-->
+<!--[pnformvalidationsummary]-->
+
+<div class="myprofile_separator" id="myprofile_settings">
+<span class="myprofile_bold"><!--[pnml name="_MYPROFILEGENERALSETTINGS"]--></span><br /><br />
+<!--[pnformcheckbox id="nocomments" checked="0"]--><!--[pnformlabel for="nocomments" text="_MYPROFILENOCOMMENTS"]--><br /><br />
+</div>
+
+<div class="myprofile_separator" id="myprofile_password">
+<span class="myprofile_bold"><!--[pnml name="_MYPROFILEPASSWORDSETTINGS"]--></span><br /><br/>
+<!--[pnformlabel for="1pass" text="_MYPROFILENEWPASS"]-->:<br />
+<!--[pnformtextinput id="1pass" textMode="password" maxLength=20]--><br /><br />
+<!--[pnformlabel for="2pass" text="_MYPROFILENEWPASSAGAIN"]-->:<br />
+<!--[pnformtextinput id="2pass" textMode="password" maxLength=20]--><br /><br />
+</div>
+
+<div class="myprofile_separator" id="myprofile_email">
+<span class="myprofile_bold"><!--[pnml name="_MYPROFILECHANGEMAIL"]--></span> (<!--[pnusergetvar name="email"]-->)<br /><br/>
+<!--[pnformlabel for="users_email" text="_MYPROFILEEMAILADDRESS"]-->:<br />
+<!--[pnformemailinput id="users_email"]--><br /><br />
+</div>
+<!--[pnformbutton commandName="update" text="_MYPROFILESAVE"]-->
+
+<!--[/pnform]-->
+
+
+<!--[pnajaxheader prototype="1"]-->
+<script type="text/javascript">
+<!--[if $mode eq "email"]-->
+	$('myprofile_settings').hide();
+	$('myprofile_password').hide();
+<!--[/if]-->
+<!--[if $mode eq "password"]-->
+	$('myprofile_settings').hide();
+	$('myprofile_email').hide();
+<!--[/if]-->
+</script>
+
+<!--[include file="myprofile_user_footer.htm"]-->

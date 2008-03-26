@@ -1,0 +1,45 @@
+<!--[include file="myprofile_user_header.htm"]-->
+
+<!--[pnajaxheader prototype="1"]-->
+
+<h1><!--[pnml name="_MYPROFILEMYPROFILE"]-->: <!--[$uname]--></h1>
+
+
+<!--[* plugin tabs begin *]-->
+	<div class="myprofile_plugintabs">													<!-- tabheader begin -->
+		<div class="myprofile_plugintab" id="myprofile_plugintabhome"> 					<!-- tabheader item begin -->
+			<a onclick="javascript:myprofile_updateTab('<!--[$homelink]-->','myprofile_maincontent');return false;" href="<!--[pnmodurl modname="MyProfile" type="user" func="display" uid=$uid]-->&<!--[pnmodapifunc modname=$plugin.name type="myprofile" func="getURLAddOn"]-->"><!--[pnml name="_MYPROFILEMAINPROF"]--></a>
+		</div>																			<!-- tabheader item end -->
+<!--[if $plugins gt 0]-->
+	<!--[foreach from=$plugins item="plugin"]-->
+		<!--[if $plugin.title ne ""]-->
+			<div class="myprofile_plugintab" id="myprofile_plugintab<!--[$plugin.dir]-->"> 		<!-- tabheader item begin -->
+				<a onclick="javascript:myprofile_updateTab('<!--[$plugin.link]-->&uid=<!--[$uid]-->&<!--[pnmodapifunc modname=$plugin.name type="myprofile" func="getURLAddOn"]-->','myprofile_maincontent');return false;" href="<!--[pnmodurl modname="MyProfile" type="user" func="display" uid=$uid pluginname=$plugin.loadname]-->&<!--[pnmodapifunc modname=$plugin.name type="myprofile" func="getURLAddOn"]-->"><!--[$plugin.title]--></a>
+			</div>																			<!-- tabheader item end -->
+		<!--[/if]-->
+	<!--[/foreach]-->
+	</div>																				<!-- tabheader end -->
+<!--[/if]-->
+<!--[* plugin tabs end *]-->
+	
+<!--[* main profile data begin *]-->
+<div class="myprofile_tabcontent" id="myprofile_maincontent">
+<!--[pnmodapifunc modname=$pluginname type="myprofile" func="tab" uid=$uid uname=$uname]-->
+</div>
+
+<script type="text/javascript">
+	$('myprofile_plugintabhome').addClassName('myprofile_plugintab_unselected');
+	$('myprofile_plugintabhome').observe('mouseover',function() {myprofile_plugintab_mouseover('home');});
+	$('myprofile_plugintabhome').observe('mouseout',function() {myprofile_plugintab_mouseout('home');});
+	$('myprofile_plugintabhome').observe('click',function() {myprofile_updateTab('<!--[$homelink]-->','myprofile_maincontent');return false;});
+	<!--[foreach from=$plugins item="plugin"]-->
+	<!--[if $plugin.title ne ""]-->
+	$('myprofile_plugintab<!--[$plugin.dir]-->').addClassName('myprofile_plugintab_unselected');
+	$('myprofile_plugintab<!--[$plugin.dir]-->').observe('mouseover',function() {myprofile_plugintab_mouseover('<!--[$plugin.dir]-->');});
+	$('myprofile_plugintab<!--[$plugin.dir]-->').observe('mouseout',function() {myprofile_plugintab_mouseout('<!--[$plugin.dir]-->');});
+	$('myprofile_plugintab<!--[$plugin.dir]-->').observe('click',function() {myprofile_updateTab('<!--[$plugin.link]-->&uid=<!--[$uid]-->&<!--[pnmodapifunc modname=$plugin.name type="myprofile" func="getURLAddOn"]-->','myprofile_maincontent');return false;});
+	<!--[/if]-->
+	<!--[/foreach]-->
+</script>
+
+<!--[include file="myprofile_user_footer.htm"]-->
