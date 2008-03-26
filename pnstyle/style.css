@@ -1,0 +1,150 @@
+/** user **/
+
+/** user: display **/
+.myprofile_plugintabs {
+  	display: block;
+  	height: 15px;
+  	font-size: 11px;
+}
+.myprofile_plugintab {
+  	border-color: #ddd;
+  	border-left: 1px solid;
+  	border-top: 1px solid;
+  	border-right: 1px solid;
+  	float: left;
+  	height: 15px;
+  	padding: 3px;
+  	margin-right: 1px;
+  	font-style: italic;
+  	font-weight: bold; 
+	cursor: pointer; 	
+}
+.myprofile_plugintab_selected {
+  	background-color: #bbb;
+}
+.myprofile_plugintab_unselected {
+  	background-color: #ddd;
+}
+.myprofile_profiletext {
+  	padding-top: 3px;
+ 	padding-bottom: 3px;
+}
+
+/** user: main **/
+.myprofile_header {
+  	text-align: center;
+  	background-color: #E0E0E0;
+  	border: 1px dotted;
+  	border-color: #000;
+  	margin-bottom: 18px;
+}
+.myprofile_formelement {
+  	margin-top: 8px;
+  	margin-bottom: 8px;
+}
+.myprofile_javascript {
+  	display:none;
+}
+.myprofile_tabheader {
+  	display: block;
+  	height: 30px;
+}
+.myprofile_tabmouseover {
+  	background-color: #FF8C00;
+  	border-right: 2px solid;
+  	border-bottom: 2px solid;
+  	border-top: 1px dotted;
+  	border-left: 1px dotted;
+  	font-size: 1.1em;
+}
+.myprofile_tabnotselected {
+  	background-color: #F0E68C;
+  	border-right: 2px solid;
+  	border-bottom: 1px dotted;
+  	border-top: 1px dotted;
+  	border-left: 1px dotted;
+  	font-size: 1.1em;
+}
+.myprofile_tabselected {
+  	background-color: #FFD700;
+  	border-top: 2px solid;
+  	border-left: 2px solid;
+  	border-bottom: 0px;
+  	border-right: 0px;
+	font-size: 1.2em;
+}
+.myprofile_tab {
+  	border-color: #000;
+  	float: left;
+  	width: 160px;
+  	height: 36px;
+  	padding: 5px;
+  	margin-right: 2px;
+  	font-style: italic;
+  	font-weight: bold; 
+	cursor: pointer; 	
+}
+.myprofile_separator {
+  	background-color: #E0E0E0;
+  	padding: 10px;
+  	border-right: 1px solid;
+  	border-bottom: 1px solid;
+  	border-top: 1px dotted;
+  	border-left: 1px dotted;
+  	margin-top: 18px;
+  	margin-bottom: 10px;
+  	border-color: #000000;
+}
+.myprofile_tabcontent_hidden {
+  	display: none;
+}
+.myprofile_tabcontent {
+  	border-right: 1px solid;
+  	border-bottom: 1px solid;
+  	border-top: 1px dotted;
+  	border-left: 1px dotted;
+  	border-color: #000000;
+  	padding:10px;
+  	margin-top:10px;
+  	background-color: #F3F3F3;
+}
+
+
+
+
+/** admin **/
+.myprofile_sortableitem{
+	background-color: #C0C0C0; 
+	padding:10px; 
+	margin: 10px; 
+	border: 1px dotted #000000;
+	cursor: move;
+	list-style: none;
+}
+
+.myprofile_sortableseparator{
+	background-color: #FFD700; 
+	padding:10px; 
+	margin: 10px; 
+	border: 1px dotted #000000;
+	cursor: move;
+	list-style: none;
+}
+
+.myprofile_sortablelist {
+	background-color: #E0E0E0; 
+	padding: 0px; 
+	margin: 0px; 
+	border: 1px dotted #000000;
+	list-style: none;
+}
+.myprofile_bold {
+  	font-weight: bold;
+  	font-size: 1.2em;
+}
+.myprofile_small {
+  	font-size: 0.7em;
+}
+.myprofile_italic {
+  	font-style: italic;
+}
