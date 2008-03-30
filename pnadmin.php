@@ -239,6 +239,7 @@ class MyProfile_admin_settingsHandler
     function initialize(&$render)
     {
 	  	$data['notabs'] = pnModGetVar('MyProfile','notabs');
+	  	$data['dateformat'] = pnModGetVar('MyProfile','dateformat');
 	  	$data['noverification'] = pnModGetVar('MyProfile','noverification');
 	  	$render->assign($data);
 		return true;
@@ -254,6 +255,7 @@ class MyProfile_admin_settingsHandler
 		    
 		    if (!$render->pnFormIsValid()) return false;
 		    pnModSetVar('MyProfile','notabs',$obj['notabs']);
+		    pnModSetVar('MyProfile','dateformat',$obj['dateformat']);
 		    pnModSetVar('MyProfile','noverification',$obj['noverification']);
 			LogUtil::registerStatus(_MYPROFILECFGSTORED);
 		}

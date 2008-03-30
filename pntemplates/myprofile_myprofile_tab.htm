@@ -25,14 +25,14 @@
 		&nbsp;
 		</div>
 		<div class="myprofile_profiletext">
-		<!--[pnml name="_MYPROFILEREGSINCE"]-->: <!--[$regdate|date_format:"%d.%m.%Y"]--><br />
+		<!--[pnml name="_MYPROFILEREGSINCE"]-->: <!--[$regdate|date_format:"$dateformat"]--><br />
 		</div>
 		<div class="myprofile_profiletext">
-		<!--[pnml name="_MYPROFILELASTUPDATE"]-->: <!--[$lastupdate|date_format:"%d.%m.%Y"]--><br />
+		<!--[pnml name="_MYPROFILELASTUPDATE"]-->: <!--[$lastupdate|date_format:"$dateformat"]--><br />
 		</div>
 		<!--[if $lastlogin ne ""]-->
 			<div class="myprofile_profiletext">
-			<!--[pnml name="_MYPROFILELASTLOGIN"]-->: <!--[$lastlogin|date_format:"%d.%m.%Y"]--><br />
+			<!--[pnml name="_MYPROFILELASTLOGIN"]-->: <!--[$lastlogin|date_format:"$dateformat"]--><br />
 			</div>
 		<!--[/if]-->
 <!--[* additional user information end *]-->

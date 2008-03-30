@@ -13,12 +13,15 @@ function MyProfile_init()
 
     // Module Variables
     $notabs = pnSessionGetVar('myprofile_notabs');
+    $dateformat = pnSessionGetVar('myprofile_dateformat');
     $noverification = pnSessionGetVar('myprofile_noverification');
     pnModSetVar('MyProfile', 'notabs', (($notabs<>false) ? $notabs : ''));	
+    pnModSetVar('MyProfile', 'dateformat', (($dateformat<>false) ? $dateformat : '%d.%m.%Y'));	
     pnModSetVar('MyProfile', 'noverification', (($noverification<>false) ? $noverification : ''));	
 
     // clean up
     pnSessionDelVar('myprofile_notabs');
+    pnSessionDelVar('myprofile_dateformat');
     pnSessionDelVar('myprofile_noverification');
 			
     // delete old config file if there is one
