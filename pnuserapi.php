@@ -34,6 +34,20 @@ function MyProfile_userapi_getProfile($args)
 }
 
 /**
+ * get the last update date of a users's profile
+ *
+ * @param	$args['uid']	int
+ * @return	date
+ */
+function MyProfile_userapi_getLastUpdate($args) 
+{
+  	$obj = DBUtil::selectObjectByID('myprofile',(int)$args['uid']);
+  	$date = $obj['timestamp'];
+  	if ($date != '') return $date;
+  	else return false;
+}
+
+/**
  * get user settings
  *
  * @param	$args['uid']	int

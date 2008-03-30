@@ -21,6 +21,8 @@ define('_MYPROFILESENDPM',				'Send private message');
 define('_MYPROFILEADDASBUDDY',			'Add as buddy');
 define('_MYPROFILENOPERMISSION',		'not shown for unregistered users');
 define('_MYPROFILEREGSINCE',			'Member of this community since');
+define('_MYPROFILELASTLOGIN',			'Last login');
+define('_MYPROFILELASTUPDATE',			'Last update');
 // settings
 define('_MYPROFILEYOURSETTINGS',		'Here you can define some costum settings for your profile');
 define('_MYPROFILENOCOMMENTS',			'Do not allow other users to comment my profile');

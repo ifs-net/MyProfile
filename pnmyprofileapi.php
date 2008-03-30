@@ -17,9 +17,14 @@ function MyProfile_myprofileapi_tab ($args)
 	// assign user name and uid
 	if (isset($uid) && ($uid > 1)) $uname = pnUserGetVar('uname',$uid);
 	else $uname = pnUserGetIDFromName($uid);
+	$regdate	= pnUserGetVar('user_regdate',$uid);
+	$lastupdate	= pnModAPIFunc('MyProfile','user','getLastUpdate',array('uid'=>$uid));
+	if (pnModGetVar('Users','savelastlogindate') == 1) $lastlogin = pnUserGetVar('lastlogin',$uid);
 	$render->assign('uname',	$uname);
 	$render->assign('uid',		$uid);
-	$render->assign('regdate',	pnUserGetVar('user_regdate',$uid));
+	$render->assign('regdate',	$regdate);
+	$render->assign('lastupdate',$lastupdate);
+	if (isset($lastlogin)) $render->assign('lastlogin',$lastlogin);
 	// return output
 	$output = $render->fetch('myprofile_myprofile_tab.htm');
 	return $output;
