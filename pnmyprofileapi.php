@@ -20,7 +20,7 @@ function MyProfile_myprofileapi_tab ($args)
 	$regdate	= pnUserGetVar('user_regdate',$uid);
 	$lastupdate	= pnModAPIFunc('MyProfile','user','getLastUpdate',array('uid'=>$uid));
 	$dateformat = pnModGetVar('MyProfile','dateformat');
-	if (pnModGetVar('Users','savelastlogindate') == 1) $lastlogin = pnUserGetVar('lastlogin',$uid);
+	if (pnModGetVar('Users','savelastlogindate') == 1) $lastlogin = pnUserGetVar('lastlogin',$uid);	
 	$render->assign('uname',	$uname);
 	$render->assign('uid',		$uid);
 	$render->assign('regdate',	$regdate);
