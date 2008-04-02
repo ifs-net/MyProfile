@@ -124,4 +124,22 @@ function MyProfile_userapi_checkForAccount()
 	}	
 	return;
 } 
+
+/**
+ * This function returns the profile of a user with identifier as array key
+ * and the value as value
+ *
+ * To be used in other modules
+ *
+ * @param	$args['uid'] 	int
+ * @param	$args['name']	string			optional, identifier to get just one user variable
+ * @return	array
+ */
+function MyProfile_userapi_getUserVars($args) {
+	$profile = MyProfile_userapi_getProfile($args);
+	$identifier = $args['name'];
+	foreach ($profile as $item) $res[$item['identifier']] = $item;
+	if (isset($identifier)) return $res[$identifier];
+	else return $res;
+}
 ?>
