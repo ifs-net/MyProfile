@@ -15,6 +15,7 @@ define('_MYPROFILETABMODE',				'Switch to the "tab"-mode');
 define('_MYPROFILECREATED',				'The profile was created successfully');
 define('_MYPROFILEFIELDUPDATED',		'Your profile data was updated successfully');
 define('_MYPROFILESHOWMYPROFILE',		'Show my own profile page');
+define('_MYPROFILEADDPROFILEFAILED',	'Creating / Updating profile failed');
 
 // display
 define('_MYPROFILESENDPM',				'Send private message');

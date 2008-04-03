@@ -148,19 +148,23 @@ class MyProfile_user_ProfileHandler
 
 			// get the pnForm data and do a validation check
 		    $obj = $render->pnFormGetValues();		    
-					    
 		    if (!$render->pnFormIsValid()) return false;
-
 			$obj['timestamp'] = date("Y-m-d",time());
-
-		    if ($this->id > 0) {
+			
+		    if ($this->id > 0) {	// update an existing profile
 		      	$obj['id']=$this->id;
-		      	$result = DBUtil::updateObject($obj, 'myprofile');
+				$result = DBUtil::updateObject($obj, 'myprofile');
 		      	if ($result) LogUtil::registerStatus(_MYPROFILEFIELDUPDATED);
+		      	else LogUtil::registerError(_MYPROFILEADDPROFILEFAILED);
 			}
-			else {
-			  	$obj['id'] = pnUserGetVar('uid');
-			  	$this->id = pnUserGetVar('uid');
+			else {					// create a new profile
+				// if the user is created by the user himself we need his uid
+				// otherwise we have to work with the load_uid value
+				$load_uid = (int)FormUtil::getPassedValue('load_uid');
+				if (($load_uid > 0) && (!pnModAPIFunc('MyProfile','user','getProfile',array('uid'=>$load_uid)) && SecurityUtil::checkPermission('MyProfile::','::', ACCESS_ADMIN)) ) $obj['id'] = $load_uid;
+				else $obj['id'] = pnUserGetVar('uid');
+			  	$this->id = $obj['id'];
+			  	$thid->load_uid = $obj['id'];
 				DBUtil::insertObject($obj, 'myprofile',true);
 				LogUtil::registerStatus(_MYPROFILECREATED);
 			}
