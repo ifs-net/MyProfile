@@ -26,6 +26,7 @@ function MyProfile_myprofileapi_tab ($args)
 	$render->assign('regdate',	$regdate);
 	$render->assign('lastupdate',$lastupdate);
 	$render->assign('dateformat',$dateformat);
+	$render->assign('contactlistavailable',pnModAvailable('ContactList'));
 	if (isset($lastlogin)) $render->assign('lastlogin',$lastlogin);
 	// return output
 	$output = $render->fetch('myprofile_myprofile_tab.htm');
