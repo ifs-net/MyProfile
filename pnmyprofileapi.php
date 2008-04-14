@@ -21,12 +21,14 @@ function MyProfile_myprofileapi_tab ($args)
 	$lastupdate	= pnModAPIFunc('MyProfile','user','getLastUpdate',array('uid'=>$uid));
 	$dateformat = pnModGetVar('MyProfile','dateformat');
 	if (pnModGetVar('Users','savelastlogindate') == 1) $lastlogin = pnUserGetVar('lastlogin',$uid);	
-	$render->assign('uname',	$uname);
-	$render->assign('uid',		$uid);
-	$render->assign('regdate',	$regdate);
-	$render->assign('lastupdate',$lastupdate);
-	$render->assign('dateformat',$dateformat);
-	$render->assign('contactlistavailable',pnModAvailable('ContactList'));
+	$render->assign('uname',				$uname);
+	$render->assign('uid',					$uid);
+	$render->assign('viewer_uid',			pnUserGetVar('uid'));
+	$render->assign('regdate',				$regdate);
+	$render->assign('lastupdate',			$lastupdate);
+	$render->assign('dateformat',			$dateformat);
+	$render->assign('contactlistavailable',	pnModAvailable('ContactList'));
+	$render->assign('pnmessagesavailable',	pnModAvailable('pnMessages'));
 	if (isset($lastlogin)) $render->assign('lastlogin',$lastlogin);
 	// return output
 	$output = $render->fetch('myprofile_myprofile_tab.htm');
