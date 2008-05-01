@@ -41,6 +41,7 @@ function MyProfile_userapi_getProfile($args)
  */
 function MyProfile_userapi_getLastUpdate($args) 
 {
+  	if (!((int)$args['uid'] > 0)) return false;
   	$obj = DBUtil::selectObjectByID('myprofile',(int)$args['uid']);
   	$date = $obj['timestamp'];
   	if ($date != '') return $date;

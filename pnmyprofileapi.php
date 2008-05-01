@@ -29,6 +29,7 @@ function MyProfile_myprofileapi_tab ($args)
 	$render->assign('dateformat',			$dateformat);
 	$render->assign('contactlistavailable',	pnModAvailable('ContactList'));
 	$render->assign('pnmessagesavailable',	pnModAvailable('pnMessages'));
+	if (pnModAvailable('ContactList')) $render->assign('contactlist_nopublicbuddylist',	pnModGetVar('ContactList','nopublicbuddylist'));
 	if (isset($lastlogin)) $render->assign('lastlogin',$lastlogin);
 	// return output
 	$output = $render->fetch('myprofile_myprofile_tab.htm');

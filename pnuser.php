@@ -85,7 +85,7 @@ function MyProfile_user_display()
 	$render = pnRender::getInstance('MyProfile');
 	$uid	= (int)FormUtil::getPassedValue('uid');
 	$uname	= FormUtil::getPassedValue('uname');
-	if (isset($uname) && (pnUserGetIDFromName($uname) > 1)) $uid = pnUserGetIDFromName($uname);
+	if (isset($uname) && (pnUserGetIDFromName($uname) > 1)) return pnRedirect(pnModURL('MyProfile','user','display',array('uid' => pnUserGetIDFromName($uname))));
 	$render->assign('profile',pnModAPIFunc('MyProfile','user','getProfile',array('uid'=>$uid, 'uname'=>$uname)));
 
 	// assign user name and uid
