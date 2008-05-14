@@ -1,10 +1,7 @@
-<!--[admincategorymenu]-->
-
 <!--[include file="myprofile_admin_menu.htm"]-->
 
-<h1><!--[pnml name="_MYPROFILEBACKEND"]--></h1>
-<!--[pnml name="_MYPROFILEBACKENDDESCR"]-->
-<br /><br />
+
+<div class="pn-informationmsg"><!--[pnml name="_MYPROFILEBACKENDDESCR"]--></div>
 
 <fieldset>
 <legend><!--[pnml name="_MYPROFILEGLOBALETTINGS"]--></legend>
@@ -22,6 +19,7 @@
 
 <fieldset>
 <legend><!--[pnml name="_MYPROFILEEDITPROFILE"]--></legend>
+<div class="pn-informationmsg"><!--[pnml name="_MYPROFILEDIRECTPROFILEEDIT"]--></div>
 <form method="post" action="<!--[pnmodurl modname="myProfile" type="admin" func="editProfile"]-->" >
 <!--[pnml name="_MYPROFILEEDITUNAME"]--><br />
 <input type="text" name="uname" /><br /><br />
@@ -33,7 +31,7 @@
 
 <fieldset>
 <legend><!--[pnml name="_MYPROFILESUPPORTMYPROFILE"]--></legend>
-<!--[pnml name="_MYPROFILEDONATE"]-->
+<div class="pn-informationmsg"><!--[pnml name="_MYPROFILEDONATE"]--></div>
 <form name="_xclick" action="https://www.paypal.com/de/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_xclick" />
 <input type="hidden" name="business" value="florian.schiessl@ifs-net.de" />
@@ -54,7 +52,7 @@
 </fieldset>
 
 <fieldset><legend><!--[pnml name="_MYPROFILEMAKEPROFILEMANDATORY"]--></legend>
-<!--[pnml name="_MYPROFILEMAKEPROFILEMANDATORYCODE"]--><br />
+<div class="pn-informationmsg"><!--[pnml name="_MYPROFILEMAKEPROFILEMANDATORYCODE"]--></div>
 <em>
 &lt;!--[pnmodapifunc modname="MyProfile" type="user" func="checkForAccount"]--&gt;
 </em>

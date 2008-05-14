@@ -222,4 +222,158 @@ function MyProfile_adminapi_ajaxSaveList($args)
 	}
 	return true;
 }
+
+/**
+ * import functions
+ *
+ * @param	$args['source']		string
+ * @return void
+ */
+function MyProfile_adminapi_import($args)
+{
+  	$step = FormUtil::getPassedValue('step','1');
+  	if ($step == 2) {
+		if (!MyProfile_adminapi_updateTableDefinition()) return LogUtil::registerError(_MYPROFILEUPDATETABLEDEFERROR);
+	    else {
+		  	pnModSetVar('MyProfile','pnProfileStep',3);
+		  	return LogUtil::RegisterStatus(_MYPROFILETABLEDEFUPDATED);
+		}
+	}
+  	else if ($step == 3) {
+	    DBUtil::ChangeTable('myprofile');
+	  	pnModSetVar('MyProfile','pnProfileStep',4);
+	    return LogUtil::RegisterStatus(_MYPROFILETABLESTRUCTUREUPDATED);
+	}
+  	$uid = pnUserGetVar('uid');
+  	if (!isset($args['source'])) return LogUtil::registerError(_MYPROFILENOSOURCEGIVEN);
+  	else switch ($args['source']) {
+	    case 'pnProfile':
+	    	// get pnProfile fields
+	    	$fields = pnModAPIFunc('pnProfile','admin','getFields');
+	    	if (is_array($fields)) {
+	    	  	if ($step == 1) {
+		    	  	$newFields = array();
+		    	  	$toConvert = array();
+				  	foreach ($fields as $field) {
+				  	  	$newField = array (	'identifier'	=> $field['identifier'],
+											'mandatory'		=> $field['optional'],
+											'description'	=> $field['description'],
+											'fieldtype'		=> $field['fieldtype'],
+											'list'			=> $field['list'],
+											'public_status'	=> $field['public_status'],
+											'num_minvalue'	=> '',	// new in MyProfile
+											'num_maxvalue'	=> '',	// new in MyProfile
+											'str_length'	=> $field['str_length'],
+											'position'		=> $field['position'], 	// will be optimized after next manual position change
+											'active'		=> $field['active'],
+											'shown'			=> $field['shown']
+											);
+						// some things need to be converted...
+						if ($newField['mandatory'] == 1) $newField['mandatory'] = 0;
+						else $newField['mandatory'] = 1;
+						$newFields[]=$newField;
+						$toConvert[]=$newField['identifier'];
+						unset($newField);
+					}
+					// insert the new objects...
+					if (!DBUtil::InsertObjectArray($newFields,'myprofile_fields')) return logUtil::registerError(_MYPROFILEFIELDSIMPORTERROR);
+					else {
+					  	pnModSetVar('MyProfile','pnProfileStep',2);
+					  	return LogUtil::registerStatus(_MYPROFILESTRUCTUREUPDATED);
+					}
+				}
+				else if ($step == 4){
+					// now go on and get the transformed profile data
+					$pnProfileUsers = DBUtil::selectObjectArray('pnprofile');
+					$pnProfileArray = array ();
+					$c=0;
+					foreach ($pnProfileUsers as $pnProfileUser) {
+					  	$profile = array();
+					  	$res = pnModAPIFunc('pnProfile','user','getProfile',array('uid' => $pnProfileUser['uid']));
+					  	$uid = $pnProfileUser['uid'];
+					  	$profile['id'] = $uid;
+					  	$profile['timestamp'] = $pnProfileUser['timestamp'];
+					  	foreach ($toConvert as $item) {
+						    $profile[$item] = $res[$item]['value'];
+						}
+						$pnProfileArray[$uid] = $profile;
+						unset($profile);
+					  	$c++;
+					  	if ($c>100)break;
+					}
+					// now we have the data we need for the migration
+					foreach ($pnProfileArray as $obj) {
+					  	$res = DBUtil::selectObjectByID('myprofile',$obj['id']);
+					  	if (!is_array($res)) DBUtil::insertObject($obj,'myprofile',true);
+					  	else DBUtil::updateObject($obj,'myprofile');
+					}
+				  	pnModSetVar('MyProfile','pnProfileStep',5);
+					return LogUtil::registerStatus(_MYPROFILEIMPORTSUCCESSFULL.' '.$c.' '._MYPROFILEITEMSIMPORTES);
+				}
+			}
+			else return LogUtil::registerError(_MYPROFILEPNPROFILECONFUNREADABLE);
+	    	break;
+	    case 'Profile':
+	    	die("Profile migration function will follow");
+	    	$vars = pnUserGetVars($uid);
+	    	// we need every variable beginning with an "_" character
+	    	
+	    	$optionalitems = pnModAPIFunc('Users','user','optionalitems');
+	    	
+	    	print_r($optionalitems);
+	    	print "<hr>";
+	    	prayer($optionalitems);
+	    	die();
+			// data types from the Profil module:
+			// 1 = string
+			// 2 = text
+			// 3 = float
+			// 4 = int
+			// viewBy
+			// (none) = everybody
+			// 1 = registered only
+			// 2 = admin only
+			// displayType
+			// 0 = text box
+			// 1 = text area
+			// 2 = checkbox
+			// 3 = radio buttn
+			// 4 = dropdown list
+			// 5 = calendar
+			// 6 = date (extended)
+			// 7 = combo box (ext)
+				    	
+	    	break;
+	    default:
+	    	LogUtil::registerError(_MYPROFILEINVALIDSOURCE);
+	    	break;
+	}
+}
+
+/**
+ * garbage collector / consistence check
+ *
+ * @return array
+ */
+function MyProfile_adminapi_getOrphans($args)
+{
+  	// get all items
+  	$objArray = DBUtil::selectObjectArray('myprofile');
+  	$res = array();
+  	$delete = false;
+  	$action = FormUtil::GetPassedValue('action');
+  	if (isset($action) && ($action == "delete") && (SecurityUtil::confirmAuthKey())) $delete = true;
+  	foreach ($objArray as $obj) {
+	    if (!(strlen(pnUserGetVar('uname',$obj['id'])) > 0)) {
+			$res[] = array ('id' => $obj['id']);
+			DBUtil::deleteObject($obj,'myprofile');
+		}
+	}
+	if ($delete) {
+	  	LogUtil::registerStatus(_MYPROFILECLEANEDUP);
+	  	return array();
+	}
+	else return $res;
+}
+
 ?>

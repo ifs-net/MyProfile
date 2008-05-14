@@ -1,4 +1,3 @@
-<!--[admincategorymenu]-->
 <!--[include file="myprofile_admin_menu.htm"]-->
 
 <!--[pnajaxheader prototype="1" scriptacoulous="1"]-->
@@ -8,8 +7,7 @@
 <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="addField"]-->"><!--[pnml name="_MYPROFILEADDNEWFIELD"]--></a><br /><br />
 
 <!--[if $fields gt 0]-->
-	<h3><!--[pnml name="_MYPROFILEEXISTINGFIELDS"]--></h3>
-	<!--[pnml name="_MYPROFILEMANAGEHOWTO"]-->
+	<div class="pn-informationmsg"><h3><!--[pnml name="_MYPROFILEEXISTINGFIELDS"]--></h3><!--[pnml name="_MYPROFILEMANAGEHOWTO"]--></div>
 	<p id="list-info"></p>
 	<ul id="myprofile_list" class="myprofile_sortablelist">
 	<!--[pnml name="_MYPROFILEISMANDATORY" assign="mandatory"]-->

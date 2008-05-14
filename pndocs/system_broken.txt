@@ -1,0 +1,16 @@
+ If your system is broken and and an error like
+ 
+"Unknown column 'MyProfile_identifier' in 'field list'
+SELECT id AS "id",timestamp AS "timestamp",MyProfile_identifier AS "identifier"..."
+
+is shown on your page your config file is broken.
+
+That is no problem. Just edit the config/tabledef.inc and make it empty. Just delete all content!
+
+Then your site will run again. But now, it is very very important to to these steps as soon as possible:
+
+- go to the MyProfile configuration
+  + edit a data field of your choice
+  + do not change anything, just save / update the field 
+  
+=> Your system will run again without problems because the tabledef.inc is rewritten by updating a data field!

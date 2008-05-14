@@ -1,4 +1,3 @@
-<!--[admincategorymenu]-->
 <!--[include file="myprofile_admin_menu.htm"]-->
 
 <!--[pnajaxheader modname="MyProfile" prototype="1"]-->
@@ -11,8 +10,7 @@
 <!--[/if]-->
 </h1>
 
-<!--[pnml name="_MYPROFILEINTROTEXT"]-->
-<br /><br />
+<div class="pn-informationmsg"><!--[pnml name="_MYPROFILEINTROTEXT"]--><br/><!--[pnml name="_MYPROFILENNOTYPECHANGESLATER"]--></div>
 
 <!--[pnform]-->
     <!--[pnformvalidationsummary]-->
@@ -63,11 +61,12 @@
 <div id="myprofile_list">
     <!--[pnformlabel for="list" text="_MYPROFILELIST"]-->:<br />
     <!--[pnformtextinput id="list" maxLength="9999" textMode="multiline"]--><br /><br />
-    <!--[pnml name="_MYPROFILEDROPDOWNEX"]-->:<br />
-    <em>    <!--[pnml name="_MYPROFILEDROPDOWNCODE"]-->    </em><br />
-    <!--[pnml name="_MYPROFILERADIOEX"]-->:<br />
-    <em>    <!--[pnml name="_MYPROFILERADIOCODE"]-->    </em>
-    <br /><br />
+	<div class="pn-informationmsg">
+	    <!--[pnml name="_MYPROFILEDROPDOWNEX"]-->:<br />
+	    <em>    <!--[pnml name="_MYPROFILEDROPDOWNCODE"]-->    </em><br />
+	    <!--[pnml name="_MYPROFILERADIOEX"]-->:<br />
+	    <em>    <!--[pnml name="_MYPROFILERADIOCODE"]-->    </em>
+	</div>
 </div>
 <div id="myprofile_public_status">
     <!--[pnformlabel for="public_status" text="_MYPROFILEPUBLICSTATUS"]-->:<br />
