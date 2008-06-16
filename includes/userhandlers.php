@@ -1,7 +1,5 @@
 <?php
-
 /* ************************************ pnForm handler ********************************* */
-
 class MyProfile_user_ProfileHandler
 {
     var $id;
@@ -57,10 +55,10 @@ class MyProfile_user_ProfileHandler
 
 class MyProfile_user_SettingsHandler
 {
-    var $id;
-    function initialize(&$render)
-    {	    
-      	// Admins should be able to modify user's profile data
+	var $id;
+	function initialize(&$render)
+	{	    
+	  	// Admins should be able to modify user's profile data
 		$this->id = (int)pnUserGetVar('uid');
 		if ($this->id > 0) {
 			// get settings
@@ -69,8 +67,8 @@ class MyProfile_user_SettingsHandler
 		}
 		return true;
     }
-    function handleCommand(&$render, &$args)
-    {
+	function handleCommand(&$render, &$args)
+	{
 		if ($args['commandName']=='update') {
 		    // Security check 
 		    if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_COMMENT)) return LogUtil::registerPermissionError();
@@ -80,7 +78,11 @@ class MyProfile_user_SettingsHandler
 		    if (!$render->pnFormIsValid()) return false;
 
 	      	$obj['id']=$this->id;
-	      	$result = DBUtil::updateObject($obj, 'myprofile_settings');
+			$result = pnModAPIFunc('MyProfile','user','setSettings',array(
+					'uid'			=> $obj['id'],
+					'nocomments' 	=> $obj['nocomments']
+					)
+				);
 	      	if ($result) LogUtil::registerStatus(_MYPROFILESETTINGSUPDATED);
 
 	      	// should the password be updated?
@@ -90,17 +92,21 @@ class MyProfile_user_SettingsHandler
 					 LogUtil::registerStatus(_MYPROFILEPASSWORDCHANGED);
 				}
 				else if (strlen($obj['1pass'])>0) LogUtil::registerError(_MYPROFILEPWDTOOSHORT);
-			    
 			}
 			else if ((strlen($obj['1pass'])>0) || (strlen($obj['2pass'])>0)) {
 			  	LogUtil::registerError(_MYPROFILEPASSWORDSINCORRECT);
 			}
 			
 			// should the emailadress be changed?
-			if (pnUserGetVar('email') != $obj['users_email']) {
-			  	if (pnModGetVar('MyProfile','verifyemailaddress') == '1') LogUtil::registerStatus(_MYPROFILEMAILCHANGEREQUEST);
+			if (($obj['users_email'] != '') && (pnUserGetVar('email') != $obj['users_email'])){
+			  	if (pnModGetVar('MyProfile','noverification') == '1') {	// change without any verification
+				    if (pnUserSetVar('email',$obj['users_email'])) LogUtil::registerStatus(_MYPROFILEEMAILCHANGED);
+				    else LogUtil::registerStatus(_MYPROFILEEMAILCHANGEERROR);
+				}
 			  	else {
-				    if (pnModAPIFunc('MyProfile','user','updateEmail',array('uid'=>pnUserGetVar('uid'),'email'=>$obj['users_email']))) LogUtil::registerStatus(_MYPROFILEEMAILCHANGED);
+			  	  	// generate verification code etc.
+			  	  	if (pnModAPIFunc('MyProfile','user','generateVerificationCode',array('email' => $obj['users_email']))) LogUtil::registerStatus(_MYPROFILEMAILCHANGEREQUEST);
+			  	  	else LogUtil::registerStatus(_MYPROFILEMAILCHANGEREQUESTERROR);
 				}
 			}
 			return pnRedirect(pnModURL('MyProfile','user','settings'));
@@ -108,3 +114,54 @@ class MyProfile_user_SettingsHandler
 		return true;
     }
 }
+
+class MyProfile_user_ValidateMailHandler
+{
+	var $uid;
+	function initialize(&$render)
+	{	    
+	  	// Admins should be able to modify user's profile data
+	  	$uid = FormUtil::getPassedValue('uid',0,'GETPOST');
+	  	$code = FormUtil::getPassedValue('code','','GETPOST');
+	  	if (!($uid > 0)) $this->id = (int)pnUserGetVar('uid');
+	  	else $this->uid = $uid;
+		if ($this->uid > 0) {
+			// get settings
+			$render->assign('uid',	$this->uid);
+			$render->assign('code',	$code);
+			$data = pnModAPIFunc('MyProfile','user','getSettings',array('uid'=>$this->uid));
+			$render->assign($data);
+		}
+		return true;
+    }
+	function handleCommand(&$render, &$args)
+	{
+		if ($args['commandName']=='update') {
+			// get the pnForm data and do a validation check
+		    $obj = $render->pnFormGetValues();		    
+		    if (!$render->pnFormIsValid()) return false;
+
+			// get validation code
+			$settings = pnModAPIFunc('MyProfile','user','getSettings',array('uid' => (int)$obj['uid']));
+			// check if valid
+			$code = $settings['validationcode'];
+			if ($code['expire_date'] >= time()) {	// code is valid (date check)
+			  	if ($obj['code'] == $code['code']) {// code is correct
+				    if (pnUserSetVar('email',$code['email'])) LogUtil::registerStatus(_MYPROFILEEMAILCHANGED);
+				    else return LogUtil::registerError(_MYPROFILEEMAILCHANGEERROR);
+				}
+				else return LogUtil::registerError(_MYPROFILEINCORRECTCODE.' code: '.$code['code'].' entered '.$obj['code']);
+			}
+			else return LogUtil::registerError(_MYPROFILEINVALIDCODE);
+			// now we have to delete the old validation code from the user's attributes
+			$uid = $obj['uid'];
+		    $user = DBUtil::selectObjectByID('users', $uid, 'uid', null, null, null, false);
+			unset($user['__ATTRIBUTES__']['myprofile_validationcode']);
+			// store attributes
+			DBUtil::updateObject($user, 'users', '', 'uid');			
+			return pnRedirect(pnModURL('MyProfile','user','settings'));
+		}
+		return true;
+    }
+}
+?>

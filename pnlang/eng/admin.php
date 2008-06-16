@@ -44,10 +44,12 @@ define('_MYPROFILECONSISTENCEOK',			'Database already optimized');
 // main
 define('_MYPROFILEBACKEND',					'MyProfile backend configuration');
 define('_MYPROFILEBACKENDDESCR',			'This is the backend for the MyProfile module. First step for the admin should be the creation of a profile configuration. Have a lot of fun with this module!');
+define('_MYPROFILEREQUESTBANINDAYS',		'Time between to validation code requests to change an email address as user');
 define('_MYPROFILESUPPORTMYPROFILE',		'Support the MyProfile module');
 define('_MYPROFILEDONATETHIS',				'Donate with PayPal!');
 define('_MYPROFILEDONATE',					'You like this module and it is usefull for you? Thank you for some little donation for the programmer! OK - I like programming very much and this module is free and open source - but if you spend some money I\'ll go out for a nice candlelight dinner with my girlfriend and it will be much easier next time to get free time for programming ;-)');
 define('_MYPROFILEDIRECTPROFILEEDIT',		'As an administrator you can directly access and modify other profiles. Even if you modify a profile as an administrator, the date of the last update of the profile will be set to today\'s date. You should inform your user about everything you change in his profile!');
+define('_MYPROFILEEXPIREDAYS',				'Amount of days the validation code has until getting invalid');
 define('_MYPROFILEEDITPROFILE',				'Modify existing user profiles');
 define('_MYPROFILEEDITUNAME',				'Just enter the username...');
 define('_MYPROFILEEDITUID',					'or the user\'s ID...');

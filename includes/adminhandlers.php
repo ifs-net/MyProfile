@@ -65,6 +65,8 @@ class MyProfile_admin_settingsHandler
 	  	$data['notabs'] = pnModGetVar('MyProfile','notabs');
 	  	$data['dateformat'] = pnModGetVar('MyProfile','dateformat');
 	  	$data['noverification'] = pnModGetVar('MyProfile','noverification');
+	  	$data['requestban'] = pnModGetVar('MyProfile','requestban');
+	  	$data['expiredays'] = pnModGetVar('MyProfile','expiredays');
 	  	$render->assign($data);
 		return true;
     }
@@ -81,6 +83,8 @@ class MyProfile_admin_settingsHandler
 		    pnModSetVar('MyProfile','notabs',$obj['notabs']);
 		    pnModSetVar('MyProfile','dateformat',$obj['dateformat']);
 		    pnModSetVar('MyProfile','noverification',$obj['noverification']);
+		    pnModSetVar('MyProfile','requestban',$obj['requestban']);
+		    pnModSetVar('MyProfile','expiredays',$obj['expiredays']);
 			LogUtil::registerStatus(_MYPROFILECFGSTORED);
 		}
 		return true;

@@ -11,16 +11,34 @@ function MyProfile_user_main()
 {
     // Security check
     if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_COMMENT)) return LogUtil::registerPermissionError();
-		
+	
 	// Create output and assign data
+	$uid 		= pnUserGetVar('uid');
+	$settings 	= pnModAPIFunc('MyProfile','user','getSettings',array('uid' => $uid));
+	print(prayer($settings));
 	$render = FormUtil::newpnForm('MyProfile');
 	$render->assign('fields',pnModAPIFunc('MyProfile','admin','getFields'));
 	$render->assign('separators',pnModAPIFunc('MyProfile','admin','countSeparators'));
-	$render->assign('uid',pnUserGetVar('uid'));
+	$render->assign('uid',$uid);
 	$render->assign('notabs',pnModGetVar('MyProfile','notabs'));
 	PageUtil::addVar('javascript','modules/MyProfile/pnjavascript/myprofile.js');   
     // Return the output
     return $render->pnFormExecute('myprofile_user_main.htm', new MyProfile_user_ProfileHandler());
+}
+
+/**
+ * function to validate new email addresses
+ * 
+ * @param	$_GET['code']	string
+ * @param	$_GET['uid']	user id
+ * @return	output
+ */
+function MyProfile_user_validatemail()
+{
+	// Create output and assign data
+	$render = FormUtil::newpnForm('MyProfile');
+    // Return the output
+    return $render->pnFormExecute('myprofile_user_validatemail.htm', new MyProfile_user_ValidateMailHandler());
 }
 
 /**
@@ -66,6 +84,7 @@ function MyProfile_user_settings()
 	// should just password or email management be shown?
 	$mode = strtolower(FormUtil::getPassedValue('mode'));
 	$render->assign('mode',$mode);
+	$render->assign('noverification',pnModGetVar('MyProfile','noverification'));
 
     // Return the output
     return $render->pnFormExecute('myprofile_user_settings.htm', new MyProfile_user_SettingsHandler());

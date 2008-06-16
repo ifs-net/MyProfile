@@ -56,30 +56,103 @@ function MyProfile_userapi_getLastUpdate($args)
  */
 function MyProfile_userapi_getSettings($args)
 {
-  	$data = DBUtil::selectObjectByID('myprofile_settings',(int)$args['uid']);
-  	if (!(count($data)>0)) {
-  	  	$data = array(	'id'			=> $args['uid'],
-						'nocomments'	=> '0'		);
-	    DBUtil::insertObject($data,'myprofile_settings',true);
-	}
-	return $data;
+    $uid = (int) $args['uid'];
+    // get user and attributes
+    $user = DBUtil::selectObjectByID('users', $uid, 'uid', null, null, null, false);
+    if (!is_array($user)) return false; // no user data?
+    if (!isset($user['__ATTRIBUTES__']) || (!isset($user['__ATTRIBUTES__']['myprofile_nocomments']))) {
+        // userprefs for this user do not exist, create them with defaults
+        $user['__ATTRIBUTES__']['myprofile_nocomments'] = 0;
+        // store attributes
+        DBUtil::updateObject($user, 'users', '', 'uid');
+    }
+    return array(
+    				'id'				=> $uid,
+					'nocomments' 		=> $user['__ATTRIBUTES__']['myprofile_nocomments'],
+					'validationcode'	=> unserialize($user['__ATTRIBUTES__']['myprofile_validationcode'])
+				);
 }
 
 /**
- * store a new email address for a user
+ * store user settings
  *
- * @param	$args['uid']	int
- * @param	$args['email']	string
+ * @param	$args['uid']		int
+ * @param	$args['nocomments']	int
+ * @return	array
+ */
+function MyProfile_userapi_setSettings($args)
+{
+	$uid = $args['uid'];
+	$nocomments = $args['nocomments'];
+	if (!(($nocomments >= 0) && ($nocomments <= 1))) $nocomments = 0;
+	// get user and attributes
+    $user = DBUtil::selectObjectByID('users', $uid, 'uid', null, null, null, false);
+    if (!is_array($user)) return false; // no user data?
+	$user['__ATTRIBUTES__']['myprofile_nocomments'] = $nocomments;
+	// store attributes
+	return DBUtil::updateObject($user, 'users', '', 'uid');
+}
+
+/**
+ * generate a verification code for a new email to activate this email
+ * and store the new email as an attribute in the user's attributes
+ *
+ * @param	$args['email']		string
  * @return	boolean
  */
-function MyProfile_userapi_updateEmail($args)
+function MyProfile_userapi_generateVerificationCode($args)
 {
-  	if (!isset($args['email'])) {
-	    LogUtil::registerError(_MYPROFILENOEMAILGIVEN);
-	    return false;
+	$uid = pnUserGetVar('uid');
+	// get user and attributes
+    $user = DBUtil::selectObjectByID('users', $uid, 'uid', null, null, null, false);
+    if (!is_array($user)) return false; // no user data?
+    
+	// we first have to check if there is an active validation code
+	$validationcode = $user['__ATTRIBUTES__']['myprofile_validationcode'];
+	if (isset($validationcode)) {
+	  	$validationcode = unserialize($validationcode);
+		$requestban = pnModGetVar('MyProfile','requestban');
+		$ban_timestamp = ($validationcode['request_date']+(24*60*60*$requestban));	// $requestban [days]
+		if ($ban_timestamp < (time())) unset($validationcode);	// unset the code if the requestban-timelimit is over
+		else { // print error message with requestban date
+		  	LogUtil::registerError(_MYPROFILENONEWREQUESTBEFORE.' '.date(pnModGetVar('MyProfile','dateformat'),$ban_timestamp));
+		  	return false;
+		}
 	}
-	// todo
-	return false;
+	if (isset($validationcode)) return false;	// return false if there is an acitve validation code
+	// generate verification code
+	$chars = "abcdefghikmnopqrstuvwxyz";   
+	mt_srand( (double) microtime() * 1000000); 
+	for ($i=1;$i<=25;$i++) $c.=$chars[mt_rand(0,(strlen($chars)-1))];
+	
+	// an validation code has an expiry date
+	// the date when a new validation code can be re-requested is not a
+	// part of this array. This setting is to be configures in the MyProfile
+	// main administration area.
+    $validationcode = array (
+    		'code' 			=> $c,
+    		'email'			=> $args['email'],
+    		'request_date'	=> time(),
+    		'expire_date'	=> (time()+(60*60*24*pnModGetVar('MyProfile','expiredays')))
+		);
+	$user['__ATTRIBUTES__']['myprofile_validationcode'] = serialize($validationcode);
+
+	// update attributes and store new validation code
+	DBUtil::updateObject($user, 'users', '', 'uid');
+
+    // send email
+    $render = pnRender::getInstance('MyProfile');
+    $render->assign('sitename',			pnConfigGetVar('sitename'));
+    $render->assign('uid',				$uid);
+    $render->assign('validationcode',	$validationcode);
+    $render->assign('url',				pnGetBaseURL().pnModURL('MyProfile','user','validatemail',array('code' => $validationcode['code'],'uid' => $uid)));
+    $render->assign('validuntil',		date(pnModGetVar('MyProfile','dateformat'),$validationcode['expire_date']));
+    $render->assign('alternateurl',		pnGetBaseURL().pnModURL('MyProfile','user','validatemail'));
+    $body = $render->fetch('myprofile_email_validationcode.htm');
+    $subject = _MYPROFILEVALIDATIONCODEFOR.' '.pnUserGetVar('uname',$uid).' '._MYPROFILEAT.' '.pnConfigGetVar('sitename');
+    pnMail($validationcode['email'], $subject, $body, array('header' => '\nMIME-Version: 1.0\nContent-type: text/plain'), false);
+    return true;
+	
 }
 
 /**

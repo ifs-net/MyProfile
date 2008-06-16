@@ -22,6 +22,8 @@
 <span class="myprofile_bold"><!--[pnml name="_MYPROFILECHANGEMAIL"]--></span> (<!--[pnusergetvar name="email"]-->)<br /><br/>
 <!--[pnformlabel for="users_email" text="_MYPROFILEEMAILADDRESS"]-->:<br />
 <!--[pnformemailinput id="users_email"]--><br /><br />
+<!--[if $noverification neq 1]-->
+	<a href="<!--[pnmodurl modname="MyProfile" type="user" func="validatemail"]-->"><!--[pnml name="_MYPROFILEENTERVALIDATIONCODE"]--></a><!--[/if]-->
 </div>
 <!--[pnformbutton commandName="update" text="_MYPROFILESAVE"]-->
 

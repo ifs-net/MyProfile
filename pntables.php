@@ -1,6 +1,6 @@
 <?php
 /**
- * Populate pntables array for MyProfile module
+ * Populate tables array for MyProfile module
  *
  * @return       array       The table information.
  */
@@ -14,8 +14,6 @@ function MyProfile_pntables()
     // Set the table name
     $pntable['myprofile'] = $MyProfile;
     $pntable['myprofile_fields'] = $MyProfile."_fields";
-    $pntable['myprofile_settings'] = $MyProfile."_settings";
-    $pntable['myprofile_emailverification'] = $MyProfile."_emailverification";
 
     // Set the column names.  Note that the array has been formatted
     // on-screen to be very easy to read by a user.
@@ -35,28 +33,6 @@ function MyProfile_pntables()
 		foreach ($array['column'] as $c) $pntable['myprofile_column'][$c['key']] =  $c['value'];
 		foreach ($array['column_def'] as $c) $pntable['myprofile_column_def'][$c['key']] =  $c['value'];
 	};
-    $pntable['myprofile_settings_column'] = array(
-			    'id'					=> 'id',
-			    'nocomments'			=> 'nocomments'
-			    );
-    $pntable['myprofile_settings_column_def'] = array(
-    			'id'					=> "I NOTNULL PRIMARY ",
-    			'nocomments'			=> "I NOTNULL DEFAULT 0"
-    			);
-
-    $pntable['myprofile_emailverification_column'] = array(
-			    'id'					=> 'id',
-			    'email'					=> 'email',
-			    'date'					=> 'date',
-			    'code'					=> 'code'
-			    );
-    $pntable['myprofile_emailverification_column_def'] = array(
-    			'id'					=> "I NOTNULL PRIMARY",
-				'email'					=> "XL NOTNULL",
-				'date'					=> "D NOTNULL",
-				'code'					=> "XL NOTNULL"
-    			);
-    
     $pntable['myprofile_fields_column'] = array (
 			    'id'					=> 'id',
 			    'identifier'			=> 'identifier',
