@@ -15,7 +15,6 @@ function MyProfile_user_main()
 	// Create output and assign data
 	$uid 		= pnUserGetVar('uid');
 	$settings 	= pnModAPIFunc('MyProfile','user','getSettings',array('uid' => $uid));
-	print(prayer($settings));
 	$render = FormUtil::newpnForm('MyProfile');
 	$render->assign('fields',pnModAPIFunc('MyProfile','admin','getFields'));
 	$render->assign('separators',pnModAPIFunc('MyProfile','admin','countSeparators'));
