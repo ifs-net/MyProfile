@@ -6,7 +6,7 @@
 	<!--[pnml name="_MYPROFILEIMPORTDATA"]-->:
 	<!--[if $pnProfileStep eq 5]--><div class="pn-informationmsg"><!--[pnml name="_MYPROFILEPNPROFILEMIGRATIONDONE"]--></div><!--[/if]-->
 	<ul>
-		<li><!--[if $pnProfileStep eq 1]--><a href="<!--[pnmodurl modname="MyProfile" type="admin" func="import" source="pnProfile" authid=$authid step=1]-->"><!--[/if]-->1. <!--[pnml name="_MYPROFILEIMPORTSTRUCTURE"]--><!--[if $pnProfileStep eq 1]--></a><!--[/if]--></li>
+		<li><!--[if $pnProfileStep eq 1]--><a href="<!--[pnmodurl modname="MyProfile" type="admin" func="import" source="pnProfile" authid=$authid step=1]-->"><!--[/if]-->1. <!--[pnml name="_MYPROFILEIMPORTSTRUCTURE"]--> (<!--[pnml name="_MYPROFILETRUNCATEMYPROFILETABLES"]-->)<!--[if $pnProfileStep eq 1]--></a><!--[/if]--></li>
 		<li><!--[if $pnProfileStep eq 2]--><a href="<!--[pnmodurl modname="MyProfile" type="admin" func="import" source="pnProfile" authid=$authid step=2]-->"><!--[/if]-->2. <!--[pnml name="_MYPROFILEUPDATETABLEDEFS"]--><!--[if $pnProfileStep eq 2]--></a><!--[/if]--></li>
 		<li><!--[if $pnProfileStep eq 3]--><a href="<!--[pnmodurl modname="MyProfile" type="admin" func="import" source="pnProfile" authid=$authid step=3]-->"><!--[/if]-->3. <!--[pnml name="_MYPROFILEUPDATETABLES"]--><!--[if $pnProfileStep eq 3]--></a><!--[/if]--></li>
 		<li><!--[if $pnProfileStep eq 4]--><a href="<!--[pnmodurl modname="MyProfile" type="admin" func="import" source="pnProfile" authid=$authid step=4]-->"><!--[/if]-->4. <!--[pnml name="_MYPROFILEIMPORTPROFILEDATA"]--><!--[if $pnProfileStep eq 4]--></a><!--[/if]--> (<!--[pnml name="_MYPROFILEPOSSIBLETIMEOUT"]-->)</li>

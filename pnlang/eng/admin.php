@@ -23,6 +23,7 @@ define('_MYPROFILEFIELDSIMPORTERROR',		'An error occured importing the pnProfile
 define('_MYPROFILEUPDATETABLEDEFERROR',		'An error occured while trying to update the table definition');
 define('_MYPROFILEIMPORTSUCCESSFULL',		'Import done');
 define('_MYPROFILEITEMSIMPORTES',			'items imported');
+define('_MYPROFILETRUNCATEMYPROFILETABLES',	'If you have already configured MyProfile your configuration will be lost! Also values users might have entered already will be lost! Merging is not supported!');
 define('_MYPROFILEIMPORTSTRUCTURE',			'import pnProfile structure');
 define('_MYPROFILEUPDATETABLES',			'update table');
 define('_MYPROFILEIMPORTPROFILEDATA',		'import pnProfile data into MyProfile');
@@ -30,7 +31,7 @@ define('_MYPROFILEUPDATETABLEDEFS',			'update table definition');
 define('_MYPROFILETABLESTRUCTUREUPDATED',	'Table structure updated');
 define('_MYPROFILETABLEDEFUPDATED',			'Table definition updated successfully');
 define('_MYPROFILESTRUCTUREUPDATED',		'pnProfile structure imported into MyProfile');
-define('_MYPROFILEPOSSIBLETIMEOUT',			'If you have a huge pnProfile database the update might break if the memory limit or the timeout is set to low. If the update breaks, raise your memory limit and the php maximum execution time and try this step again until it works!');
+define('_MYPROFILEPOSSIBLETIMEOUT',			'If you have a huge pnProfile database the update might break if the memory limit or the timeout is set to low. If the update breaks, raise your memory limit and the php maximum execution time and try this step again until it works! Also do not run any other processes you do not need when importing the database.');
 define('_MYPROFILEPNPROFILEMIGRATIONDONE',	'Migration from pnProfile to MyProfile already done');
 
 // findorphans / consistence check

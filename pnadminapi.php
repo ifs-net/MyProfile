@@ -231,7 +231,7 @@ function MyProfile_adminapi_ajaxSaveList($args)
  */
 function MyProfile_adminapi_import($args)
 {
-  	$step = FormUtil::getPassedValue('step','1');
+  	$step = FormUtil::getPassedValue('step','1');	// first step if no step given
   	if ($step == 2) {
 		if (!MyProfile_adminapi_updateTableDefinition()) return LogUtil::registerError(_MYPROFILEUPDATETABLEDEFERROR);
 	    else {
@@ -252,6 +252,10 @@ function MyProfile_adminapi_import($args)
 	    	$fields = pnModAPIFunc('pnProfile','admin','getFields');
 	    	if (is_array($fields)) {
 	    	  	if ($step == 1) {
+	    	  	  	// truncate tables
+	    	  	  	DBUtil::truncateTable('myprofile');
+	    	  	  	DBUtil::truncateTable('myprofile_fields');
+	    	  	  	// go on...
 		    	  	$newFields = array();
 		    	  	$toConvert = array();
 				  	foreach ($fields as $field) {
@@ -283,6 +287,12 @@ function MyProfile_adminapi_import($args)
 					}
 				}
 				else if ($step == 4){
+	    	  	  	// truncate table - if a migration failes there might be content in a table
+	    	  	  	DBUtil::truncateTable('myprofile');
+    				$fields = pnModAPIFunc('pnProfile','admin','getFields');
+    				foreach ($fields as $field) {
+					  	$keys[]=$field['identifier'];
+					}
 					// now go on and get the transformed profile data
 					$pnProfileUsers = DBUtil::selectObjectArray('pnprofile');
 					$pnProfileArray = array ();
@@ -290,23 +300,17 @@ function MyProfile_adminapi_import($args)
 					foreach ($pnProfileUsers as $pnProfileUser) {
 					  	$profile = array();
 					  	$res = pnModAPIFunc('pnProfile','user','getProfile',array('uid' => $pnProfileUser['uid']));
-					  	$uid = $pnProfileUser['uid'];
-					  	$profile['id'] = $uid;
-					  	$profile['timestamp'] = $pnProfileUser['timestamp'];
-					  	foreach ($toConvert as $item) {
-						    $profile[$item] = $res[$item]['value'];
+					  	unset($newitem);
+					  	$newitem['id'] = $pnProfileUser['uid'];
+					  	foreach ($keys as $key) {
+						    $newitem[$key] = $res[$key]['value'];
 						}
-						$pnProfileArray[$uid] = $profile;
-						unset($profile);
-					  	$c++;
-					  	if ($c>100)break;
+						$newitems[]=$newitem;
+						$c++;
 					}
-					// now we have the data we need for the migration
-					foreach ($pnProfileArray as $obj) {
-					  	$res = DBUtil::selectObjectByID('myprofile',$obj['id']);
-					  	if (!is_array($res)) DBUtil::insertObject($obj,'myprofile',true);
-					  	else DBUtil::updateObject($obj,'myprofile');
-					}
+					// now insert object Array into myprofile table
+					$res = DBUtil::insertObjectArray($newitems,'myprofile',false,true);
+					// set step to finished...
 				  	pnModSetVar('MyProfile','pnProfileStep',5);
 					return LogUtil::registerStatus(_MYPROFILEIMPORTSUCCESSFULL.' '.$c.' '._MYPROFILEITEMSIMPORTES);
 				}
