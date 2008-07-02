@@ -33,7 +33,9 @@ define('_MYPROFILETABLEDEFUPDATED',			'Table definition updated successfully');
 define('_MYPROFILESTRUCTUREUPDATED',		'pnProfile structure imported into MyProfile');
 define('_MYPROFILEPOSSIBLETIMEOUT',			'If you have a huge pnProfile database the update might break if the memory limit or the timeout is set to low. If the update breaks, raise your memory limit and the php maximum execution time and try this step again until it works! Also do not run any other processes you do not need when importing the database.');
 define('_MYPROFILEPNPROFILEMIGRATIONDONE',	'Migration from pnProfile to MyProfile already done');
-
+define('_MYPROFILERESETMIGRATION',			'Migration failed');
+define('_MYPROFILERESETSTEPSNOW',			'Reset migration and start with first step again');
+define('_MYPROFILESTEPSRESETDONE',			'pnProfile migration reset done');
 // findorphans / consistence check
 define('_MYPROFILECONSISTENCECHECKDESC',	'This function checks the consistency of your MyProfile database. This check might be neccessary, if you allow your user\'s to delete their accounts themself or if your delete users using the function the Users module offers you. In this case, old data might still be stored in the MyProfile tables. This function is the "garbage collector" for this module.');
 define('_MYPROFILEYOUHAVE',					'You have');

@@ -11,6 +11,8 @@
 		<li><!--[if $pnProfileStep eq 3]--><a href="<!--[pnmodurl modname="MyProfile" type="admin" func="import" source="pnProfile" authid=$authid step=3]-->"><!--[/if]-->3. <!--[pnml name="_MYPROFILEUPDATETABLES"]--><!--[if $pnProfileStep eq 3]--></a><!--[/if]--></li>
 		<li><!--[if $pnProfileStep eq 4]--><a href="<!--[pnmodurl modname="MyProfile" type="admin" func="import" source="pnProfile" authid=$authid step=4]-->"><!--[/if]-->4. <!--[pnml name="_MYPROFILEIMPORTPROFILEDATA"]--><!--[if $pnProfileStep eq 4]--></a><!--[/if]--> (<!--[pnml name="_MYPROFILEPOSSIBLETIMEOUT"]-->)</li>
 	</ul>
+	<!--[pnml name="_MYPROFILERESETMIGRATION"]-->: <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="import" authid=$authid action="reset"]-->"><!--[pnml name="_MYPROFILERESETSTEPSNOW"]--></a>
+
 <!--[else]-->
 	<!--[pnml name="_MYPROFILEPNPROFILENOTAV"]-->
 <!--[/if]-->
@@ -23,6 +25,7 @@
 <!--[else]-->
 	<!--[pnml name="_MYPROFILEPROFILENOTAV"]-->
 <!--[/if]-->
+
 
 
 <!--[include file="myprofile_admin_footer.htm"]-->

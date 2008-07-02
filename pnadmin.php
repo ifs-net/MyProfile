@@ -61,6 +61,13 @@ function MyProfile_admin_import()
 {    
     // Security check 
     if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_ADMIN)) return LogUtil::registerPermissionError();
+    
+    // Reset step counter?
+    $reset = FormUtil::getPassedValue('action',null,'GET');
+    if (isset($reset) && ($reset == 'reset')) {
+	  	pnModDelVar('MyProfile','pnProfileStep');
+	  	LogUtil::registerStatus(_MYPROFILESTEPSRESETDONE);
+	}
 
 	// check if config file is writable
 	if (!pnModAPIFunc('MyProfile','admin','checkConfigFile')) {
