@@ -61,6 +61,14 @@ function MyProfile_admin_import()
 {    
     // Security check 
     if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_ADMIN)) return LogUtil::registerPermissionError();
+
+	// check if config file is writable
+	if (!pnModAPIFunc('MyProfile','admin','checkConfigFile')) {
+	  	$render = pnRender::getInstance('MyProfile');
+	  	$render->assign('id',(int)FormUtil::getPassedValue('id'));
+	  	return $render->fetch('myprofile_admin_configfailure.htm');
+	}
+
     // Check for import call
     $source = FormUtil::GetPassedValue('source',null,'GET');
     if (isset($source) && (($source == 'pnProfile') || ($source == 'Profile'))) {

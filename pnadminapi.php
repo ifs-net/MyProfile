@@ -1,6 +1,6 @@
 <?php
 /**
- * Check if config file is writeable
+ * Get plugin list
  *
  * @return	boolean
  */
