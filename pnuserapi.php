@@ -94,7 +94,7 @@ function MyProfile_userapi_setSettings($args)
 }
 
 /**
- * store user settings
+ * store user attributes
  *
  * @param	$args['data']		myprofile object
  * @return	boolean
