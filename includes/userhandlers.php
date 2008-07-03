@@ -33,8 +33,12 @@ class MyProfile_user_ProfileHandler
 		    if ($this->id > 0) {	// update an existing profile
 		      	$obj['id']=$this->id;
 				$result = DBUtil::updateObject($obj, 'myprofile');
+			
+				// update user's attributes if neccesarry
+				if (!pnModAPIFunc('MyProfile','user','storeAsAttributes',array('data' => $obj))) LogUtil::registerError(_MYPROFILEATTRIBUTESTOREERROR);
+				
 		      	if ($result) LogUtil::registerStatus(_MYPROFILEFIELDUPDATED);
-		      	else LogUtil::registerError(_MYPROFILEADDPROFILEFAILED);
+	    	  	else LogUtil::registerError(_MYPROFILEADDPROFILEFAILED);
 			}
 			else {					// create a new profile
 				// if the user is created by the user himself we need his uid
@@ -45,6 +49,10 @@ class MyProfile_user_ProfileHandler
 			  	$this->id = $obj['id'];
 			  	$thid->load_uid = $obj['id'];
 				DBUtil::insertObject($obj, 'myprofile',true);
+
+				// update user's attributes if neccesarry
+				if (!pnModAPIFunc('MyProfile','user','storeAsAttributes',array('data' => $obj))) LogUtil::registerError(_MYPROFILEATTRIBUTESTOREERROR);
+
 				LogUtil::registerStatus(_MYPROFILECREATED);
 			}
 			return pnRedirect(pnModURL('MyProfile','user','main',array('load_uid'=>$this->load_uid)));

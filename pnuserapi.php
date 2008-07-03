@@ -94,6 +94,24 @@ function MyProfile_userapi_setSettings($args)
 }
 
 /**
+ * store user settings
+ *
+ * @param	$args['data']		myprofile object
+ * @return	boolean
+ */
+function MyProfile_userapi_storeAsAttributes($args)
+{
+  	$obj	= $args['data'];
+  	if (!isset($obj) || (!($obj['id'] > 1))) return false;
+	// get user and attributes
+    $user = DBUtil::selectObjectByID('users', $obj['id'], 'uid', null, null, null, false);
+    if (!is_array($user)) return false; // no user data? 
+	$user['__ATTRIBUTES__']['myprofile'] = serialize($obj);
+	// store attributes serialized
+	return DBUtil::updateObject($user, 'users', '', 'uid');				
+}
+
+/**
  * generate a verification code for a new email to activate this email
  * and store the new email as an attribute in the user's attributes
  *

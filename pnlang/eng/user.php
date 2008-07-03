@@ -16,6 +16,7 @@ define('_MYPROFILECREATED',				'The profile was created successfully');
 define('_MYPROFILEFIELDUPDATED',		'Your profile data was updated successfully');
 define('_MYPROFILESHOWMYPROFILE',		'Show my own profile page');
 define('_MYPROFILEADDPROFILEFAILED',	'Creating / Updating profile failed');
+define('_MYPROFILEATTRIBUTESTOREERROR',	'Updating / creating user attributes failed');
 
 // display
 define('_MYPROFILESENDPM',				'Send private message');
