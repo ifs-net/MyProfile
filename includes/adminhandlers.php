@@ -62,11 +62,12 @@ class MyProfile_admin_settingsHandler
 {
     function initialize(&$render)
     {
-	  	$data['notabs'] = pnModGetVar('MyProfile','notabs');
-	  	$data['dateformat'] = pnModGetVar('MyProfile','dateformat');
-	  	$data['noverification'] = pnModGetVar('MyProfile','noverification');
-	  	$data['requestban'] = pnModGetVar('MyProfile','requestban');
-	  	$data['expiredays'] = pnModGetVar('MyProfile','expiredays');
+	  	$data['notabs'] 		= pnModGetVar('MyProfile','notabs');
+	  	$data['asattributes']	= pnModGetVar('MyProfile','asattributes');
+	  	$data['dateformat'] 	= pnModGetVar('MyProfile','dateformat');
+	  	$data['noverification']	= pnModGetVar('MyProfile','noverification');
+	  	$data['requestban'] 	= pnModGetVar('MyProfile','requestban');
+	  	$data['expiredays'] 	= pnModGetVar('MyProfile','expiredays');
 	  	$render->assign($data);
 		return true;
     }
@@ -81,6 +82,7 @@ class MyProfile_admin_settingsHandler
 		    
 		    if (!$render->pnFormIsValid()) return false;
 		    pnModSetVar('MyProfile','notabs',$obj['notabs']);
+		    pnModSetVar('MyProfile','asattributes',$obj['asattributes']);
 		    pnModSetVar('MyProfile','dateformat',$obj['dateformat']);
 		    pnModSetVar('MyProfile','noverification',$obj['noverification']);
 		    pnModSetVar('MyProfile','requestban',$obj['requestban']);

@@ -46,6 +46,7 @@ define('_MYPROFILECONSISTENCEOK',			'Database already optimized');
 
 // main
 define('_MYPROFILEBACKEND',					'MyProfile backend configuration');
+define('_MYPROFILEASATTRIBUTES',			'Also store the values as user attributes');
 define('_MYPROFILEBACKENDDESCR',			'This is the backend for the MyProfile module. First step for the admin should be the creation of a profile configuration. Have a lot of fun with this module!');
 define('_MYPROFILEREQUESTBANINDAYS',		'Time between to validation code requests to change an email address as user');
 define('_MYPROFILESUPPORTMYPROFILE',		'Support the MyProfile module');
