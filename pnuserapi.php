@@ -174,7 +174,7 @@ function MyProfile_userapi_generateVerificationCode($args)
 }
 
 /**
- * get al neccessary style sheets
+ * get all neccessary style sheets
  *
  * @param	$args['plugins']
  * @return	void
