@@ -52,7 +52,7 @@ function MyProfile_user_tab() {
   	$uid = (int)FormUtil::getPassedValue('uid');
   	$modname = FormUtil::getPassedValue('modname');
 	// ClickedMe integration
-	if (pnModAvailable('ClickedMe')) pnModAPIFunc('ClickedMe','user','addClick',array('clicked_uid' => $uid))
+	if (pnModAvailable('ClickedMe')) pnModAPIFunc('ClickedMe','user','addClick',array('clicked_uid' => $uid));
 	// go on now..
   	if (isset($modname) && pnModAvailable($modname)) {
 	  	pnModLangLoad($modname);
