@@ -49,7 +49,7 @@
 	    <!--[pnformlabel for=$field.identifier text=$field.description]-->:<br />
 		<!--[if $field.fieldtype eq "STRING" or $field.fieldtype == "TIMESTAMP"]-->
 			<!--[if $field.list eq ""]-->
-				<!--[pnformtextinput mandatory="1" id=$field.identifier maxLength=$field.str_length]-->
+				<!--[pnformtextinput mandatory=$field.mandatory id=$field.identifier maxLength=$field.str_length]-->
 				<!--[else]-->
 					<!--[if $field.dropdownitems ne '']-->
 					    <!--[pnformdropdownlist id=$field.identifier items=$field.dropdownitems]-->
@@ -108,3 +108,5 @@
 <!-- some javascript end -->
 <!--[/if]-->
 <!--[include file="myprofile_user_footer.htm"]-->
+
+<!--[pndebug output="html"]-->
