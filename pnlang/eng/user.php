@@ -25,6 +25,13 @@ define('_MYPROFILENOPERMISSION',		'not shown for unregistered users');
 define('_MYPROFILEREGSINCE',			'Registerd since');
 define('_MYPROFILELASTLOGIN',			'Last login');
 define('_MYPROFILELASTUPDATE',			'Last update');
+// display plugins
+define('_MYPROFILE_USERPICTURES_PICSINGALLERY',	'User\'s gallery');
+define('_MYPROFILE_USERPICTURES_PICTURES',		'picture(s)');
+define('_MYPROFILE_USERPICTURES_LINKEDIN',		'User linked at');
+define('_MYPROFILE_USERPICTURES_EXTERNAL',		'external');
+define('_MYPROFILE_USERPICTURES_THEREFROM',		'therefrom');
+
 // settings
 define('_MYPROFILEYOURSETTINGS',		'Here you can define some custom settings for your profile');
 define('_MYPROFILENOCOMMENTS',			'Do not allow other users to comment my profile');
