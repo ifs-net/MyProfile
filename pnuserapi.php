@@ -28,7 +28,8 @@ function MyProfile_userapi_getProfile($args)
 	foreach ($fields as $field) {
 		$field['value'] = $data[$field['identifier']];
 		if (($field['public_status'] > $mystatus) && ($field['value']!="")) $field['value']=_MYPROFILENOPERMISSION;
-		if (($field['active'] == '1') && ($field['shown'] == '1')) $profile[]=$field;
+		$identifier = $field['identifier'];
+		if (($field['active'] == '1') && ($field['shown'] == '1')) $profile[$identifier]=$field;
 	}
 	return $profile;
 }

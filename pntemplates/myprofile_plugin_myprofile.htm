@@ -1,0 +1,18 @@
+<!--[pnajaxheader prototype="1"]-->
+<div id="myprofile_pluginmyprofile<!--[$user.uid]-->" class="myprofile_pluginmyprofile">
+	<strong><!--[$user.uname|userprofilelink]-->:</strong><br />
+	
+	<!--[*This is just a fictive example. Try this with your identifier values after .myprofile. *]-->
+	<strong><!--[$user.__ATTRIBUTES__.myprofile.vollername.value]--></strong><br />
+	<!--[$user.__ATTRIBUTES__.myprofile.plz.value]--> <!--[$user.__ATTRIBUTES__.myprofile.ort.value]--><br />
+	<hr>
+	<a href="#" onclick="javascript:$('myprofile_pluginmyprofilehidden<!--[$user.uid]-->').toggle();"><!--[pnml name="_MYPROFILEMOREORLESS"]--></a>
+	<!--[* A little part will be hidden and just opened if you click a button.*]-->
+	<div id="myprofile_pluginmyprofilehidden<!--[$user.uid]-->">;
+	bla blubb<br />
+	lorep ipsim
+	</div>
+	<script type="text/javascript">
+			$('myprofile_pluginmyprofilehidden<!--[$user.uid]-->').toggle();
+	</script>
+</div>
