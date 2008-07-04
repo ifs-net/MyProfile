@@ -16,6 +16,7 @@ function MyProfile_pluginapi_myprofile($args)
 	
 	// assign data
 	$render->assign('user',$args['user']);
+	$render->assign('avatar',pnUserGetVar('user_avatar',2));
 	$output = $render->fetch('myprofile_plugin_myprofile.htm');
     return $output;
 }
