@@ -26,21 +26,16 @@
 	<!--[else]-->
 		<div>
     <!--[/if]-->
-    <!--[pnmodapifunc modname="UserPictures" type="user" func="getPictures" template_id="0" assoc_uid=$uid assign="Assocpictures"]-->
-    <!--[pnmodapifunc modname="UserPictures" type="user" func="getPictures" template_id="0" assoc_uid=$uid hideown=1 assign="AssocpicturesHideOwn"]-->
-    <!--[if $Assocpictures gt 0]-->
-		<a href="<!--[pnmodurl modname="UserPictures" type="user" func="assoc" uid="$uid]-->"><!--[pnml name="_MYPROFILE_USERPICTURES_LINKEDIN"]--> <!--[$Assocpictures|@count]--> <!--[pnml name="_MYPROFILE_USERPICTURES_PICTURES"]--></a>,			<a href="<!--[pnmodurl modname="UserPictures" type="user" func="assoc" hideown="1" uid="$uid]-->"><!--[pnml name="_MYPROFILE_USERPICTURES_THEREFROM"]--> <!--[$AssocpicturesHideOwn|@count]--> <!--[pnml name="_MYPROFILE_USERPICTURES_EXTERNAL"]--> <!--[pnml name="_MYPROFILE_USERPICTURES_PICTURES"]--></a><br />
+    <!--[pnmodapifunc modname="UserPictures" type="user" func="getPictures" template_id="0" assoc_uid=$uid assign="assocpictures"]-->
+    <!--[pnmodapifunc modname="UserPictures" type="user" func="getPictures" template_id="0" assoc_uid=$uid hideown=1 assign="assocpicturesHideOwn"]-->
+    <!--[if $assocpictures gt 0]-->
+		<a href="<!--[pnmodurl modname="UserPictures" type="user" func="assoc" uid="$uid]-->"><!--[pnml name="_MYPROFILE_USERPICTURES_LINKEDIN"]--> <!--[$assocpictures|@count]--> <!--[pnml name="_MYPROFILE_USERPICTURES_PICTURES"]--></a>,			<a href="<!--[pnmodurl modname="UserPictures" type="user" func="assoc" hideown="1" uid="$uid]-->"><!--[pnml name="_MYPROFILE_USERPICTURES_THEREFROM"]--> <!--[$assocpicturesHideOwn|@count]--> <!--[pnml name="_MYPROFILE_USERPICTURES_EXTERNAL"]--> <!--[pnml name="_MYPROFILE_USERPICTURES_PICTURES"]--></a><br />
     <!--[/if]-->
 	</div>
     </center>
 </div>
 <!--[/if]-->
 <!--[/if]-->
-
-
-	<!--[if $pnClickedMe]-->	<!--[* IF pnClickedMe IS INSTALLED WE WANT TO REGISTER THAT CLICK *]-->
-    	    <!--[pnmodapifunc modname="ClickedMe" type="user" func="addClick" clicked_uid=$uid]-->
-    <!--[/if]-->    
 
 <!--[foreach from=$profile item="data"]-->
 	<!--[if ($data.value neq "") or ($data.fieldtype eq "SEPARATOR")]-->

@@ -51,6 +51,9 @@ function MyProfile_user_tab() {
   	$render = pnRender::getInstance('MyProfile');
   	$uid = (int)FormUtil::getPassedValue('uid');
   	$modname = FormUtil::getPassedValue('modname');
+	// ClickedMe integration
+	if (pnModAvailable('ClickedMe')) pnModAPIFunc('ClickedMe','user','addClick',array('clicked_uid' => $uid))
+	// go on now..
   	if (isset($modname) && pnModAvailable($modname)) {
 	  	pnModLangLoad($modname);
 	  	$output = pnModAPIFunc($modname,'myprofile','tab',array('uid'=>$uid));
