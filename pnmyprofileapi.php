@@ -32,9 +32,6 @@ function MyProfile_myprofileapi_tab ($args)
 	if (pnModAvailable('ContactList')) $render->assign('contactlist_nopublicbuddylist',	pnModGetVar('ContactList','nopublicbuddylist'));
 	if (isset($lastlogin)) $render->assign('lastlogin',$lastlogin);
 	// return output
-	$output = $render->fetch('myprofile_myprofile_tab.htm');
-	return $output;
-//	echo DataUtil::convertToUTF8($output);
-//	return;
+	return $render->fetch('myprofile_myprofile_tab.htm');
 }
 ?>

@@ -54,15 +54,9 @@ function MyProfile_user_tab() {
   	if (isset($modname) && pnModAvailable($modname)) {
 	  	pnModLangLoad($modname);
 	  	$output = pnModAPIFunc($modname,'myprofile','tab',array('uid'=>$uid));
-		if ((int)FormUtil::getPassedValue('ajax')==1) {
-//	  	  	echo DataUtil::convertToUTF8($output);
-			echo $output;
-		  	return true;
-		}
-		else {
-		  	echo $output;
-		  	return;
-		}
+		if ((int)FormUtil::getPassedValue('ajax',0,GET)==1) echo DataUtil::convertToUTF8($output);
+		else echo $output;
+		return true;
 	}
 	else return false;
 }
