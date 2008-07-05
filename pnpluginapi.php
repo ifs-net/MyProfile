@@ -15,8 +15,8 @@ function MyProfile_pluginapi_myprofile($args)
 	pnModLangLoad('MyProfile','plugin');
 	
 	// assign data
-	$render->assign('user',$args['user']);
-	$render->assign('avatar',pnUserGetVar('user_avatar',2));
+	$render->assign('user',		$args['user']);
+	$render->assign('avatar',	pnUserGetVar('_YOURAVATAR',$args['user']['uid']));
 	$output = $render->fetch('myprofile_plugin_myprofile.htm');
     return $output;
 }

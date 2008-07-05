@@ -1,8 +1,13 @@
 <!--[pnajaxheader prototype="1"]-->
 <div id="myprofile_pluginmyprofile<!--[$user.uid]-->" class="myprofile_pluginmyprofile">
 
-  <!--[pnusergetvar name="user_avatar" uid=$user.uid]-->
-
+	<div class="myprofile_avatar">
+	<!--[if $avatar eq '' or $avatar eq 'blank.gif']-->
+	  	<!--[pnimg modname=core src=personal.gif set=icons/large class="pnprofileicon"]-->
+	<!--[else]-->
+		<img src="images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" alt="<!--[$user.uname]-->" title="<!--[$user.uname]-->" />
+	<!--[/if]-->
+	</div>
 	<strong><!--[$user.uname|userprofilelink]-->:</strong><br />
 	
 	<!--[*This is just a fictive example. Try this with your identifier values after .myprofile. *]-->
@@ -19,5 +24,3 @@
 			$('myprofile_pluginmyprofilehidden<!--[$user.uid]-->').toggle();
 	</script>
 </div>
-
-<!--[pndebug output="html"]-->

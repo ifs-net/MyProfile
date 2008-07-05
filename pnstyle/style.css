@@ -11,6 +11,9 @@
 	float: left;
 }
 
+.myprofile_avatar {
+  	text-align: center;
+}
 
 /** user: display **/
 .myprofile_plugintabs {
