@@ -12,9 +12,24 @@ function MyProfile_admin_main()
     // Security check 
     if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_ADMIN)) return LogUtil::registerPermissionError();
     // Create output
+    $render = pnRender::getInstance('MyProfile');
+    // Return output
+    return $render->fetch('myprofile_admin_main.htm');
+}
+
+/**
+ * the main administration function
+ *
+ * @return       output       The main module admin page.
+ */
+function MyProfile_admin_mainsettings()
+{    
+    // Security check 
+    if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_ADMIN)) return LogUtil::registerPermissionError();
+    // Create output
     $render = FormUtil::newpnForm('MyProfile');
     // Return output
-    return $render->pnFormExecute('myprofile_admin_main.htm', new myProfile_admin_settingsHandler());
+    return $render->pnFormExecute('myprofile_admin_mainsettings.htm', new myProfile_admin_settingsHandler());
 }
 
 /**

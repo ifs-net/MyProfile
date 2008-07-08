@@ -1,10 +1,52 @@
 <?php
 // menu
-define('_MYPROFILEMAIN',					'main backend page');
-define('_MYPROFILEACTUALCONFIG',			'MyProfile configuration');
-define('_MYPROFILEFINDORPHANS',				'check consistence');
-define('_MYPROFILEPLUGINS',					'plugins');
-define('_MYPROFILEIMPORTFUNCS',				'migration');
+define('_MYPROFILEMAIN',					'main / modify user');
+define('_MYPROFILEMAINSETTINGS',			'module configuration');
+define('_MYPROFILEACTUALCONFIG',			'profile configuration');
+define('_MYPROFILEFINDORPHANS',				'repair');
+define('_MYPROFILEPLUGINS',					'profile plugins');
+define('_MYPROFILEIMPORTFUNCS',				'import');
+
+//main
+define('_MYPROFILEBACKEND',					'MyProfile backend configuration');
+define('_MYPROFILEBACKENDDESCR',			'Welcome to MyProfile - the advanced zikula profile module!');
+define('_MYPROFILEEDITPROFILE',				'Modify profile');
+define('_MYPROFILEDIRECTPROFILEEDIT',		'You can directly modify a user\'s profile in entering the');
+define('_MYPROFILEEDITUNAME',				'username');
+define('_MYPROFILEEDITUID',					'or the user\'s ID');
+define('_MYPROFILEEDITPROFILETHEN',			'... and edit the user\'s profile');
+define('_MYPROFILESUPPORTMYPROFILE',		'Support this module');
+define('_MYPROFILEDONATETHIS',				'Donate with PayPal!');
+define('_MYPROFILEDONATE',					'You like this module and it is usefull for you? Thank you for some little donation for the programmer! OK - I like programming very much and this module is free and open source - but if you spend some money I\'ll go out for a nice candlelight dinner with my girlfriend and it will be much easier next time to get free time for programming ;-)');
+
+// mainsettings
+define('_MYPROFILEGLOBALETTINGS',			'General module settings');
+define('_MYPROFILEASATTRIBUTES',			'Also store profile as a user object attribute');
+define('_MYPROFILEATTRIBUTEUSAGE',			'You can access a user\'s profile as $myprofile.youridentifier with this code');
+define('_MYPROFILEAPPEARANCE',				'Appearance');
+define('_MYPROFILEBEHAVIOUR',				'Behaviour');
+define('_MYPROFILENOTABS',					'No-tab mode / avoid usage of AJAX');
+define('_MYPROFILEEMAILMANAGEMENT',			'Email address management');
+define('_MYPROFILENOVERIFICATION',			'Do not force verification within email change requests');
+define('_MYPROFILEREQUESTBANINDAYS',		'Forbid new change request within');
+define('_MYPROFILEDAYSAFTERREQUEST',		'days after last request');
+define('_MYPROFILEDATEFORMAT',				'Date format to be used');
+define('_MYPROFILEEXPIREDAYS',				'Validation code\'s expiration of validity');
+define('_MYPROFILEDAYS',					'days');
+define('_MYPROFILEFORCEPROFILESCODE',		'To force every user to complete a profile insert the following code anywhere into your Xanthia templates');
+define('_MYPROFILEVALIDUNTILTIMESTAMP',		'User profile\'s expiration of validity');
+define('_MYPROFILEZERODEACTIVETED',			'in seconds, 0 = no expiration');
+define('_MYPROFILEATTENTIONCHANGE',			'If you only want to force every user to complete the profile insert the code and set the expiration period to 0');
+define('_MYPROFILENNOTYPECHANGESLATER',		'Due to some technical and logical reasons the type and identifier of a regular field can not be changed after the field was created.');
+define('_MYPROFILESAVECFG',					'Update configuration');
+define('_MYPROFILECFGSTORED',				'Configuration updated successfully');
+define('_MYPROFILEMYPROFILEPLUGIN',			'Integrate user profiles into any zikula content');
+define('_MYPROFILEUSEPROFILEPLUGINEXPL',	'There is a plugin that can be called in any module with this piece of code');
+define('_MYPROFILEUSEPROFILEPLUGINTEMPLATE','But you have to configure this plugin via its template manually - the template file that has to be edited is');
+
+define('_MYPROFILEUSELASTSEEN',				'Include "last seen" date into a user\'s profile');
+define('_MYPROFILELASTSEENTEXT',			'After activating this feature in the "Users" module zikula stores the date of the last login in the users variable "lastlogin". This variable will be included in a user\'s profile page. But if your security level is not set to "high", your users do not have to log in each time - they will stay logged in some days or even months and the last login date will be very different from the last seen date when the user did his last activity on your site. To fix this "bug", just add the following line into the index.php in your root folder at line 25 before the line "// Get Variables" begins:');
+
 
 // import
 define('_MYPROFILEIMPORTDESC',				'You find some import functions here to get data from other profile modules');
@@ -43,35 +85,6 @@ define('_MYPROFILECLEANUP',					'Clean up database');
 define('_MYPROFILEORPHANS',					'orphans');
 define('_MYPROFILECLEANEDUP',				'Database was cleaned up');
 define('_MYPROFILECONSISTENCEOK',			'Database already optimized');
-
-// main
-define('_MYPROFILEBACKEND',					'MyProfile backend configuration');
-define('_MYPROFILEASATTRIBUTES',			'Also store the values as user attributes');
-define('_MYPROFILEFORCEPROFILESCODE',		'If you want every user to have a valid profile just place this code at the top of all your templates. A user that does not have MyProfile profile page yet will be redirected to the myprofile frontend until he stores a valid profile.');
-define('_MYPROFILEVALIDUNTILTIMESTAMP',		'Time in seconds how long a entered profile should be valid. Setting this value to 0 only forces every user to store his profile data for one time / directly after logging in for the first time.');
-define('_MYPROFILEZERODEACTIVETED',			'0 = no time limit');
-define('_MYPROFILEATTENTIONCHANGE',			'Attention: The date for a profile to expire will be calculated and stored to the user object whenever the profile for the user is updated. Changing this value will not affect existing profiles.');
-define('_MYPROFILEBACKENDDESCR',			'This is the backend for the MyProfile module. First step for the admin should be the creation of a profile configuration. Have a lot of fun with this module!');
-define('_MYPROFILEREQUESTBANINDAYS',		'Time between to validation code requests to change an email address as user');
-define('_MYPROFILESUPPORTMYPROFILE',		'Support the MyProfile module');
-define('_MYPROFILEDONATETHIS',				'Donate with PayPal!');
-define('_MYPROFILEDONATE',					'You like this module and it is usefull for you? Thank you for some little donation for the programmer! OK - I like programming very much and this module is free and open source - but if you spend some money I\'ll go out for a nice candlelight dinner with my girlfriend and it will be much easier next time to get free time for programming ;-)');
-define('_MYPROFILEDIRECTPROFILEEDIT',		'As an administrator you can directly access and modify other profiles. Even if you modify a profile as an administrator, the date of the last update of the profile will be set to today\'s date. You should inform your user about everything you change in his profile!');
-define('_MYPROFILEEXPIREDAYS',				'Amount of days the validation code has until getting invalid');
-define('_MYPROFILEEDITPROFILE',				'Modify existing user profiles');
-define('_MYPROFILEEDITUNAME',				'Just enter the username...');
-define('_MYPROFILEEDITUID',					'or the user\'s ID...');
-define('_MYPROFILEEDITPROFILETHEN',			'... and edit the user\'s profile');
-define('_MYPROFILENNOTYPECHANGESLATER',		'Due to some technical and logical reasons the type and identifier of a regular field can not be changed after the field was created.');
-define('_MYPROFILEDATEFORMAT',				'Date format that should be used when dates as registration date, last login date etc. are showed in the user\'s profile page');
-//feature request: to be removed if accepted 	define('_MYPROFILEUSELASTSEEN',		'Display "last seen" date as last login date');
-//feature request: to be removed if accepted 	define('_MYPROFILELASTSEENTEXT',	'The CMS can store (after activating this feature in the Users module) the date of the last login in the users variable "lastlogin". This variable will be included in a user\'s profile page. But if your security level is not set to "hight", your users do not have to log in each time - they will stay logged in some days or even months and the last login date will be very different from the last seen date when the user did his last activity on your site. To fix this "bug", just add the following line into the index.php in your root folder at line 25 before the line "// Get Variables" begins:');
-//main, settings
-define('_MYPROFILEGLOBALETTINGS',			'General module settings');
-define('_MYPROFILENOTABS',					'Do not use the "tab"-mode (Javscript/CSS-Tabs)');
-define('_MYPROFILESAVECFG',					'Update configuration');
-define('_MYPROFILECFGSTORED',				'Configuration updated successfully');
-define('_MYPROFILENOVERIFICATION',			'Do not verify new stored email addresses with an verification email and a verification code');
 
 // editProfile
 define('_MYPROFILEUNOTFOUND',				'No user with this username or user-ID found');

@@ -1,47 +1,21 @@
 <!--[include file="myprofile_admin_menu.htm"]-->
 
-<div class="pn-informationmsg"><!--[pnml name="_MYPROFILEBACKENDDESCR"]--></div>
+<div><!--[pnml name="_MYPROFILEBACKENDDESCR"]--></div>
 
-<fieldset>
-<legend><!--[pnml name="_MYPROFILEGLOBALETTINGS"]--></legend>
-<!--[pnform]-->
-    <!--[pnformvalidationsummary]-->
-    <!--[pnformcheckbox id="asattributes" checked="0"]--><!--[pnformlabel for="asattributes" text="_MYPROFILEASATTRIBUTES"]--><br />
-	<br />
-    <!--[pnformcheckbox id="notabs" checked="0"]--><!--[pnformlabel for="notabs" text="_MYPROFILENOTABS"]--><br />
-	<br />
-    <!--[pnformcheckbox id="noverification" checked="0"]--><!--[pnformlabel for="noverification" text="_MYPROFILENOVERIFICATION"]--><br />
-    <!--[pnformlabel for="requestban" text="_MYPROFILEREQUESTBANINDAYS"]-->: 
-    <!--[pnformintinput id="requestban" minValue="0" maxValue="90" textMode="singleLine"]--><br />
-    <!--[pnformlabel for="expiredays" text="_MYPROFILEEXPIREDAYS"]-->: 
-    <!--[pnformintinput id="expiredays" minValue="7" maxValue="365" textMode="singleLine"]--><br />
-	<br />
-    <!--[pnformlabel for="dateformat" text="_MYPROFILEDATEFORMAT"]-->:
-    <!--[pnformtextinput id="dateformat" maxLength="15" textMode="singleLine"]-->
-    <br /><br />
-    <!--[pnml name="_MYPROFILEFORCEPROFILESCODE"]-->:<br />
-    <code>&lt;!--[myprofilemandatory]--&gt;</code><br />
-    <!--[pnformlabel for="validuntil" text="_MYPROFILEVALIDUNTILTIMESTAMP"]-->: <!--[pnformintinput mandatory="1" minValue="0" maxValue="999999999" id="validuntil" textMode="singleLine"]--> (<!--[pnml name="_MYPROFILEZERODEACTIVETED"]-->)<br />
-    <!--[pnml name="_MYPROFILEATTENTIONCHANGE"]--><br />
-	<br />
-
-	<!--[pnformbutton commandName="update" text="_MYPROFILESAVECFG"]-->
-<!--[/pnform]-->
-
-</fieldset>
-
+<div class="myprofile_halfbox">
 <fieldset>
 <legend><!--[pnml name="_MYPROFILEEDITPROFILE"]--></legend>
-<div class="pn-informationmsg"><!--[pnml name="_MYPROFILEDIRECTPROFILEEDIT"]--></div>
+<div><!--[pnml name="_MYPROFILEDIRECTPROFILEEDIT"]--></div>
 <form method="post" action="<!--[pnmodurl modname="myProfile" type="admin" func="editProfile"]-->" >
 <!--[pnml name="_MYPROFILEEDITUNAME"]--><br />
-<input type="text" name="uname" /><br /><br />
+<input type="text" name="uname" /><br />
 <!--[pnml name="_MYPROFILEEDITUID"]--><br />
-<input type="text" name="uid" /><br /><br />
+<input type="text" name="uid" /><br />
 <input type="submit" value="<!--[pnml name="_MYPROFILEEDITPROFILETHEN"]-->" />
 </form>
 </fieldset>
-
+</div>
+<div class="myprofile_halfbox">
 <fieldset>
 <legend><!--[pnml name="_MYPROFILESUPPORTMYPROFILE"]--></legend>
 <div class="pn-informationmsg"><!--[pnml name="_MYPROFILEDONATE"]--></div>
@@ -55,6 +29,7 @@
 <option value="15">15&nbsp;</option>
 <option value="20">20&nbsp;</option>
 <option value="25">25&nbsp;</option>
+<option value="30">30&nbsp;</option>
 </select>
 <select name="currency_code">
 <option value="USD" selected="selected">USD&nbsp;</option>
@@ -63,16 +38,7 @@
 <input type="submit" name="submit" value="<!--[pnml name="_MYPROFILEDONATETHIS"]-->"/>
 </form>
 </fieldset>
-
-<!--[* //feature request: to be removed if accepted 	
-<fieldset><legend><!--[pnml name="_MYPROFILEUSELASTSEEN"]--></legend>
-<!--[pnml name="_MYPROFILELASTSEENTEXT"]--><br />
-<em>
-if (pnUserLoggedIn()) pnUserSetVar('lastlogin',date("Y-m-d h:i:s",time()),pnUserGetVar('uid'));
-</em>
-</fieldset>
-*]-->
-
-<br />
+</div>
+<br class="myprofile_clearboth">
 
 <!--[include file="myprofile_admin_footer.htm"]-->
