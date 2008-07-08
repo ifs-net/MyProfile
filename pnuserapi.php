@@ -35,6 +35,24 @@ function MyProfile_userapi_getProfile($args)
 }
 
 /**
+ * check if a user has a valid profile. A profile is invalid if
+ * it does not even exist or if it is outdated
+ *
+ * @param	$args['uid']	int
+ * @return	boolean
+ */
+function MyProfile_userapi_hasValidProfile($args) {
+  		$uid = (int)$args['uid'];
+  		if (!($uid > 0)) $uid = pnUserGetVar('uid');
+      	$ua = pnUserGetVar('__ATTRIBUTES__',$uid);
+      	$vu = $ua['myprofile_validuntil'];
+      	if (!isset($vu) || (time() > $vu)) {
+      	  	if ((int)pnModGetVar('MyProfile','validuntil')>0) return false;
+      	}
+      	else return true;
+} 
+
+/**
  * get the last update date of a users's profile
  *
  * @param	$args['uid']	int

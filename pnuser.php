@@ -19,7 +19,12 @@ function MyProfile_user_main()
 	$render->assign('fields',pnModAPIFunc('MyProfile','admin','getFields'));
 	$render->assign('separators',pnModAPIFunc('MyProfile','admin','countSeparators'));
 	$render->assign('uid',$uid);
-	$render->assign('notabs',pnModGetVar('MyProfile','notabs'));
+	$notabs = pnModGetVar('MyProfile','notabs');
+	// if the user does not have a valid (incomplete / outdated) profile we should better
+	// not use the tab-mode because the user might not see every field and only update / complete
+	// the first tab
+	if (!pnModAPIFunc('MyProfile','user','hasValidProfile')) $notabs = 1;
+	$render->assign('notabs',$notabs);
 	PageUtil::addVar('javascript','modules/MyProfile/pnjavascript/myprofile.js');   
     // Return the output
     return $render->pnFormExecute('myprofile_user_main.htm', new MyProfile_user_ProfileHandler());

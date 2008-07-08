@@ -43,7 +43,6 @@ define('_MYPROFILECFGSTORED',				'Configuration updated successfully');
 define('_MYPROFILEMYPROFILEPLUGIN',			'Integrate user profiles into any zikula content');
 define('_MYPROFILEUSEPROFILEPLUGINEXPL',	'There is a plugin that can be called in any module with this piece of code');
 define('_MYPROFILEUSEPROFILEPLUGINTEMPLATE','But you have to configure this plugin via its template manually - the template file that has to be edited is');
-
 define('_MYPROFILEUSELASTSEEN',				'Include "last seen" date into a user\'s profile');
 define('_MYPROFILELASTSEENTEXT',			'After activating this feature in the "Users" module zikula stores the date of the last login in the users variable "lastlogin". This variable will be included in a user\'s profile page. But if your security level is not set to "high", your users do not have to log in each time - they will stay logged in some days or even months and the last login date will be very different from the last seen date when the user did his last activity on your site. To fix this "bug", just add the following line into the index.php in your root folder at line 25 before the line "// Get Variables" begins:');
 

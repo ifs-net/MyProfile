@@ -1,6 +1,6 @@
 <?php
 // force valid profile
-define('_MYPROFILEPROFILEOUTOFTIME',	'Your profile is outdated - please check your personal data and update your profile page');
+define('_MYPROFILEPROFILEOUTOFTIME',	'Your profile is outdated or incomplete - please check / complete / update your personal data'); 
 // plugin myprofile showbox
 define('_MYPROFILEMOREORLESS',			'more/less');
 
