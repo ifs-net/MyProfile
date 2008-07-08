@@ -50,7 +50,7 @@ define('_MYPROFILEASATTRIBUTES',			'Also store the values as user attributes');
 define('_MYPROFILEFORCEPROFILESCODE',		'If you want every user to have a valid profile just place this code at the top of all your templates. A user that does not have MyProfile profile page yet will be redirected to the myprofile frontend until he stores a valid profile.');
 define('_MYPROFILEVALIDUNTILTIMESTAMP',		'Time in seconds how long a entered profile should be valid. Setting this value to 0 only forces every user to store his profile data for one time / directly after logging in for the first time.');
 define('_MYPROFILEZERODEACTIVETED',			'0 = no time limit');
-define('_MYPROFILEATTENTIONCHANGE',			'Attention: The date for a profile to expire will be calculated and stored to the user object whenever the profile for the user is stores. Changing this value will not affect existing profiles.');
+define('_MYPROFILEATTENTIONCHANGE',			'Attention: The date for a profile to expire will be calculated and stored to the user object whenever the profile for the user is updated. Changing this value will not affect existing profiles.');
 define('_MYPROFILEBACKENDDESCR',			'This is the backend for the MyProfile module. First step for the admin should be the creation of a profile configuration. Have a lot of fun with this module!');
 define('_MYPROFILEREQUESTBANINDAYS',		'Time between to validation code requests to change an email address as user');
 define('_MYPROFILESUPPORTMYPROFILE',		'Support the MyProfile module');
