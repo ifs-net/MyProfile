@@ -106,8 +106,12 @@ function MyProfile_userapi_storeAsAttributes($args)
   	if (!isset($obj) || (!($obj['id'] > 1))) return false;
 	// get user and attributes
     $user = DBUtil::selectObjectByID('users', $obj['id'], 'uid', null, null, null, false);
-    if (!is_array($user)) return false; // no user data? 
-	$user['__ATTRIBUTES__']['myprofile'] = serialize($obj);
+    if (!is_array($user)) return false; // no user data?
+    // store how long the profile will be valid
+    $validuntil = pnModGetVar('MyProfile','validuntil');
+    if ($validuntil > 0) $user['__ATTRIBUTES__']['myprofile_validuntil'] = ($validuntil+time());
+    // store as attributes if needed
+	if (pnModGetVar('MyProfile','asattributes') == 1) $user['__ATTRIBUTES__']['myprofile'] = serialize($obj);
 	// store attributes serialized
 	return DBUtil::updateObject($user, 'users', '', 'uid');				
 }

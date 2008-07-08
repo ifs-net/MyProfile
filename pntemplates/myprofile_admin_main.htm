@@ -6,16 +6,25 @@
 <legend><!--[pnml name="_MYPROFILEGLOBALETTINGS"]--></legend>
 <!--[pnform]-->
     <!--[pnformvalidationsummary]-->
-    <!--[pnformcheckbox id="asattributes" checked="0"]--><!--[pnformlabel for="asattributes" text="_MYPROFILEASATTRIBUTES"]--><br /><br />
-    <!--[pnformcheckbox id="notabs" checked="0"]--><!--[pnformlabel for="notabs" text="_MYPROFILENOTABS"]--><br /><br />
+    <!--[pnformcheckbox id="asattributes" checked="0"]--><!--[pnformlabel for="asattributes" text="_MYPROFILEASATTRIBUTES"]--><br />
+	<br />
+    <!--[pnformcheckbox id="notabs" checked="0"]--><!--[pnformlabel for="notabs" text="_MYPROFILENOTABS"]--><br />
+	<br />
     <!--[pnformcheckbox id="noverification" checked="0"]--><!--[pnformlabel for="noverification" text="_MYPROFILENOVERIFICATION"]--><br />
     <!--[pnformlabel for="requestban" text="_MYPROFILEREQUESTBANINDAYS"]-->: 
     <!--[pnformintinput id="requestban" minValue="0" maxValue="90" textMode="singleLine"]--><br />
     <!--[pnformlabel for="expiredays" text="_MYPROFILEEXPIREDAYS"]-->: 
-    <!--[pnformintinput id="expiredays" minValue="7" maxValue="365" textMode="singleLine"]--><br /><br />
+    <!--[pnformintinput id="expiredays" minValue="7" maxValue="365" textMode="singleLine"]--><br />
+	<br />
     <!--[pnformlabel for="dateformat" text="_MYPROFILEDATEFORMAT"]-->:
     <!--[pnformtextinput id="dateformat" maxLength="15" textMode="singleLine"]-->
     <br /><br />
+    <!--[pnml name="_MYPROFILEFORCEPROFILESCODE"]-->:<br />
+    <code>&lt;!--[myprofilemandatory]--&gt;</code><br />
+    <!--[pnformlabel for="validuntil" text="_MYPROFILEVALIDUNTILTIMESTAMP"]-->: <!--[pnformintinput mandatory="1" minValue="0" id="validuntil" textMode="singleLine"]--> (<!--[pnml name="_MYPROFILEZERODEACTIVETED"]-->)<br />
+    <!--[pnml name="_MYPROFILEATTENTIONCHANGE"]--><br />
+	<br />
+
 	<!--[pnformbutton commandName="update" text="_MYPROFILESAVECFG"]-->
 <!--[/pnform]-->
 

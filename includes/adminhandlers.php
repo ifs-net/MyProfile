@@ -63,6 +63,7 @@ class MyProfile_admin_settingsHandler
     function initialize(&$render)
     {
 	  	$data['notabs'] 		= pnModGetVar('MyProfile','notabs');
+	  	$data['validuntil'] 	= pnModGetVar('MyProfile','validuntil');
 	  	$data['asattributes']	= pnModGetVar('MyProfile','asattributes');
 	  	$data['dateformat'] 	= pnModGetVar('MyProfile','dateformat');
 	  	$data['noverification']	= pnModGetVar('MyProfile','noverification');
@@ -82,6 +83,7 @@ class MyProfile_admin_settingsHandler
 		    
 		    if (!$render->pnFormIsValid()) return false;
 		    pnModSetVar('MyProfile','notabs',$obj['notabs']);
+		    pnModSetVar('MyProfile','validuntil',$obj['validuntil']);
 		    pnModSetVar('MyProfile','asattributes',$obj['asattributes']);
 		    pnModSetVar('MyProfile','dateformat',$obj['dateformat']);
 		    pnModSetVar('MyProfile','noverification',$obj['noverification']);
