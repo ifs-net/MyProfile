@@ -21,7 +21,7 @@
     <!--[pnmodapifunc modname="UserPictures" type="user" func="getPictures" uid=$uid assign=morepictures template_id="0"]-->
     <!--[if $morepictures gt 0]-->
     <center>
-    <div class="myprofile_userpictures_box">
+    <div class="myprofile_box">
 		<a href="<!--[pnmodurl modname="UserPictures" type="user" func="showGallery" uid=$uid]-->"><!--[pnml name="_MYPROFILE_USERPICTURES_PICSINGALLERY"]-->: <!--[$morepictures|@count]--> <!--[pnml name="_MYPROFILE_USERPICTURES_PICTURES"]--></a>.<br />
 	<!--[else]-->
 		<div>
@@ -65,21 +65,32 @@
 		<div class="myprofile_profiletext">
 		&nbsp;
 		</div>
-		<div class="myprofile_profiletext">
-		<!--[pnml name="_MYPROFILEREGSINCE"]-->: <!--[$regdate|date_format:"$dateformat"]--><br />
-		</div>
-		<div class="myprofile_profiletext">
-		<!--[pnml name="_MYPROFILELASTUPDATE"]-->: <!--[$lastupdate|date_format:"$dateformat"]--><br />
-		</div>
-		<!--[if $lastlogin ne ""]-->
-			<div class="myprofile_profiletext">
-			<!--[pnml name="_MYPROFILELASTLOGIN"]-->: <!--[$lastlogin|date_format:"$dateformat"]--><br />
-			</div>
+		<div class="myprofile_box">
+
+		<!--[if $avatar eq '' or $avatar eq 'blank.gif']-->
+		  	<!--[pnimg modname=core src=personal.gif set=icons/large class="pnprofileicon"]-->
+		<!--[else]-->
+			<img src="images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" alt="<!--[$user.uname]-->" title="<!--[$user.uname]-->" />
 		<!--[/if]-->
+
+			<div class="myprofile_profiletext">
+			<!--[pnml name="_MYPROFILEREGSINCE"]-->: <!--[$regdate|date_format:"$dateformat"]--><br />
+			</div>
+			<div class="myprofile_profiletext">
+			<!--[pnml name="_MYPROFILELASTUPDATE"]-->: <!--[$lastupdate|date_format:"$dateformat"]--><br />
+			</div>
+			<!--[if $lastlogin ne ""]-->
+				<div class="myprofile_profiletext">
+				<!--[pnml name="_MYPROFILELASTLOGIN"]-->: <!--[$lastlogin|date_format:"$dateformat"]--><br />
+				</div>
+			<!--[/if]-->
+		<br class="myprofile_clearboth" />
+		</div>
 <!--[* additional user information end *]-->
 
 <!--[* additional information begin *]-->
 		<div class="myprofile_profiletext">
+	    <div class="myprofile_userpictures_box">
 		&nbsp;
 		</div>
 		<!--[if $pnmessagesavailable and $viewer_uid ne $uid]-->
