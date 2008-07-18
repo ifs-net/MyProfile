@@ -53,17 +53,21 @@ function MyProfile_user_validatemail()
  * @return	function's content
  */
 function MyProfile_user_tab() {
-  	$render = pnRender::getInstance('MyProfile');
-  	$uid = (int)FormUtil::getPassedValue('uid');
-  	$modname = FormUtil::getPassedValue('modname');
-	// ClickedMe integration
-	if (pnModAvailable('ClickedMe')) pnModAPIFunc('ClickedMe','user','addClick',array('clicked_uid' => $uid));
+  	$render 		= pnRender::getInstance('MyProfile');
+  	$uid 			= (int)FormUtil::getPassedValue('uid');
+  	$viewer_uid 	= pnUserGetVar('uid');
+  	$modname 		= FormUtil::getPassedValue('modname');
 	// go on now..
   	if (isset($modname) && pnModAvailable($modname)) {
 	  	pnModLangLoad($modname);
 	  	$output = pnModAPIFunc($modname,'myprofile','tab',array('uid'=>$uid));
 		if ((int)FormUtil::getPassedValue('ajax',0,GET)==1) echo DataUtil::convertToUTF8($output);
 		else echo $output;
+
+		// let's combine myprofile with clickedme and call clickedme whenever 
+		// anything (even a plugin) of a user was called
+		if (($uid != $viewer_uid) && (pnModAvailable('ClickedMe'))) pnModAPIFunc('ClickedMe','user','addClick',array('clicked_uid' => $uid));
+		
 		return true;
 	}
 	else return false;
@@ -114,9 +118,10 @@ function MyProfile_user_display()
 	PageUtil::addVar('javascript','modules/MyProfile/pnjavascript/myprofile.js');
 	
 	// Create output and assign data
-	$render = pnRender::getInstance('MyProfile');
-	$uid	= (int)FormUtil::getPassedValue('uid');
-	$uname	= FormUtil::getPassedValue('uname');
+	$render 	= pnRender::getInstance('MyProfile');
+	$uid		= (int)FormUtil::getPassedValue('uid');
+	$viewer_uid	= pnUserGetVar('uid');
+	$uname		= FormUtil::getPassedValue('uname');
 	if (isset($uname) && (pnUserGetIDFromName($uname) > 1)) return pnRedirect(pnModURL('MyProfile','user','display',array('uid' => pnUserGetIDFromName($uname))));
 	$render->assign('profile',pnModAPIFunc('MyProfile','user','getProfile',array('uid'=>$uid, 'uname'=>$uname)));
 
@@ -144,6 +149,10 @@ function MyProfile_user_display()
 	
 	// and all necessary stylesheets
 	pnModAPIFunc('MyProfile','user','addStyleSheets',array('plugins' => $plugins));	
+
+	// let's combine myprofile with clickedme and call clickedme whenever 
+	// anything (even a plugin) of a user was called
+	if (($uid != $viewer_uid) && (pnModAvailable('ClickedMe'))) pnModAPIFunc('ClickedMe','user','addClick',array('clicked_uid' => $uid));
 	
 	// Return the output
     return $render->fetch('myprofile_user_display.htm');
