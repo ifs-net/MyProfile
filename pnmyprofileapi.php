@@ -10,11 +10,11 @@ function MyProfile_myprofileapi_tab ($args)
 
 	// get and assign some data
 	$uid			= (int)FormUtil::getPassedValue('uid');
-	$viewer_uid 	= pnUserGetVar('uid');
 	$uname			= FormUtil::getPassedValue('uname');
+	$viewer_uid 	= pnUserGetVar('uid');
 	$regdate		= pnUserGetVar('user_regdate',$uid);
-	$lastupdate		= pnModAPIFunc('MyProfile','user','getLastUpdate',array('uid'=>$uid));
 	$dateformat 	= pnModGetVar('MyProfile','dateformat');
+	$lastupdate		= pnModAPIFunc('MyProfile','user','getLastUpdate',array('uid'=>$uid));
 	$profile		= pnModAPIFunc('MyProfile','user','getProfile',array('uid'=>$uid, 'uname'=>$uname));
 	$render->assign('profile',$profile);
 

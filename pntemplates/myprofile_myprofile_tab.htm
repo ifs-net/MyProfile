@@ -8,33 +8,33 @@
 
 <!--[pnmodavailable modname="UserPictures" assign="UserPictures"]-->
 <!--[if $UserPictures]--><!--[pnmodapifunc modname="UserPictures" type="user" func="getSettings" uid=$uid assign="settings"]--><!--[/if]-->
-<!--[if $viewer_uid gt 0 or $settings.picspublic eq 1]-->
-<!--[if $UserPictures]-->
-<div id="myprofile_userpictures" class="myprofile_userpictures">
-    <!--[pnmodapifunc modname="UserPictures" type="admin" func="getTemplates" assign="upt"]-->
-    <!--[foreach from=$upt item="up"]-->
-		<strong><!--[$up.title]--></strong><br />
-		<!--[pnmodapifunc modname="UserPictures" type="user" func="showPicture" uid=$uid template_id=$up.id assign=picture]-->
-		<!--[$picture.code]--><br />
-		<!--[$picture.comment]--><br /><br />
-    <!--[/foreach]-->
-    <!--[pnmodapifunc modname="UserPictures" type="user" func="getPictures" uid=$uid assign=morepictures template_id="0"]-->
-    <!--[if $morepictures gt 0]-->
-	    <center>
-	    <div class="myprofile_box">
-			<a href="<!--[pnmodurl modname="UserPictures" type="user" func="showGallery" uid=$uid]-->"><!--[pnml name="_MYPROFILE_USERPICTURES_PICSINGALLERY"]-->: <!--[$morepictures|@count]--> <!--[pnml name="_MYPROFILE_USERPICTURES_PICTURES"]--></a>.<br />
-	<!--[else]-->
-		<div>
-    <!--[/if]-->
-    <!--[pnmodapifunc modname="UserPictures" type="user" func="getPictures" template_id="0" assoc_uid=$uid assign="assocpictures"]-->
-    <!--[pnmodapifunc modname="UserPictures" type="user" func="getPictures" template_id="0" assoc_uid=$uid hideown=1 assign="assocpicturesHideOwn"]-->
-    <!--[if $assocpictures gt 0]-->
-		<a href="<!--[pnmodurl modname="UserPictures" type="user" func="assoc" uid="$uid]-->"><!--[pnml name="_MYPROFILE_USERPICTURES_LINKEDIN"]--> <!--[$assocpictures|@count]--> <!--[pnml name="_MYPROFILE_USERPICTURES_PICTURES"]--></a>,			<a href="<!--[pnmodurl modname="UserPictures" type="user" func="assoc" hideown="1" uid="$uid]-->"><!--[pnml name="_MYPROFILE_USERPICTURES_THEREFROM"]--> <!--[$assocpicturesHideOwn|@count]--> <!--[pnml name="_MYPROFILE_USERPICTURES_EXTERNAL"]--> <!--[pnml name="_MYPROFILE_USERPICTURES_PICTURES"]--></a><br />
-    <!--[/if]-->
-	</div>
-    </center>
-</div>
-<!--[/if]-->
+	<!--[if $viewer_uid gt 0 or $settings.picspublic eq 1]-->
+		<!--[if $UserPictures]-->
+		<div id="myprofile_userpictures" class="myprofile_userpictures">
+		    <!--[pnmodapifunc modname="UserPictures" type="admin" func="getTemplates" assign="upt"]-->
+		    <!--[foreach from=$upt item="up"]-->
+				<strong><!--[$up.title]--></strong><br />
+				<!--[pnmodapifunc modname="UserPictures" type="user" func="showPicture" uid=$uid template_id=$up.id assign=picture]-->
+				<!--[$picture.code]--><br />
+				<!--[$picture.comment]--><br /><br />
+		    <!--[/foreach]-->
+		    <!--[pnmodapifunc modname="UserPictures" type="user" func="getPictures" uid=$uid assign=morepictures template_id="0"]-->
+		    <!--[if $morepictures gt 0]-->
+			    <center>
+			    <div class="myprofile_box">
+					<a href="<!--[pnmodurl modname="UserPictures" type="user" func="showGallery" uid=$uid]-->"><!--[pnml name="_MYPROFILE_USERPICTURES_PICSINGALLERY"]-->: <!--[$morepictures|@count]--> <!--[pnml name="_MYPROFILE_USERPICTURES_PICTURES"]--></a>.<br />
+			<!--[else]-->
+				<div>
+		    <!--[/if]-->
+	    <!--[pnmodapifunc modname="UserPictures" type="user" func="getPictures" template_id="0" assoc_uid=$uid assign="assocpictures"]-->
+	    <!--[pnmodapifunc modname="UserPictures" type="user" func="getPictures" template_id="0" assoc_uid=$uid hideown=1 assign="assocpicturesHideOwn"]-->
+	    <!--[if $assocpictures gt 0]-->
+			<a href="<!--[pnmodurl modname="UserPictures" type="user" func="assoc" uid="$uid]-->"><!--[pnml name="_MYPROFILE_USERPICTURES_LINKEDIN"]--> <!--[$assocpictures|@count]--> <!--[pnml name="_MYPROFILE_USERPICTURES_PICTURES"]--></a>,			<a href="<!--[pnmodurl modname="UserPictures" type="user" func="assoc" hideown="1" uid="$uid]-->"><!--[pnml name="_MYPROFILE_USERPICTURES_THEREFROM"]--> <!--[$assocpicturesHideOwn|@count]--> <!--[pnml name="_MYPROFILE_USERPICTURES_EXTERNAL"]--> <!--[pnml name="_MYPROFILE_USERPICTURES_PICTURES"]--></a><br />
+	    <!--[/if]-->
+		</div>
+	    </center>
+		</div>
+	<!--[/if]-->
 <!--[/if]-->
 
 <!--[foreach from=$profile item="data"]-->
@@ -99,7 +99,7 @@
 		</div>
 <!--[* additional user information end *]-->
 
-<!--[* additio	nal information begin *]-->
+<!--[* additional information begin *]-->
 		<div class="myprofile_profiletext myprofile_userpictures_box">
 		&nbsp;
 		</div>
