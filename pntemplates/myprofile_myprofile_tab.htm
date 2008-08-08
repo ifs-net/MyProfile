@@ -1,11 +1,5 @@
 <!--[include file="myprofile_user_statusmsg.htm"]-->
-
-<!--[if $contactlistavailable and $contactlist_nopublicbuddylist ne 1]-->
-	<div style="float: right;">
-	<!--[pnmodapifunc modname="ContactList" type="user" func="getFOAFLink" uid1=$viewer_uid uid2=$uid]-->
-	</div>
-<!--[/if]-->
-
+ 
 <!--[pnmodavailable modname="UserPictures" assign="UserPictures"]-->
 <!--[if $UserPictures]--><!--[pnmodapifunc modname="UserPictures" type="user" func="getSettings" uid=$uid assign="settings"]--><!--[/if]-->
 	<!--[if $viewer_uid gt 0 or $settings.picspublic eq 1]-->

@@ -4,6 +4,9 @@
 
 <h1><!--[pnml name="_MYPROFILEMYPROFILE"]-->: <!--[$uname]--></h1>
 
+<!--[if $contactlistavailable and $contactlist_nopublicbuddylist ne 1]-->
+	<!--[pnmodapifunc modname="ContactList" type="user" func="getFOAFLink" uid1=$viewer_uid uid2=$uid]-->
+<!--[/if]-->
 <!--[* plugin tabs begin *]-->
 	<div class="myprofile_plugintabs">													<!-- tabheader begin -->
 		<div class="myprofile_plugintab" id="myprofile_plugintabhome"> 					<!-- tabheader item begin -->

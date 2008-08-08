@@ -29,8 +29,8 @@ function MyProfile_myprofileapi_tab ($args)
 	$render->assign('lastupdate',			$lastupdate);
 	$render->assign('dateformat',			$dateformat);
 	$render->assign('avatar',				pnUserGetVar('_YOURAVATAR',$uid));
-	$render->assign('contactlistavailable',	pnModAvailable('ContactList'));
 	$render->assign('pnmessagesavailable',	pnModAvailable('pnMessages'));
+	$render->assign('contactlistavailable',	pnModAvailable('ContactList'));
 	if (pnModAvailable('ContactList')) $render->assign('contactlist_nopublicbuddylist',	pnModGetVar('ContactList','nopublicbuddylist'));
 	if (isset($lastlogin)) $render->assign('lastlogin',$lastlogin);
 		
