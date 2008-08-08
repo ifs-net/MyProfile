@@ -12,19 +12,13 @@
 				<!--[$picture.code]--><br />
 				<!--[$picture.comment]--><br /><br />
 		    <!--[/foreach]-->
-		    <!--[pnmodapifunc modname="UserPictures" type="user" func="getPictures" uid=$uid assign=morepictures template_id="0"]-->
-		    <!--[if $morepictures gt 0]-->
-			    <center>
-			    <div class="myprofile_box">
-					<a href="<!--[pnmodurl modname="UserPictures" type="user" func="showGallery" uid=$uid]-->"><!--[pnml name="_MYPROFILE_USERPICTURES_PICSINGALLERY"]-->: <!--[$morepictures|@count]--> <!--[pnml name="_MYPROFILE_USERPICTURES_PICTURES"]--></a>.<br />
-			<!--[else]-->
-				<div>
-		    <!--[/if]-->
-	    <!--[pnmodapifunc modname="UserPictures" type="user" func="getPictures" template_id="0" assoc_uid=$uid assign="assocpictures"]-->
-	    <!--[pnmodapifunc modname="UserPictures" type="user" func="getPictures" template_id="0" assoc_uid=$uid hideown=1 assign="assocpicturesHideOwn"]-->
-	    <!--[if $assocpictures gt 0]-->
-			<a href="<!--[pnmodurl modname="UserPictures" type="user" func="assoc" uid="$uid]-->"><!--[pnml name="_MYPROFILE_USERPICTURES_LINKEDIN"]--> <!--[$assocpictures|@count]--> <!--[pnml name="_MYPROFILE_USERPICTURES_PICTURES"]--></a>,			<a href="<!--[pnmodurl modname="UserPictures" type="user" func="assoc" hideown="1" uid="$uid]-->"><!--[pnml name="_MYPROFILE_USERPICTURES_THEREFROM"]--> <!--[$assocpicturesHideOwn|@count]--> <!--[pnml name="_MYPROFILE_USERPICTURES_EXTERNAL"]--> <!--[pnml name="_MYPROFILE_USERPICTURES_PICTURES"]--></a><br />
-	    <!--[/if]-->
+		    <!--[pnmodapifunc modname="UserPictures" type="user" func="get" countonly="1" uid=$uid assign=owngallery template_id="0"]-->
+		    <center>
+		    <div class="myprofile_box">
+				<a href="<!--[pnmodurl modname="UserPictures" type="user" func="view" template_id="0" uid=$uid]-->"><!--[pnml name="_MYPROFILE_USERPICTURES_PICSINGALLERY"]-->: <!--[$owngallery]--> <!--[pnml name="_MYPROFILE_USERPICTURES_PICTURES"]--></a>.<br />
+			    <!--[pnmodapifunc modname="UserPictures" type="user" func="get" countonly="1" template_id="0" assoc_uid=$uid assign="assocpictures"]-->
+				<a href="<!--[pnmodurl modname="UserPictures" type="user" func="view" template_id="0" assoc_uid=$uid]-->"><!--[pnml name="_MYPROFILE_USERPICTURES_LINKEDIN"]--> <!--[$assocpictures]--> <!--[pnml name="_MYPROFILE_USERPICTURES_PICTURES"]--></a>
+		    </div>
 		</div>
 	    </center>
 		</div>
