@@ -20,13 +20,18 @@ function MyProfile_adminapi_getPlugins()
 	      	  	$found = true;
 			    $file = $file_modules;
 			}
-			if ($found) $res[] = array(	
+			if ($found) {
+			  	if (pnModAPIFunc($mod['name'],'myprofile','noAjax')) $noAjax = true;
+			  	else $noAjax = false;
+			  	$res[] = array(	
 				'dir'		=> $mod['directory'],
 				'name'		=> $mod['displayname'],
 				'loadname'	=> $mod['name'],
 				'link'		=> pnModURL('MyProfile','user','tab',array('modname'=>$mod['name'],'ajax'=>'1')),
 				'title'		=> pnModAPIFunc($mod['name'],'myprofile','getTitle'),
+				'noajax'	=> $noAjax
 										);
+			}
 		}
 	}
 	return $res;

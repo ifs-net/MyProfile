@@ -143,7 +143,7 @@ function MyProfile_user_display()
 
     // get the plugins
     $plugins = pnModAPIFunc('MyProfile','admin','getPlugins');
-
+prayer($plugins);
     $render->assign('plugins',$plugins);
     // execute all "onLoad"-Funktions and sort out the invisible plugins
     pnModAPIFunc('MyMap','myprofile','onLoad');

@@ -4,7 +4,7 @@
 
 <h1><!--[pnml name="_MYPROFILEMYPROFILE"]-->: <!--[$uname]--></h1>
 
-<!--[if $deakt_____contactlistavailable and $contactlist_nopublicbuddylist ne 1]-->
+<!--[if $contactlistavailable and $contactlist_nopublicbuddylist ne 1]-->
 	<!--[pnmodapifunc modname="ContactList" type="user" func="getFOAFLink" uid1=$viewer_uid uid2=$uid]-->
 <!--[/if]-->
 
@@ -17,7 +17,9 @@
 	<!--[foreach from=$plugins item="plugin"]-->
 		<!--[if $plugin.title ne ""]-->
 			<div class="myprofile_plugintab" id="myprofile_plugintab<!--[$plugin.dir]-->"> 		<!-- tabheader item begin -->
-				<a onclick="javascript:myprofile_updateTab('<!--[$plugin.link]-->&uid=<!--[$uid]-->&ajax=1&<!--[pnmodapifunc modname=$plugin.name type="myprofile" func="getURLAddOn"]-->','myprofile_maincontent');return false;" href="<!--[pnmodurl modname="MyProfile" type="user" func="display" uid=$uid pluginname=$plugin.loadname]-->&<!--[pnmodapifunc modname=$plugin.name type="myprofile" func="getURLAddOn"]-->"><!--[$plugin.title]--></a>
+				<a 
+				<!--[if $plugin.noajax ne 1]-->	onclick="javascript:myprofile_updateTab('<!--[$plugin.link]-->&uid=<!--[$uid]-->&ajax=1&<!--[pnmodapifunc modname=$plugin.name type="myprofile" func="getURLAddOn"]-->','myprofile_maincontent');return false;" <!--[/if]-->
+					href="<!--[pnmodurl modname="MyProfile" type="user" func="display" uid=$uid pluginname=$plugin.loadname]-->&<!--[pnmodapifunc modname=$plugin.name type="myprofile" func="getURLAddOn"]-->"><!--[$plugin.title]--></a>
 			</div>																			<!-- tabheader item end -->
 		<!--[/if]-->
 	<!--[/foreach]-->
