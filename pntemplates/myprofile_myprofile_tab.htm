@@ -1,9 +1,7 @@
 <!--[include file="myprofile_user_statusmsg.htm"]-->
  
 <!--[pnmodavailable modname="UserPictures" assign="UserPictures"]-->
-<!--[if $UserPictures]--><!--[pnmodapifunc modname="UserPictures" type="user" func="getSettings" uid=$uid assign="settings"]--><!--[/if]-->
-	<!--[if $viewer_uid gt 0 or $settings.picspublic eq 1]-->
-		<!--[if $UserPictures]-->
+<!--[if $UserPictures]-->
 		<div id="myprofile_userpictures" class="myprofile_userpictures">
 		    <!--[pnmodapifunc modname="UserPictures" type="admin" func="getTemplates" assign="upt"]-->
 		    <!--[foreach from=$upt item="up"]-->
@@ -21,7 +19,6 @@
 		    </div>
 		    </center>
 		</div>
-	<!--[/if]-->
 <!--[/if]-->
 
 <!--[foreach from=$profile item="data"]-->
