@@ -170,16 +170,11 @@
   	background-color: #E0E0E0;
   	border: 1px dotted;
   	border-color: #000;
-	filter:alpha(opacity=0.9);
-	opacity: 0.9;
-	-moz-opacity:0.9;
 	text-align: center;
 }
 
 /** admin **/
-.myprofile_tablebody {
-  	
-  
+.myprofile_tablebody {  
 }
 .myprofile_sortableitem {
 	background-color: #C0C0C0; 
