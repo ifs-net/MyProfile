@@ -35,21 +35,26 @@ function MyProfile_userapi_getProfile($args)
 }
 
 /**
- * check if a user has a valid profile. A profile is invalid if
- * it does not even exist or if it is outdated
+ * check for valid profile function
+ *
+ * This function checks if a user has a valid profile. 
+ * A profile is invalid if it does not even exist or is outdated
  *
  * @param	$args['uid']	int
  * @return	boolean
  */
 function MyProfile_userapi_hasValidProfile($args) {
-  		$uid = (int)$args['uid'];
-  		if (!($uid > 0)) $uid = pnUserGetVar('uid');
-      	$ua = pnUserGetVar('__ATTRIBUTES__',$uid);
-      	$vu = $ua['myprofile_validuntil'];
-      	if (!isset($vu) || (time() > $vu)) {
-      	  	if ((int)pnModGetVar('MyProfile','validuntil')>0) return false;
-      	}
-      	else return true;
+	$uid = (int)$args['uid'];
+	if (!($uid > 0)) $uid = pnUserGetVar('uid');
+	$userattributes 	= pnUserGetVar('__ATTRIBUTES__',$uid);
+  	$validuntil 		= $userattributes['myprofile_validuntil'];
+  	if ($validuntil > 0) {
+  	  	// valid until value is stored so the user has 
+		// entered a valid profile for at least one time
+		if (((int)pnModGetVar('MyProfile','validuntil') > 0) && ($validuntil < time())) return false;
+		else return true;		    
+	}
+	else return false; // to user has not enterd valid profile data yet.
 } 
 
 /**
@@ -115,6 +120,13 @@ function MyProfile_userapi_setSettings($args)
 /**
  * store user attributes
  *
+ * This function stores the timestamp till the profile will get 
+ * invalid as attribute. If the validuntil value is set to 0 (never get
+ * invalid) by the site admin, the actual timestamp gets stored as valid
+ * until value. 
+ * Additional information will be stored as attributes to the user if 
+ * the admin configured myprofile to store the profile also as user attribute.
+ *
  * @param	$args['data']		myprofile object
  * @return	boolean
  */
@@ -124,12 +136,15 @@ function MyProfile_userapi_storeAsAttributes($args)
   	if (!isset($obj) || (!($obj['id'] > 1))) return false;
 	// get user and attributes
     $user = DBUtil::selectObjectByID('users', $obj['id'], 'uid', null, null, null, false);
-    if (!is_array($user)) return false; // no user data?
+    if (!is_array($user)) return false; // no user data? something is wrong!
     // store how long the profile will be valid
-    $validuntil = pnModGetVar('MyProfile','validuntil');
-    if ($validuntil > 0) $user['__ATTRIBUTES__']['myprofile_validuntil'] = ($validuntil+time());
+    $validuntil = (int)pnModGetVar('MyProfile','validuntil')+time();
+	$user['__ATTRIBUTES__']['myprofile_validuntil'] = ($validuntil); 
     // store as attributes if needed
-	if (pnModGetVar('MyProfile','asattributes') == 1) $user['__ATTRIBUTES__']['myprofile'] = serialize($obj);
+    // otherwise delete older, as attribute stored data
+    $asattributes = pnModGetVar('MyProfile','asattributes');
+	if ($asattributes == 1) $user['__ATTRIBUTES__']['myprofile'] = serialize($obj);
+	else unset($user['__ATTRIBUTES__']['myprofile']);
 	// store attributes serialized
 	return DBUtil::updateObject($user, 'users', '', 'uid');				
 }
