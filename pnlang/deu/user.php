@@ -1,6 +1,6 @@
 <?php
 // header
-define('_MYPROFILEUSERMENU',		'Benutzer MenüUser\'s menu');
+define('_MYPROFILEUSERMENU',		'Benutzer-Menü');
 define('_MYPROFILEMAINPROFILEDATA',	'Haupt-Profil-Daten');
 define('_MYPROFILEMAILANDPASSWORD',	'E-Mail-Adresse, Passwort und erweiterte Einstellungen bearbeiten');
 
