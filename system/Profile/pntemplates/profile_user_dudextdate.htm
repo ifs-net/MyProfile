@@ -1,0 +1,26 @@
+<!--[* $Id: profile_user_dudextdate.htm 23085 2007-11-16 21:11:51Z markwest $ *]-->
+<!--[if $tableless]-->
+<div class="<!--[$class|default:"pn-adminformrow"]-->">
+    <label for="prop_<!--[$prop_id]-->"><!--[$proplabeltext]-->  <!--[if $required]--><!--[pnml name="_PROFILE_REQUIREDLABEL"]--><!--[/if]--></label>
+    <input<!--[ if $required ]--> class="required"<!--[ /if ]--> id="prop_<!--[$prop_id]-->-year" type="text" name="dynadata[<!--[$prop_label]-->][year]" value="<!--[$value[0]]-->" size="5" /> <!--[pnml name="_YEAR"]--> <input id="<!--[$prop_label]-->-month" type="text" name="dynadata[<!--[$prop_label]-->][month]" value="<!--[$value[1]]-->" size="2" /> <!--[pnml name="_MONTH"]--> <input id="<!--[$prop_label]-->-day" type="text" name="dynadata[<!--[$prop_label]-->][day]" value="<!--[$value[2]]-->" size="2" /> <!--[pnml name="_DAY"]--> <!--[if $note != ""]--> <!--[pnml name="_PROFILE_NOTE"]--><!--[$note]--><!--[/if]-->
+    <!--[ if $required eq 1 ]-->
+    <p id="advice-required-<!--[$prop_id]-->" class="custom-advice" style="display:none"><!--[ pnml name='_PROFILE_REQUIREDMISSING' ]--></p>
+    <!--[ /if ]-->
+    <!--[ if $properror neq '' ]-->
+    <p class="profile_usererror"><!--[ $properror ]--></p>
+    <!--[ /if ]-->
+</div>
+<!--[else]-->
+<tr class="<!--[$class|default:"pn-adminformrow"]-->">
+    <td valign="top"><label for="prop_<!--[$prop_id]-->"><!--[$proplabeltext]-->  <!--[if $required]--><!--[pnml name="_PROFILE_REQUIREDLABEL"]--><!--[/if]--></label></td>
+    <td valign="top">
+        <input<!--[ if $required ]--> class="required"<!--[ /if ]--> id="prop_<!--[$prop_id]-->-year" type="text" name="dynadata[<!--[$prop_label]-->][year]" value="<!--[$value[0]]-->" size="5" /> <!--[pnml name="_YEAR"]--> <input id="<!--[$prop_label]-->-month" type="text" name="dynadata[<!--[$prop_label]-->][month]" value="<!--[$value[1]]-->" size="2" /> <!--[pnml name="_MONTH"]--> <input id="<!--[$prop_label]-->-day" type="text" name="dynadata[<!--[$prop_label]-->][day]" value="<!--[$value[2]]-->" size="2" /> <!--[pnml name="_DAY"]--> <!--[if $note != ""]--> <!--[pnml name="_PROFILE_NOTE"]--><!--[$note]--><!--[/if]-->
+        <!--[ if $required eq 1 ]-->
+        <p id="advice-required-<!--[$prop_id]-->" class="custom-advice" style="display:none"><!--[ pnml name='_PROFILE_REQUIREDMISSING' ]--></p>
+        <!--[ /if ]-->
+        <!--[ if $properror neq '' ]-->
+        <p class="profile_usererror"><!--[ $properror ]--></p>
+        <!--[ /if ]-->
+    </td>
+</tr>
+<!--[/if]-->

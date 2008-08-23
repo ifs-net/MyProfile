@@ -1,0 +1,34 @@
+<!--[include file="profile_user_menu.htm"]-->
+<!--[pnml name="_PROFILE_MODIFY" assign=title]-->
+<!--[pnpagesetvar name=title value=$title]-->
+<!--[pnajaxheader validation=true]-->
+<h2><!--[$title]--></h2>
+<div><!--[pnml name="_PROFILE_REQUIREDTEXT"]--></div>
+<form id="modifyprofileform" class="pn-frontendform" action="<!--[pnmodurl modname="Profile" type="user" func="update"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+  <input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Profile"]-->" />
+  <table class="pn-datatable">
+    <tbody>
+    <!--[foreach from=$duditems item=item]-->
+    <!--[if $item.prop_weight gt 0]-->
+      <!--[if $item.prop_label eq '_PASSWORD']-->
+      <tr>
+        <td><!--[pnml name="_PASSWORD"]--></td>
+        <td><input type="password" name="pass" size="15" /> <input type="password" name="vpass" size="15" /></td>
+      </tr>
+      <!--[else]-->
+        <!--[dudoptionalitemmodify item=$item tableless=false ]-->
+      <!--[/if]-->
+    <!--[/if]-->
+    <!--[/foreach]-->
+	</tbody>
+  </table>
+  <div class="pn-frontendformrow pn-frontendformbuttons">
+        <!--[pnbutton src=button_ok.gif set=icons/small alt="_OK" title="_OK"]-->
+        <a href="<!--[pnmodurl modname=Profile func=view]-->"><!--[pnimg modname=core src=button_cancel.gif set=icons/small altml=true titleml=true alt="_CANCEL" title="_CANCEL"]--></a>
+  </div>
+</div>
+</form>
+<script type="text/javascript">
+   var valid = new Validation('modifyprofileform');
+</script>

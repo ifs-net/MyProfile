@@ -1,0 +1,26 @@
+<!--[* $Id: profile_user_dudradio.htm 23085 2007-11-16 21:11:51Z markwest $ *]-->
+<!--[if $tableless]-->
+<div class="<!--[$class|default:"pn-adminformrow"]-->">
+    <label for="prop_<!--[$prop_id]-->"><!--[$proplabeltext]--> <!--[if $required]--><!--[pnml name="_PROFILE_REQUIREDLABEL"]--><!--[/if]--></label>
+    <!--[html_radios name="dynadata[$prop_label]" values=$listoptions output=$listoutput checked=$selectedvalue separator="<br />"]-->
+    <!--[ if $properror neq '' ]-->
+    <p class="profile_usererror"><!--[ $properror ]--></p>
+    <!--[ /if ]-->
+    <!--[if $note != ""]-->
+    <p><!--[pnml name="_PROFILE_NOTE"]--><!--[$note]--></p>
+    <!--[/if]-->
+</div>
+<!--[else]-->
+<tr class="<!--[$class|default:"pn-adminformrow"]-->">
+    <td valign="top"><label for="prop_<!--[$prop_id]-->"><!--[$proplabeltext]--> <!--[if $required]--><!--[pnml name="_PROFILE_REQUIREDLABEL"]--><!--[/if]--></label></td>
+    <td valign="top">
+        <!--[html_radios name="dynadata[$prop_label]" values=$listoptions output=$listoutput checked=$selectedvalue separator="<br />"]-->
+        <!--[ if $properror neq '' ]-->
+        <p class="profile_usererror"><!--[ $properror ]--></p>
+        <!--[ /if ]-->
+        <!--[if $note != ""]-->
+        <p><!--[pnml name="_PROFILE_NOTE"]--><!--[$note]--></p>
+        <!--[/if]-->
+    </td>
+</tr>
+<!--[/if]-->

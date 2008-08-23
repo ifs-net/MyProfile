@@ -1,0 +1,13 @@
+<!--[*  $Id: profile_user_main.htm 22243 2007-06-20 16:36:56Z markwest $  *]-->
+<!--[pnpageaddvar name=stylesheet value='system/Users/pnstyle/style.css']-->
+<!--[pnml name=_YOURACCOUNT assign=title]-->
+<!--[pnpagesetvar name=title value=$title]-->
+<!--[include file="profile_user_menu.htm"]-->
+<!--[section name=accountlinks loop=$accountlinks]-->
+<div class="pn-profilelink" style="width:<!--[math equation="100/x" x=$pncore.Profile.itemsperrow format="%.0f"]-->%;">
+	<!--[if $pncore.Profile.displaygraphics eq 1]-->
+		<a href="<!--[$accountlinks[accountlinks].url|pnvarprepfordisplay]-->"><!--[pnimg src=$accountlinks[accountlinks].icon modname=$accountlinks[accountlinks].module set=$accountlinks[accountlinks].set]--></a><br />
+	<!--[/if]-->
+	<a href="<!--[$accountlinks[accountlinks].url|pnvarprepfordisplay]-->"><!--[$accountlinks[accountlinks].title|pnvarprepfordisplay]--></a>
+</div>
+<!--[/section]-->
