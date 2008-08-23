@@ -1,0 +1,48 @@
+<!--[include file=profile_admin_menu.htm]-->
+<!--[pnajaxheader modname=Profile filename=profile.js]-->
+<!--[pnml name=_PROFILE_PROPERTIES assign=itemsname]-->
+<!--[pnml name=_VIEWITEMS i=$itemsname assign=templatetitle]-->
+<div class="pn-admincontainer">
+<div class="pn-adminpageicon"><!--[pnimg modname=core src=windowlist.gif set=icons/large alt=$templatetitle]--></div>
+<h2><!--[$templatetitle]--></h2>
+<form class="pn-adminform" action="" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+    <input type="hidden" id="authid" name="authid" value="<!--[pnsecgenauthkey module="Profile"]-->" />
+    <input type="hidden" id="startnum" name="startnum" value="<!--[$startnum]-->" />
+    <div id="profilehint" class="pn-informationmsg" style="display:none"><!--[pnml name=_PROFILE_DRAGANDDROPHINT]--></div>
+	<ol id="profilelist">
+		<li class="profilelistheader pn-clearfix">
+			<span style="width:35%"><strong><!--[pnml name="_PROFILE_FIELDLABEL_FLC"]--></strong></span>
+			<span><strong><!--[pnml name="_PROFILE_FIELDTYPE_FLC"]--></strong></span>
+			<span><strong><!--[pnml name="_PROFILE_FIELDLENGTH"]--></strong></span>
+			<span><strong><!--[pnml name="_PROFILE_FIELDSTATUS"]--></strong></span>
+			<span style="width:10%"><strong><!--[pnml name="_ACTIONS"]--></strong></span>
+		</li>
+		<!--[foreach from=$duditems item=duditem]-->
+		<li id="profile_<!--[$duditem.prop_id]-->" class="<!--[cycle values="pn-odd,pn-even"]--> pn-sortable pn-clearfix">
+			<span id="profiledrag_<!--[$duditem.prop_id]-->" style="width:35%"><!--[$duditem.prop_label|pnvarprephtmldisplay]--> (<!--[pnml name=$duditem.prop_label]-->)</span>
+			<span><!--[$duditem.dtype|pnvarprephtmldisplay]--></span>
+			<span><!--[$duditem.length|pnvarprephtmldisplay]--></span>
+			<span>
+			<!--[if $duditem.status.url ne '']-->
+				<a href="<!--[$duditem.status.url|pnvarprepfordisplay]-->"><!--[pnimg modname=core set=icons/extrasmall src=$duditem.status.image alt=$duditem.status.title]--></a>
+			<!--[else]-->
+				<!--[pnimg modname=core set=icons/extrasmall src=$duditem.status.image alt=$duditem.status.title]-->
+			<!--[/if]-->
+			</span>
+			<span style="width:10%;">
+			<!--[assign var="options" value=$duditem.options]-->
+			<!--[section name=options loop=$options]-->
+			  <a href="<!--[$options[options].url|pnvarprepfordisplay]-->"<!--[if $options[options].class]--> class="<!--[$options[options].class|pnvarprepfordisplay]-->"<!--[/if]-->><!--[pnimg modname=core set=icons/extrasmall src=$options[options].image alt=$options[options].title]--></a>
+			<!--[/section]-->
+			</span>
+		</li>
+		<!--[/foreach]-->
+	</ol>
+</div>
+</form>
+<!--[pager rowcount=$pager.numitems limit=$pager.itemsperpage posvar=startnum shift=1 img_prev=images/icons/extrasmall/previous.gif img_next=images/icons/extrasmall/next.gif]-->
+</div>
+<script type="text/javascript">
+    Event.observe(window, 'load', function(){profileinit();}, false);
+</script>

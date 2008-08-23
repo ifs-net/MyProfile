@@ -1,0 +1,25 @@
+<!--[include file=profile_admin_menu.htm]-->
+<div class="pn-admincontainer">
+<!--[pnml name=_PROFILE_PROPERTY assign=itemname]-->
+<!--[pnml name=_PROFILE_PROPERTY_LC assign=itemnamelc]-->
+<!--[pnml name=_DELETEITEM i=$itemname assign=templatetitle]-->
+<div class="pn-adminpageicon"><!--[pnimg modname=core src=editdelete.gif set=icons/large alt=$templatetitle]--></div>
+<h2><!--[$templatetitle]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Profile" type="admin" func="delete"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+  <input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Profile"]-->" />
+  <input type="hidden" name="confirmation" value="1" />
+  <input type="hidden" name="dudid" value="<!--[$dudid]-->" />
+  <fieldset>
+  <legend><!--[pnml name="_CONFIRMATIONPROMPT"]--></legend>
+  <div class="pn-adminformrow">
+    <p><!--[pnml name=_CONFIRMDELETEITEM i=$itemnamelc]--></p>
+  </div>
+  </fieldset>
+  <div class="pn-adminformrow pn-adminformbuttons">
+    <!--[pnbutton src=button_ok.gif set=icons/small alt="_DELETE" title="_DELETE"]-->
+    <a href="<!--[pnmodurl modname=Profile type=admin func=view]-->"><!--[pnimg modname=core src=button_cancel.gif set=icons/small altml=true titleml=true alt="_CANCEL" title="_CANCEL"]--></a>
+  </div>
+</div>
+</form>
+</div>

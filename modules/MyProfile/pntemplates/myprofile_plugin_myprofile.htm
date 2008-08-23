@@ -1,0 +1,26 @@
+<!--[pnajaxheader prototype="1"]-->
+<div id="myprofile_pluginmyprofile<!--[$user.uid]-->" class="myprofile_pluginmyprofile">
+
+	<div class="myprofile_avatar">
+	<!--[if $avatar eq '' or $avatar eq 'blank.gif']-->
+	  	<!--[pnimg modname=core src=personal.gif set=icons/large class="pnprofileicon"]-->
+	<!--[else]-->
+		<img src="images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" alt="<!--[$user.uname]-->" title="<!--[$user.uname]-->" />
+	<!--[/if]-->
+	</div>
+	<strong><!--[$user.uname|userprofilelink]-->:</strong><br />
+	
+	<!--[*This is just a fictive example. Try this with your identifier values after .myprofile. *]-->
+	<strong><!--[$user.__ATTRIBUTES__.myprofile.vollername.value]--></strong><br />
+	<!--[$user.__ATTRIBUTES__.myprofile.plz.value]--> <!--[$user.__ATTRIBUTES__.myprofile.ort.value]--><br />
+	<hr>
+	<a href="#" onclick="javascript:$('myprofile_pluginmyprofilehidden<!--[$user.uid]-->').toggle();"><!--[pnml name="_MYPROFILEMOREORLESS"]--></a>
+	<!--[* A little part will be hidden and just opened if you click a button.*]-->
+	<div id="myprofile_pluginmyprofilehidden<!--[$user.uid]-->">;
+	bla blubb<br />
+	lorep ipsim
+	</div>
+	<script type="text/javascript">
+			$('myprofile_pluginmyprofilehidden<!--[$user.uid]-->').toggle();
+	</script>
+</div>

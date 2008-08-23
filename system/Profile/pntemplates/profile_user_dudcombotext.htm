@@ -1,0 +1,28 @@
+<!--[* $Id: profile_user_dudcombotext.htm 23085 2007-11-16 21:11:51Z markwest $ *]-->
+<!--[if $tableless]-->
+<div class="<!--[$class|default:"pn-adminformrow"]-->">
+    <label for="prop_<!--[$prop_id]-->"><!--[$proplabeltext]-->  <!--[if $required]--><!--[pnml name="_REQUIRED"]--><!--[/if]--></label>
+	<div id="prop_<!--[$prop_id]-->">
+    <!--[foreach name=field item=field from=$validation]-->
+        <input id="<!--[$prop_id]-->_<!--[$field.id]-->" type="text" name="dynadata[<!--[$prop_label]-->][<!--[$field.id]-->]" value="<!--[$value[$smarty.foreach.field.index]]-->" size="10" /> <label for="<!--[$prop_id]-->_<!--[$field.id]-->"><!--[$field.value]--></label>
+    <!--[/foreach]-->
+	</div>
+    <!--[ if $properror neq '' ]-->
+    <p class="profile_usererror"><!--[ $properror ]--></p>
+    <!--[ /if ]-->
+    <!--[if $note != ""]--> <!--[pnml name="_PROFILE_NOTE"]--><!--[$note]--><!--[/if]-->
+</div>
+<!--[else]-->
+<tr class="<!--[$class|default:"pn-adminformrow"]-->">
+    <td valign="top"><label for="prop_<!--[$prop_id]-->"><!--[$proplabeltext]-->  <!--[if $required]--><!--[pnml name="_REQUIRED"]--><!--[/if]--></label></td>
+    <td valign="top" id="prop_<!--[$prop_id]-->">
+    <!--[foreach name=field item=field from=$validation]-->
+        <input id="<!--[$prop_id]-->_<!--[$field.id]-->" type="text" name="dynadata[<!--[$prop_label]-->][<!--[$field.id]-->]" value="<!--[$value[$smarty.foreach.field.index]]-->" size="10" /> <label for="<!--[$prop_id]-->_<!--[$field.id]-->"><!--[$field.value]--></label>
+    <!--[/foreach]-->
+    <!--[ if $properror neq '' ]-->
+    <p class="profile_usererror"><!--[ $properror ]--></p>
+    <!--[ /if ]-->
+    <!--[if $note != ""]--> <!--[pnml name="_PROFILE_NOTE"]--><!--[$note]--><!--[/if]-->
+    </td>
+</tr>
+<!--[/if]-->

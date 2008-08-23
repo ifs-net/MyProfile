@@ -1,0 +1,24 @@
+<!--[include file="myprofile_admin_menu.htm"]-->
+
+
+<h1><!--[pnml name="_MYPROFILEFINDORPHANS"]--></h1>
+
+<div><!--[pnml name="_MYPROFILECONSISTENCECHECKDESC"]--></div>
+
+<!--[if $orphans|@count gt 0]-->
+	<div class="pn-informationmsg">
+		<!--[pnml name="_MYPROFILEYOUHAVE"]--> <!--[$orphans|@count]--> <!--[pnml name="_MYPROFILEORPHANS"]-->.
+		<a href="<!--[pnmodurl modname="MyProfile" type="admin" func="findorphans" action="delete" authid=$authid]-->"><!--[pnml name="_MYPROFILECLEANUP"]--></a>
+	</div>
+	<div>
+		<ol>
+		<!--[foreach from=$orphans item="item"]-->
+			<li><a href="<!--[pnmodurl modname="MyProfile" type="user" func="display" uid=$item.id]-->"><!--[$item.id]--></a></li>
+		<!--[/foreach]-->
+		</ol>
+	</div>
+<!--[else]-->
+	<div class="pn-informationmsg"><!--[pnml name="_MYPROFILECONSISTENCEOK"]--></div>
+<!--[/if]-->
+
+<!--[include file="myprofile_admin_footer.htm"]-->
