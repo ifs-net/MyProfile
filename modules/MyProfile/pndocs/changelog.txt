@@ -1,0 +1,105 @@
+
+
+Features: MyProfile 1.0
+
+added (if you have used pnProfile before)
+=====
++ Password management and email adress management. If you use MyProfile you
+  have to deactive / overwrite (attention: "Profile" is called a core module
+  and cannot be deactivated by hand, so it is neccesarry to overwrite the module)
+  the regular profile module. So you'll loose the passwort and email address 
+  management. But don't panic. MyProfile brings a great management for the
+  email addresses: New email adresses will only be taken as valid address after
+  a confirmation.
+
+removed (if you have used pnProfile before)
+=======
+- copy field's value into another table / column. I do not think that we need
+  this feature any more. The MyProfile module is a full usable profile module.
+  So choose: Use MyProfile or the regular Profile as profile module...
+- functional accounts: This feature was not reimplemented. If you really need
+  this feasture write a feature request in the NOC.
+
+*******************************************************************************
+* The pnProfile module will not be supported any more. Now,                   *
+* pnProfile moved to MyProfile, the advanced Profile module for PostNuke .8   *
+*******************************************************************************
+
+
+Changelog for the pnprofile module
+
+new in 0.63:
+============
+- added "radio buttons": You can now define radio-buttons
+  instead of dropdown-menus. Just use "@*" instead of "@@"
+  as seperator of the option of the menu.
+- fixed bug #13400: pnmodapifunc call fails in pnprofile
+- fixed bug #15005: failed to display profile page without having 
+pncomments installed
+
+new in 0.62:
+============
+- fixed bug #6466: "module init error"
+
+new in 0.61:
+============
+- fixed bug #5959: "upgrade failure"
+
+new in 0.60:
+============
+- added "settings". User-defined settings (new sql table)
+  users can now choose i their account should be commentable.
+  To use this feature, pnComments has to be installed!
+- added "profile required not for accounts
+  marked as system ccounts"
+
+new in 0.50:
+============
+- added: "mark accounts as system accounts"
+  you can mark accounts as system accounts (admin etc.) so
+  that there is no profile page shown for these account
+- added: "online-status"
+  the online-status of a user is now shown in the profile
+- code cleaning in user_display.htm and the module's core
+- added "privacy options vor pnUserPictures"
+  with pnUserPictures 0.70 or newer pnProfile will check
+  if the own pictures are public or private for the profile
+  page
+- bug #4881: link to the weblog of a user was broken. 
+  fixed now
+- changed "redirection after submitting profile data"
+  After updating the profile data the user now gets
+  redirected to his profile page so he can see the 
+  result of his changes directly after storing the data
+- added: "pnClickedMe visits per day averge"
+  pnClickedMe > 0.30 can now calculate how often a
+  profile is visited per day (7 day average value)
+  This is integrated in the generic profile template 
+  now. Make sure IF pnClickedMe is installed that it
+  is up to date. Otherwise you will get an error.
+
+new in 0.40:
+============
+- Version 0.30 was broken - 0.40 corrects the prefix
+  and makes sure that this prefix is created the way
+  it should be created.
+  The prefix was changed from pnProfile_ to _
+  So a field called name will be _name in the DB.
+
+new in 0.30:
+============
+- new identifiers will get a prefix "pnprofile_" 
+  because otherwise the identifiers like "name" 
+  might cause errors because such variables 
+  are used in the core and have side effects 
+  in pnProfile
+- English language file is now included in the release
+- Fixed bug in the manual
+
+new in 0.20:
+============
+- new blocks: 
+    birthday block
+    extended online list
+    new members list
+- fixed some bugs

@@ -1,0 +1,36 @@
+Update from Postnuke (pnProfile)to zikula (MyProfile)
+with moving pn_ prefix to zk_ prefix
+
+1. install
+==========
+pnProfile in the latest version on your zikula system.
+
+2. move tables
+==============
+Export 
+* pn_pnprofile 
+* pn_pnprofile_fields 
+table into the new database of the new zikula (with zk-prefix 
+for example) database
+Please make sure that the id column of both tables still have
+the "auto_increment" attribute
+
+3. delete the regular tables
+============================
+Delete the zk_pnprofile and the zk_pnprofile_fields tables from 
+your zikula system.
+
+4. rename tables
+================
+Rename pn prefix to zk in the table name and NOT in column name,
+just table name! You can use phpmyadmin's move function
+
+5. MyProfile import
+===================
+Use MyProfile's import function and follow the steps in the 
+import function documentation / instructions
+
+6. delete pnProfile
+===================
+Uninstall pnProfile and delete all pnProfile files from your zikula
+system. You can use MyProfile now!

@@ -1,0 +1,44 @@
+<!--[include file="myprofile_admin_menu.htm"]-->
+
+<div><!--[pnml name="_MYPROFILEBACKENDDESCR"]--></div>
+
+<div class="myprofile_halfbox">
+<fieldset>
+<legend><!--[pnml name="_MYPROFILEEDITPROFILE"]--></legend>
+<div><!--[pnml name="_MYPROFILEDIRECTPROFILEEDIT"]--></div>
+<form method="post" action="<!--[pnmodurl modname="myProfile" type="admin" func="editProfile"]-->" >
+<!--[pnml name="_MYPROFILEEDITUNAME"]--><br />
+<input type="text" name="uname" /><br />
+<!--[pnml name="_MYPROFILEEDITUID"]--><br />
+<input type="text" name="uid" /><br />
+<input type="submit" value="<!--[pnml name="_MYPROFILEEDITPROFILETHEN"]-->" />
+</form>
+</fieldset>
+</div>
+<div class="myprofile_halfbox">
+<fieldset>
+<legend><!--[pnml name="_MYPROFILESUPPORTMYPROFILE"]--></legend>
+<div class="pn-informationmsg"><!--[pnml name="_MYPROFILEDONATE"]--></div>
+<form name="_xclick" action="https://www.paypal.com/de/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick" />
+<input type="hidden" name="business" value="florian.schiessl@ifs-net.de" />
+<input type="hidden" name="item_name" value="Donation for the MYPROFILE module" />
+<select name="amount">
+<option value="5">5&nbsp;</option>
+<option value="10" selected="selected">10&nbsp;</option>
+<option value="15">15&nbsp;</option>
+<option value="20">20&nbsp;</option>
+<option value="25">25&nbsp;</option>
+<option value="30">30&nbsp;</option>
+</select>
+<select name="currency_code">
+<option value="USD" selected="selected">USD&nbsp;</option>
+<option value="EUR">EUR&nbsp;</option>
+</select>
+<input type="submit" name="submit" value="<!--[pnml name="_MYPROFILEDONATETHIS"]-->"/>
+</form>
+</fieldset>
+</div>
+<br class="myprofile_clearboth">
+
+<!--[include file="myprofile_admin_footer.htm"]-->
