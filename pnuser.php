@@ -131,7 +131,7 @@ function MyProfile_user_display()
 	$render->assign('uname',		$uname);
 	$render->assign('uid',			$uid);
 	$render->assign('viewer_uid',	$viewer_uid);
-	$render->assign('homelink',		pnModURL('MyProfile','user','tab',array('uid'=>$uid,'ajax'=>1,'modname'=>'MyProfile')));
+	$render->assign('homelink',		pnGetBaseURL().pnModURL('MyProfile','user','tab',array('uid'=>$uid,'ajax'=>1,'modname'=>'MyProfile')));
 	// ContactList plugin
 	$render->assign('contactlistavailable',	pnModAvailable('ContactList'));
 	if (pnModAvailable('ContactList')) $render->assign('contactlist_nopublicbuddylist',	pnModGetVar('ContactList','nopublicbuddylist'));

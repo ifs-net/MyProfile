@@ -18,10 +18,10 @@ function change(url,element)
 }
 
 // display
-
+var url = document.location.pnbaseURL + "modules/MyProfile/pnimages/ajaxindicator.gif";
 // update a tab
 function myprofile_updateTab(URL,element) {
-	$('myprofile_maincontent').replace('<div class="myprofile_tabcontent" id="myprofile_maincontent"><img src="modules/MyProfile/pnimages/ajaxindicator.gif" /></div>');
+	$('myprofile_maincontent').replace('<div class="myprofile_tabcontent" id="myprofile_maincontent"><img src="' + url + '" /></div>');
 	change(URL,element);
 	return false;
 }
