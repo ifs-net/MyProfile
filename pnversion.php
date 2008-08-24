@@ -1,4 +1,13 @@
 <?php
+/**
+ * @package      MyProfile
+ * @version      $Id$
+ * @author       Florian Schießl
+ * @link         http://www.ifs-net.de
+ * @copyright    Copyright (C) 2008
+ * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
+ */
+ 
 // The following information is used by the Modules module 
 // for display and upgrade purposes
 $modversion['name']           = 'MyProfile';
