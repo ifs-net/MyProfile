@@ -86,7 +86,7 @@ define('_MYPROFILEPASSWORD',		'Mein Passwort');
 define('_MYPROFILEMAILADDRESS',		'Meine E-Mail-Adresse');
 
 // display
-define('_MYPROFILEMAINPROF',		'Haupt-Profil des Benutzers');
+define('_MYPROFILEMAINPROF',		'Profil');
 
 // check for account plugin
 define('_MYPROFILEPLEASECREATEACCOUNTFIRST',	'Bitte füll zunächst Dein persönliches Profil aus. Das ist notwendig um mit der Gemeinschaft kommunizieren zu können!');
