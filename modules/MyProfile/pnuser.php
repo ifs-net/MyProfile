@@ -62,22 +62,25 @@ function MyProfile_user_validatemail()
  * @return	function's content
  */
 function MyProfile_user_tab() {
-  	$render 		= pnRender::getInstance('MyProfile');
+	// get variables
   	$uid 			= (int)FormUtil::getPassedValue('uid');
   	$viewer_uid 	= pnUserGetVar('uid');
   	$modname 		= FormUtil::getPassedValue('modname');
+  	// create output
+  	$render = pnRender::getInstance('MyProfile');
 	// go on now..
   	if (isset($modname) && pnModAvailable($modname)) {
 	  	pnModLangLoad($modname);
 	  	$output = pnModAPIFunc($modname,'myprofile','tab',array('uid'=>$uid));
-		if ((int)FormUtil::getPassedValue('ajax',0,GET)==1) echo DataUtil::convertToUTF8($output);
-		else echo $output;
-
-		// let's combine myprofile with clickedme and call clickedme whenever 
-		// anything (even a plugin) of a user was called
-		if (($uid != $viewer_uid) && (pnModAvailable('ClickedMe'))) pnModAPIFunc('ClickedMe','user','addClick',array('clicked_uid' => $uid));
-		
-		return true;
+	  	$ajax = (int)FormUtil::getPassedValue('ajax');
+		if ($ajax == 1) {
+		  	echo DataUtil::convertToUTF8($output);
+		  	return true;
+		}
+		else {
+			return $output;		
+			return true;
+		}
 	}
 	else return false;
 }
@@ -167,6 +170,10 @@ function MyProfile_user_display()
 	// let's combine myprofile with clickedme and call clickedme whenever 
 	// anything (even a plugin) of a user was called
 	if (($uid != $viewer_uid) && (pnModAvailable('ClickedMe'))) pnModAPIFunc('ClickedMe','user','addClick',array('clicked_uid' => $uid));
+
+	// get the plugin output
+	$output = pnModAPIFunc($pluginname,'MyProfile','tab',array('uid' => $uid, 'uname' => $uname));
+	$render->assign('content',$output);
 	
 	// Return the output
     return $render->fetch('myprofile_user_display.htm');
