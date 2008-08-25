@@ -11,6 +11,7 @@ added (if you have used pnProfile before)
   management. But don't panic. MyProfile brings a great management for the
   email addresses: New email adresses will only be taken as valid address after
   a confirmation.
++ live check for updates
 
 removed (if you have used pnProfile before)
 =======
