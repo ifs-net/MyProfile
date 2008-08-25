@@ -71,6 +71,7 @@ class MyProfile_admin_settingsHandler
     function initialize(&$render)
     {
 	  	$data['notabs'] 		= pnModGetVar('MyProfile','notabs');
+	  	$data['plugin_noajax'] 	= pnModGetVar('MyProfile','plugin_noajax');
 	  	$data['validuntil'] 	= pnModGetVar('MyProfile','validuntil');
 	  	$data['asattributes']	= pnModGetVar('MyProfile','asattributes');
 	  	$data['dateformat'] 	= pnModGetVar('MyProfile','dateformat');
@@ -88,15 +89,10 @@ class MyProfile_admin_settingsHandler
 
 			// get the pnForm data and do a validation check
 		    $obj = $render->pnFormGetValues();		    
-		    
 		    if (!$render->pnFormIsValid()) return false;
-		    pnModSetVar('MyProfile','notabs',$obj['notabs']);
-		    pnModSetVar('MyProfile','validuntil',$obj['validuntil']);
-		    pnModSetVar('MyProfile','asattributes',$obj['asattributes']);
-		    pnModSetVar('MyProfile','dateformat',$obj['dateformat']);
-		    pnModSetVar('MyProfile','noverification',$obj['noverification']);
-		    pnModSetVar('MyProfile','requestban',$obj['requestban']);
-		    pnModSetVar('MyProfile','expiredays',$obj['expiredays']);
+		    
+		    // store all passed form values as module variables
+		    foreach ($obj as $key=>$value) pnModSetVar('MyProfile',$key,$value);
 			LogUtil::registerStatus(_MYPROFILECFGSTORED);
 		}
 		return true;

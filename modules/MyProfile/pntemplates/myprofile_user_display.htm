@@ -12,12 +12,16 @@
 	<div class="myprofile_plugintabs">													<!-- tabheader begin -->
 		<div class="myprofile_plugintab" id="myprofile_plugintabhome"> 					<!-- tabheader item begin -->
 			<a	id="myprofile_home"
-				onclick="javascript:myprofile_updateTab('<!--[$homelink]-->','myprofile_maincontent');return false;" 
+				<!--[if $plugin_noajax ne 1]-->				
+					onclick="javascript:myprofile_updateTab('<!--[$homelink]-->','myprofile_maincontent');return false;" 
+				<!--[/if]-->
 				href="<!--[pnmodurl modname="MyProfile" type="user" func="display" uid=$uid]-->
 				"><!--[pnml name="_MYPROFILEMAINPROF"]--></a>
-			<script type="text/javascript">
-				$('myprofile_home').href="#";
-			</script>
+			<!--[if $plugin_noajax ne 1]-->
+				<script type="text/javascript">
+					$('myprofile_home').href="#";
+				</script>
+			<!--[/if]-->
 		</div>																			<!-- tabheader item end -->
 <!--[if $plugins gt 0]-->
 	<!--[foreach from=$plugins item="plugin"]-->
@@ -25,12 +29,12 @@
 			<!--[pnmodapifunc modname=$plugin.name type="myprofile" func="getURLAddOn" assign="addon"]--> 
 			<div class="myprofile_plugintab" id="myprofile_plugintab<!--[$plugin.dir]-->"> 		<!-- tabheader item begin -->
 				<a 
-				<!--[if $plugin.noajax ne 1]-->	onclick="javascript:myprofile_updateTab('<!--[$plugin.link]-->&uid=<!--[$uid]-->&ajax=1<!--[if $addon ne '']-->&<!--[$addon]--><!--[/if]-->','myprofile_maincontent');return false;" <!--[/if]-->
+				<!--[if $plugin_noajax ne 1]-->	onclick="javascript:myprofile_updateTab('<!--[$plugin.link]-->&uid=<!--[$uid]-->&ajax=1<!--[if $addon ne '']-->&<!--[$addon]--><!--[/if]-->','myprofile_maincontent');return false;" <!--[/if]-->
 
 					href="<!--[pnmodurl modname="MyProfile" type="user" func="display" uid=$uid pluginname=$plugin.loadname]--><!--[if $addon ne '']-->&<!--[$addon]--><!--[/if]-->"
 					id="myprofile_pluginlink<!--[$plugin.dir]-->"
 					><!--[$plugin.title]--></a>
-					<!--[if $plugin.noajax ne 1]-->
+					<!--[if $plugin_noajax ne 1]-->
 						<script type="text/javascript">
 							$('myprofile_pluginlink<!--[$plugin.dir]-->').href="#";
 						</script>

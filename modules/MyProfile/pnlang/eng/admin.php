@@ -34,7 +34,8 @@ define('_MYPROFILEASATTRIBUTES',			'Also store profile as a user object attribut
 define('_MYPROFILEATTRIBUTEUSAGE',			'You can access a user\'s profile as $myprofile.youridentifier with this code');
 define('_MYPROFILEAPPEARANCE',				'Appearance');
 define('_MYPROFILEBEHAVIOUR',				'Behaviour');
-define('_MYPROFILENOTABS',					'No-tab mode / avoid usage of AJAX');
+define('_MYPROFILENOTABS',					'No-tab mode for user\'s profile management page');
+define('_MYPROFILENOAJAXTABS',				'Do not use AJAX for plugin loading');
 define('_MYPROFILEEMAILMANAGEMENT',			'Email address management');
 define('_MYPROFILENOVERIFICATION',			'Do not force verification within email change requests');
 define('_MYPROFILEREQUESTBANINDAYS',		'Forbid new change request within');

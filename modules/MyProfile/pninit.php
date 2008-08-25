@@ -21,12 +21,14 @@ function MyProfile_init()
     // Module Variables
     $asattributes	= pnSessionGetVar('myprofile_asattributes');
     $notabs 		= pnSessionGetVar('myprofile_notabs');
+    $plugin_noajax	= pnSessionGetVar('myprofile_plugin_noajax');
     $validuntil 	= pnSessionGetVar('myprofile_validuntil');
     $dateformat 	= pnSessionGetVar('myprofile_dateformat');
     $noverification	= pnSessionGetVar('myprofile_noverification');
     $requestban 	= pnSessionGetVar('myprofile_requestban');
     $expiredays 	= pnSessionGetVar('myprofile_expiredays');
     pnModSetVar('MyProfile', 'notabs', 			(($notabs<>false) ? $notabs : ''));	
+    pnModSetVar('MyProfile', 'plugin_noajax',	(($plugin_noajax<>false) ? $plugin_noajax : ''));	
     pnModSetVar('MyProfile', 'validuntil', 		(($validuntil<>false) ? $validuntil : 0));	
     pnModSetVar('MyProfile', 'asattributes',	(($asattributes<>false) ? $asattributes : 0));	
     pnModSetVar('MyProfile', 'dateformat', 		(($dateformat<>false) ? $dateformat : '%d.%m.%Y'));	
@@ -37,6 +39,7 @@ function MyProfile_init()
     // clean up
     pnSessionDelVar('myprofile_asattributes');
     pnSessionDelVar('myprofile_notabs');
+    pnSessionDelVar('myprofile_plugin_noajax');
     pnSessionDelVar('myprofile_validuntil');
     pnSessionDelVar('myprofile_dateformat');
     pnSessionDelVar('myprofile_noverification');
