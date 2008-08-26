@@ -1,12 +1,9 @@
 <!--[ admincategorymenu xhtml=1 ]-->
-
 <div class="pn-adminbox">
 <h1><!--[pnml name="_MYPROFILEBACKEND"]--></h1>
-</div>
-<div class="pn-admincontainer">
-<div class="pn-adminpageicon"><!--[pnimg modname=MyProfile src=admin.gif set=icons/large]--></div>
-
-<div class="myprofile_header">
+<strong><!--[pngetstatusmsg|pnvarprephtmldisplay]--></strong>
+<div class="pn-menu">
+<span class="pn-menuitem-title">
 [
 <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="main"]-->"><!--[pnml name="_MYPROFILEMAIN"]--></a> |
 <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="mainsettings"]-->"><!--[pnml name="_MYPROFILEMAINSETTINGS"]--></a> |
@@ -15,5 +12,8 @@
 <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="findorphans"]-->"><!--[pnml name="_MYPROFILEFINDORPHANS"]--></a> |
 <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="import"]-->"><!--[pnml name="_MYPROFILEIMPORTFUNCS"]--></a>
 ]
+</span>
 </div>
-<div><strong><!--[pngetstatusmsg|pnvarprephtmldisplay]--></strong></div>
+</div>
+<div class="pn-admincontainer">
+<div class="pn-adminpageicon"><!--[pnimg modname=MyProfile src=admin.gif set=icons/large]--></div>

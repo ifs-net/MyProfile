@@ -1,10 +1,6 @@
 <!--[include file="myprofile_admin_menu.htm"]-->
-
-
-<h1><!--[pnml name="_MYPROFILEFINDORPHANS"]--></h1>
-
+<h2><!--[pnml name="_MYPROFILEFINDORPHANS"]--></h2>
 <div><!--[pnml name="_MYPROFILECONSISTENCECHECKDESC"]--></div>
-
 <!--[if $orphans|@count gt 0]-->
 	<div class="pn-informationmsg">
 		<!--[pnml name="_MYPROFILEYOUHAVE"]--> <!--[$orphans|@count]--> <!--[pnml name="_MYPROFILEORPHANS"]-->.
@@ -20,5 +16,4 @@
 <!--[else]-->
 	<div class="pn-informationmsg"><!--[pnml name="_MYPROFILECONSISTENCEOK"]--></div>
 <!--[/if]-->
-
 <!--[include file="myprofile_admin_footer.htm"]-->
