@@ -1,10 +1,9 @@
 <!--[include file="myprofile_admin_menu.htm"]-->
-
+<br/>
 <div class="pn-informationmsg"><!--[pnml name="_MYPROFILEBACKENDDESCR"]--></div>
-
+<!--[pnform]-->
 <fieldset>
 <legend><!--[pnml name="_MYPROFILEGLOBALETTINGS"]--></legend>
-<!--[pnform]-->
     <!--[pnformvalidationsummary]-->
 <div class="myprofile_halfbox">
 	<h3><!--[pnml name="_MYPROFILEAPPEARANCE"]--></h3>
@@ -30,8 +29,12 @@
     <!--[pnml name="_MYPROFILEATTENTIONCHANGE"]-->.<br />
 </div>
 <br class="myprofile_clearboth">
-
-	<!--[pnformbutton commandName="update" text="_MYPROFILESAVECFG"]-->
+</fieldset>
+<div class="pn-adminformrow pn-adminformbuttons">
+<!--[*<!--[pnformbutton commandName="update" text="_MYPROFILESAVECFG"]-->*]-->
+<!--[pnbutton src=button_ok.gif set=icons/small commandName="update" title="_MYPROFILESAVECFG" alt="_MYPROFILESAVECFG"]-->
+<a href="<!--[pnmodurl modname=MyProfile type=admin]-->"><!--[pnimg modname=core src=button_cancel.gif set=icons/small altml=true titleml=true alt="_CANCEL" title="_CANCEL"]--></a>
+</div>
 <!--[/pnform]-->
 
 <fieldset><legend><!--[pnml name="_MYPROFILEUSELASTSEEN"]--></legend>
@@ -46,9 +49,6 @@ if (pnUserLoggedIn()) pnUserSetVar('lastlogin',date("Y-m-d h:i:s",time()),pnUser
 <em>&lt;!--[myprofile uid=$uid]--&gt;</em><br />
 <!--[pnml name="_MYPROFILEUSEPROFILEPLUGINTEMPLATE"]--><br />
 <em>modules/MyProfile/pntemplates/myprofile_plugin_myprofile.htm</em>
-</fieldset>
-
-
 </fieldset>
 <br />
 <!--[include file="myprofile_admin_footer.htm"]-->

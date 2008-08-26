@@ -2,65 +2,58 @@
 
 <!--[pnajaxheader modname="MyProfile" prototype="1"]-->
 
-<h1>
+<h2>
 <!--[if $id gt 0]-->
 	<!--[pnml name="_MYPROFILEMODIFYFIELD"]-->
 <!--[else]-->
 	<!--[pnml name="_MYPROFILEADDNEWFIELD"]-->
 <!--[/if]-->
-</h1>
+</h2>
 
 <div class="pn-informationmsg"><!--[pnml name="_MYPROFILEINTROTEXT"]--><br/><!--[pnml name="_MYPROFILENNOTYPECHANGESLATER"]--></div>
 
-<!--[pnform]-->
+<!--[pnform cssClass=pn-adminform]-->
     <!--[pnformvalidationsummary]-->
 
-<div id="myprofile_fieldtype">
-    <!--[if $id eq ""]-->
-	    <!--[pnformlabel for="fieldtype" text="_MYPROFILEFIELDTYPE"]-->:<br />
-	    <!--[pnformdropdownlist id="fieldtype" items=$items_fieldtype]-->
-	<!--[else]-->
-	    <!--[pnformtextinput id="fieldtype" maxLength=99 mandatory="1" readonly="true"]-->
-	<!--[/if]-->
-    <br /><br />
-</div>
-<div id="myprofile_identifier">
-    <!--[pnformlabel for="identifier" text="_MYPROFILEIDENTIFIER"]-->:<br />
+<div id="myprofile_fieldtype" class="pn-adminformrow">
+    <!--[pnformlabel for="fieldtype" text="_MYPROFILEFIELDTYPE"]-->:
     <!--[if $id gt 0]-->
-		<!--[pnformtextinput id="identifier" maxLength=40 mandatory="1" readonly="true"]-->
+	<!--[pnformtextinput id="fieldtype" maxLength=99 mandatory="1" readonly="true"]-->
     <!--[else]-->
-		<!--[pnformtextinput id="identifier" maxLength=40 mandatory="1"]-->
+	<!--[pnformdropdownlist id="fieldtype" items=$items_fieldtype]-->
     <!--[/if]-->
-	<br /><br />
 </div>
-<div id="myprofile_mandatory">
-    <!--[pnformlabel for="mandatory" text="_MYPROFILEMANDATORY"]-->?<br />
+<div id="myprofile_identifier" class="pn-adminformrow" style="clear: both">
+    <!--[pnformlabel for="identifier" text="_MYPROFILEIDENTIFIER"]-->:
+    <!--[if $id gt 0]-->
+	<!--[pnformtextinput id="identifier" maxLength=40 mandatory="1" readonly="true"]-->
+    <!--[else]-->
+	<!--[pnformtextinput id="identifier" maxLength=40 mandatory="1"]-->
+    <!--[/if]-->
+</div>
+<div id="myprofile_mandatory" class="pn-adminformrow" style="clear: both">
+    <!--[pnformlabel for="mandatory" text="_MYPROFILEMANDATORY"]-->?
     <!--[pnformdropdownlist id="mandatory" items=$items_yesno]-->
-    <br /><br />
 </div>
-<div id="myprofile_description">
-    <!--[pnformlabel for="description" text="_MYPROFILEDESCRIPTION"]-->:<br />
+<div id="myprofile_description" class="pn-adminformrow" style="clear: both">
+    <!--[pnformlabel for="description" text="_MYPROFILEDESCRIPTION"]-->:
     <!--[pnformtextinput id="description" maxLength=400 mandatory=1]-->
-    <br /><br />
 </div>
-<div id="myprofile_num_minvalue">
-    <!--[pnformlabel for="num_minvalue" text="_MYPROFILENUMMINVALUE"]-->:<br />
+<div id="myprofile_num_minvalue" class="pn-adminformrow" style="clear: both">
+    <!--[pnformlabel for="num_minvalue" text="_MYPROFILENUMMINVALUE"]-->:
     <!--[pnformfloatinput id="num_minvalue"]-->
-    <br /><br />
 </div>
-<div id="myprofile_num_maxvalue">
-    <!--[pnformlabel for="num_maxvalue" text="_MYPROFILENUMMAXVALUE"]-->:<br />
+<div id="myprofile_num_maxvalue" class="pn-adminformrow" style="clear: both">
+    <!--[pnformlabel for="num_maxvalue" text="_MYPROFILENUMMAXVALUE"]-->:
     <!--[pnformfloatinput id="num_maxvalue"]-->
-    <br /><br />
 </div>
-<div id="myprofile_str_length">
-    <!--[pnformlabel for="str_length" text="_MYPROFILESTRINGLENGTH"]-->:<br />
+<div id="myprofile_str_length" class="pn-adminformrow" style="clear: both">
+    <!--[pnformlabel for="str_length" text="_MYPROFILESTRINGLENGTH"]-->:
     <!--[pnformintinput id="str_length" minValue="0"]-->
-    <br /><br />
 </div>
-<div id="myprofile_list">
-    <!--[pnformlabel for="list" text="_MYPROFILELIST"]-->:<br />
-    <!--[pnformtextinput id="list" maxLength="9999" textMode="multiline"]--><br /><br />
+<div id="myprofile_list" class="pn-adminformrow" style="clear: both">
+    <!--[pnformlabel for="list" text="_MYPROFILELIST"]-->:
+    <!--[pnformtextinput id="list" maxLength="9999" textMode="multiline"]-->
 	<div class="pn-informationmsg">
 	    <!--[pnml name="_MYPROFILEDROPDOWNEX"]-->:<br />
 	    <em>    <!--[pnml name="_MYPROFILEDROPDOWNCODE"]-->    </em><br />
@@ -68,43 +61,42 @@
 	    <em>    <!--[pnml name="_MYPROFILERADIOCODE"]-->    </em>
 	</div>
 </div>
-<div id="myprofile_public_status">
-    <!--[pnformlabel for="public_status" text="_MYPROFILEPUBLICSTATUS"]-->:<br />
+<div id="myprofile_public_status" class="pn-adminformrow" style="clear: both">
+    <!--[pnformlabel for="public_status" text="_MYPROFILEPUBLICSTATUS"]-->:
     <!--[pnformdropdownlist id="public_status" items=$items_public_status]-->
-    <br /><br />
 </div>
 <!--[*
-<div id="myprofile_copyvalue">
-    <!--[pnformlabel for="copyvalue" text="_MYPROFILECOPYVALUE"]-->:<br />
+<div id="myprofile_copyvalue" class="pn-adminformrow" style="clear: both">
+    <!--[pnformlabel for="copyvalue" text="_MYPROFILECOPYVALUE"]-->:
     <!--[pnformdropdownlist id="copyvalue" items=$items_copyvalue]-->
-    <br /><br />
 </div>
-<div id="myprofile_copyuidvalue">
-    <!--[pnformlabel for="copyuidvalue" text="_MYPROFILECOPYUIDVALUE"]-->:<br />
+<div id="myprofile_copyuidvalue" class="pn-adminformrow" style="clear: both">
+    <!--[pnformlabel for="copyuidvalue" text="_MYPROFILECOPYUIDVALUE"]-->:
     <!--[pnformdropdownlist id="copyuidvalue" items=$items_copyvalue]-->
-    <br /><br />
 </div>
 *]-->
-<div id="myprofile_active">
-    <!--[pnformlabel for="active" text="_MYPROFILEACTIVE"]-->?<br />
+<div id="myprofile_active" class="pn-adminformrow" style="clear: both">
+    <!--[pnformlabel for="active" text="_MYPROFILEACTIVE"]-->?
     <!--[pnformdropdownlist id="active" items=$items_yesno]-->
-    <br /><br />
 </div>
-<div id="myprofile_shown">
-    <!--[pnformlabel for="shown" text="_MYPROFILESHOWN"]-->?<br />
+<div id="myprofile_shown" class="pn-adminformrow" style="clear: both">
+    <!--[pnformlabel for="shown" text="_MYPROFILESHOWN"]-->?
     <!--[pnformdropdownlist id="shown" items=$items_yesno]-->
-    <br /><br />
 </div>
 <!--[if $id gt 0]-->   
-    <!--[pnformcheckbox id="deletefield" checked="0"]--><!--[pnformlabel for="deletefield" text="_MYPROFILEDELETEFIELD"]--><br />
-    <br /><br />
+<div id="myprofile_deletefield" class="pn-adminformrow" style="clear: both">
+    <!--[pnformlabel for="deletefield" text="_MYPROFILEDELETEFIELD"]-->
+    <!--[pnformcheckbox id="deletefield" checked="0"]-->
+</div>
 <!--[/if]-->
 
 <script type="text/javascript">
 	myprofile_observeFieldType();
 	myprofile_showSelectedFieldType();
 </script>
-	<!--[pnformbutton commandName="update" text="_MYPROFILESUBMITFIELD"]-->
+    <div class="pn-adminformrow pn-adminformbuttons" style="clear: both">
+	<!--[pnformimagebutton commandName="update"  imageUrl=images/icons/small/button_ok.gif alt="_MYPROFILESUBMITFIELD" title="_MYPROFILESUBMITFIELD"]-->
+        <a href="<!--[pnmodurl modname=MyProfile type=admin func=fields]-->"><!--[pnimg modname=core src=button_cancel.gif set=icons/small altml=true titleml=true alt="_CANCEL" title="_CANCEL"]--></a>
+    </div>
 <!--[/pnform]-->
-
 <!--[include file="myprofile_admin_footer.htm"]-->

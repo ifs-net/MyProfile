@@ -1,22 +1,25 @@
 <!--[include file="myprofile_admin_menu.htm"]-->
 <!--[versioncheck module="MyProfile"]-->
-
 <div><!--[pnml name="_MYPROFILEBACKENDDESCR"]--></div>
-
-<div class="myprofile_halfbox">
+<form class="pn-adminform" method="post" action="<!--[pnmodurl modname="myProfile" type="admin" func="editProfile"]-->" >
 <fieldset>
 <legend><!--[pnml name="_MYPROFILEEDITPROFILE"]--></legend>
 <div><!--[pnml name="_MYPROFILEDIRECTPROFILEEDIT"]--></div>
-<form method="post" action="<!--[pnmodurl modname="myProfile" type="admin" func="editProfile"]-->" >
-<!--[pnml name="_MYPROFILEEDITUNAME"]--><br />
-<input type="text" name="uname" /><br />
-<!--[pnml name="_MYPROFILEEDITUID"]--><br />
-<input type="text" name="uid" /><br />
-<input type="submit" value="<!--[pnml name="_MYPROFILEEDITPROFILETHEN"]-->" />
-</form>
-</fieldset>
+<div class="pn-adminformrow">
+<label for="myprofile_uname"><!--[pnml name="_MYPROFILEEDITUNAME"]--></label>
+<input type="text" id="myprofile_uname" name="uname" />
 </div>
-<div class="myprofile_halfbox">
+<div class="pn-adminformrow">
+<label for="myprofile_uid"><!--[pnml name="_MYPROFILEEDITUID"]--></label>
+<input type="text" id="myprofile_uid" name="uid" />
+</div>
+</fieldset>
+<div class="pn-adminformrow pn-adminformbuttons">
+<!--[*<input type="submit" value="<!--[pnml name="_MYPROFILEEDITPROFILETHEN"]-->" />*]-->
+<!--[pnbutton src=button_ok.gif set=icons/small alt="_MYPROFILEEDITPROFILETHEN" title="_MYPROFILEEDITPROFILETHEN"]-->
+<a href="<!--[pnmodurl modname=MyProfile type=admin]-->"><!--[pnimg modname=core src=button_cancel.gif set=icons/small altml=true titleml=true alt="_CANCEL" title="_CANCEL"]--></a>
+</div>
+</form>
 <fieldset>
 <legend><!--[pnml name="_MYPROFILESUPPORTMYPROFILE"]--></legend>
 <div class="pn-informationmsg"><!--[pnml name="_MYPROFILEDONATE"]--></div>
@@ -39,7 +42,5 @@
 <input type="submit" name="submit" value="<!--[pnml name="_MYPROFILEDONATETHIS"]-->"/>
 </form>
 </fieldset>
-</div>
 <br class="myprofile_clearboth">
-
 <!--[include file="myprofile_admin_footer.htm"]-->

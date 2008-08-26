@@ -49,19 +49,8 @@ function myprofile_init_user_main() {
 	$('myprofile_tabinfotext').removeClassName('myprofile_tabcontent_hidden').addClassName('myprofile_tabcontent');
 	$('myprofile_showalltabs').observe('click',function() {myprofile_observe_showAllFieldsLink();});
 	$('myprofile_tabmode').observe('click',function() {myprofile_observe_showTabbedMode();});
+	$$('.myprofile_tabactive').invoke('removeClassName','myprofile_tabactive');
 	return false;
-}
-
-// This function change the background color of a tab whenever the mouse is over the tab
-function myprofile_tab_mouseover(ID) {
-  	$('myprofile_tabheader'+ID).removeClassName('myprofile_tabnotselected').addClassName('myprofile_tabmouseover');
-  	return false;
-}
-
-// This function change the background color of a tab whenever the mouse is out of the tab
-function myprofile_tab_mouseout(ID) {
-  	$('myprofile_tabheader'+ID).removeClassName('myprofile_tabmouseover').addClassName('myprofile_tabnotselected');
-  	return false;
 }
 
 // Observe function for the "show all tabs" link
@@ -93,7 +82,7 @@ function myprofile_showTab(ID) {
 	$('myprofile_introtext').hide();
 	myprofile_hideAllTabs();
 	$('myprofile_tab'+ID).show();
-	$('myprofile_tabheader'+ID).addClassName('myprofile_tabselected');
+	$('myprofile_tabheader'+ID).addClassName('myprofile_tabactive');
 	return false;
 }
 
