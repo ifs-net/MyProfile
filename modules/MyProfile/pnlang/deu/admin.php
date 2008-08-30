@@ -26,7 +26,7 @@ define('_MYPROFILEEDITUID',		'oder der Benutzer-ID');
 define('_MYPROFILEEDITPROFILETHEN',	'... bearbeitet werden');
 define('_MYPROFILESUPPORTMYPROFILE',	'Unterstütze dieses Modul');
 define('_MYPROFILEDONATETHIS',		'Spende per PayPal!');
-define('_MYPROFILEDONATE',		'Du magst dieses Modul und es nützt Dir? Dann wäre Dir der Programmierer für eine kleine Spende sehr dankbar! Na klar - ich programmiere sehr gerne und das Modul ist natürlich kostenlos und Open-Source - aber wenn Du etwas springen lässt, dann könnte ich meine Freunding zum Abendessen ausführen und es wird das nächste mal viel leichter sein, zum Programmieren frei zu bekommen ;-)');
+define('_MYPROFILEDONATE',		'Du magst dieses Modul und es nützt Dir? Dann wäre Dir der Programmierer für eine kleine Spende sehr dankbar! Na klar - ich programmiere sehr gerne und das Modul ist natürlich kostenlos und Open-Source - aber wenn Du etwas springen lässt, dann könnte ich meine Freundin zum Abendessen ausführen und es wird das nächste mal viel leichter sein, zum Programmieren frei zu bekommen ;-)');
 
 // mainsettings
 define('_MYPROFILEGLOBALETTINGS',	'Allgemeine Modul-Einstellungen');
