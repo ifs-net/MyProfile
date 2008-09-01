@@ -90,7 +90,6 @@ class MyProfile_admin_settingsHandler
 			// get the pnForm data and do a validation check
 		    $obj = $render->pnFormGetValues();		    
 		    if (!$render->pnFormIsValid()) return false;
-		    
 		    // store all passed form values as module variables
 		    foreach ($obj as $key=>$value) pnModSetVar('MyProfile',$key,$value);
 			LogUtil::registerStatus(_MYPROFILECFGSTORED);
