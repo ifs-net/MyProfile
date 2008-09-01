@@ -155,7 +155,7 @@ function MyProfile_user_display()
 	if (($pluginname != "MyProfile") && pnModAvailable($pluginname)) pnModLangLoad($pluginname);
 
     // get the plugins
-    $plugins = pnModAPIFunc('MyProfile','admin','getPlugins');
+    $plugins = pnModAPIFunc('MyProfile','admin','getPlugins',array('uid' => $uid));
 
     $render->assign('plugins',$plugins);
     // execute all "onLoad"-Funktions and sort out the invisible plugins
