@@ -11,9 +11,10 @@
 /**
  * Get plugin list
  *
+ * @param	$args['uid']	user id to create link (optional)
  * @return	boolean
  */
-function MyProfile_adminapi_getPlugins()
+function MyProfile_adminapi_getPlugins($args)
 {
     $mods = pnModGetUserMods();
     foreach ($mods as $mod) {
@@ -32,11 +33,21 @@ function MyProfile_adminapi_getPlugins()
 			if ($found) {
 			  	if (pnModAPIFunc($mod['name'],'myprofile','noAjax')) $noAjax = true;
 			  	else $noAjax = false;
+			  	unset($params);
+				if (isset($args['uid']) && $args['uid'] > 0) $params['uid'] = (int)$args['uid'];
+			  	// get url add on; module-specific
+			  	$add_on = pnModAPIFunc($mod['name'],'myprofile','getURLAddOn');
+			  	if (is_array($add_on)) foreach ($add_on as $key=>$value) $params[$key] = $value;
+			  	$params_ajax = $params;
+			  	$params['pluginname'] = $mod['name'];
+			  	$params_ajax['modname'] = $mod['name'];
+			  	$params_ajax['ajax'] = 1;
 			  	$res[] = array(	
 				'dir'		=> $mod['directory'],
 				'name'		=> $mod['displayname'],
 				'loadname'	=> $mod['name'],
-				'link'		=> pnGetBaseURL().pnModURL('MyProfile','user','tab',array('modname'=>$mod['name'],'ajax'=>'1')),
+				'link'		=> pnGetBaseURL().pnModURL('MyProfile','user','display',$params),
+				'link_ajax'	=> pnGetBaseURL().pnModURL('MyProfile','user','tab',$params_ajax),
 				'title'		=> pnModAPIFunc($mod['name'],'myprofile','getTitle'),
 				'noajax'	=> $noAjax
 										);

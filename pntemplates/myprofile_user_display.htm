@@ -29,9 +29,7 @@
 			<!--[pnmodapifunc modname=$plugin.name type="myprofile" func="getURLAddOn" assign="addon"]--> 
 			<div class="myprofile_plugintab" id="myprofile_plugintab<!--[$plugin.dir]-->"> 		<!-- tabheader item begin -->
 				<a 
-				<!--[if $plugin_noajax ne "1" and $plugin.noajax ne "1"]-->	onclick="javascript:myprofile_updateTab('<!--[$plugin.link]-->&uid=<!--[$uid]-->&ajax=1<!--[if $addon ne '']-->&<!--[$addon]--><!--[/if]-->','myprofile_maincontent');return false;" <!--[/if]-->
-
-					href="<!--[pnmodurl modname="MyProfile" type="user" func="display" uid=$uid pluginname=$plugin.loadname]--><!--[if $addon ne '']-->&<!--[$addon]--><!--[/if]-->"
+					href="<!--[$plugin.link]-->"
 					id="myprofile_pluginlink<!--[$plugin.dir]-->"
 					><!--[$plugin.title]--></a>
 					<!--[if $plugin_noajax ne 1 and $plugin.noajax ne 1]-->
@@ -60,7 +58,7 @@
 	$('myprofile_plugintab<!--[$plugin.dir]-->').addClassName('myprofile_plugintab_unselected');
 	$('myprofile_plugintab<!--[$plugin.dir]-->').observe('mouseover',function() {myprofile_plugintab_mouseover('<!--[$plugin.dir]-->');});
 	$('myprofile_plugintab<!--[$plugin.dir]-->').observe('mouseout',function() {myprofile_plugintab_mouseout('<!--[$plugin.dir]-->');});
-	$('myprofile_plugintab<!--[$plugin.dir]-->').observe('click',function() {myprofile_updateTab('<!--[$plugin.link]-->&uid=<!--[$uid]-->&<!--[pnmodapifunc modname=$plugin.name type="myprofile" func="getURLAddOn"]-->','myprofile_maincontent');return false;});
+	<!--[if $plugin_noajax ne "1" and $plugin.noajax ne "1"]-->$('myprofile_plugintab<!--[$plugin.dir]-->').observe('click',function() {myprofile_updateTab('<!--[$plugin.link_ajax]-->','myprofile_maincontent');return false;});<!--[/if]-->
 	<!--[/if]-->
 	<!--[/foreach]-->
 </script>
