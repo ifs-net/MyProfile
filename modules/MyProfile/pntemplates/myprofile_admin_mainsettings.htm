@@ -1,7 +1,6 @@
 <!--[include file="myprofile_admin_menu.htm"]-->
-<br/>
 <div class="pn-informationmsg"><!--[pnml name="_MYPROFILEBACKENDDESCR"]--></div>
-<!--[pnform]-->
+<!--[pnform cssClass=pn-adminform]-->
 <fieldset>
 <legend><!--[pnml name="_MYPROFILEGLOBALETTINGS"]--></legend>
     <!--[pnformvalidationsummary]-->
@@ -28,11 +27,12 @@
     <!--[pnformlabel for="validuntil" text="_MYPROFILEVALIDUNTILTIMESTAMP"]-->: <!--[pnformintinput mandatory="1" minValue="0" maxValue="999999999" id="validuntil" textMode="singleLine"]--> (<!--[pnml name="_MYPROFILEZERODEACTIVETED"]-->)<br />
     <!--[pnml name="_MYPROFILEATTENTIONCHANGE"]-->.<br />
 </div>
-<br class="myprofile_clearboth">
 </fieldset>
 <div class="pn-adminformrow pn-adminformbuttons">
-<!--[pnformbutton commandName="update" text="_MYPROFILESAVECFG"]-->
+<!--[pnformimagebutton commandName="update" imageUrl=images/icons/small/button_ok.gif  text="_MYPROFILESAVECFG"]-->
+<a href="<!--[pnmodurl modname=MyProfile type=admin]-->"><!--[pnimg modname=core src=button_cancel.gif set=icons/small altml=true titleml=true alt="_CANCEL" title="_CANCEL"]--></a>
 </div>
+
 <!--[/pnform]-->
 
 <fieldset><legend><!--[pnml name="_MYPROFILEUSELASTSEEN"]--></legend>
