@@ -9,56 +9,57 @@
 <!--[/if]-->
 
 <!--[* plugin tabs begin *]-->
-	<div class="myprofile_plugintabs">													<!-- tabheader begin -->
-		<div class="myprofile_plugintab" id="myprofile_plugintabhome"> 					<!-- tabheader item begin -->
-			<a	id="myprofile_home"
+	<div class="myprofile_tabheader">													<!-- tabheader begin -->
+		<div class="myprofile_tab<!--[if $pluginname == "MyProfile"]--> myprofile_tabactive<!--[/if]-->" id="myprofile_plugintabMyProfile">
+			<!-- tabheader item begin -->
+			<a	id="myprofile_MyProfile"
 				<!--[if $plugin_noajax ne 1]-->				
-					onclick="javascript:myprofile_updateTab('<!--[$homelink]-->','myprofile_maincontent');return false;" 
+					onclick="javascript:myprofile_updateTab('<!--[$homelink]-->','myprofile_maincontent','MyProfile');return false;" 
 				<!--[/if]-->
 				href="<!--[pnmodurl modname="MyProfile" type="user" func="display" uid=$uid]-->
 				"><!--[pnml name="_MYPROFILEMAINPROF"]--></a>
 			<!--[if $plugin_noajax ne 1]-->
 				<script type="text/javascript">
-					$('myprofile_home').href="#";
+					$('myprofile_MyProfile').href="#nogo";
 				</script>
 			<!--[/if]-->
-		</div>																			<!-- tabheader item end -->
+			<!-- tabheader item end -->
+		</div>
 <!--[if $plugins gt 0]-->
 	<!--[foreach from=$plugins item="plugin"]-->
 		<!--[if $plugin.title ne ""]-->
 			<!--[pnmodapifunc modname=$plugin.name type="myprofile" func="getURLAddOn" assign="addon"]--> 
-			<div class="myprofile_plugintab" id="myprofile_plugintab<!--[$plugin.dir]-->"> 		<!-- tabheader item begin -->
+			<div class="myprofile_tab<!--[if $pluginname == $plugin.dir]--> myprofile_tabactive<!--[/if]-->" id="myprofile_plugintab<!--[$plugin.dir]-->">
+				<!-- tabheader item begin -->
 				<a 
 					href="<!--[$plugin.link]-->"
 					id="myprofile_pluginlink<!--[$plugin.dir]-->"
 					><!--[$plugin.title]--></a>
 					<!--[if $plugin_noajax ne 1 and $plugin.noajax ne 1]-->
 						<script type="text/javascript">
-							$('myprofile_pluginlink<!--[$plugin.dir]-->').href="#";
+							$('myprofile_pluginlink<!--[$plugin.dir]-->').href="#nogo";
 						</script>
 					<!--[/if]-->
-			</div>																			<!-- tabheader item end -->
+				<!-- tabheader item end -->
+			</div>
 		<!--[/if]-->
 	<!--[/foreach]-->
-	</div>																				<!-- tabheader end -->
+	<!-- tabheader end -->
+	</div>
 <!--[/if]-->
 <!--[* plugin tabs end *]-->
 	
 <!--[* main profile data begin *]-->
+<div class="myprofile_tabcontent_frame" >
 <div class="myprofile_tabcontent" id="myprofile_maincontent">
 <!--[$content]-->
 </div>
+</div>
 <script type="text/javascript">
-	$('myprofile_plugintabhome').addClassName('myprofile_plugintab_unselected');
-	$('myprofile_plugintabhome').observe('mouseover',function() {myprofile_plugintab_mouseover('home');});
-	$('myprofile_plugintabhome').observe('mouseout',function() {myprofile_plugintab_mouseout('home');});
-	$('myprofile_plugintabhome').observe('click',function() {myprofile_updateTab('<!--[$homelink]-->','myprofile_maincontent');return false;});
+	$('myprofile_plugintabMyProfile').observe('click',function() {myprofile_updateTab('<!--[$homelink]-->','myprofile_maincontent','MyProfile');return false;});
 	<!--[foreach from=$plugins item="plugin"]-->
 	<!--[if $plugin.title ne ""]-->
-	$('myprofile_plugintab<!--[$plugin.dir]-->').addClassName('myprofile_plugintab_unselected');
-	$('myprofile_plugintab<!--[$plugin.dir]-->').observe('mouseover',function() {myprofile_plugintab_mouseover('<!--[$plugin.dir]-->');});
-	$('myprofile_plugintab<!--[$plugin.dir]-->').observe('mouseout',function() {myprofile_plugintab_mouseout('<!--[$plugin.dir]-->');});
-	<!--[if $plugin_noajax ne "1" and $plugin.noajax ne "1"]-->$('myprofile_plugintab<!--[$plugin.dir]-->').observe('click',function() {myprofile_updateTab('<!--[$plugin.link_ajax]-->','myprofile_maincontent');return false;});<!--[/if]-->
+	<!--[if $plugin_noajax ne "1" and $plugin.noajax ne "1"]-->$('myprofile_plugintab<!--[$plugin.dir]-->').observe('click',function() {myprofile_updateTab('<!--[$plugin.link_ajax]-->','myprofile_maincontent','<!--[$plugin.dir]-->');return false;});<!--[/if]-->
 	<!--[/if]-->
 	<!--[/foreach]-->
 </script>

@@ -41,28 +41,12 @@
   	float: right;
   	padding: 5px;
 }
-.myprofile_plugintabs {
-  	display: block;
-  	height: 15px;
+.myprofile_tabheader a {
+	color: #000;
 }
-.myprofile_plugintab {
-  	border-color: #ddd;
-  	border-left: 1px solid;
-  	border-top: 1px solid;
-  	border-right: 1px solid;
-  	float: left;
-  	height: 15px;
-  	padding: 3px;
-  	margin-right: 1px;
-  	font-style: italic;
-  	font-weight: bold; 
-	cursor: pointer; 	
-}
-.myprofile_plugintab_selected {
-  	background-color: #bbb;
-}
-.myprofile_plugintab_unselected {
-  	background-color: #ddd;
+.myprofile_tabheader a:hover {
+	color: #000;
+	text-decoration: none !important;
 }
 .myprofile_profiletext {
   	padding-top: 3px;
@@ -130,10 +114,9 @@
   	background-color: #ddd;
   	border-bottom: 2px solid #ddd;
   	border-right: 1px solid;
-	/*font-size: 1.2em;*/
 }
 .myprofile_separator {
-  	background-color: #E0E0E0;
+  	background-color: #EEE;
   	padding: 10px;
   	border-color: #000;
   	border-right: 1px solid;
@@ -142,17 +125,22 @@
   	border-left: 1px solid #888;
   	margin-bottom: 10px;
 }
-.myprofile_tabcontent_hidden {
-  	display: none;
-}
-.myprofile_tabcontent {
+.myprofile_tabcontent_frame {
+  	background-color: #ddd;
   	border-color: #000;
   	border-right: 1px solid;
   	border-bottom: 1px solid;
   	border-top: 1px solid #888;
   	border-left: 1px solid #888;
-  	padding:10px;
-  	margin-top:10px;
+  	padding: 10px;
+}
+.myprofile_tabcontent_hidden {
+  	display: none;
+}
+.myprofile_tabcontent {
+  	border: 1px solid #888;
+  	padding:5px;
+  	margin-top:5px;
   	background-color: #F3F3F3;
 }
 
@@ -169,6 +157,9 @@
 }
 
 /** admin **/
+.pn-adminformbuttons button {
+	cursor: pointer;
+}
 .myprofile_tablebody {  
 }
 .myprofile_sortableitem {

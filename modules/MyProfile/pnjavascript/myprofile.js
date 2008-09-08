@@ -20,22 +20,12 @@ function change(url,element)
 // display
 var url = document.location.pnbaseURL + "modules/MyProfile/pnimages/ajaxindicator.gif";
 // update a tab
-function myprofile_updateTab(URL,element) {
+function myprofile_updateTab(URL,element,ID) {
+	$$('.myprofile_tabactive').invoke('removeClassName','myprofile_tabactive');
+	$('myprofile_plugintab'+ID).addClassName('myprofile_tabactive');
 	$('myprofile_maincontent').replace('<div class="myprofile_tabcontent" id="myprofile_maincontent"><img src="' + url + '" /></div>');
 	change(URL,element);
 	return false;
-}
-
-// This function change the background color of a tab whenever the mouse is out of the tab
-function myprofile_plugintab_mouseout(ID) {
-  	$('myprofile_plugintab'+ID).removeClassName('myprofile_plugintab_selected').addClassName('myprofile_plugintab_unselected');
-  	return false;
-}
-
-// This function change the background color of a tab whenever the mouse is over athe tab
-function myprofile_plugintab_mouseover(ID) {
-  	$('myprofile_plugintab'+ID).addClassName('myprofile_plugintab_selected').removeClassName('myprofile_plugintab_unselected');
-  	return false;
 }
 
 // main
