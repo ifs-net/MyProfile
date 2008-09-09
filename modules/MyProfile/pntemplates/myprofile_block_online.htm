@@ -14,14 +14,13 @@
 						    	*]-->
 
 <!--[pnmodapifunc modname="MyProfile" type="user" func="getOnline" orderby="land, plz" assign="users"]-->
-<!--[pnml name="_MYPROFILETHEREARE"]--> <!--[$users|@count]--> <!--[pnml name="_MYPROFILEREGISTEREDUSERSONLINE"]-->
-<br />
+<br /><!--[pnml name="_MYPROFILETHEREARE"]--> <!--[$users|@count]--> <!--[pnml name="_MYPROFILEREGISTEREDUSERSONLINE"]-->
 <!--[foreach from=$users item=user]-->
 
     <!--[* 	We want the country to be displayed - but only 
 		once! if the country changes the new country will be shown	*]-->
 		
-    <!--[if $lastCountry ne $user.land]--><br /><strong><!--[$user.land]-->:</strong><!--[/if]-->
+    <!--[if $lastCountry ne $user.land]--><br /><strong>&#187;&nbsp;<!--[$user.land]-->:</strong><!--[/if]-->
     <!--[assign value=$user.land var="lastCountry"]-->
     
     <!--[* 	Let us show the zip code (fielname: plz) but only the first two chars	*]-->
@@ -36,3 +35,4 @@
     <!--[* End of example *]-->
 
 <!--[/foreach]-->
+<br /><br />
