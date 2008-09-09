@@ -284,4 +284,39 @@ function MyProfile_userapi_getUserVars($args) {
 	if (isset($identifier)) return $res[$identifier];
 	else return $res;
 }
+
+/**
+ * get all birthdays for a day
+ *
+ * This function gets all users that celebrate their birthday today
+ *
+ * @param $args['datedatafield']				string		myprofile identifier for date
+ * @param $args['restrictiondatafield']			string		myprofile identifier for restriction (opt)
+ * @param $args['restrictiondatafieldvalue']	string		myprofile identifier for restriction vield value for true(opt)
+ * @return array
+ */
+function MyProfile_userapi_getBirthdays($args)
+{
+    $datedatafield 				= $args['datedatafield'];
+    $restrictiondatafield 		= $args['restrictiondatafield'];
+    $restrictiondatafieldvalue 	= $args['restrictiondatafieldvalue'];
+    
+    // some checks
+    if (!isset($datedatafield)) return null;
+    if (isset($restrictiondatafield) && isset($restrictiondatafieldvalue)) {
+	  	// construct where part for sql query
+	  	$where = 'MyProfile_'.$restrictiondatafield.' = '.$restrictiondatafieldvalue.' AND ';
+	}
+	$date = "'%-".date("d-m",time())."'";
+    $where.= 'MyProfile_'.$datedatafield.' LIKE '.$date;
+
+	// This join information is the second join information so we have to use the prefix a. in the following where parts
+	$joinInfo[] = array (	'join_table'          =>  'users',			// table for the join
+							'join_field'          =>  'uname',			// field in the join table that should be in the result with
+                         	'object_field_name'   =>  'uname',			// ...this name for the new column
+                         	'compare_field_table' =>  'id',				// regular table column that should be equal to
+                         	'compare_field_join'  =>  'uid');			// ...the table in join_table
+
+    return DBUtil::selectExpandedObjectArray('myprofile',$joinInfo,$where);
+}
 ?>

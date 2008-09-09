@@ -1,0 +1,35 @@
+<tr>
+  <td>
+    <label for="pnprofile_datedatafield"><!--[pnml name="_MYPROFILEDATEDATAFIELD"]--></label>
+  </td>
+  <td>
+    <select id="pnprofile_datedatafield" name="datedatafield">
+        <option value=""><!--[pnml name="_MYPROFILEDATEDATAFIELDVALUEOPTION"]--></option>
+        <!--[foreach from=$fields item=field]-->
+            <option <!--[if $field eq $datedatafield]-->selected="selected" <!--[/if]--> value="<!--[$field]-->" ><!--[$field]--></option>
+        <!--[/foreach]-->
+    </select>
+  </td>
+</tr>
+<tr>
+  <td>
+    <label for="pnprofile_restrictiondatafield"><!--[pnml name="_MYPROFILERESTRICTIONDATAFIELD"]--></label>
+  </td>
+  <td>
+    <select id="pnprofile_restrictiondatafield" name="restrictiondatafield">
+        <option value=""><!--[pnml name="_MYPROFILERESTRICTIONDATAFIELDVALUEOPTION"]--></option>
+        <!--[foreach from=$allfields item=field]-->
+            <option <!--[if $field eq $restrictiondatafield]-->selected="selected" <!--[/if]--> value="<!--[$field]-->" ><!--[$field]--></option>
+        <!--[/foreach]-->
+    </select>
+  </td>
+</tr>
+<tr>
+  <td>
+    <label for="pnprofile_restrictiondatafieldvalue"><!--[pnml name="_MYPROFILERESTRICTIONDATAFIELDVALUE"]--></label>
+  </td>
+  <td>
+    <input id="pnprofile_restrictiondatafieldvalue" type="text" name="restrictiondatafieldvalue" value="<!--[$restrictiondatafieldvalue|pnvarprephtmldisplay]-->" />
+  </td>
+</tr>
+
