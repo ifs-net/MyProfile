@@ -342,7 +342,51 @@ function MyProfile_userapi_getNewbies($args)
                          	'compare_field_table' =>  'id',				// regular table column that should be equal to
                          	'compare_field_join'  =>  'uid');			// ...the table in join_table
 
-    return DBUtil::selectExpandedObjectArray('myprofile',$joinInfo,$where,'id DESC');
+    return DBUtil::selectExpandedObjectArray('myprofile',$joinInfo,$where,'id DESC',$numitems);
   	
+}
+
+/**
+ * get online users
+ *
+ * This function returns users that are online
+ *
+ * @param $args['idletime']	int		idle time	(otherwise zikula default value is taken)
+ * @param $args['orderby']	string	identifier(s)
+ * @return array
+ */
+function MyProfile_userapi_getOnline($args)
+{
+  	$idletime = $args['idletime'];
+  	if (!isset($idletime) || (!($idletime > 0))) $idletime = (pnConfigGetVar('secinactivemins') * 60);
+  	$orderby = $args['orderby'];
+
+	// join information to retrieve the users username also
+	$joinInfo[] = array (	'join_table'          =>  'users',			// table for the join
+							'join_field'          =>  'uname',			// field in the join table that should be in the result with
+                         	'object_field_name'   =>  'uname',			// ...this name for the new column
+                         	'compare_field_table' =>  'id',				// regular table column that should be equal to
+                         	'compare_field_join'  =>  'uid');			// ...the table in join_table
+
+	// join information because we need the join to the sessions table
+	$joinInfo[] = array (	'join_table'          =>  'session_info',	// table for the join
+							'join_field'          =>  'lastused',			// field in the join table that should be in the result with
+                         	'object_field_name'   =>  'session_uid',	// ...this name for the new column
+                         	'compare_field_table' =>  'id',				// regular table column that should be equal to
+                         	'compare_field_join'  =>  'uid');			// ...the table in join_table
+
+    $tables 		=& pnDBGetTables();
+    $sess_column 	= &$tables['session_info_column'];
+    $where = $sess_column['lastused']." > '".date("Y-m-d H:i:s",(time()-$idletime))."'";
+    $res = DBUtil::selectExpandedObjectArray('myprofile',$joinInfo,$where,$orderby);
+    // we just want every user once in the table (disctinct is not possible here or I am too stupid...)
+    $in = array();
+    $result = array();
+    foreach ($res as $r) {
+		$uid = $r['id'];
+		if (!isset($in[$uid]) || ($in[$uid] != 1)) $result[] = $r;
+		$in[$uid] = 1;
+	}
+    return $result;
 }
 ?>
