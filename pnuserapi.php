@@ -303,7 +303,10 @@ function MyProfile_userapi_getBirthdays($args)
     
     // some checks
     if (!isset($datedatafield)) return null;
-    if (isset($restrictiondatafield) && isset($restrictiondatafieldvalue)) {
+    if (
+		isset($restrictiondatafield) && isset($restrictiondatafieldvalue) &&
+		(strlen($restrictiondatafield)>0) && (strlen($restrictiondatafieldvalue))
+		) {
 	  	// construct where part for sql query
 	  	$where = 'MyProfile_'.$restrictiondatafield.' = '.$restrictiondatafieldvalue.' AND ';
 	}
