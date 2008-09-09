@@ -1,0 +1,13 @@
+<!--[if $items|@count gt 0]-->
+<div style="text-align: left; margin-top: 1em; line-height: 1.3em; font-size: 9px;">
+
+<strong><!--[pnml name="_MYPROFILEBIRTHDAYS"]--></strong>
+<small>
+<!--[foreach from=$items item="item"]-->
+    <!--[$item.uname|userprofilelink]-->,
+<!--[/foreach]-->
+</small>
+
+<strong><!--[pnml name="_MYPROFILEHAPPYBIRTHDAY"]--></strong>
+</div>
+<!--[/if]-->
