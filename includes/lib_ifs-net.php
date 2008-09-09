@@ -1,7 +1,7 @@
 <?php
 /**
  * @package      iFS-net.de modules -- common function library
- * @version      $Id $
+ * @version      $Id$
  * @author       Florian Schießl
  * @link         http://www.ifs-net.de
  * @copyright    Copyright (C) 2008
