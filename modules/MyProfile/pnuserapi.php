@@ -319,4 +319,27 @@ function MyProfile_userapi_getBirthdays($args)
 
     return DBUtil::selectExpandedObjectArray('myprofile',$joinInfo,$where);
 }
+
+/**
+ * get latest registrations
+ *
+ * This function returns the latest registrations
+ *
+ * @param $args['numitems']	int	number of new members to fetch, 20 = default
+ * @return array
+ */
+function MyProfile_userapi_getNewbies($args)
+{
+  	$numitems = $args['numitems'];
+  	if (!isset($numitems) || (!($numitems > 0))) $numitems = 20;
+
+	$joinInfo[] = array (	'join_table'          =>  'users',			// table for the join
+							'join_field'          =>  'uname',			// field in the join table that should be in the result with
+                         	'object_field_name'   =>  'uname',			// ...this name for the new column
+                         	'compare_field_table' =>  'id',				// regular table column that should be equal to
+                         	'compare_field_join'  =>  'uid');			// ...the table in join_table
+
+    return DBUtil::selectExpandedObjectArray('myprofile',$joinInfo,$where,'id DESC');
+  	
+}
 ?>
