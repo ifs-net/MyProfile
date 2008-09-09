@@ -106,7 +106,7 @@ function MyProfile_newbiesblock_update($blockinfo)
     $blockinfo['content'] = pnBlockVarsToContent($vars);
 
     // clear the block cache
-    $pnRender = pnRender::getInstnace('MyProfile');
+    $pnRender = pnRender::getInstance('MyProfile');
     $pnRender->clear_cache('myprofile_block_newbies.htm');
 	
     return $blockinfo;
