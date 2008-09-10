@@ -49,10 +49,10 @@ function MyProfile_onlineblock_display($blockinfo)
     $vars = pnBlockVarsFromContent($blockinfo['content']);
 
     // Create output object
-    $pnRender =& new pnRender('MyProfile');
+    $pnRender = pnRender::getInstance('MyProfile');
 
     $pnRender->caching = true;
-    $pnRender->cache_lifetime = 20;
+    $pnRender->cache_lifetime = 30;
 		
     // Populate block info and pass to theme
     $blockinfo['content'] = $pnRender->fetch('myprofile_block_online.htm');

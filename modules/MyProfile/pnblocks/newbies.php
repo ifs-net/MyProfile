@@ -49,6 +49,9 @@ function MyProfile_newbiesblock_display($blockinfo)
     // Create output object
     $pnRender =  pnRender::getInstance('MyProfile');
 	
+    $pnRender->caching = true;
+    $pnRender->cache_lifetime = 3600; // cache for 1 hour
+
     $items=pnModAPIFunc('MyProfile','user','getNewbies',array('numitems'=>$numitems));
     $pnRender->assign('items', $items);
     // Populate block info and pass to theme
