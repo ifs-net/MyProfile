@@ -320,7 +320,7 @@ function MyProfile_userapi_getBirthdays($args)
                          	'compare_field_table' =>  'id',				// regular table column that should be equal to
                          	'compare_field_join'  =>  'uid');			// ...the table in join_table
 
-    return DBUtil::selectExpandedObjectArray('myprofile',$joinInfo,$where);
+    return DBUtil::selectExpandedObjectArray('myprofile',$joinInfo,$where,'',0,150);
 }
 
 /**
@@ -342,7 +342,7 @@ function MyProfile_userapi_getNewbies($args)
                          	'compare_field_table' =>  'id',				// regular table column that should be equal to
                          	'compare_field_join'  =>  'uid');			// ...the table in join_table
 
-    return DBUtil::selectExpandedObjectArray('myprofile',$joinInfo,$where,'id DESC',$numitems);
+    return DBUtil::selectExpandedObjectArray('myprofile',$joinInfo,$where,'id DESC',0,$numitems);
   	
 }
 
