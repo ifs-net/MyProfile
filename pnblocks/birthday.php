@@ -90,7 +90,13 @@ function MyProfile_birthdayblock_modify($blockinfo)
     $pnRender = pnRender::getInstance('MyProfile');
 
     // As Admin output changes often, we do not want caching.
-    $pnRender->caching = false;
+    if (date("H",time()) > 23 ) {
+	    $pnRender->caching = false;
+	}
+	else {
+	    $pnRender->caching = true;
+	    $pnRender->cache_lifetime = 3500;  
+	}
 
 	// get fields
 	$fields = pnModAPIFunc('MyProfile','admin','getFields');
