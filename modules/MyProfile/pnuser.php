@@ -134,8 +134,35 @@ function MyProfile_user_display()
 	$uid		= (int)FormUtil::getPassedValue('uid');
 	$viewer_uid	= pnUserGetVar('uid');
 	$uname		= FormUtil::getPassedValue('uname');
-	if (isset($uname) && (pnUserGetIDFromName($uname) > 1)) return pnRedirect(pnModURL('MyProfile','user','display',array('uid' => pnUserGetIDFromName($uname))));
-	$render->assign('profile',pnModAPIFunc('MyProfile','user','getProfile',array('uid'=>$uid, 'uname'=>$uname)));
+	// redirect to the MyProfile display page with user id as parameter to acoid trouble with any mis-spelled usernames or special characters
+	// but only if uid is not submitted.
+	if (isset($uname)) {
+		if (pnUserGetIDFromName($uname) > 1) {
+			return pnRedirect(pnModURL('MyProfile','user','display',array('uid' => pnUserGetIDFromName($uname))));
+		}
+		else {
+		  	// maybe the username has to be decoded due to some special characters...
+		  	$last = FormUtil::getPassedValue('last');
+		  	if (isset($last) && ($last == 1)) return pnRedirect(pnModURL('MyProfile','user','display'));
+		  	else return pnRedirect(pnModURL('MyProfile','user','display',array('uname' => html_entity_decode($uname), 'last' => 1)));
+		}
+	}
+	
+	// We only reach this point if there is no uname parameter. Now we have to get the username for the profile
+	// Guests are not allowed to have a profile page ;-)
+	
+	// get profile
+	$uname = pnUserGetVar('uname', $uid);
+	if ($uid > 1) $profile = pnModAPIFunc('MyProfile','user','getProfile',array('uid'=>$uid, 'uname'=>$uname));
+	if (	!isset($uname) 			||
+			!(strlen($uname) > 0) 	||
+			!($uid > 1) )	{
+		// assign invalid user or user not found template
+		$render = pnRender::getInstance('MyProfile');
+		return $render->fetch('myprofile_user_display_invalid.htm');
+	}
+	
+	$render->assign('profile',$profile);
 
 	// assign user name and uid
 	if (isset($uid) && ($uid > 1)) $uname = pnUserGetVar('uname',$uid);
