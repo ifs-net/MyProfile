@@ -22,7 +22,9 @@ function MyProfile_userapi_getProfile($args)
   	if (isset($uname)) $uid = pnUserGetIDFromName($uname);
  	else $uid = (int) $args['uid'];
   	// then check for user id
-	$data = DBUtil::selectObjectByID('myprofile', $uid);	
+  	if (!($uid > 1)) return null;
+  	// get profile
+	$data = DBUtil::selectObjectByID('myprofile', (int)$uid);
 	if (!(count($data)>0)) return false;
 	
 	// now combine with the fields
@@ -31,9 +33,9 @@ function MyProfile_userapi_getProfile($args)
 	// 0 = visible for guests 
 	// 1 = visible for logged in users
 	// 2 = visible for administrators only
-	if (!pnUserLoggedIn()) $mystatus=0;	// guest
-	else if (SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_ADMIN)) $mystatus=2; // admin
-	else $mystatus=1; // registered users
+	if (!pnUserLoggedIn()) 														$mystatus = 0;	// guest
+	else if (SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_ADMIN)) 	$mystatus = 2;	// admin
+	else 																		$mystatus = 1;	// registered users
 	foreach ($fields as $field) {
 		$field['value'] = $data[$field['identifier']];
 		if (($field['public_status'] > $mystatus) && ($field['value']!="")) {

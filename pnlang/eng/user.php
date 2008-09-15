@@ -40,6 +40,10 @@ define('_MYPROFILE_USERPICTURES_PICTURES',		'picture(s)');
 define('_MYPROFILE_USERPICTURES_LINKEDIN',		'User linked at');
 define('_MYPROFILE_USERPICTURES_EXTERNAL',		'external');
 define('_MYPROFILE_USERPICTURES_THEREFROM',		'therefrom');
+// display invaid
+define('_MYPROFILEPROFILENOTFOUND',			'This profile page cannot be displayed');
+define('_USERPICTURESINVALIDEXPLANATION',	'The user does not exist or there is no vaid profile available for this user yet.');
+define('_USERPICTURESBACKTOLASTPAGE',		'Go back one page');
 
 // settings
 define('_MYPROFILEYOURSETTINGS',		'Here you can define some custom settings for your profile');

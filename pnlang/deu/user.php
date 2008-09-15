@@ -40,6 +40,10 @@ define('_MYPROFILE_USERPICTURES_PICTURES',	'Bild(er)');
 define('_MYPROFILE_USERPICTURES_LINKEDIN',	'Benutzer verknüpft auf');
 define('_MYPROFILE_USERPICTURES_EXTERNAL',	'extern');
 define('_MYPROFILE_USERPICTURES_THEREFROM',	'davon');
+// display invaid
+define('_MYPROFILEPROFILENOTFOUND',			'Benutzerprofil kann nicht angezeigt werden');
+define('_USERPICTURESINVALIDEXPLANATION',	'Der Benutzer existiert nicht oder hat (noch) kein gültiges, vollständiges Profil angelegt.');
+define('_USERPICTURESBACKTOLASTPAGE',		'Zurück zur letzten Seite.');
 
 // settings
 define('_MYPROFILEYOURSETTINGS',	'Hier können einige Einstellungen für Dein Profil festgelegt werden');
