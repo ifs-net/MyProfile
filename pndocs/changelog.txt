@@ -1,6 +1,7 @@
 
 new in 1.1
 ==========
+- [quan]	improved the migration routint to import pnProfile data
 - [quan]	added #29: user's can choose the group that should be allowed 
 			to view the own profile page (all, members, friends)
 - [quan]	added block: show today's birthdays
