@@ -29,6 +29,8 @@ define('_MYPROFILEDONATETHIS',		'Spende per PayPal!');
 define('_MYPROFILEDONATE',		'Du magst dieses Modul und es nützt Dir? Dann wäre Dir der Programmierer für eine kleine Spende sehr dankbar! Na klar - ich programmiere sehr gerne und das Modul ist natürlich kostenlos und Open-Source - aber wenn Du etwas springen lässt, dann könnte ich meine Freundin zum Abendessen ausführen und es wird das nächste mal viel leichter sein, zum Programmieren frei zu bekommen ;-)');
 
 // mainsettings
+define('_MYPROFILEUSERPERMISSIONS',	'Benutzerrechte');
+define('_MYPROFILEALLOWINDIVIDUALVIEWPERMISSIONS',	'Erlaube es jedem Benutzer selbst zu bestimmen, wer sein Gesamtprofil sehen darf');
 define('_MYPROFILEGLOBALETTINGS',	'Allgemeine Modul-Einstellungen');
 define('_MYPROFILEASATTRIBUTES',	'Profil auch als Attribut des Benutzer-Objekts speichern');
 define('_MYPROFILEATTRIBUTEUSAGE',	'Ein Benutzer-Profil kann als $myprofile.youridentifier mit diesem Code verwendet werden');

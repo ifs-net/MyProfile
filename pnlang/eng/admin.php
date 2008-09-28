@@ -29,6 +29,8 @@ define('_MYPROFILEDONATETHIS',				'Donate with PayPal!');
 define('_MYPROFILEDONATE',					'You like this module and it is usefull for you? Thank you for some little donation for the programmer! OK - I like programming very much and this module is free and open source - but if you spend some money I\'ll go out for a nice candlelight dinner with my girlfriend and it will be much easier next time to get free time for programming ;-)');
 
 // mainsettings
+define('_MYPROFILEUSERPERMISSIONS',	'User\'s permissions');
+define('_MYPROFILEALLOWINDIVIDUALVIEWPERMISSIONS',	'Allow users to set individual permissions who can see their profile page');
 define('_MYPROFILEGLOBALETTINGS',			'General module settings');
 define('_MYPROFILEASATTRIBUTES',			'Also store profile as a user object attribute');
 define('_MYPROFILEATTRIBUTEUSAGE',			'You can access a user\'s profile as $myprofile.youridentifier with this code');

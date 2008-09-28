@@ -80,6 +80,14 @@ class MyProfile_user_SettingsHandler
 			// get settings
 			$data = pnModAPIFunc('MyProfile','user','getSettings',array('uid'=>$this->id));
 			$render->assign($data);
+			// individual permission settings
+			$render->assign('individualpermissions',	pnModGetVar('MyProfile','individualpermissions'));
+			$items_individualpermissions = array (
+					array('text' => _MYPROFILEALL, 		'value' => 0),
+					array('text' => _MYPROFILEMEMBERS, 	'value' => 1)
+				);
+			if (pnModAvailable('ContactList')) $items_individualpermissions[] = array('text' => _MYPROFILEBUDDIES, 	'value' => 2);
+			$render->assign('items_individualpermissions', $items_individualpermissions);
 		}
 		return true;
     }
@@ -95,8 +103,9 @@ class MyProfile_user_SettingsHandler
 
 	      	$obj['id']=$this->id;
 			$result = pnModAPIFunc('MyProfile','user','setSettings',array(
-					'uid'			=> $obj['id'],
-					'nocomments' 	=> $obj['nocomments']
+					'uid'					=> $obj['id'],
+					'nocomments' 			=> $obj['nocomments'],
+					'individualpermission' 	=> $obj['individualpermission']
 					)
 				);
 	      	if ($result) LogUtil::registerStatus(_MYPROFILESETTINGSUPDATED);

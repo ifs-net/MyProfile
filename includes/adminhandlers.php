@@ -70,14 +70,15 @@ class MyProfile_admin_settingsHandler
 {
     function initialize(&$render)
     {
-	  	$data['notabs'] 		= pnModGetVar('MyProfile','notabs');
-	  	$data['plugin_noajax'] 	= pnModGetVar('MyProfile','plugin_noajax');
-	  	$data['validuntil'] 	= pnModGetVar('MyProfile','validuntil');
-	  	$data['asattributes']	= pnModGetVar('MyProfile','asattributes');
-	  	$data['dateformat'] 	= pnModGetVar('MyProfile','dateformat');
-	  	$data['noverification']	= pnModGetVar('MyProfile','noverification');
-	  	$data['requestban'] 	= pnModGetVar('MyProfile','requestban');
-	  	$data['expiredays'] 	= pnModGetVar('MyProfile','expiredays');
+	  	$data['notabs'] 				= pnModGetVar('MyProfile','notabs');
+	  	$data['individualpermissions'] 	= pnModGetVar('MyProfile','individualpermissions');
+	  	$data['plugin_noajax'] 			= pnModGetVar('MyProfile','plugin_noajax');
+	  	$data['validuntil'] 			= pnModGetVar('MyProfile','validuntil');
+	  	$data['asattributes']			= pnModGetVar('MyProfile','asattributes');
+	  	$data['dateformat'] 			= pnModGetVar('MyProfile','dateformat');
+	  	$data['noverification']			= pnModGetVar('MyProfile','noverification');
+	  	$data['requestban'] 			= pnModGetVar('MyProfile','requestban');
+	  	$data['expiredays'] 			= pnModGetVar('MyProfile','expiredays');
 	  	$render->assign($data);
 		return true;
     }

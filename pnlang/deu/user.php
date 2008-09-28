@@ -29,6 +29,8 @@ define('_MYPROFILEADDPROFILEFAILED',	'Profil-Erzeugung / -Aktualisierung fehlges
 define('_MYPROFILEATTRIBUTESTOREERROR',	'Aktualisieren / Erzeugen der Benutzer-Attribute fehlgeschlagen');
 
 // display
+define('_MYPROFILENOACCESS',			'Kein Zugriff auf dieses Profil möglich');
+define('_MYPROFILENOINDIVIDUALPERMISSION',	'Der Inhaber des Profils hat die Sichtbarkeit seines Profils so eingeschränkt, dass es für Dich leider nicht sichtbar ist.');
 define('_MYPROFILESENDPM',		'Private Nachricht senden');
 define('_MYPROFILEADDASBUDDY',		'Als Freund hinzufügen');
 define('_MYPROFILENOPERMISSION',	'nur für regisrierte Benutzer angezeigt');
@@ -47,6 +49,10 @@ define('_USERPICTURESINVALIDEXPLANATION',	'Der Benutzer existiert nicht oder hat
 define('_USERPICTURESBACKTOLASTPAGE',		'Zurück zur letzten Seite.');
 
 // settings
+define('_MYPROFILEMYPROFILEVISIBLEFOR',	'Meine Profilseite sollen sichtbar sein für');
+define('_MYPROFILEALL',					'alle');
+define('_MYPROFILEMEMBERS',				'alle Mitglieder');
+define('_MYPROFILEBUDDIES',				'bestätigte Kontakte');
 define('_MYPROFILEYOURSETTINGS',	'Hier können einige Einstellungen für Dein Profil festgelegt werden');
 define('_MYPROFILENOCOMMENTS',		'Anderen Benutzern nicht erlauben mein Profil zu kommentieren');
 define('_MYPROFILESETTINGSUPDATED',	'Einstellungen erfolgreich aktualisiert');
