@@ -14,6 +14,7 @@ define('_MYPROFILEMAINPROFILEDATA',		'main profile data');
 define('_MYPROFILEMAILANDPASSWORD',		'manage email address, password and extended settings');
 
 // main
+define('_MYPROFILEPROFILEOF',			'Profile of user');
 define('_MYPROFILEMYPROFILE',			'My profile');
 define('_MYPROFILESAVE',				'save / update');
 define('_MYPROFILEMYPROFILEDATA',		'Manage your community profile');

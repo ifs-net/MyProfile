@@ -14,6 +14,7 @@ define('_MYPROFILEMAINPROFILEDATA',	'Haupt-Profil-Daten');
 define('_MYPROFILEMAILANDPASSWORD',	'E-Mail-Adresse, Passwort und erweiterte Einstellungen bearbeiten');
 
 // main
+define('_MYPROFILEPROFILEOF',		'Profil von');
 define('_MYPROFILEMYPROFILE',		'Mein Profil');
 define('_MYPROFILESAVE',		'speichern / aktualisieren');
 define('_MYPROFILEMYPROFILEDATA',	'Organisiere Dein Gemeinschafts-Profil');
