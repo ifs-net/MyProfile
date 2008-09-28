@@ -312,32 +312,50 @@ function MyProfile_adminapi_import($args)
 					}
 				}
 				else if ($step == 4){
-	    	  	  	// truncate table - if a migration failes there might be content in a table
-	    	  	  	DBUtil::truncateTable('myprofile');
     				$fields = pnModAPIFunc('pnProfile','admin','getFields');
     				foreach ($fields as $field) {
 					  	$keys[]=$field['identifier'];
 					}
 					// now go on and get the transformed profile data
-					$pnProfileUsers = DBUtil::selectObjectArray('pnprofile');
-					$pnProfileArray = array ();
+					$pnProfileUsers = pnSessionGetVar('pnProfileUsers');
+					if (!is_array($pnProfileUsers) || (!count($pnProfileUsers) > 0)) {
+					  	$dummy = DBUtil::selectObjectArray('pnprofile');
+					  	$pnProfileUsers = array();
+					  	foreach ($dummy as $d) $pnProfileUsers[]=$d['uid'];
+					  	pnSessionSetVar('pnProfileUsers',$pnProfileUsers);
+		    	  	  	// truncate table - if a migration failed before there might be content in a table
+		    	  	  	DBUtil::truncateTable('myprofile');
+		    	  	  	print "session var gesetzt";
+		    	  	  	
+					}
+					// we will do exactly 500 for each step
 					$c=0;
-					foreach ($pnProfileUsers as $pnProfileUser) {
-					  	$profile = array();
-					  	$res = pnModAPIFunc('pnProfile','user','getProfile',array('uid' => $pnProfileUser['uid']));
+					while (is_array($pnProfileUsers) && (count($pnProfileUsers) > 0)) {
+					  	$pnProfileUser = (int)array_pop($pnProfileUsers);
+					  	// get profile
+					  	$res = pnModAPIFunc('pnProfile','user','getProfile',array('uid' => $pnProfileUser));
 					  	unset($newitem);
-					  	$newitem['id'] = $pnProfileUser['uid'];
+					  	$newitem['id'] = $pnProfileUser;
 					  	foreach ($keys as $key) {
 						    $newitem[$key] = $res[$key]['value'];
 						}
 						$newitems[]=$newitem;
 						$c++;
+						if ($c == 500) break;
 					}
 					// now insert object Array into myprofile table
 					$res = DBUtil::insertObjectArray($newitems,'myprofile',false,true);
-					// set step to finished...
-				  	pnModSetVar('MyProfile','pnProfileStep',5);
-					return LogUtil::registerStatus(_MYPROFILEIMPORTSUCCESSFULL.' '.$c.' '._MYPROFILEITEMSIMPORTES);
+					// update session variable
+				    pnSessionSetVar('pnProfileUsers',$pnProfileUsers);
+					// set step to finished... 
+				  	if (!is_array($pnProfileUsers) || (count($pnProfileUsers) == 0)) {
+						pnSessionDelVar('pnProfileUsers');
+					    pnModSetVar('MyProfile','pnProfileStep',5);
+						return LogUtil::registerStatus(_MYPROFILEIMPORTSUCCESSFULL.' '.$c.' '._MYPROFILEITEMSIMPORTES);
+					}
+				  	else {
+						return LogUtil::registerStatus(_MYPROFILEIMPORTSTEPSUCCESSFULL.' '.$c.' '._MYPROFILEITEMSIMPORTES.", "._MYPROFILEABOUT." ".(int)count($pnProfileUsers)." "._MYPROFILELEFT);
+					}
 				}
 			}
 			else return LogUtil::registerError(_MYPROFILEPNPROFILECONFUNREADABLE);
