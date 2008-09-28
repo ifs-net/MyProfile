@@ -29,6 +29,8 @@ define('_MYPROFILEADDPROFILEFAILED',	'Creating / Updating profile failed');
 define('_MYPROFILEATTRIBUTESTOREERROR',	'Updating / creating user attributes failed');
 
 // display
+define('_MYPROFILENOACCESS',			'Sorry, no authorisation');
+define('_MYPROFILENOINDIVIDUALPERMISSION',	'The main profile part is not accessible by you');
 define('_MYPROFILESENDPM',				'Send private message');
 define('_MYPROFILEADDASBUDDY',			'Add as buddy');
 define('_MYPROFILENOPERMISSION',		'not shown for unregistered users');
@@ -47,6 +49,10 @@ define('_USERPICTURESINVALIDEXPLANATION',	'The user does not exist or there is n
 define('_USERPICTURESBACKTOLASTPAGE',		'Go back one page');
 
 // settings
+define('_MYPROFILEMYPROFILEVISIBLEFOR',	'My profile page should be accessable by');
+define('_MYPROFILEALL',					'everybody');
+define('_MYPROFILEMEMBERS',				'all members');
+define('_MYPROFILEBUDDIES',				'confirmed buddies');
 define('_MYPROFILEYOURSETTINGS',		'Here you can define some custom settings for your profile');
 define('_MYPROFILENOCOMMENTS',			'Do not allow other users to comment my profile');
 define('_MYPROFILESETTINGSUPDATED',		'Settings updated successfully');

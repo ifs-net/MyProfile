@@ -19,22 +19,24 @@ function MyProfile_init()
   	if (!DBUtil::createTable('myprofile_fields')) return false;
 
     // Module Variables
-    $asattributes	= pnSessionGetVar('myprofile_asattributes');
-    $notabs 		= pnSessionGetVar('myprofile_notabs');
-    $plugin_noajax	= pnSessionGetVar('myprofile_plugin_noajax');
-    $validuntil 	= pnSessionGetVar('myprofile_validuntil');
-    $dateformat 	= pnSessionGetVar('myprofile_dateformat');
-    $noverification	= pnSessionGetVar('myprofile_noverification');
-    $requestban 	= pnSessionGetVar('myprofile_requestban');
-    $expiredays 	= pnSessionGetVar('myprofile_expiredays');
-    pnModSetVar('MyProfile', 'notabs', 			(($notabs<>false) ? $notabs : ''));	
-    pnModSetVar('MyProfile', 'plugin_noajax',	(($plugin_noajax<>false) ? $plugin_noajax : ''));	
-    pnModSetVar('MyProfile', 'validuntil', 		(($validuntil<>false) ? $validuntil : 0));	
-    pnModSetVar('MyProfile', 'asattributes',	(($asattributes<>false) ? $asattributes : 0));	
-    pnModSetVar('MyProfile', 'dateformat', 		(($dateformat<>false) ? $dateformat : '%d.%m.%Y'));	
-    pnModSetVar('MyProfile', 'noverification', 	(($noverification<>false) ? $noverification : ''));	
-    pnModSetVar('MyProfile', 'requestban', 		(($requestban<>false) ? $requestban : 7));	
-    pnModSetVar('MyProfile', 'expiredays', 		(($expiredays<>false) ? $expiredays : 70));	
+    $asattributes			= pnSessionGetVar('myprofile_asattributes');
+    $notabs 				= pnSessionGetVar('myprofile_notabs');
+    $plugin_noajax			= pnSessionGetVar('myprofile_plugin_noajax');
+    $validuntil 			= pnSessionGetVar('myprofile_validuntil');
+    $dateformat 			= pnSessionGetVar('myprofile_dateformat');
+    $noverification			= pnSessionGetVar('myprofile_noverification');
+    $requestban 			= pnSessionGetVar('myprofile_requestban');
+    $expiredays 			= pnSessionGetVar('myprofile_expiredays');
+    $individualpermissions 	= pnSessionGetVar('myprofile_individualpermissions');
+    pnModSetVar('MyProfile', 'notabs', 					(($notabs<>false) ? $notabs : ''));	
+    pnModSetVar('MyProfile', 'plugin_noajax',			(($plugin_noajax<>false) ? $plugin_noajax : ''));	
+    pnModSetVar('MyProfile', 'validuntil', 				(($validuntil<>false) ? $validuntil : 0));	
+    pnModSetVar('MyProfile', 'asattributes',			(($asattributes<>false) ? $asattributes : 0));	
+    pnModSetVar('MyProfile', 'dateformat', 				(($dateformat<>false) ? $dateformat : '%d.%m.%Y'));	
+    pnModSetVar('MyProfile', 'noverification', 			(($noverification<>false) ? $noverification : ''));	
+    pnModSetVar('MyProfile', 'requestban', 				(($requestban<>false) ? $requestban : 7));	
+    pnModSetVar('MyProfile', 'expiredays', 				(($expiredays<>false) ? $expiredays : 70));	
+    pnModSetVar('MyProfile', 'individualpermissions',	(($individualpermissions<>false) ? $individualpermissions : 0));	
 
     // clean up
     pnSessionDelVar('myprofile_asattributes');
@@ -45,6 +47,7 @@ function MyProfile_init()
     pnSessionDelVar('myprofile_noverification');
     pnSessionDelVar('myprofile_requestban');
     pnSessionDelVar('myprofile_expiredays');
+    pnSessionDelVar('myprofile_individualpermissions');
 			
     // delete old config file if there is one
     $configfile = 'modules/MyProfile/config/tabledef.inc';
@@ -77,6 +80,12 @@ function MyProfile_delete()
 
 function MyProfile_upgrade($oldversion)
 {
+   switch($oldversion) {
+    case '1.0':
+    	// introduce individualpermission module variable
+    	pnModSetVar('MyProfile','individualpermissions',0);
+    	break;
+    default:
     return true;
 }
 ?>

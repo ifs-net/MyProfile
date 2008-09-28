@@ -27,6 +27,24 @@ function MyProfile_myprofileapi_tab ($args)
 	$profile		= pnModAPIFunc('MyProfile','user','getProfile',array('uid'=>$uid, 'uname'=>$uname));
 	$render->assign('profile',$profile);
 
+	// check for individual user permission settings
+	$individualpermissions = pnModGetVar('MyProfile', 'individualpermissions');
+	if ($individualpermissions == 1) {
+		// get user's settings
+		$settings = pnModAPIFunc('MyProfile','user','getSettings',array('uid' => $uid));
+		$individualpermission = (int)$settings['individualpermission'];
+		// 0 = everybody, 1 = members, 2 = buddies only
+		if ( 	($individualpermission == 1) && 
+				(!pnUserLoggedIn())
+					||
+				(($individualpermission == 2) && 
+				pnModAvailable('ContactList') && 
+				!pnModAPIFunc('ContactList','user','isBuddy',array('uid1' => $uid, 'uid2' => pnUserGetVar('uid')))) 	) {
+			return $render->fetch('myprofile_myprofile_tab_noaccess.htm');
+		}
+		
+	}
+
 	// assign user name and uid
 	if (isset($uid) && ($uid > 1)) $uname = pnUserGetVar('uname',$uid);
 	else $uname = pnUserGetIDFromName($uid);
