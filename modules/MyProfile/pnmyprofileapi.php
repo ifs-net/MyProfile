@@ -34,12 +34,19 @@ function MyProfile_myprofileapi_tab ($args)
 		$settings = pnModAPIFunc('MyProfile','user','getSettings',array('uid' => $uid));
 		$individualpermission = (int)$settings['individualpermission'];
 		// 0 = everybody, 1 = members, 2 = buddies only
-		if ( 	($individualpermission == 1) && 
+		if ( 	(
+				($individualpermission == 1) && 
 				(!pnUserLoggedIn())
 					||
 				(($individualpermission == 2) && 
 				pnModAvailable('ContactList') && 
-				!pnModAPIFunc('ContactList','user','isBuddy',array('uid1' => $uid, 'uid2' => pnUserGetVar('uid')))) 	) {
+				!pnModAPIFunc('ContactList','user','isBuddy',array('uid1' => $uid, 'uid2' => pnUserGetVar('uid'))))
+				)
+				
+				&&
+				
+				($uid != $viewer_uid)
+				 	) {
 			return $render->fetch('myprofile_myprofile_tab_noaccess.htm');
 		}
 		
