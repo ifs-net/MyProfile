@@ -14,22 +14,34 @@
 <!--[pnformdropdownlist id="individualpermission" items=$items_individualpermissions]--><br /><br />
 
 <!--[if $fields|@count gt 0]-->
-	<!--[pnformlabel for="individualtemplate" text="_MYPROFILEMYPROFILEMYTEMPLATE"]--><br />
-	<!--[pnformtextinput id="individualtemplate" textMode="multiLine" rows="8" cols="50"]--><br />
-	<div id="mih_link">
-		<a onclick="javascript:$('mih').removeClassName('pn-hide');$('mih_link').toggle();" href="#mih"><!--[pnml name="_MYPROFILEINDIVIDUALTEMPLATEHINTS"]--></a>
+	<!--[if $individualtemplate eq ""]-->
+		<div id="mit_link"><a onclick="javascript:$('mit').show();$('mit_link').hide();" href="#mit"><!--[pnformlabel for="individualtemplate" text="_MYPROFILEMYPROFILEMYTEMPLATE"]--></a><br /></a></div>
+	<!--[/if]-->
+	<div id="mit" >
+		<a name="mit"></a>
+		<!--[pnformlabel for="individualtemplate" text="_MYPROFILEMYPROFILEMYTEMPLATE"]--><br />
+		<!--[pnformtextinput id="individualtemplate" textMode="multiLine" rows="8" cols="50"]--><br />
+		<div id="mih_link">
+			<a onclick="javascript:$('mih').show();$('mih_link').hide();" href="#mit"><!--[pnml name="_MYPROFILEINDIVIDUALTEMPLATEHINTS"]--></a>
+		</div>
+		<div id="mih">
+			<a name="mih"></a>
+			<fieldset><legend><!--[pnml name="_MYPROFILETEMPALTEUSEWHATYOUWANT"]--></legend>
+			<!--[pnml name="_MYPROFILETEMPALTEVARREPLACEMENTS"]-->:<br />
+			<ul>
+			<!--[foreach from=$fields item="field"]-->
+				<li><strong>§<!--[$field.identifier]-->§</strong> <!--[pnml name="_MYPROFILEWILLBEREPLACEDWITH"]--> <!--[$field.description]--></li>
+			<!--[/foreach]-->
+			</ul>
+			</fieldset>
+		</div>
 	</div>
-	<div id="mih" class="pn-hide">
-		<a name="mih"></a>
-		<fieldset><legend><!--[pnml name="_MYPROFILETEMPALTEUSEWHATYOUWANT"]--></legend>
-		<!--[pnml name="_MYPROFILETEMPALTEVARREPLACEMENTS"]-->:<br />
-		<ul>
-		<!--[foreach from=$fields item="field"]-->
-			<li><strong>§<!--[$field.identifier]-->§</strong> <!--[pnml name="_MYPROFILEWILLBEREPLACEDWITH"]--> <!--[$field.description]--></li>
-		<!--[/foreach]-->
-		</ul>
-		</fieldset>
-	</div>
+	<script type="text/javascript">
+		<!--[if $individualtemplate eq ""]-->
+			$('mit').hide();
+		<!--[/if]-->
+		$('mih').hide();
+	</script>
 	<br /><br />
 <!--[/if]-->
 </div>
