@@ -18,7 +18,7 @@ define('_MYPROFILEIMPORTFUNCS',		'Import');
 
 //main
 define('_MYPROFILEBACKEND',		'MyProfile Backend-Konfiguration');
-define('_MYPROFILEBACKENDDESCR',	'Willkommen bei MyProfile - dem fortschrittlichen zikula ProfilModul!');
+define('_MYPROFILEBACKENDDESCR',	'Willkommen bei MyProfile - dem erweiterten zikula Profilmodul!');
 define('_MYPROFILEEDITPROFILE',		'Profil ändern');
 define('_MYPROFILEDIRECTPROFILEEDIT',	'Ein Benutzerprofil kann direkt durch Eingabe');
 define('_MYPROFILEEDITUNAME',		'des Benutzernamen');
