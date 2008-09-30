@@ -52,6 +52,27 @@ function MyProfile_myprofileapi_tab ($args)
 		
 	}
 
+	// now we shall do a check if individual template are allowed or not and if they are allowed use the template if there is one
+	$individualtemplates = (int)pnModGetVar('MyProfile','individualtemplates');
+	$render->assign('individualtemplates', $individualtemplates);
+	if ($individualtemplates == 1) {
+		// individual templating allowed; get user's template
+		$uservars = pnUserGetVar('__ATTRIBUTES__',$uid);
+		$template = $uservars['myprofile_individualtemplate'];
+		if (isset($template) && (strlen($template) > 0)) {
+			$toreplace1 = array();
+			$toreplace2 = array();
+			foreach ($profile as $data) {
+			  	if ($data['fieldtype'] != 'SEPARATOR') {
+					$toreplace1[] = '§'.$data['identifier'].'§';
+					$toreplace2[] = $data['value'];
+				}
+			}
+		  	$individualtemplate_content = str_replace($toreplace1,$toreplace2,$template);
+		  	$render->assign('individualtemplate_content',$individualtemplate_content);
+		}
+	}
+
 	// assign user name and uid
 	if (isset($uid) && ($uid > 1)) $uname = pnUserGetVar('uname',$uid);
 	else $uname = pnUserGetIDFromName($uid);

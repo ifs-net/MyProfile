@@ -29,6 +29,7 @@ define('_MYPROFILEDONATETHIS',		'Spende per PayPal!');
 define('_MYPROFILEDONATE',		'Du magst dieses Modul und es nützt Dir? Dann wäre Dir der Programmierer für eine kleine Spende sehr dankbar! Na klar - ich programmiere sehr gerne und das Modul ist natürlich kostenlos und Open-Source - aber wenn Du etwas springen lässt, dann könnte ich meine Freundin zum Abendessen ausführen und es wird das nächste mal viel leichter sein, zum Programmieren frei zu bekommen ;-)');
 
 // mainsettings
+define('_MYPROFILEALLOWINDIVIDUALTEMPLATES',	'Benutzern das Hochladen eigener Profil-Vorlagen gestatten (Siehe Dokumentation, wenn dies auf einige Zikula-Gruppen beschränkt sein soll)');
 define('_MYPROFILEUSERPERMISSIONS',	'Benutzerrechte');
 define('_MYPROFILEALLOWINDIVIDUALVIEWPERMISSIONS',	'Erlaube es jedem Benutzer selbst zu bestimmen, wer sein Gesamtprofil sehen darf');
 define('_MYPROFILEGLOBALETTINGS',	'Allgemeine Modul-Einstellungen');

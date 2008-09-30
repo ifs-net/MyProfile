@@ -37,6 +37,7 @@ function MyProfile_init()
     pnModSetVar('MyProfile', 'requestban', 				(($requestban<>false) ? $requestban : 7));	
     pnModSetVar('MyProfile', 'expiredays', 				(($expiredays<>false) ? $expiredays : 70));	
     pnModSetVar('MyProfile', 'individualpermissions',	(($individualpermissions<>false) ? $individualpermissions : 0));	
+    pnModSetVar('MyProfile', 'individualtemplates',	(($individualtemplates<>false) ? $individualtemplates : 0));	
 
     // clean up
     pnSessionDelVar('myprofile_asattributes');
@@ -48,6 +49,7 @@ function MyProfile_init()
     pnSessionDelVar('myprofile_requestban');
     pnSessionDelVar('myprofile_expiredays');
     pnSessionDelVar('myprofile_individualpermissions');
+    pnSessionDelVar('myprofile_individualtemplates');
 			
     // delete old config file if there is one
     $configfile = 'modules/MyProfile/config/tabledef.inc';
@@ -83,7 +85,8 @@ function MyProfile_upgrade($oldversion)
    switch($oldversion) {
     case '1.0':
     	// introduce individualpermission module variable
-    	pnModSetVar('MyProfile','individualpermissions',0);
+    	pnModSetVar('MyProfile',	'individualpermissions'	,0);
+    	pnModSetVar('MyProfile',	'individualtemplates'	,0);
     	break;
     default:
     return true;

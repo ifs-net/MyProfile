@@ -49,6 +49,11 @@ define('_USERPICTURESINVALIDEXPLANATION',	'Der Benutzer existiert nicht oder hat
 define('_USERPICTURESBACKTOLASTPAGE',		'Zurück zur letzten Seite.');
 
 // settings
+define('_MYPROFILEINDIVIDUALTEMPLATEHINTS',	'Hinweise zur Nutzung eingener individueller Vorlagen');
+define('_MYPROFILEMYPROFILEMYTEMPLATE',		'Individuelle Vorlage zur Darstellung des eigenen Profils nutzen');
+define('_MYPROFILEWILLBEREPLACEDWITH',		'wird ersetzt werden durch');
+define('_MYPROFILETEMPALTEUSEWHATYOUWANT',	'Die eigene Profilseite kann frei in HTML gestaltet werden');
+define('_MYPROFILETEMPALTEVARREPLACEMENTS',	'Das Verwenden von volgenden fettgedruckten Zeichen führt dazu, dass diese in der Profilausgabe durch die gespeicherten Profildaten ersetzt werden; mit Stern markierte Profildaten müssen im Template vorkommen');
 define('_MYPROFILEMYPROFILEVISIBLEFOR',	'Meine Profilseite sollen sichtbar sein für');
 define('_MYPROFILEALL',					'alle');
 define('_MYPROFILEMEMBERS',				'alle Mitglieder');

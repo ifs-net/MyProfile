@@ -97,11 +97,18 @@ function MyProfile_user_settings()
 		
 	// Create output and assign data
 	$render = FormUtil::newpnForm('MyProfile');
+
+	// fields needed for individual templating
+	$individualtemplates = (int)pnModGetVar('MyProfile','individualtemplates');
+	if ($individualtemplates == 1) {
+		$fields = pnModAPIFunc('MyProfile','admin','getIndividualTemplateFields');
+		$render->assign('fields', $fields);
+	}
 	
 	// should just password or email management be shown?
 	$mode = strtolower(FormUtil::getPassedValue('mode'));
-	$render->assign('mode',$mode);
-	$render->assign('noverification',pnModGetVar('MyProfile','noverification'));
+	$render->assign('mode', $mode);
+	$render->assign('noverification', pnModGetVar('MyProfile','noverification'));
 
     // Return the output
     return $render->pnFormExecute('myprofile_user_settings.htm', new MyProfile_user_SettingsHandler());

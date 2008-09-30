@@ -108,7 +108,8 @@ function MyProfile_userapi_getSettings($args)
     				'id'					=> $uid,
 					'nocomments' 			=> $user['__ATTRIBUTES__']['myprofile_nocomments'],
 					'validationcode'		=> unserialize($user['__ATTRIBUTES__']['myprofile_validationcode']),
-					'individualpermission' 	=> $user['__ATTRIBUTES__']['myprofile_individualpermission']
+					'individualpermission' 	=> $user['__ATTRIBUTES__']['myprofile_individualpermission'],
+					'individualtemplate' 	=> $user['__ATTRIBUTES__']['myprofile_individualtemplate']
 				);
 }
 
@@ -118,6 +119,7 @@ function MyProfile_userapi_getSettings($args)
  * @param	$args['uid']					int
  * @param	$args['nocomments']				int
  * @param	$args['individualpermission']	int
+ * @param	$args['individualtemplate']		string
  * @return	array
  */
 function MyProfile_userapi_setSettings($args)
@@ -125,12 +127,14 @@ function MyProfile_userapi_setSettings($args)
 	$uid 					= $args['uid'];
 	$nocomments 			= $args['nocomments'];
 	$individualpermission 	= $args['individualpermission'];
+	$individualtemplate 	= $args['individualtemplate'];
 	if (!(($nocomments >= 0) && ($nocomments <= 1))) $nocomments = 0;
 	// get user and attributes
     $user = DBUtil::selectObjectByID('users', $uid, 'uid', null, null, null, false);
     if (!is_array($user)) return false; // no user data?
 	$user['__ATTRIBUTES__']['myprofile_nocomments'] 			= $nocomments;
 	$user['__ATTRIBUTES__']['myprofile_individualpermission'] 	= $individualpermission;
+	$user['__ATTRIBUTES__']['myprofile_individualtemplate'] 	= $individualtemplate;
 	// store attributes
 	return DBUtil::updateObject($user, 'users', '', 'uid');
 }

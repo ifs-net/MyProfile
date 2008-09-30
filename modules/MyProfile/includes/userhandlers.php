@@ -105,7 +105,8 @@ class MyProfile_user_SettingsHandler
 			$result = pnModAPIFunc('MyProfile','user','setSettings',array(
 					'uid'					=> $obj['id'],
 					'nocomments' 			=> $obj['nocomments'],
-					'individualpermission' 	=> $obj['individualpermission']
+					'individualpermission' 	=> $obj['individualpermission'],
+					'individualtemplate' 	=> $obj['individualtemplate']
 					)
 				);
 	      	if ($result) LogUtil::registerStatus(_MYPROFILESETTINGSUPDATED);

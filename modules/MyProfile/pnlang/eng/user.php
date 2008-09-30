@@ -49,6 +49,11 @@ define('_USERPICTURESINVALIDEXPLANATION',	'The user does not exist or there is n
 define('_USERPICTURESBACKTOLASTPAGE',		'Go back one page');
 
 // settings
+define('_MYPROFILEINDIVIDUALTEMPLATEHINTS',	'Some hints to create your own template');
+define('_MYPROFILEMYPROFILEMYTEMPLATE',		'Use an individual template');
+define('_MYPROFILEWILLBEREPLACEDWITH',		'will be replaced with');
+define('_MYPROFILETEMPALTEUSEWHATYOUWANT',	'The individual profile tempalte can be designed in HTML');
+define('_MYPROFILETEMPALTEVARREPLACEMENTS',	'The use of the following words (bold printed) will cause a replacement with your profile data - with * marked variables are mandatory and have to be used in your template');
 define('_MYPROFILEMYPROFILEVISIBLEFOR',	'My profile page should be accessable by');
 define('_MYPROFILEALL',					'everybody');
 define('_MYPROFILEMEMBERS',				'all members');
