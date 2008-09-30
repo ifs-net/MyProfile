@@ -1,4 +1,5 @@
 <!--[include file="myprofile_user_header.htm"]-->
+<!--[pnajaxheader prototype="1"]-->
 <!--[include file="myprofile_user_statusmsg.htm"]-->
 <h1><!--[pnml name="_MYPROFILEMYPROFILE"]--></h1>
 <!--[pnml name="_MYPROFILEYOURSETTINGS"]--><br /><br />
@@ -15,15 +16,19 @@
 <!--[if $fields|@count gt 0]-->
 	<!--[pnformlabel for="individualtemplate" text="_MYPROFILEMYPROFILEMYTEMPLATE"]--><br />
 	<!--[pnformtextinput id="individualtemplate" textMode="multiLine" rows="8" cols="50"]--><br />
-	<a href="<!--[pnmodurl modname="MyProfile" func="help" topic="individualtemplate"]-->"><!--[pnml name="_MYPROFILEINDIVIDUALTEMPLATEHINTS"]--></a>
-	<div id="myprofile_individualtemplate_hints">
-	<!--[pnml name="_MYPROFILETEMPALTEUSEWHATYOUWANT"]-->.<br />
-	<!--[pnml name="_MYPROFILETEMPALTEVARREPLACEMENTS"]-->:<br />
-	<ul>
-	<!--[foreach from=$fields item="field"]-->
-		<li><strong>§<!--[$field.identifier]-->§</strong> <!--[pnml name="_MYPROFILEWILLBEREPLACEDWITH"]--> <!--[$field.description]--></li>
-	<!--[/foreach]-->
-	</ul>
+	<div id="mih_link">
+		<a onclick="javascript:$('mih').removeClassName('pn-hide');$('mih_link').toggle();" href="#mih"><!--[pnml name="_MYPROFILEINDIVIDUALTEMPLATEHINTS"]--></a>
+	</div>
+	<div id="mih" class="pn-hide">
+		<a name="mih"></a>
+		<fieldset><legend><!--[pnml name="_MYPROFILETEMPALTEUSEWHATYOUWANT"]--></legend>
+		<!--[pnml name="_MYPROFILETEMPALTEVARREPLACEMENTS"]-->:<br />
+		<ul>
+		<!--[foreach from=$fields item="field"]-->
+			<li><strong>§<!--[$field.identifier]-->§</strong> <!--[pnml name="_MYPROFILEWILLBEREPLACEDWITH"]--> <!--[$field.description]--></li>
+		<!--[/foreach]-->
+		</ul>
+		</fieldset>
 	</div>
 	<br /><br />
 <!--[/if]-->
