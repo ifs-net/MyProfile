@@ -121,6 +121,23 @@ function MyProfile_adminapi_updateTableDefinition()
 }
 
 /**
+ * get fields for individual template
+ *
+ * This function returns all fields that should be shown in the user's template
+ * @return 	array
+ */
+function MyProfile_adminapi_getIndividualTemplateFields($args)
+{
+	$fields = pnModAPIFunc('MyProfile','admin','getFields');
+	$results = array();
+	foreach ($fields as $field) {
+	  	if (	($field['fieldtype'] != 'SEPARATOR') &&
+		  		($field['shown'] == 1) &&
+				($field['public_status'] != 2)		) $results[] = $field;
+	}
+	return $results;
+}
+/**
  * get all myprofile datafields
  * 
  * @param		$args['id']		optional, just get the field with the called id

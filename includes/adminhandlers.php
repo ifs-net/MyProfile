@@ -72,6 +72,7 @@ class MyProfile_admin_settingsHandler
     {
 	  	$data['notabs'] 				= pnModGetVar('MyProfile','notabs');
 	  	$data['individualpermissions'] 	= pnModGetVar('MyProfile','individualpermissions');
+	  	$data['individualtemplates'] 	= pnModGetVar('MyProfile','individualtemplates');
 	  	$data['plugin_noajax'] 			= pnModGetVar('MyProfile','plugin_noajax');
 	  	$data['validuntil'] 			= pnModGetVar('MyProfile','validuntil');
 	  	$data['asattributes']			= pnModGetVar('MyProfile','asattributes');
