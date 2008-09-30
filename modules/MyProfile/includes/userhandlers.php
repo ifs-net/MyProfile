@@ -101,6 +101,15 @@ class MyProfile_user_SettingsHandler
 		    $obj = $render->pnFormGetValues();		    
 		    if (!$render->pnFormIsValid()) return false;
 
+			// if individualtemplate is on and template is submitted we have to validate for mandatory fields
+			$individualtemplates = (int)pnModGetVar('MyProfile','individualtemplates');
+			if (($individualtemplates == 1) && isset($obj['individualtemplate']) && ($obj['individualtemplate'] != "")) {
+				if (!pnModAPIFunc('MyProfile','admin','validateIndividualTemplate',array('template' => $obj['individualtemplate']))) {
+					LogUtil::registerError(_MYPROFILETEMPLATEINCLUDEMANDATORY);
+					return false;
+				}
+			}
+
 	      	$obj['id']=$this->id;
 			$result = pnModAPIFunc('MyProfile','user','setSettings',array(
 					'uid'					=> $obj['id'],
