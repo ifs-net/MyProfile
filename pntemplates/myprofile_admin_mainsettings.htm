@@ -1,3 +1,4 @@
+<!--[pnajaxheader prototype="1"]-->
 <!--[include file="myprofile_admin_menu.htm"]-->
 <div class="pn-informationmsg"><!--[pnml name="_MYPROFILEBACKENDDESCR"]--></div>
 <!--[pnform cssClass=pn-adminform]-->
@@ -18,6 +19,8 @@
 	<h3><!--[pnml name="_MYPROFILEUSERPERMISSIONS"]--></h3>
     <!--[pnformcheckbox id="individualpermissions" checked="0"]--><!--[pnformlabel for="individualpermissions" text="_MYPROFILEALLOWINDIVIDUALVIEWPERMISSIONS"]--><br />
     <!--[pnformcheckbox id="individualtemplates" checked="0"]--><!--[pnformlabel for="individualtemplates" text="_MYPROFILEALLOWINDIVIDUALTEMPLATES"]--><br />
+    <!--[pnml name="_MYPROFILEEXCLUDEGROUPFORTEMPLATING"]-->:<br />
+	<!--[pnformcheckboxlist id="disabledgroups" items=$groups]-->
 </div>
 <div class="myprofile_halfbox">
 	<h3><!--[pnml name="_MYPROFILEBEHAVIOUR"]--></h3>

@@ -80,6 +80,11 @@ class MyProfile_admin_settingsHandler
 	  	$data['noverification']			= pnModGetVar('MyProfile','noverification');
 	  	$data['requestban'] 			= pnModGetVar('MyProfile','requestban');
 	  	$data['expiredays'] 			= pnModGetVar('MyProfile','expiredays');
+	  	$groups	= pnModAPIFunc('MyProfile','admin','getGroupsConfiguration');
+	  	$groups_list = array();
+	  	foreach ($groups as $g) $groups_list[] = array('text' => $g['name'], 'value' => $g['gid']);
+		$data['groups'] = $groups_list;
+		$data['disabledgroups'] = unserialize(pnModGetVar('MyProfile','disabledgroups'));
 	  	$render->assign($data);
 		return true;
     }
@@ -93,7 +98,10 @@ class MyProfile_admin_settingsHandler
 		    $obj = $render->pnFormGetValues();		    
 		    if (!$render->pnFormIsValid()) return false;
 		    // store all passed form values as module variables
-		    foreach ($obj as $key=>$value) pnModSetVar('MyProfile',$key,$value);
+		    foreach ($obj as $key=>$value) {
+		      	if (is_array($value)) $value=serialize($value);
+			  	pnModSetVar('MyProfile',(string)$key,(string)$value);
+			}
 			LogUtil::registerStatus(_MYPROFILECFGSTORED);
 		}
 		return true;
