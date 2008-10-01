@@ -79,6 +79,9 @@ class MyProfile_user_SettingsHandler
 		if ($this->id > 0) {
 			// get settings
 			$data = pnModAPIFunc('MyProfile','user','getSettings',array('uid'=>$this->id));
+			
+			$individualtemplates = (int)pnModGetVar('MyProfile','individualtemplates');
+			if (($individualtemplates == 1) && (pnModAPIFunc('MyProfile','user','individualTemplateAllowed',array('uid' => $this->id)))) $render->assign('individualtemplates',1);
 			$render->assign($data);
 			// individual permission settings
 			$render->assign('individualpermissions',	pnModGetVar('MyProfile','individualpermissions'));

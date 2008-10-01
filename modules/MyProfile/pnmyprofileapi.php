@@ -18,21 +18,20 @@ function MyProfile_myprofileapi_tab ($args)
 	$render = pnRender::getInstance('MyProfile');
 
 	// get and assign some data
-	$uid			= (int)FormUtil::getPassedValue('uid');
-	$uname			= FormUtil::getPassedValue('uname');
-	$viewer_uid 	= pnUserGetVar('uid');
-	$regdate		= pnUserGetVar('user_regdate',$uid);
-	$dateformat 	= pnModGetVar('MyProfile','dateformat');
-	$lastupdate		= pnModAPIFunc('MyProfile','user','getLastUpdate',array('uid'=>$uid));
-	$profile		= pnModAPIFunc('MyProfile','user','getProfile',array('uid'=>$uid, 'uname'=>$uname));
-	$settings		= pnModAPIFunc('MyProfile','user','getSettings',array('uid'=>$uid));
+	$uid				= (int)FormUtil::getPassedValue('uid');
+	$uname				= FormUtil::getPassedValue('uname');
+	$overridetemplate 	= (int)FormUtil::getPassedValue('overridetemplate');
+	$viewer_uid 		= pnUserGetVar('uid');
+	$regdate			= pnUserGetVar('user_regdate',$uid);
+	$dateformat 		= pnModGetVar('MyProfile','dateformat');
+	$lastupdate			= pnModAPIFunc('MyProfile','user','getLastUpdate',array('uid'=>$uid));
+	$profile			= pnModAPIFunc('MyProfile','user','getProfile',array('uid'=>$uid, 'uname'=>$uname));
+	$settings			= pnModAPIFunc('MyProfile','user','getSettings',array('uid'=>$uid));
 	$render->assign('profile',$profile);
 
 	// check for individual user permission settings
 	$individualpermissions = pnModGetVar('MyProfile', 'individualpermissions');
 	if ($individualpermissions == 1) {
-		// get user's settings
-		$settings = pnModAPIFunc('MyProfile','user','getSettings',array('uid' => $uid));
 		$individualpermission = (int)$settings['individualpermission'];
 		// 0 = everybody, 1 = members, 2 = buddies only
 		if ( 	(
@@ -41,7 +40,9 @@ function MyProfile_myprofileapi_tab ($args)
 					||
 				(($individualpermission == 2) && 
 				pnModAvailable('ContactList') && 
-				!pnModAPIFunc('ContactList','user','isBuddy',array('uid1' => $uid, 'uid2' => pnUserGetVar('uid'))))
+				!pnModAPIFunc('ContactList','user','isBuddy',array(
+						'uid1' 	=> $uid, 
+						'uid2' 	=> pnUserGetVar('uid')	)))
 				)
 				
 				&&
@@ -56,7 +57,6 @@ function MyProfile_myprofileapi_tab ($args)
 	// now we shall do a check if individual template are allowed or not and if they are allowed use the template if there is one
 	$individualtemplates = (int)pnModGetVar('MyProfile','individualtemplates');
 	$render->assign('individualtemplates', $individualtemplates);
-	$overridetemplate = (int)FormUtil::getPassedValue('overridetemplate');
 	if (($individualtemplates == 1) && ($overridetemplate != 1)) {
 		// individual templating allowed; get user's template
 		$template = $settings['individualtemplate'];

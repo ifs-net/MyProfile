@@ -106,8 +106,11 @@ function MyProfile_userapi_getSettings($args)
     }
     // get settings for individual template
     if (pnModGetVar('MyProfile','individualtemplates') == 1) {
-	  	$template = DBUtil::selectObjectByID('myprofile_templates',$uid);
-	  	if (isset($template) && ($template['template'] != '')) $individualtemplate = $template['template'];
+  	  	$result = pnModAPIFunc('MyProfile','user','individualTemplateAllowed',array('uid' => $uid));
+  	  	if ($result) {
+		  	$template = DBUtil::selectObjectByID('myprofile_templates',$uid);
+		  	if (isset($template) && ($template['template'] != '')) $individualtemplate = $template['template'];
+		}
 	}
     return array(
     				'id'					=> $uid,
@@ -118,6 +121,38 @@ function MyProfile_userapi_getSettings($args)
 				);
 }
 
+/**
+ * check if user is allowed to use an individual template
+ * This function does not contain a check for the global individualtemplates
+ * module variable
+ *
+ * @param	$args['uid']	int
+ * @return	array
+ */
+function MyProfile_userapi_individualTemplateAllowed($args)
+{
+  	$uid = (int)$args['uid'];
+  	// nothing allowed now...
+  	$allowed = false;
+  	// get all disabled groups from module variable
+	$groups = unserialize(pnModGetVar('MyProfile','disabledgroups'));
+	if (count($groups) > 0) {
+	  	// get all existing groups
+	  	$allgroups = pnModAPIFunc('Groups','user','getall');
+	  	// filter out the groups we have to check now if the user is a member of it
+	  	$checkgroups = array();
+	  	foreach ($allgroups as $g) {
+		    if (!in_array($g['gid'],$groups)) $checkgroups[]=$g;
+		}
+		// now we have to check if the user is in any of the groups that remained
+		// if this is the case, the user is allowed to have an own template
+		foreach ($checkgroups as $g) {
+		  	if (pnModAPIFunc('Groups','user','isgroupmember',array('gid' => $g['gid'], 'uid' => $uid))) $allowed = true;
+		}
+	}
+	else $allowed = true;
+	return $allowed;
+}
 /**
  * store user settings
  *

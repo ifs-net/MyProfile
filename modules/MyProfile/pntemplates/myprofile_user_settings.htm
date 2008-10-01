@@ -14,7 +14,7 @@
 <!--[pnformdropdownlist id="individualpermission" items=$items_individualpermissions]--><br /><br />
 
 <!--[if $fields|@count gt 0]-->
-	<!--[if $individualtemplate eq ""]-->
+	<!--[if $individualtemplate eq "" and $individualtemplates eq 1]-->
 		<div id="mit_link"><a onclick="javascript:$('mit').show();$('mit_link').hide();" href="#mit"><!--[pnformlabel for="individualtemplate" text="_MYPROFILEMYPROFILEMYTEMPLATE"]--></a><br /></a></div>
 	<!--[/if]-->
 	<div id="mit" >

@@ -7,6 +7,32 @@
  * @copyright    Copyright (C) 2008
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
+
+/**
+ * Get group configuration
+ *
+ * This function gets the group configuration it inividualtemplating 
+ * is disabled just for some zikula groups
+ *
+ * @return	array
+ */
+function MyProfile_adminapi_getGroupsConfiguration()
+{
+  	$groups = pnModAPIFunc('Groups','user','getall');
+  	$individualtemplate_disabledgroups = pnModGetVar('MyProfile','disabledgroups');
+  	$individualtemplate_disabledgroups = unserialize($individualtemplate_disabledgroups);
+  	$result = array();
+  	foreach ($groups as $group) {
+  	  	$gid = $group['gid'];
+	    if ($individualtemplate_disabledgroups[$gid] == 1) $disabled = 1;
+	    else $disabled = 0;
+		$result[] = array(	'gid' 		=> $gid, 
+							'disabled' 	=> $disabled,
+							'name' 		=> $group['name']
+							);
+	}
+	return $result;
+}
  
 /**
  * Get plugin list
@@ -371,7 +397,6 @@ function MyProfile_adminapi_import($args)
 					  	pnSessionSetVar('pnProfileUsers',$pnProfileUsers);
 		    	  	  	// truncate table - if a migration failed before there might be content in a table
 		    	  	  	DBUtil::truncateTable('myprofile');
-		    	  	  	print "session var gesetzt";
 		    	  	  	
 					}
 					// we will do exactly 500 for each step
@@ -407,7 +432,7 @@ function MyProfile_adminapi_import($args)
 			else return LogUtil::registerError(_MYPROFILEPNPROFILECONFUNREADABLE);
 	    	break;
 	    case 'Profile':
-	    	die("Profile migration function will follow");
+	    	die("Profile migration function will follow - perhaps :-)");
 	    	$vars = pnUserGetVars($uid);
 	    	// we need every variable beginning with an "_" character
 	    	
