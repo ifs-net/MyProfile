@@ -104,12 +104,17 @@ function MyProfile_userapi_getSettings($args)
         // store attributes
         DBUtil::updateObject($user, 'users', '', 'uid');
     }
+    // get settings for individual template
+    if (pnModGetVar('MyProfile','individualtemplates') == 1) {
+	  	$template = DBUtil::selectObjectByID('myprofile_templates',$uid);
+	  	if (isset($template) && ($template['template'] != '')) $individualtemplate = $template['template'];
+	}
     return array(
     				'id'					=> $uid,
 					'nocomments' 			=> $user['__ATTRIBUTES__']['myprofile_nocomments'],
 					'validationcode'		=> unserialize($user['__ATTRIBUTES__']['myprofile_validationcode']),
 					'individualpermission' 	=> $user['__ATTRIBUTES__']['myprofile_individualpermission'],
-					'individualtemplate' 	=> $user['__ATTRIBUTES__']['myprofile_individualtemplate']
+					'individualtemplate' 	=> $individualtemplate
 				);
 }
 
@@ -134,7 +139,22 @@ function MyProfile_userapi_setSettings($args)
     if (!is_array($user)) return false; // no user data?
 	$user['__ATTRIBUTES__']['myprofile_nocomments'] 			= $nocomments;
 	$user['__ATTRIBUTES__']['myprofile_individualpermission'] 	= $individualpermission;
-	$user['__ATTRIBUTES__']['myprofile_individualtemplate'] 	= $individualtemplate;
+
+	// store individual template if there is anything to store
+	$template = DBUtil::selectObjectByID('myprofile_templates',$uid);
+	if (!is_array($template) || ($template['id'] != $uid)) {
+	  	$template = array (
+	  		'template' 	=> $individualtemplate,
+	  		'id'		=> $uid
+		  );
+	  	if (($individualtemplate != '') && (isset($individualtemplate))) DBUtil::insertObject($template,'myprofile_templates',true,true);
+	}
+	else {
+		$template['template'] = $individualtemplate;
+		if (($individualtemplate == '') || !isset($individualtemplate)) DBUtil::deleteObject($template,'myprofile_templates');
+		else DBUtil::updateObject($template,'myprofile_templates');
+	}
+
 	// store attributes
 	return DBUtil::updateObject($user, 'users', '', 'uid');
 }

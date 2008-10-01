@@ -25,6 +25,7 @@ function MyProfile_myprofileapi_tab ($args)
 	$dateformat 	= pnModGetVar('MyProfile','dateformat');
 	$lastupdate		= pnModAPIFunc('MyProfile','user','getLastUpdate',array('uid'=>$uid));
 	$profile		= pnModAPIFunc('MyProfile','user','getProfile',array('uid'=>$uid, 'uname'=>$uname));
+	$settings		= pnModAPIFunc('MyProfile','user','getSettings',array('uid'=>$uid));
 	$render->assign('profile',$profile);
 
 	// check for individual user permission settings
@@ -57,8 +58,7 @@ function MyProfile_myprofileapi_tab ($args)
 	$render->assign('individualtemplates', $individualtemplates);
 	if ($individualtemplates == 1) {
 		// individual templating allowed; get user's template
-		$uservars = pnUserGetVar('__ATTRIBUTES__',$uid);
-		$template = $uservars['myprofile_individualtemplate'];
+		$template = $settings['individualtemplate'];
 		if (isset($template) && (strlen($template) > 0)) {
 			$toreplace1 = array();
 			$toreplace2 = array();
