@@ -23,6 +23,8 @@ function MyProfile_pntables()
     // Set the table name
     $pntable['myprofile'] = $MyProfile;
     $pntable['myprofile_fields'] = $MyProfile."_fields";
+    $pntable['myprofile_confirmedusers'] = $MyProfile."_confirmedusers";
+    $pntable['myprofile_templates'] = $MyProfile."_templates";
 
     // Set the column names.  Note that the array has been formatted
     // on-screen to be very easy to read by a user.
@@ -73,6 +75,29 @@ function MyProfile_pntables()
     			'shown'					=> "I(1) NOTNULL DEFAULT 0",
     			'position'				=> "I NOTNULL DEFAULT 0"
 				);
+
+	// template-table
+    $pntable['myprofile_templates_column'] = array(
+			    'id'      				=> 'id',
+			    'template'				=> 'template'
+			    );
+    $pntable['myprofile_templates_column_def'] = array(
+    			'id'					=> "I NOTNULL PRIMARY",
+    			'template'				=> "XL NOTNULL DEFAULT ''"
+    			);
+    			
+	// confirmed_users
+    $pntable['myprofile_confirmedusers_column'] = array(
+			    'id'      				=> 'id',
+			    'uid'					=> 'uid',
+			    'confirmed_uid'			=> 'confirmed_uid'
+			    );
+    $pntable['myprofile_confirmedusers_column_def'] = array(
+    			'id'					=> "I NOTNULL PRIMARY",
+    			'uid'					=> "I NOTNULL DEFAULT 0",
+    			'confirmed_uid'			=> "I NOTNULL DEFAULT 0"
+    			);
+
     // Return the table information
     return $pntable;
 }

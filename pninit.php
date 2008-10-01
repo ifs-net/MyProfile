@@ -17,6 +17,8 @@ function MyProfile_init()
 {
   	if (!DBUtil::createTable('myprofile')) return false;
   	if (!DBUtil::createTable('myprofile_fields')) return false;
+  	if (!DBUtil::createTable('myprofile_confirmedusers')) return false;
+  	if (!DBUtil::createTable('myprofile_templates')) return false;
 
     // Module Variables
     $asattributes			= pnSessionGetVar('myprofile_asattributes');
@@ -87,8 +89,11 @@ function MyProfile_upgrade($oldversion)
     	// introduce individualpermission module variable
     	pnModSetVar('MyProfile',	'individualpermissions'	,0);
     	pnModSetVar('MyProfile',	'individualtemplates'	,0);
-    	break;
+    	// tables for templates and "trust list" introduced
+	  	if (!DBUtil::createTable('myprofile_confirmedusers')) return false;
+	  	if (!DBUtil::createTable('myprofile_templates')) return false;
     default:
     return true;
+    }
 }
 ?>
