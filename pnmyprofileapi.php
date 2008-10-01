@@ -56,7 +56,8 @@ function MyProfile_myprofileapi_tab ($args)
 	// now we shall do a check if individual template are allowed or not and if they are allowed use the template if there is one
 	$individualtemplates = (int)pnModGetVar('MyProfile','individualtemplates');
 	$render->assign('individualtemplates', $individualtemplates);
-	if ($individualtemplates == 1) {
+	$overridetemplate = (int)FormUtil::getPassedValue('overridetemplate');
+	if (($individualtemplates == 1) && ($overridetemplate != 1)) {
 		// individual templating allowed; get user's template
 		$template = $settings['individualtemplate'];
 		if (isset($template) && (strlen($template) > 0)) {

@@ -23,6 +23,7 @@
 
 
 <!--[if $individualtemplates eq 1 and $individualtemplate_content ne ""]-->
+	<small><a href="<!--[pnmodurl modname="MyProfile" type="user" func="display" uid=$uid overridetemplate="1"]-->"><!--[pnml name="_MYPROFILEOVERRIDETEMPLATE"]--></a></small><br />
 	<!--[$individualtemplate_content|pnmodcallhooks|pnvarprepfordisplay]-->
 <!--[else]-->
 	<!--[foreach from=$profile item="data"]-->
