@@ -23,7 +23,7 @@
 
 
 <!--[if $individualtemplates eq 1 and $individualtemplate_content ne ""]-->
-	<!--[$individualtemplate_content|pnmodcallhooks]-->
+	<!--[$individualtemplate_content|pnmodcallhooks|pnvarprepfordisplay]-->
 <!--[else]-->
 	<!--[foreach from=$profile item="data"]-->
 		<!--[if ($data.value neq "") or ($data.fieldtype eq "SEPARATOR")]-->
