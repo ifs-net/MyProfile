@@ -49,6 +49,7 @@ define('_USERPICTURESINVALIDEXPLANATION',	'The user does not exist or there is n
 define('_USERPICTURESBACKTOLASTPAGE',		'Go back one page');
 
 // settings
+define('_MYPROFILETEMPLATEINCLUDEMANDATORY','You have to include all mandatory profile variables into your individual template');
 define('_MYPROFILEINDIVIDUALTEMPLATEHINTS',	'Some hints to create your own template');
 define('_MYPROFILEMYPROFILEMYTEMPLATE',		'Use an individual template');
 define('_MYPROFILEWILLBEREPLACEDWITH',		'will be replaced with');

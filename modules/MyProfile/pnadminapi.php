@@ -124,9 +124,10 @@ function MyProfile_adminapi_updateTableDefinition()
  * get fields for individual template
  *
  * This function returns all fields that should be shown in the user's template
+ *
  * @return 	array
  */
-function MyProfile_adminapi_getIndividualTemplateFields($args)
+function MyProfile_adminapi_getIndividualTemplateFields()
 {
 	$fields = pnModAPIFunc('MyProfile','admin','getFields');
 	$results = array();
@@ -137,6 +138,35 @@ function MyProfile_adminapi_getIndividualTemplateFields($args)
 	}
 	return $results;
 }
+
+/**
+ * validate template for mandatory fields
+ *
+ * This function validates a template if every mandatory field is used there
+ *
+ * @param	$args['template']	string		the user's template
+ * @return 	bool
+ */
+function MyProfile_adminapi_validateIndividualTemplate($args)
+{
+	$fields = MyProfile_adminapi_getIndividualTemplateFields();
+	$template = $args['template'];
+	if (isset($template) && (strlen($template) > 0)) {
+		$toreplace1 = array();
+		$toreplace2 = array();
+		foreach ($fields as $data) {
+		  	if ($data['fieldtype'] != 'SEPARATOR') {
+				$toreplace1[] = '§'.$data['identifier'].'§';
+				$toreplace2[] = 'If you read this you are a fool :-)';
+			}
+		}
+	  	$individualtemplate_content = str_replace($toreplace1,$toreplace2,$template,$count);
+	  	print "count: $count";
+	  	if ($count == count($fields)) return true;
+	}
+	return $false;
+}
+
 /**
  * get all myprofile datafields
  * 

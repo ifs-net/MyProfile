@@ -49,6 +49,7 @@ define('_USERPICTURESINVALIDEXPLANATION',	'Der Benutzer existiert nicht oder hat
 define('_USERPICTURESBACKTOLASTPAGE',		'Zurück zur letzten Seite.');
 
 // settings
+define('_MYPROFILETEMPLATEINCLUDEMANDATORY','Alle als Pflichtvariablen angegebenen Variablen müssen in der individuellen Profilvorlage enthalten sein!');
 define('_MYPROFILEINDIVIDUALTEMPLATEHINTS',	'Hinweise zur Nutzung eingener individueller Vorlagen');
 define('_MYPROFILEMYPROFILEMYTEMPLATE',		'Individuelle Vorlage zur Darstellung des eigenen Profils nutzen');
 define('_MYPROFILEWILLBEREPLACEDWITH',		'wird ersetzt werden durch');

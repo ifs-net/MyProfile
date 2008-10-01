@@ -1,12 +1,21 @@
 <?php
 /**
+ * @package      MyProfile
+ * @version      $Id $
+ * @author       Florian Schießl
+ * @link         http://www.ifs-net.de
+ * @copyright    Copyright (C) 2008
+ * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
+ */
+
+/**
  * initialise block
  * 
  */
-function MyProfile_newbiesblock_init()
+function MyProfile_randomblock_init()
 {
     // Security
-    pnSecAddSchema('MyProfile:Newbiesblock:', 'Block title::');
+    pnSecAddSchema('MyProfile:randomblock:', 'Block title::');
 }
 
 /**
@@ -14,11 +23,11 @@ function MyProfile_newbiesblock_init()
  * 
  * @return       array       The block information
  */
-function MyProfile_newbiesblock_info()
+function MyProfile_randomblock_info()
 {
-    return array('text_type'      => 'Newbies',
+    return array('text_type'      => 'random',
                  'module'         => 'MyProfile',
-                 'text_type_long' => 'Show new users',
+                 'text_type_long' => 'Show random users',
                  'allow_multiple' => true,
                  'form_content'   => false,
                  'form_refresh'   => false,
@@ -31,7 +40,7 @@ function MyProfile_newbiesblock_info()
  * @param        array       $blockinfo     a blockinfo structure
  * @return       output      the rendered bock
  */
-function MyProfile_newbiesblock_display($blockinfo)
+function MyProfile_randomblock_display($blockinfo)
 {
     // Check if the MyProfile module is available. 
     if (!pnModAvailable('MyProfile')) return false;
@@ -52,10 +61,10 @@ function MyProfile_newbiesblock_display($blockinfo)
     $pnRender->caching = true;
     $pnRender->cache_lifetime = 3600; // cache for 1 hour
 
-    $items=pnModAPIFunc('MyProfile','user','getNewbies',array('numitems'=>$numitems));
+    $items=pnModAPIFunc('MyProfile','user','getrandom',array('numitems'=>$numitems));
     $pnRender->assign('items', $items);
     // Populate block info and pass to theme
-    $blockinfo['content'] = $pnRender->fetch('myprofile_block_newbies.htm');
+    $blockinfo['content'] = $pnRender->fetch('myprofile_block_random.htm');
 
     return themesideblock($blockinfo);
 }
@@ -67,7 +76,7 @@ function MyProfile_newbiesblock_display($blockinfo)
  * @param        array       $blockinfo     a blockinfo structure
  * @return       output      the bock form
  */
-function MyProfile_newbiesblock_modify($blockinfo)
+function MyProfile_randomblock_modify($blockinfo)
 {
     // Get current content
     $vars = pnBlockVarsFromContent($blockinfo['content']);
@@ -77,7 +86,7 @@ function MyProfile_newbiesblock_modify($blockinfo)
         $vars['numitems'] = 10;
     }
 
-	// Load language
+	// Load language from newbies block - the define we need is there
 	pnModLangLoad('MyProfile','newbies');
 
     // Create output object
@@ -100,7 +109,7 @@ function MyProfile_newbiesblock_modify($blockinfo)
  * @param        array       $blockinfo     a blockinfo structure
  * @return       $blockinfo  the modified blockinfo structure
  */
-function MyProfile_newbiesblock_update($blockinfo)
+function MyProfile_randomblock_update($blockinfo)
 {
     // Get current content
     $vars = pnBlockVarsFromContent($blockinfo['content']);
@@ -113,7 +122,7 @@ function MyProfile_newbiesblock_update($blockinfo)
 
     // clear the block cache
     $pnRender = pnRender::getInstance('MyProfile');
-    $pnRender->clear_cache('myprofile_block_newbies.htm');
+    $pnRender->clear_cache('myprofile_block_random.htm');
 	
     return $blockinfo;
 }
