@@ -29,6 +29,7 @@ define('_MYPROFILEADDPROFILEFAILED',	'Profil-Erzeugung / -Aktualisierung fehlges
 define('_MYPROFILEATTRIBUTESTOREERROR',	'Aktualisieren / Erzeugen der Benutzer-Attribute fehlgeschlagen');
 
 // display
+define('_MYPROFILEOVERRIDETEMPLATE',	'Individuelle Benutzervorlage ignorieren und klassische Profilansicht wählen');
 define('_MYPROFILENOACCESS',			'Kein Zugriff auf dieses Profil möglich');
 define('_MYPROFILENOINDIVIDUALPERMISSION',	'Der Inhaber des Profils hat die Sichtbarkeit seines Profils so eingeschränkt, dass es für Dich leider nicht sichtbar ist.');
 define('_MYPROFILESENDPM',		'Private Nachricht senden');

@@ -29,6 +29,7 @@ define('_MYPROFILEADDPROFILEFAILED',	'Creating / Updating profile failed');
 define('_MYPROFILEATTRIBUTESTOREERROR',	'Updating / creating user attributes failed');
 
 // display
+define('_MYPROFILEOVERRIDETEMPLATE',	'Override individual profile template');
 define('_MYPROFILENOACCESS',			'Sorry, no authorisation');
 define('_MYPROFILENOINDIVIDUALPERMISSION',	'The main profile part is not accessible by you');
 define('_MYPROFILESENDPM',				'Send private message');
