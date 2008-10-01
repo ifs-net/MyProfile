@@ -161,7 +161,6 @@ function MyProfile_adminapi_validateIndividualTemplate($args)
 			}
 		}
 	  	$individualtemplate_content = str_replace($toreplace1,$toreplace2,$template,$count);
-	  	print "count: $count";
 	  	if ($count == count($fields)) return true;
 	}
 	return $false;
