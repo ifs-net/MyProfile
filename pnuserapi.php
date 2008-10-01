@@ -357,6 +357,43 @@ function MyProfile_userapi_getNewbies($args)
 }
 
 /**
+ * get random users
+ *
+ * This function returns random registrations
+ *
+ * @param $args['numitems']	int	number of random members to fetch, 20 = default
+ * @return array
+ */
+function MyProfile_userapi_getRandom($args)
+{
+  	$numitems = $args['numitems'];
+  	if (!isset($numitems) || (!($numitems > 0))) $numitems = 20;
+
+	// get all id values
+
+	$joinInfo[] = array (	'join_table'          =>  'users',			// table for the join
+							'join_field'          =>  'uname',			// field in the join table that should be in the result with
+                         	'object_field_name'   =>  'uname',			// ...this name for the new column
+                         	'compare_field_table' =>  'id',				// regular table column that should be equal to
+                         	'compare_field_join'  =>  'uid');			// ...the table in join_table
+
+	// get random numbers of users
+	$users = DBUtil::selectExpandedObjectArray('myprofile',$joinInfo,$where);
+	$max = count($users);
+	if (count($users) <= $numitems) return $users;
+	// otherwise get random users
+	Loader::includeOnce('modules/MyProfile/includes/lib_ifs-net.php');
+	$result = array();
+	for ($i=1;$i<=$numitems;$i++) {
+	  	$rand_int = mp_urand(1,$max);
+	  	$rand_int--;
+	  	$result[] = $users[$rand_int];
+	}
+    return $result;
+  	
+}
+
+/**
  * get online users
  *
  * This function returns users that are online
