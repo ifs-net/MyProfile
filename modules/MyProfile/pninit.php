@@ -70,6 +70,8 @@ function MyProfile_delete()
 {
   	if (!DBUtil::dropTable('myprofile')) return false;
   	if (!DBUtil::dropTable('myprofile_fields')) return false;
+  	if (!DBUtil::dropTable('myprofile_confirmedusers')) return false;
+  	if (!DBUtil::dropTable('myprofile_templates')) return false;
 
     // Delete any module variables
     pnModDelVar('MyProfile');
