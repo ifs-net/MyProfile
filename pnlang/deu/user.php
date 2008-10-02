@@ -27,6 +27,8 @@ define('_MYPROFILEFIELDUPDATED',	'Die Profil-Daten wurden erfolgreich aktualisie
 define('_MYPROFILESHOWMYPROFILE',	'Eigene Profil-Seite anzeigen');
 define('_MYPROFILEADDPROFILEFAILED',	'Profil-Erzeugung / -Aktualisierung fehlgeschlagen');
 define('_MYPROFILEATTRIBUTESTOREERROR',	'Aktualisieren / Erzeugen der Benutzer-Attribute fehlgeschlagen');
+define('_MYPROFILELNG',					'Längengrad');
+define('_MYPROFILELAT',					'Breitengrad');
 
 // display
 define('_MYPROFILEOVERRIDETEMPLATE',	'Individuelle Benutzervorlage ignorieren und klassische Profilansicht wählen');

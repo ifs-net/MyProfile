@@ -27,6 +27,8 @@ define('_MYPROFILEFIELDUPDATED',		'Your profile data was updated successfully');
 define('_MYPROFILESHOWMYPROFILE',		'Show my own profile page');
 define('_MYPROFILEADDPROFILEFAILED',	'Creating / Updating profile failed');
 define('_MYPROFILEATTRIBUTESTOREERROR',	'Updating / creating user attributes failed');
+define('_MYPROFILELNG',					'Longitude');
+define('_MYPROFILELAT',					'Latitude');
 
 // display
 define('_MYPROFILEOVERRIDETEMPLATE',	'Override individual profile template');

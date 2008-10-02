@@ -244,7 +244,8 @@ function MyProfile_admin_addField()
 									array('text' => _MYPROFILEUIN,		'value' => 'UIN'),
 									array('text' => _MYPROFILESKYPEID,	'value' => 'SKYPEID'),
 									array('text' => _MYPROFILEDATE,		'value' => 'DATE'),
-									array('text' => _MYPROFILETIMESTAMP,'value' => 'TIMESTAMP') );
+									array('text' => _MYPROFILETIMESTAMP,'value' => 'TIMESTAMP'),
+									array('text' => _MYPROFILECOORD,	'value' => 'COORD') );
 	$items_public_status = array (	array('text' => _MYPROFILENOPROTECT,'value' => 0),
 									array('text' => _MYPROFILEREGONLY,	'value' => 1),
 									array('text' => _MYPROFILEADMINONLY,'value' => 2) );

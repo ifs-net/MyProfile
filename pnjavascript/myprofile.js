@@ -128,7 +128,7 @@ function myprofile_showSelectedFieldType() {
 		$('myprofile_active').show();
 		$('myprofile_shown').show();
 	}
-	else if ((value == 'URL') || (value == 'SKYPEID') || (value == 'UIN')) {
+	else if ((value == 'URL') || (value == 'SKYPEID') || (value == 'UIN') || (value == 'COORD')) {
 		$('myprofile_identifier').show();
 		$('myprofile_mandatory').show();
 		$('myprofile_description').show();

@@ -140,6 +140,7 @@ define('_MYPROFILEELEMENTMOVED',			'Element was moved successfully');
 define('_MYPROFILESTOREDAT',				'New order was saved successfully at');
 
 // add a new field or modify an existing one
+define('_MYPROFILECOORD',					'Coordinate');
 define('_MYPROFILEADDNEWFIELD',				'Add a new field');
 define('_MYPROFILEMODIFYFIELD',				'Modify an existing field');
 define('_MYPROFILEINTROTEXT',				'You can add or modify a custom field for the user\'s profile here.');

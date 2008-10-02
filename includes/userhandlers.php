@@ -21,6 +21,18 @@ class MyProfile_user_ProfileHandler
 			$data = DBUtil::selectObjectByID('myprofile', $this->id);
 			if (!isset($data)) unset($this->id);
 			else {
+				// extract coordinates if there are some
+				$fields = pnModAPIFunc('MyProfile','admin','getFields');
+				$resultfields = array();
+				foreach ($fields as $field) if ($field['fieldtype'] == 'COORD') $resultfields[] = $field;
+				foreach ($resultfields as $field) {
+				  	$coord = unserialize($data[$field['identifier']]);
+				  	$lat = $field['identifier'].'_lat';
+				  	$lng = $field['identifier'].'_lng';
+				    $data[$lat] = $coord['lat'];
+				    $data[$lng] = $coord['lng'];
+				    unset($data[$field['identifier']]);
+				}
 				$render->assign($data);
 				$this->load_uid=$load_uid;
 			}
@@ -37,6 +49,23 @@ class MyProfile_user_ProfileHandler
 		    $obj = $render->pnFormGetValues();		    
 		    if (!$render->pnFormIsValid()) return false;
 			$obj['timestamp'] = date("Y-m-d",time());
+			
+			// is there a coordinate?
+			$fields = pnModAPIFunc('MyProfile','admin','getfields');
+			foreach ($fields as $field) {
+			  	if ($field['fieldtype'] == 'COORD') {
+			  	  	$identifier = $field['identifier'];
+				    $lat = $identifier.'_lat';
+				    $lng = $identifier.'_lng';
+				    $obj[$identifier] = array(
+				    		'lng' => str_replace(',','.',$obj[$lng]),
+				    		'lat' => str_replace(',','.',$obj[$lat])
+						);
+					unset($obj[$lat]);
+					unset($obj[$lng]);
+					$obj[$identifier] = serialize($obj[$identifier]);
+				}
+			}
 			
 		    if ($this->id > 0) {	// update an existing profile
 		      	$obj['id']=$this->id;
