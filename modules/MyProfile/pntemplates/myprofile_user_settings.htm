@@ -10,8 +10,10 @@
 <span class="myprofile_bold"><!--[pnml name="_MYPROFILEGENERALSETTINGS"]--></span><br /><br />
 <!--[pnformcheckbox id="nocomments" checked="0"]--><!--[pnformlabel for="nocomments" text="_MYPROFILENOCOMMENTS"]--><br /><br />
 
-<!--[pnformlabel for="individualpermission" text="_MYPROFILEMYPROFILEVISIBLEFOR"]--><br />
-<!--[pnformdropdownlist id="individualpermission" items=$items_individualpermissions]--><br /><br />
+<!--[if $individualpermissions eq 1]-->
+	<!--[pnformlabel for="individualpermission" text="_MYPROFILEMYPROFILEVISIBLEFOR"]--><br />
+	<!--[pnformdropdownlist id="individualpermission" items=$items_individualpermissions]--><br /><br />
+<!--[/if]-->
 
 <!--[if $fields|@count gt 0]-->
 	<!--[if $individualtemplate eq "" and $individualtemplates eq 1]-->
