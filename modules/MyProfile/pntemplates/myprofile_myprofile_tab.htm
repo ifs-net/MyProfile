@@ -43,6 +43,14 @@
 				<span class="myprofile_bold"><!--[$data.description|pnvarprepfordisplay]-->:</span>	<!--[$data.value|pnvarprepfordisplay]--> <img src="http://status.icq.com/online.gif?icq=<!--[$data.value]-->&img=5" width="18" height="18" /><br />
 			<!--[elseif $data.fieldtype eq "DATE"]-->
 				<span class="myprofile_bold"><!--[$data.description|pnvarprepfordisplay]-->:</span>	<!--[if $data.value ne "9999-12-31"]--><!--[$data.value|pnvarprepfordisplay|date_format:"$dateformat"]--><!--[else]--><!--[pnml name="_MYPROFILENOPERMISSION"]--><!--[/if]--><br />
+			<!--[elseif $data.fieldtype eq "COORD"]-->
+				<span class="myprofile_bold"><!--[$data.description|pnvarprepfordisplay]-->:</span>	
+				<!--[if $data.value ne ""]-->
+					<!--[showmap coord=$data.value]-->
+				<!--[else]-->
+					<!--[pnml name="_MYPROFILENOPERMISSION"]-->
+				<!--[/if]--><br />
+
 			<!--[elseif $data.fieldtype eq "SKYPEID"]-->
 				<span class="myprofile_bold"><!--[$data.description|pnvarprepfordisplay]-->:</span>	
 				<script type="text/javascript" src="http://download.skype.com/share/skypebuttons/js/skypeCheck.js"></script>

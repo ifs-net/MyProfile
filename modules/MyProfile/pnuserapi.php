@@ -38,9 +38,17 @@ function MyProfile_userapi_getProfile($args)
 	else 																		$mystatus = 1;	// registered users
 	foreach ($fields as $field) {
 		$field['value'] = $data[$field['identifier']];
-		if (($field['public_status'] > $mystatus) && ($field['value']!="")) {
-		  	if ($field['fieldtype'] != "DATE") $field['value']=_MYPROFILENOPERMISSION;
-		  	else $field['value'] = "9999-12-31";
+		if (($field['public_status'] > $mystatus) && ($field['value']!="")) {	// now display permission
+			switch ($field['fieldtype']) {
+				case 'DATE':
+					$field['value'] = "9999-12-31";
+					break;
+				case 'COORD':
+					$field['value'] = "";
+					break;
+				default:
+				    $field['value']=_MYPROFILENOPERMISSION;
+			}
 		}
 		$identifier = $field['identifier'];
 		if (($field['active'] == '1') && ($field['shown'] == '1')) $profile[$identifier]=$field;

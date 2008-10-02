@@ -86,6 +86,10 @@
 		<!--[if $field.fieldtype eq "INTEGER"]--><!--[pnformintinput id=$field.identifier minValue=$field.num_minvalue maxValue=$field.num_maxvalue mandatory=$field.mandatory]--><!--[/if]-->
 		<!--[if $field.fieldtype eq "FLOAT"]--><!--[pnformfloatinput id=$field.identifier minValue=$field.num_minvalue maxValue=$field.num_maxvalue mandatory=$field.mandatory]--><!--[/if]-->
 		<!--[if $field.fieldtype eq "DATE"]--><!--[pnformdateinput id=$field.identifier mandatory=$field.mandatory]--><!--[/if]-->
+		<!--[if $field.fieldtype eq "COORD"]-->
+			<!--[pnml name="_MYPROFILELNG"]-->: <!--[pnformtextinput id="`$field.identifier`_lng" mandatory=$field.mandatory maxLength="15" textMode="singleLine"]-->
+			<!--[pnml name="_MYPROFILELAT"]-->: <!--[pnformtextinput id="`$field.identifier`_lat" mandatory=$field.mandatory maxLength="15" textMode="singleLine"]-->
+		<!--[/if]-->
 		</div>
 		<!-- form item end -->
 	<!--[/if]-->
