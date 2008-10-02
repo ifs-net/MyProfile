@@ -16,7 +16,22 @@ function smarty_function_showmap($params, &$smarty)
 	$coord = unserialize($coord);
 	$lat = $coord['lat'];
 	$lng = $coord['lng'];
-	echo "lat [".$lng."], lng [".$lat."]";
+	if (pnModAvailable('MyMap')) {
+		$coords[] = array(
+					'lat'	=> $lat,
+					'lng'	=> $lng
+					);
+		$mapcode = pnModAPIFunc('MyMap','user','generateMap',array(
+					'coords'	=> $coords,		// must be an array
+					'maptype'	=> 'HYBRID',	// HYBRID, SATELLITE or NORMAL
+					'width'		=> 300,			// width in pixels
+					'height'	=> 200,			// height in pixels
+					'zoomfactor' => 13			// zoomfactor - 1 is closest
+					));							// zoomfactor only relevant if there is
+												// only one marker displayed!
+		echo $mapcode;
+	}
+	else echo "lat [".$lng."], lng [".$lat."]";
     return; 
 }      
 
