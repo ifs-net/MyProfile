@@ -13,9 +13,9 @@
 		    <!--[pnmodapifunc modname="UserPictures" type="user" func="get" countonly="1" uid=$uid assign=owngallery template_id="0"]-->
 		    <center>
 		    <div class="myprofile_box">
-				<a href="<!--[pnmodurl modname="UserPictures" type="user" func="view" template_id="0" uid=$uid]-->"><!--[pnml name="_MYPROFILE_USERPICTURES_PICSINGALLERY"]-->: <!--[$owngallery]--> <!--[pnml name="_MYPROFILE_USERPICTURES_PICTURES"]--></a>.<br />
+				<a href="<!--[pnmodurl fqurl="true" modname="UserPictures" type="user" func="view" template_id="0" uid=$uid]-->"><!--[pnml name="_MYPROFILE_USERPICTURES_PICSINGALLERY"]-->: <!--[$owngallery]--> <!--[pnml name="_MYPROFILE_USERPICTURES_PICTURES"]--></a>.<br />
 			    <!--[pnmodapifunc modname="UserPictures" type="user" func="get" countonly="1" template_id="0" assoc_uid=$uid assign="assocpictures"]-->
-				<a href="<!--[pnmodurl modname="UserPictures" type="user" func="view" template_id="0" assoc_uid=$uid]-->"><!--[pnml name="_MYPROFILE_USERPICTURES_LINKEDIN"]--> <!--[$assocpictures]--> <!--[pnml name="_MYPROFILE_USERPICTURES_PICTURES"]--></a>
+				<a href="<!--[pnmodurl fqurl="true" modname="UserPictures" type="user" func="view" template_id="0" assoc_uid=$uid]-->"><!--[pnml name="_MYPROFILE_USERPICTURES_LINKEDIN"]--> <!--[$assocpictures]--> <!--[pnml name="_MYPROFILE_USERPICTURES_PICTURES"]--></a>
 		    </div>
 		    </center>
 		</div>
@@ -23,7 +23,7 @@
 
 
 <!--[if $individualtemplates eq 1 and $individualtemplate_content ne ""]-->
-	<small><a href="<!--[pnmodurl modname="MyProfile" type="user" func="display" uid=$uid overridetemplate="1"]-->"><!--[pnml name="_MYPROFILEOVERRIDETEMPLATE"]--></a></small><br />
+	<small><a href="<!--[pnmodurl fqurl="true" modname="MyProfile" type="user" func="display" uid=$uid overridetemplate="1"]-->"><!--[pnml name="_MYPROFILEOVERRIDETEMPLATE"]--></a></small><br />
 	<!--[$individualtemplate_content|pnmodcallhooks|pnvarprepfordisplay]-->
 <!--[else]-->
 	<!--[foreach from=$profile item="data"]-->
@@ -95,12 +95,12 @@
 		</div>
 		<!--[if $pnmessagesavailable and $viewer_uid ne $uid]-->
 			<div class="myprofile_profiletext">
-			<a href="<!--[pnmodurl modname="pnMessages" type="user" func="newpm" uname="$uname"]-->"><!--[pnml name="_MYPROFILESENDPM"]--></a> <a href="<!--[pnmodurl modname="pnMessages" type="user" func="compose" uname="$uname"]-->"><img src="modules/MyProfile/pnimages/sendpm.gif" /></a>
+			<a href="<!--[pnmodurl fqurl="true" modname="pnMessages" type="user" func="newpm" uname="$uname"]-->"><!--[pnml name="_MYPROFILESENDPM"]--></a> <a href="<!--[pnmodurl fqurl="true" modname="pnMessages" type="user" func="compose" uname="$uname"]-->"><img src="modules/MyProfile/pnimages/sendpm.gif" /></a>
 			</div>
 		<!--[/if]-->
 		<!--[if $contactlistavailable and $viewer_uid ne $uid]-->
 			<div class="myprofile_profiletext">
-			<a href="<!--[pnmodurl modname="ContactList" type="user" func="create" uname="create" uname=$uname]-->"><!--[pnml name="_MYPROFILEADDASBUDDY"]--></a>
+			<a href="<!--[pnmodurl fqurl="true" modname="ContactList" type="user" func="create" uname="create" uname=$uname]-->"><!--[pnml name="_MYPROFILEADDASBUDDY"]--></a>
 			</div>
 		<!--[/if]-->
 <!--[* additional information end *]-->
