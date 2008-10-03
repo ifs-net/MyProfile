@@ -36,6 +36,15 @@ function MyProfile_userapi_getProfile($args)
 	if (!pnUserLoggedIn()) 														$mystatus = 0;	// guest
 	else if (SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_ADMIN)) 	$mystatus = 2;	// admin
 	else 																		$mystatus = 1;	// registered users
+	
+	// take a look for individual permissions!
+	// if the user wants his profile page be viewable by all, we simulate a regular, logged in user
+	// if he just choosed the profile to be viewable by friends only - we will be led to no access page.
+	// so we jsut have to consider this case.
+	if (pnModGetVar('MyProfile','individualpermissions') == 1) {
+	  	$userattributes = pnUserGetVar('__ATTRIBUTES__',$uid);
+	  	if (isset($userattributes['myprofile_individualpermission']) && ($userattributes['myprofile_individualpermission'] == 0)) $mystatus = 1; // simulate logged in user
+	}
 	foreach ($fields as $field) {
 		$field['value'] = $data[$field['identifier']];
 		if (($field['public_status'] > $mystatus) && ($field['value']!="")) {	// now display permission
