@@ -9,6 +9,6 @@
  */
  
 // userdeletion
-define('_MYPROFILEMODULETITLE',		'Benutzer-Profil');
+define('_MYPROFILEMODULETITLE',			'Benutzer-Profil');
 define('_MYPROFILEPROFILEDELETEDFOR',	'Profildaten gelöscht für Benutzer');
 ?>

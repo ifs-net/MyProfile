@@ -1,4 +1,4 @@
 <?php
-define('_MYPROFILETHEREARE', 'Es sind derzeit');
-define('_MYPROFILEREGISTEREDUSERSONLINE', 'Mitglieder online');
+define('_MYPROFILETHEREARE', 				'Es sind derzeit');
+define('_MYPROFILEREGISTEREDUSERSONLINE', 	'Mitglieder online');
 ?>
