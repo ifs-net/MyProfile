@@ -29,6 +29,8 @@ function MyProfile_userdeletionapi_delUser($args)
 	  	// Here you should write your userdeletion routine.
 	  	// Delete your database entries or anonymize them.
 		DBUtil::deleteObjectByID('myprofile',$uid);
+		// delete templates - if there was one
+		DBUtil::deleteObjectByID('myprofile_templates',$uid);
 		$result = _MYPROFILEPROFILEDELETEDFOR." ".pnUserGetVar('uname',$uid);
 	}
 	return array(
