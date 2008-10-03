@@ -31,12 +31,15 @@ class MyProfile_user_ProfileHandler
 				  	$lng = $field['identifier'].'_lng';
 				    $data[$lat] = $coord['lat'];
 				    $data[$lng] = $coord['lng'];
-				    unset($data[$field['identifier']]);
+				    $data[$field['identifier']] = $coord;
+				    // for easier access we also store coordinates in an exta array with key = field identifier
+					$data['coords'][$field['identifier']] = $coord;
 				}
 				$render->assign($data);
 				$this->load_uid=$load_uid;
 			}
 		}
+		$render->assign('mymapavailable',pnModAvailable('MyMap'));
 		return true;
     }
     function handleCommand(&$render, &$args)

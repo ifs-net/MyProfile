@@ -1,6 +1,7 @@
 
 new in 1.1
 ==========
+- [quan]	integrate mymap map into profile page for coordinate fields
 - [quan]	introduced new variable type "coordinate" (lng, lat)
 - [quan]	optional: users can integrate their own templates into 
 			their profile pages if the admin allowes them to do this (experimental)
