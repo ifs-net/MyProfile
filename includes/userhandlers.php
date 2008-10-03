@@ -60,7 +60,8 @@ class MyProfile_user_ProfileHandler
 			  	  	$identifier = $field['identifier'];
 				    $lat = $identifier.'_lat';
 				    $lng = $identifier.'_lng';
-				    $obj[$identifier] = array(
+				    if (($obj[$lng] == '') || ($obj[$lat] == '')) $obj[$identifier] = '';
+				    else $obj[$identifier] = array(
 				    		'lng' => str_replace(',','.',$obj[$lng]),
 				    		'lat' => str_replace(',','.',$obj[$lat])
 						);
