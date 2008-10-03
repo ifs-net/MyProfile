@@ -26,7 +26,7 @@ function smarty_function_showmap($params, &$smarty)
 					'maptype'	=> 'HYBRID',	// HYBRID, SATELLITE or NORMAL
 					'width'		=> 300,			// width in pixels
 					'height'	=> 200,			// height in pixels
-					'zoomfactor' => 13			// zoomfactor - 1 is closest
+					'zoomfactor' => 8			// zoomfactor - 1 is closest
 					));							// zoomfactor only relevant if there is
 												// only one marker displayed!
 		echo $mapcode;
