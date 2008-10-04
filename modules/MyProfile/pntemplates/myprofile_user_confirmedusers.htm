@@ -1,0 +1,31 @@
+<!--[include file="myprofile_user_header.htm"]-->
+<!--[include file="myprofile_user_statusmsg.htm"]-->
+
+<h1><!--[pnml name="_MYPROFILEMANAGETRUSTLIST"]--></h1>
+
+<!--[pnform]-->
+<!--[pnformvalidationsummary]-->
+
+<h3><!--[pnml name="_MYPROFILEADDUSER"]--></h3>
+<!--[pnformlabel for="uname" text=_MYPROFILEUNAME]-->:<br />
+<!--[pnformtextinput id="uname" textMode="singleLine" maxLength="25" minLength="25" mandatory=1]--><br /><br />
+
+<div id="myprofile_submitbutton">
+<!--[pnformbutton commandName="update" text="_MYPROFILEADD"]-->
+</div>
+<!--[/pnform]-->
+
+<br /><br />
+<h3><!--[pnml name="_MYPROFILEYOURLIST"]--></h3>
+<ul>
+<!--[foreach from=$users item="user"]-->
+	<!--[pnusergetvar name="uname" uid=$user.uid assign="uname"]-->
+	<!--[if $uname ne ""]-->
+		<li><!--[$uname|userprofilelink]--> (<a href="<!--[pnmodurl modname="MyProfile" type="user" func="confirmedusers" delete=$user.id authid=$authid]-->"><!--[pnml name="_MYPROFILEDELETE"]-->)</a></li>
+	<!--[/if]-->
+<!--[foreachelse]-->
+<li><!--[pnml name="_MYPROFILENOENTRY"]--></li>
+<!--[/foreach]-->
+</ul>
+
+<!--[include file="myprofile_user_footer.htm"]-->
