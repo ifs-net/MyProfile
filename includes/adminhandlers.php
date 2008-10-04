@@ -18,6 +18,34 @@ class MyProfile_admin_addFieldHandler
 			$data = DBUtil::selectObjectByID('myprofile_fields', $this->id);
 			$render->assign($data);
 		}
+		// create dropdown fields
+		$items_yesno = array (			array('text' => _MYPROFILENO,		'value' => 0),
+										array('text' => _MYPROFILEYES,		'value' => 1) );
+		$items_fieldtype = array (		
+										array('text' => _MYPROFILESEPARATOR,'value' => 'SEPARATOR'),
+										array('text' => _MYPROFILESTRING,	'value' => 'STRING'),
+										array('text' => _MYPROFILEINT,		'value' => 'INTEGER'),
+										array('text' => _MYPROFILEFLOAT,	'value' => 'FLOAT'),
+										array('text' => _MYPROFILETEXTBOX,	'value' => 'TEXTBOX'),
+										array('text' => _MYPROFILEURL,		'value' => 'URL'),
+										array('text' => _MYPROFILEUIN,		'value' => 'UIN'),
+										array('text' => _MYPROFILESKYPEID,	'value' => 'SKYPEID'),
+										array('text' => _MYPROFILEDATE,		'value' => 'DATE'),
+										array('text' => _MYPROFILETIMESTAMP,'value' => 'TIMESTAMP'),
+										array('text' => _MYPROFILECOORD,	'value' => 'COORD') );
+		$items_public_status = array (	array('text' => _MYPROFILENOPROTECT,'value' => 0),
+										array('text' => _MYPROFILEREGONLY,	'value' => 1),
+										array('text' => _MYPROFILEADMINONLY,'value' => 2),
+										array('text' => _MYPROFILECUSTOM,	'value' => 9) );
+		$render->assign('items_yesno',			$items_yesno);
+		$render->assign('items_fieldtype',		$items_fieldtype);
+		$render->assign('items_public_status',	$items_public_status);
+		
+		// assign default values
+		$render->assign('mandatory',1);
+		$render->assign('public_status',1);
+		$render->assign('active',1);
+		$render->assign('shown',1);
 		return true;
     }
     function handleCommand(&$render, &$args)

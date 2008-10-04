@@ -93,7 +93,7 @@ function MyProfile_pntables()
 			    'confirmed_uid'			=> 'confirmed_uid'
 			    );
     $pntable['myprofile_confirmedusers_column_def'] = array(
-    			'id'					=> "I NOTNULL PRIMARY",
+    			'id'					=> "I AUTOINCREMENT PRIMARY",
     			'uid'					=> "I NOTNULL DEFAULT 0",
     			'confirmed_uid'			=> "I NOTNULL DEFAULT 0"
     			);

@@ -14,6 +14,8 @@ define('_MYPROFILEMAINPROFILEDATA',		'my profile data');
 define('_MYPROFILEMAILANDPASSWORD',		'email address, password and extended settings');
 
 // main
+define('_MYPROFILEVIEWABLEBY',			'Viewable for');
+define('_MYPROFILEPRIVATEFIELD',		'Private field, only viewable by users you allow to access this data');
 define('_MYPROFILEPROFILEOF',			'Profile of user');
 define('_MYPROFILEMYPROFILE',			'My profile');
 define('_MYPROFILESAVE',				'save / update');
@@ -30,13 +32,29 @@ define('_MYPROFILEATTRIBUTESTOREERROR',	'Updating / creating user attributes fai
 define('_MYPROFILELNG',					'Longitude');
 define('_MYPROFILELAT',					'Latitude');
 
+// confirmedusers
+define('_MYPROFILEUSERDELETED',			'User deleted');
+define('_MYPROFILEDELETE',				'delete User');
+define('_MYPROFILEERRORDELETINGUSER',	'An error occured while trying to delete the user');
+define('_MYPROFILEMANAGETRUSTLIST',		'Manage users that can see your private data');
+define('_MYPROFILEADDUSER',				'Add a new user to your list');
+define('_MYPROFILEUNAME',				'Username');
+define('_MYPROFILEADD',					'add');
+define('_MYPROFILEYOURLIST',			'Your list');
+define('_MYPROFILENOENTRY',				'No entry was made yet');
+define('_MYPROFILEUSERADDED',			'User was added to the list');
+define('_MYPROFILEUSERADDERROR',		'An error occured while trying to add the user to your list');
+define('_MYPROFILEUSERALREADYADDED',	'The user is already listed in your list');
+define('_MYPROFILEDONOTADDYOURSELF',	'I hope you trust yourself, but you cannot add your own username to your list');
+define('_MYPROFILEUSERNOTFOUND',		'The username you specified does not exist');
+
 // display
 define('_MYPROFILEOVERRIDETEMPLATE',	'Override individual profile template');
 define('_MYPROFILENOACCESS',			'Sorry, no authorisation');
 define('_MYPROFILENOINDIVIDUALPERMISSION',	'The main profile part is not accessible by you');
 define('_MYPROFILESENDPM',				'Send private message');
 define('_MYPROFILEADDASBUDDY',			'Add as buddy');
-define('_MYPROFILENOPERMISSION',		'not shown for unregistered users');
+define('_MYPROFILENOPERMISSION',		'no permission to view this field');
 define('_MYPROFILEREGSINCE',			'Registerd since');
 define('_MYPROFILELASTLOGIN',			'Last login');
 define('_MYPROFILELASTUPDATE',			'Last update');
@@ -52,6 +70,8 @@ define('_USERPICTURESINVALIDEXPLANATION',	'The user does not exist or there is n
 define('_USERPICTURESBACKTOLASTPAGE',		'Go back one page');
 
 // settings
+define('_MYPROFILEMANAGECONFIRMEDUSERS',	'Manage users that are allowed to view all my data that is declared as private');
+define('_MYPROFILECUSTOMSETTINGS',			'Profile data fields that are marked as private should be viewable by');
 define('_MYPROFILETEMPLATEINCLUDEMANDATORY','You have to include all mandatory profile variables into your individual template');
 define('_MYPROFILEINDIVIDUALTEMPLATEHINTS',	'Some hints to create your own template');
 define('_MYPROFILEMYPROFILEMYTEMPLATE',		'Use an individual template');
@@ -62,6 +82,7 @@ define('_MYPROFILEMYPROFILEVISIBLEFOR',	'My profile page should be accessable by
 define('_MYPROFILEALL',					'everybody');
 define('_MYPROFILEMEMBERS',				'all members');
 define('_MYPROFILEBUDDIES',				'confirmed buddies');
+define('_MYPROFILELISTEDUSERSONLY',		'only listed users');
 define('_MYPROFILEYOURSETTINGS',		'Here you can define some custom settings for your profile');
 define('_MYPROFILENOCOMMENTS',			'Do not allow other users to comment my profile');
 define('_MYPROFILESETTINGSUPDATED',		'Settings updated successfully');

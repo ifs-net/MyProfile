@@ -28,14 +28,16 @@ function MyProfile_userapi_getProfile($args)
 	if (!(count($data)>0)) return false;
 	
 	// now combine with the fields
-	$fields = pnModAPIFunc('MyProfile','admin','getFields');
+	$viewer_uid = pnUserGetVar('uid');
+	$fields 	= pnModAPIFunc('MyProfile','admin','getFields');
 	// status codes:
 	// 0 = visible for guests 
 	// 1 = visible for logged in users
 	// 2 = visible for administrators only
-	if (!pnUserLoggedIn()) 														$mystatus = 0;	// guest
-	else if (SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_ADMIN)) 	$mystatus = 2;	// admin
-	else 																		$mystatus = 1;	// registered users
+	$is_admin = SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_ADMIN);
+	if (!pnUserLoggedIn()) 	$mystatus = 0;	// guest
+	else if ($is_admin) 	$mystatus = 10;	// admin should see everything
+	else 					$mystatus = 1;	// registered users
 	
 	// take a look for individual permissions!
 	// if the user wants his profile page be viewable by all, we simulate a regular, logged in user
@@ -47,7 +49,13 @@ function MyProfile_userapi_getProfile($args)
 	}
 	foreach ($fields as $field) {
 		$field['value'] = $data[$field['identifier']];
-		if (($field['public_status'] > $mystatus) && ($field['value']!="")) {	// now display permission
+		if (
+			(	($field['public_status'] > $mystatus) ||
+				(($field['public_status'] == 9) && (pnModAvailable('ContactList')) && ($userattributes['myprofile_customsettings'] == 2) && !pnModAPIFunc('ContactList','user','isBuddy',array('uid1' => $uid, 'uid2' => $viewer_uid))) ||
+				(($field['public_status'] == 9) && ($viewer_uid > 1) && !in_array($viewer_uid,pnModAPIFunc('MyProfile','user','getCustomFieldList',array('uid' => $uid)))) 
+				)
+			&& ($field['value']!="")
+			) {	// now display permission
 			switch ($field['fieldtype']) {
 				case 'DATE':
 					$field['value'] = "9999-12-31";
@@ -63,6 +71,23 @@ function MyProfile_userapi_getProfile($args)
 		if (($field['active'] == '1') && ($field['shown'] == '1')) $profile[$identifier]=$field;
 	}
 	return $profile;
+}
+
+/**
+ * delete a user from the confirmed user list
+ *
+ * @param	$args['confirmed_uid']
+ * @return	bool
+ */
+function MyProfile_userapi_deleteConfirmedUser($args)
+{
+  	$confirmed_uid = (int)$args['confirmed_uid'];
+  	if (!($confirmed_uid > 1)) return false;
+  	$tables 	= pnDBGetTables();
+  	$uid 		= pnUserGetVar('uid');
+  	$column 	= $tables['myprofile_confirmedusers_column'];
+  	$where 		= $column['confirmed_uid'].' = '.$confirmed_uid.' AND '.$column['uid'].' = '.$uid;
+  	return DBUtil::deleteWhere('myprofile_confirmedusers',$where);
 }
 
 /**
@@ -86,7 +111,39 @@ function MyProfile_userapi_hasValidProfile($args) {
 		else return true;		    
 	}
 	else return false; // to user has not enterd valid profile data yet.
-} 
+}
+
+/**
+ * get custom field user list
+ *
+ * this function returns a list of users that is allowed to view 
+ * a user's profile data that is marked as private.
+ *
+ * @param	$args['uid']			int
+ * @param	$args['exludeowner']	int		(= 1 if owner should not be added automatically to own list)
+ * @return	array
+ */
+function MyProfile_userapi_getCustomFieldList($args) {
+  	$uid 			= $args['uid'];
+  	$exludeowner 	= (int)$args['excludeowner'];
+  	// we'll do a little bit of caching here
+  	static $myprofile_confirmedusers;
+  	if (!isset($myprofile_confirmedusers)) $myprofile_confirmedusers = array();
+  	else return $myprofile_confirmedusers;
+  	if (!isset($uid) || (!($uid > 1))) return false;
+  	else {
+  	  	$tables = pnDBGetTables();
+  	  	$where = $tables['myprofile_confirmedusers_column']['uid'].' = '.(int)$uid;
+	    $result = DBUtil::selectObjectArray('myprofile_confirmedusers',$where);
+		// lets transform the result
+		$resultList = array();
+		foreach ($result as $r) $resultList[] = $r['confirmed_uid'];
+	    // add the owner because he will trust himself... Ok I hope he will :-)
+	    if (!($exludeowner == 1)) $resultList[] = $uid;
+		$myprofile_confirmedusers = $resultList;
+		return $myprofile_confirmedusers;
+	}
+}
 
 /**
  * get the last update date of a users's profile
@@ -129,47 +186,20 @@ function MyProfile_userapi_getSettings($args)
 		  	if (isset($template) && ($template['template'] != '')) $individualtemplate = $template['template'];
 		}
 	}
-    return array(
+	// custom settings for individual profile fields
+	$customsettings = $user['__ATTRIBUTES__']['myprofile_customsettings'];
+	if (!isset($customsettings)) $customsettings = 3;	// default: listed and confirmed users
+	
+	return array(
     				'id'					=> $uid,
 					'nocomments' 			=> $user['__ATTRIBUTES__']['myprofile_nocomments'],
 					'validationcode'		=> unserialize($user['__ATTRIBUTES__']['myprofile_validationcode']),
 					'individualpermission' 	=> $user['__ATTRIBUTES__']['myprofile_individualpermission'],
-					'individualtemplate' 	=> $individualtemplate
+					'individualtemplate' 	=> $individualtemplate,
+					'customsettings'		=> $customsettings
 				);
 }
 
-/**
- * check if user is allowed to use an individual template
- * This function does not contain a check for the global individualtemplates
- * module variable
- *
- * @param	$args['uid']	int
- * @return	array
- */
-function MyProfile_userapi_individualTemplateAllowed($args)
-{
-  	$uid = (int)$args['uid'];
-  	// nothing allowed now...
-  	$allowed = false;
-  	// get all disabled groups from module variable
-	$groups = unserialize(pnModGetVar('MyProfile','disabledgroups'));
-	if (count($groups) > 0) {
-	  	// get all existing groups
-	  	$allgroups = pnModAPIFunc('Groups','user','getall');
-	  	// filter out the groups we have to check now if the user is a member of it
-	  	$checkgroups = array();
-	  	foreach ($allgroups as $g) {
-		    if (!in_array($g['gid'],$groups)) $checkgroups[]=$g;
-		}
-		// now we have to check if the user is in any of the groups that remained
-		// if this is the case, the user is allowed to have an own template
-		foreach ($checkgroups as $g) {
-		  	if (pnModAPIFunc('Groups','user','isgroupmember',array('gid' => $g['gid'], 'uid' => $uid))) $allowed = true;
-		}
-	}
-	else $allowed = true;
-	return $allowed;
-}
 /**
  * store user settings
  *
@@ -177,6 +207,7 @@ function MyProfile_userapi_individualTemplateAllowed($args)
  * @param	$args['nocomments']				int
  * @param	$args['individualpermission']	int
  * @param	$args['individualtemplate']		string
+ * @param	$args['customsettings']			int
  * @return	array
  */
 function MyProfile_userapi_setSettings($args)
@@ -185,12 +216,14 @@ function MyProfile_userapi_setSettings($args)
 	$nocomments 			= $args['nocomments'];
 	$individualpermission 	= $args['individualpermission'];
 	$individualtemplate 	= $args['individualtemplate'];
+	$customsettings			= $args['customsettings'];
 	if (!(($nocomments >= 0) && ($nocomments <= 1))) $nocomments = 0;
 	// get user and attributes
     $user = DBUtil::selectObjectByID('users', $uid, 'uid', null, null, null, false);
     if (!is_array($user)) return false; // no user data?
 	$user['__ATTRIBUTES__']['myprofile_nocomments'] 			= $nocomments;
 	$user['__ATTRIBUTES__']['myprofile_individualpermission'] 	= $individualpermission;
+	$user['__ATTRIBUTES__']['myprofile_customsettings']		 	= $customsettings;
 
 	// store individual template if there is anything to store
 	$template = DBUtil::selectObjectByID('myprofile_templates',$uid);
@@ -241,6 +274,39 @@ function MyProfile_userapi_storeAsAttributes($args)
 	else unset($user['__ATTRIBUTES__']['myprofile']);
 	// store attributes serialized
 	return DBUtil::updateObject($user, 'users', '', 'uid');				
+}
+
+/**
+ * check if user is allowed to use an individual template
+ * This function does not contain a check for the global individualtemplates
+ * module variable
+ *
+ * @param	$args['uid']	int
+ * @return	array
+ */
+function MyProfile_userapi_individualTemplateAllowed($args)
+{
+  	$uid = (int)$args['uid'];
+  	// nothing allowed now...
+  	$allowed = false;
+  	// get all disabled groups from module variable
+	$groups = unserialize(pnModGetVar('MyProfile','disabledgroups'));
+	if (count($groups) > 0) {
+	  	// get all existing groups
+	  	$allgroups = pnModAPIFunc('Groups','user','getall');
+	  	// filter out the groups we have to check now if the user is a member of it
+	  	$checkgroups = array();
+	  	foreach ($allgroups as $g) {
+		    if (!in_array($g['gid'],$groups)) $checkgroups[]=$g;
+		}
+		// now we have to check if the user is in any of the groups that remained
+		// if this is the case, the user is allowed to have an own template
+		foreach ($checkgroups as $g) {
+		  	if (pnModAPIFunc('Groups','user','isgroupmember',array('gid' => $g['gid'], 'uid' => $uid))) $allowed = true;
+		}
+	}
+	else $allowed = true;
+	return $allowed;
 }
 
 /**

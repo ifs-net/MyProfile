@@ -177,6 +177,7 @@ define('_MYPROFILENOCOPYVALUE',				'do not copy anything');
 define('_MYPROFILENOPROTECT',				'This field will be shown to everybody');
 define('_MYPROFILEREGONLY',					'Only registered users will be able to see this field\'s value');
 define('_MYPROFILEADMINONLY',				'Only the administrator will be able to see this field\'s value');
+define('_MYPROFILECUSTOM',					'The user can choose who should be able to see this field\'s value');
 define('_MYPROFILENUMMINVALUE',				'Minimal value for integer or float');
 define('_MYPROFILENUMMAXVALUE',				'Maximal value for integer or float');
 define('_MYPROFILEFIELDCREATED',			'New field was created successfully');

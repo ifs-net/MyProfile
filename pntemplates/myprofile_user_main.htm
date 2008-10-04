@@ -65,7 +65,11 @@
 	<!--[else]-->
 		<div class="myprofile_formelement">
 		<!-- form item begin -->
-		<!--[pnformlabel for=$field.identifier text=$field.description]-->:<br />
+		<!--[pnformlabel for=$field.identifier text=$field.description]-->:
+		<!--[if $field.public_status eq 0]--><!--[pnml name="_MYPROFILEVIEWABLEBY"]-->&nbsp;<!--[pnml name="_MYPROFILEALL"]--><!--[/if]-->
+		<!--[if $field.public_status eq 2]--><!--[pnml name="_MYPROFILEVIEWABLEBY"]-->&nbsp;<!--[pnml name="_MYPROFILEBUDDIES"]--><!--[/if]-->
+		<!--[if $field.public_status eq 9]--><a href="<!--[pnmodurl modname="MyProfile" type="user" func="settings"]-->"><!--[pnml name="_MYPROFILEPRIVATEFIELD"]--></a><!--[/if]-->
+		<br />
 		<!--[if $field.fieldtype eq "STRING" or $field.fieldtype == "TIMESTAMP"]-->
 			<!--[if $field.list eq ""]-->
 				<!--[pnformtextinput mandatory=$field.mandatory id=$field.identifier maxLength=$field.str_length]-->
@@ -88,7 +92,6 @@
 		<!--[if $field.fieldtype eq "DATE"]--><!--[pnformdateinput id=$field.identifier mandatory=$field.mandatory]--><!--[/if]-->
 		<!--[if $field.fieldtype eq "COORD"]-->
 			<!--[if $mymapavailable]-->
-			<!--[*pndebug output="html"*]-->
 				<!--[pnmodapifunc modname="MyMap" type="user" func="generateMap" width="400" height="150" maptype="hybrid" zoomfactor="7" lat="`$field.identifier`_lat" lng="`$field.identifier`_lng" coords=$coords[$field.identifier]]-->
 			<!--[/if]-->
 			<!--[pnml name="_MYPROFILELNG"]-->: <!--[pnformtextinput id="`$field.identifier`_lng" mandatory=$field.mandatory maxLength="25" textMode="singleLine"]-->

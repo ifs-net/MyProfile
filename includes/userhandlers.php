@@ -124,6 +124,22 @@ class MyProfile_user_SettingsHandler
 				);
 			if (pnModAvailable('ContactList')) $items_individualpermissions[] = array('text' => _MYPROFILEBUDDIES, 	'value' => 2);
 			$render->assign('items_individualpermissions', $items_individualpermissions);
+			// are there custom settings we should take care of?
+			$fields = pnModAPIFunc('MyProfile','admin','getFields');
+			$customfields = false;
+			foreach ($fields as $field) {
+			  	if ($field['public_status'] == 9) $customfields = true;
+			}
+			if ($customfields) {
+				$contactlistavailable = pnModAvailable('ContactList');
+				$items_customfields[] = array('text' => _MYPROFILEALL, 'value' => 0);
+				$items_customfields[] = array('text' => _MYPROFILEMEMBERS, 'value' => 1);
+				if ($contactlistavailable) $items_customfields[] = array('text' => _MYPROFILEBUDDIES, 'value' => 2);
+				$items_customfields[] = array('text' => _MYPROFILELISTEDUSERSONLY, 'value' => 3);
+				$render->assign('items_customfields', $items_customfields);
+				// assign user's value
+				$render->assign('customsettings',	$data['customsettings']);
+			}
 		}
 		return true;
     }
@@ -151,7 +167,8 @@ class MyProfile_user_SettingsHandler
 					'uid'					=> $obj['id'],
 					'nocomments' 			=> $obj['nocomments'],
 					'individualpermission' 	=> $obj['individualpermission'],
-					'individualtemplate' 	=> $obj['individualtemplate']
+					'individualtemplate' 	=> $obj['individualtemplate'],
+					'customsettings'	 	=> $obj['customsettings']
 					)
 				);
 	      	if ($result) LogUtil::registerStatus(_MYPROFILESETTINGSUPDATED);
@@ -231,6 +248,57 @@ class MyProfile_user_ValidateMailHandler
 			// store attributes
 			DBUtil::updateObject($user, 'users', '', 'uid');			
 			return pnRedirect(pnModURL('MyProfile','user','settings'));
+		}
+		return true;
+    }
+}
+
+class MyProfile_user_ConfirmedUsersHandler
+{
+	var $uid;
+	function initialize(&$render)
+	{	    
+	  	// Admins should be able to modify user's profile data
+		$users = pnModAPIFunc('MyProfile','user','getCustomFieldList',array(
+			'uid' 			=> pnUserGetVar('uid'),
+			'excludeowner' 	=> 1));
+		$render->assign('users',	$users);
+		$render->assign('authid',	SecurityUtil::generateAuthKey());
+		return true;
+    }
+	function handleCommand(&$render, &$args)
+	{
+		if ($args['commandName']=='update') {
+			// get the pnForm data and do a validation check
+		    $obj = $render->pnFormGetValues();		    
+		    if (!$render->pnFormIsValid()) return false;
+			
+			// check username
+			$uid = (int)pnUserGetVar('uid');
+			$confirmed_uid = (int)pnUserGetIDFromName($obj['uname']);
+			if (!($confirmed_uid > 1)) {
+			  	LogUtil::registerError(_MYPROFILEUSERNOTFOUND);
+			  	return false;
+			}
+			else if ($uid == $confirmed_uid) {
+			  	LogUtil::registerError(_MYPROFILEDONOTADDYOURSELF);
+			  	return false;
+			}
+			else if (in_array($confirmed_uid,pnModAPIFunc('MyProfile','user','getCustomFieldList',array('uid' => $uid)))) {
+			  	LogUtil::registerError(_MYPROFILEUSERALREADYADDED);
+			  	return false;
+			}
+			else {
+			  	$obj = array(	'uid'			=> $uid,
+				  				'confirmed_uid'	=> $confirmed_uid);
+				prayer($obj);
+			  	if (!DBUtil::insertObject($obj,'myprofile_confirmedusers')) {
+				  	LogUtil::registerError(_MYPROFILEUSERADDERROR);
+				  	return false;
+				} 
+			}
+			LogUtil::registerStatus(_MYPROFILEUSERADDED);
+			return pnRedirect(pnModURL('MyProfile','user','confirmedusers'));
 		}
 		return true;
     }

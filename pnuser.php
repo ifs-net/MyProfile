@@ -55,6 +55,39 @@ function MyProfile_user_validatemail()
 }
 
 /**
+ * function to manage userlist that is allowed to view data declared as private
+ * 
+ * @return	output
+ */
+function MyProfile_user_confirmedusers()
+{
+    // Security check
+    if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_COMMENT)) return LogUtil::registerPermissionError();
+    // check for delete action
+    $delete = (int)FormUtil::getPassedValue('delete');
+    if ($delete > 0) {
+	  	if (!SecurityUtil::ConfirmAuthKey()) {
+		    LogUtil::registerAuthIDError();
+		   	return pnRedirect(pnModURL('MyProfile','user','confirmedusers'));
+		}
+	  	else {
+	  		if (pnModAPIFunc('MyProfile','user','deleteConfirmedUser',array('confirmed_uid' => $delete))) {
+			   	LogUtil::registerStatus(_MYPROFILEUSERDELETED);
+			   	return pnRedirect(pnModURL('MyProfile','user','confirmedusers'));
+			}
+	  		else {
+			    LogUtil::registerError(_MYPROFILEERRORDELETINGUSER);
+			   	return pnRedirect(pnModURL('MyProfile','user','confirmedusers'));
+			}			
+		}
+	}
+	// Create output and assign data
+	$render = FormUtil::newpnForm('MyProfile');
+    // Return the output
+    return $render->pnFormExecute('myprofile_user_confirmedusers.htm', new MyProfile_user_ConfirmedUsersHandler());
+}
+
+/**
  * This function loads the content of a tab
  *
  * @param	$_GET['modname']

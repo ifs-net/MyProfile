@@ -15,6 +15,13 @@
 	<!--[pnformdropdownlist id="individualpermission" items=$items_individualpermissions]--><br /><br />
 <!--[/if]-->
 
+<!--[if $items_customfields|@count gt 0]-->
+	<!--[pnformlabel for="customsettings" text="_MYPROFILECUSTOMSETTINGS"]-->? 
+	<!--[pnformdropdownlist id="customsettings" items=$items_customfields]--><br />
+	<a href="<!--[pnmodurl modname="MyProfile" type="user" func="confirmedusers"]-->"><!--[pnml name="_MYPROFILEMANAGECONFIRMEDUSERS"]--></a>
+	<br /><br />
+<!--[/if]-->
+
 <!--[if $fields|@count gt 0]-->
 	<!--[if $individualtemplate eq "" and $individualtemplates eq 1]-->
 		<div id="mit_link"><a onclick="javascript:$('mit').show();$('mit_link').hide();" href="#mit"><!--[pnformlabel for="individualtemplate" text="_MYPROFILEMYPROFILEMYTEMPLATE"]--></a><br /></a></div>

@@ -14,6 +14,8 @@ define('_MYPROFILEMAINPROFILEDATA',			'Haupt-Profil-Daten');
 define('_MYPROFILEMAILANDPASSWORD',			'E-Mail-Adresse, Passwort und erweiterte Einstellungen bearbeiten');
 
 // main
+define('_MYPROFILEVIEWABLEBY',				'sichtbar für');
+define('_MYPROFILEPRIVATEFIELD',			'Als privat markiert; nur durch freigegebene Kontakte sichtbar');
 define('_MYPROFILEPROFILEOF',				'Profil von');
 define('_MYPROFILEMYPROFILE',				'Mein Profil');
 define('_MYPROFILESAVE',					'speichern / aktualisieren');
@@ -30,13 +32,29 @@ define('_MYPROFILEATTRIBUTESTOREERROR',		'Aktualisieren / Erzeugen der Benutzer-
 define('_MYPROFILELNG',						'Längengrad');
 define('_MYPROFILELAT',						'Breitengrad');
 
+// confirmedusers
+define('_MYPROFILEUSERDELETED',				'Benutzer entfernt');
+define('_MYPROFILEDELETE',					'Benutzer entfernen');
+define('_MYPROFILEERRORDELETINGUSER',		'Beim Versuch den Benutzer von der Liste zu löschen ist ein Fehler aufgetreten');
+define('_MYPROFILEMANAGETRUSTLIST',			'Benutzerliste verwalten, welche Zugriff auf private Daten hat');
+define('_MYPROFILEADDUSER',					'Einen neuen Benutzer meiner Liste hinzufügen');
+define('_MYPROFILEUNAME',					'Benutzername');
+define('_MYPROFILEADD',						'hinzufügen');
+define('_MYPROFILEYOURLIST',				'Meine Liste');
+define('_MYPROFILENOENTRY',					'Noch kein Eintrag gefunden');
+define('_MYPROFILEUSERADDED',				'Der Benutzer wurde der Liste hinzugefügt');
+define('_MYPROFILEUSERADDERROR',			'Beim Versuch den Benuzter der Liste hinzuzufügen ist ein Fehler aufgetreten');
+define('_MYPROFILEUSERALREADYADDED',		'Der Benutzer ist bereits auf der Liste aufgeführt und kann nicht zweimal hinzugefügt werden');
+define('_MYPROFILEDONOTADDYOURSELF',		'Ja, man traut sich meist selbst, aber trotzdem kann der eigene Benutzername nicht auf der eigenen Liste gespeichert werden');
+define('_MYPROFILEUSERNOTFOUND',			'Der angegebene Benutzername existiert nicht');
+
 // display
 define('_MYPROFILEOVERRIDETEMPLATE',		'Individuelle Benutzervorlage ignorieren und klassische Profilansicht wählen');
 define('_MYPROFILENOACCESS',				'Kein Zugriff auf dieses Profil möglich');
 define('_MYPROFILENOINDIVIDUALPERMISSION',	'Der Inhaber des Profils hat die Sichtbarkeit seines Profils so eingeschränkt, dass es für Dich leider nicht sichtbar ist.');
 define('_MYPROFILESENDPM',					'Private Nachricht senden');
 define('_MYPROFILEADDASBUDDY',				'Als Freund hinzufügen');
-define('_MYPROFILENOPERMISSION',			'nur für regisrierte Benutzer angezeigt');
+define('_MYPROFILENOPERMISSION',			'keine Zugriffsrechte auf diese Daten');
 define('_MYPROFILEREGSINCE',				'Registriert seit');
 define('_MYPROFILELASTLOGIN',				'Letzer Login');
 define('_MYPROFILELASTUPDATE',				'Letzte Aktualisierung');
@@ -52,6 +70,7 @@ define('_USERPICTURESINVALIDEXPLANATION',	'Der Benutzer existiert nicht oder hat
 define('_USERPICTURESBACKTOLASTPAGE',		'Zurück zur letzten Seite.');
 
 // settings
+define('_MYPROFILEMANAGECONFIRMEDUSERS',	'Benutzer verwalten, welche alle meine als privat deklarierten Daten sehen dürfen');
 define('_MYPROFILETEMPLATEINCLUDEMANDATORY','Alle als Pflichtvariablen angegebenen Variablen müssen in der individuellen Profilvorlage enthalten sein!');
 define('_MYPROFILEINDIVIDUALTEMPLATEHINTS',	'Hinweise zur Nutzung eingener individueller Vorlagen');
 define('_MYPROFILEMYPROFILEMYTEMPLATE',		'Individuelle Vorlage zur Darstellung des eigenen Profils nutzen');
