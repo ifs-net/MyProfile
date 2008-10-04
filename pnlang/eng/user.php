@@ -10,8 +10,8 @@
  
 // header
 define('_MYPROFILEUSERMENU',			'User\'s menu');
-define('_MYPROFILEMAINPROFILEDATA',		'main profile data');
-define('_MYPROFILEMAILANDPASSWORD',		'manage email address, password and extended settings');
+define('_MYPROFILEMAINPROFILEDATA',		'my profile data');
+define('_MYPROFILEMAILANDPASSWORD',		'email address, password and extended settings');
 
 // main
 define('_MYPROFILEPROFILEOF',			'Profile of user');
