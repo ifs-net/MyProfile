@@ -53,7 +53,31 @@
  	padding-bottom: 3px;
 }
 
+/** user: search **/
+
+.myprofile_bold {
+  	font-weight: bold;
+}
+.myprofile_hidden {
+  	display: none;
+}
+.myprofile_searchelement {
+	clear: both;
+	padding-bottom: 35px;
+}
+.myprofile_searchleft {
+	float: left;
+	width: 30%;
+	text-align: right;
+}
+.myprofile_searchright {
+	float: right;
+	width: 66%;
+	text-align: left;
+}
+
 /** user: main **/
+
 .myprofile_header {
   	border: 1px solid #000;
   	border-top-color: #888;
@@ -192,7 +216,7 @@
   	font-size: 1.2em;
 }
 .myprofile_small {
-  	font-size: 0.7em;
+  	font-size: 0.8em;
 }
 .myprofile_italic {
   	font-style: italic;

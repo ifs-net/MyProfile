@@ -29,6 +29,11 @@ define('_MYPROFILEDONATETHIS',				'Donate with PayPal!');
 define('_MYPROFILEDONATE',					'You like this module and it is usefull for you? Thank you for some little donation for the programmer! OK - I like programming very much and this module is free and open source - but if you spend some money I\'ll go out for a nice candlelight dinner with my girlfriend and it will be much easier next time to get free time for programming ;-)');
 
 // mainsettings
+define('_MYPROFILEALLOWMEMBERLIST',			'Allow users to access the whole member list in entering no search string');
+define('_MYPROFILEAMOUNTOFRESULTSPERPAGE',	'Results that should be shown per page');
+define('_MYPROFILEPROFILEAPPEARANCE',		'Profile display configuration');
+define('_MYPROFILESEARCHAPPEARANCE',		'Search engine configuration');
+define('_MYPROFILESEARCHTEMPLATE',			'You can specify a tempalte that should be included in the vcards that are displayed in a search result page that will have all user data assigned; Enter filename to use this feature');
 define('_MYPROFILEEXCLUDEGROUPFORTEMPLATING','Exclude selected groups from the permission to upload and use own individual profile templates');
 define('_MYPROFILEALLOWINDIVIDUALTEMPLATES','Users should be allowed to upload theis own templates for their profile.');
 define('_MYPROFILEUSERPERMISSIONS',			'User\'s permissions');
@@ -140,6 +145,7 @@ define('_MYPROFILEELEMENTMOVED',			'Element was moved successfully');
 define('_MYPROFILESTOREDAT',				'New order was saved successfully at');
 
 // add a new field or modify an existing one
+define('_MYPROFILESEARCHABLE',				'Field should be searchable by all users doing a search');
 define('_MYPROFILECOORD',					'Coordinate');
 define('_MYPROFILEADDNEWFIELD',				'Add a new field');
 define('_MYPROFILEMODIFYFIELD',				'Modify an existing field');

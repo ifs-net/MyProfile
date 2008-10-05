@@ -12,6 +12,7 @@
 define('_MYPROFILEUSERMENU',				'Benutzer-Menü');
 define('_MYPROFILEMAINPROFILEDATA',			'Haupt-Profil-Daten');
 define('_MYPROFILEMAILANDPASSWORD',			'E-Mail-Adresse, Passwort und erweiterte Einstellungen bearbeiten');
+define('_MYPROFILESEARCHMEMBERS',			'Mitglieder suchen');
 
 // main
 define('_MYPROFILEVIEWABLEBY',				'sichtbar für');
@@ -31,6 +32,30 @@ define('_MYPROFILEADDPROFILEFAILED',		'Profil-Erzeugung / -Aktualisierung fehlge
 define('_MYPROFILEATTRIBUTESTOREERROR',		'Aktualisieren / Erzeugen der Benutzer-Attribute fehlgeschlagen');
 define('_MYPROFILELNG',						'Längengrad');
 define('_MYPROFILELAT',						'Breitengrad');
+
+// search
+define('_MYPROFILEMEMBERLISTDESC',			'Wenn die Suche ohne Suchparameter und Eingabe gestartet wird, wird die komplette Mitgliederliste angezeigt');
+define('_MYPROFILEPAGE',					'Seite');
+define('_MYPROFILENOTHINGSEARCHABLE',		'Es sind entweder keine weiteren durchsuchbaren Felder definiert oder es Fehlen die nötigen Zugriffsrechte, darauf zuzugreifen.');
+define('_MYPROFILESEARCH',					'Suche');
+define('_MYPROFILEORDERBY',					'Sortieren nach');
+define('_MYPROFILESEARCHINTRO',				'Die nachfolgenden Felder können befüllt werden um die Ergebnisse einzugrenzen.');
+define('_MYPROFILESEARCHTYPE',				'Suchoption');
+define('_MYPROFILESOFT',					'soft');
+define('_MYPROFILEEXACT',					'exakt');
+define('_MYPROFILESEARCHTYPEDESC',			'Die Suchoption "soft" wird mehr ergebnisse anzeigen als "exkat". Wird z.B. nach "Sonne" gesucht, werden bei "soft" auch Ergebnisse mit "Sonnenuntergang" angezeigt, da der Suchbegriff im Gefundenen mit enthalten ist. Die Option "exakt" gibt nur die Ergebnisse aus, welche exakt zutreffen.');
+define('_MYPROFILEORUSED',					'Hier dargestellte Felder werden mit "oder" verknüpft.');
+define('_MYPROFILECONNECTOR',				'Logische Verbindung mehrerer Felder');
+define('_MYPROFILEAND',						'UND');
+define('_MYPROFILEOR',						'ODER');
+define('_MYPROFILEDESC',					'absteigend');
+define('_MYPROFILEASC',						'aufsteigend');
+define('_MYPROFILEFOUND',					'Gefundene');
+define('_MYPROFILERESULTS',					'Ergebnisse');
+define('_MYPROFILERESULT',					'Ergebnis');
+define('_MYPROFILESHOWSEARCHFORM',			'Suchformular mit Suchparametern einblenden');
+define('_MYPROFILENEXTPAGE',				'nächste Seite');
+define('_MYPROFILEPREVIOUSPAGE',			'vorherige Seite');
 
 // confirmedusers
 define('_MYPROFILEUSERDELETED',				'Benutzer entfernt');
