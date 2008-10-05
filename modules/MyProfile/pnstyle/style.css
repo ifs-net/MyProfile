@@ -61,6 +61,14 @@
 .myprofile_hidden {
   	display: none;
 }
+.myprofile_searchresultbox {
+	float:left; 
+	width:150px; 
+	height:80px; 
+	border: 1px solid #aaa; 
+	margin:5px; 
+	padding:5px;  
+}
 .myprofile_searchelement {
 	clear: both;
 	padding-bottom: 35px;
