@@ -43,7 +43,7 @@ define('_MYPROFILESEARCHINTRO',				'Die nachfolgenden Felder können befüllt werd
 define('_MYPROFILESEARCHTYPE',				'Suchoption');
 define('_MYPROFILESOFT',					'soft');
 define('_MYPROFILEEXACT',					'exakt');
-define('_MYPROFILESEARCHTYPEDESC',			'Die Suchoption "soft" wird mehr ergebnisse anzeigen als "exkat". Wird z.B. nach "Sonne" gesucht, werden bei "soft" auch Ergebnisse mit "Sonnenuntergang" angezeigt, da der Suchbegriff im Gefundenen mit enthalten ist. Die Option "exakt" gibt nur die Ergebnisse aus, welche exakt zutreffen.');
+define('_MYPROFILESEARCHTYPEDESC',			'Die Suchoption "soft" wird mehr ergebnisse anzeigen als "exakt". Wird z.B. nach "Sonne" gesucht, werden bei "soft" auch Ergebnisse mit "Sonnenuntergang" angezeigt, da der Suchbegriff im Gefundenen mit enthalten ist. Die Option "exakt" gibt nur die Ergebnisse aus, welche exakt zutreffen.');
 define('_MYPROFILEORUSED',					'Hier dargestellte Felder werden mit "oder" verknüpft.');
 define('_MYPROFILECONNECTOR',				'Logische Verbindung mehrerer Felder');
 define('_MYPROFILEAND',						'UND');
