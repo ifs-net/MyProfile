@@ -40,6 +40,21 @@ function MyProfile_user_main()
 }
 
 /**
+ * the search function
+ * 
+ * @return       output
+ */
+function MyProfile_user_search()
+{
+    // Security check
+    if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_OVERVIEW)) return LogUtil::registerPermissionError();
+	// Create output and assign data
+	$render = FormUtil::newpnForm('MyProfile');
+    // Return the output
+    return $render->pnFormExecute('myprofile_user_search.htm', new MyProfile_user_SearchHandler());
+}
+
+/**
  * function to validate new email addresses
  * 
  * @param	$_GET['code']	string

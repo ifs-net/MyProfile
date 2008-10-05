@@ -98,6 +98,7 @@ class MyProfile_admin_settingsHandler
 {
     function initialize(&$render)
     {
+	  	$data['allowmemberlist']		= pnModGetVar('MyProfile','allowmemberlist');
 	  	$data['notabs'] 				= pnModGetVar('MyProfile','notabs');
 	  	$data['individualpermissions'] 	= pnModGetVar('MyProfile','individualpermissions');
 	  	$data['individualtemplates'] 	= pnModGetVar('MyProfile','individualtemplates');
@@ -108,6 +109,8 @@ class MyProfile_admin_settingsHandler
 	  	$data['noverification']			= pnModGetVar('MyProfile','noverification');
 	  	$data['requestban'] 			= pnModGetVar('MyProfile','requestban');
 	  	$data['expiredays'] 			= pnModGetVar('MyProfile','expiredays');
+	  	$data['searchtemplate']			= pnModGetVar('MyProfile','searchtemplate');
+	  	$data['resultsperpage']			= pnModGetVar('MyProfile','resultsperpage');
 	  	$groups	= pnModAPIFunc('MyProfile','admin','getGroupsConfiguration');
 	  	$groups_list = array();
 	  	foreach ($groups as $g) $groups_list[] = array('text' => $g['name'], 'value' => $g['gid']);

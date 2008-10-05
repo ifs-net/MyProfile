@@ -128,13 +128,23 @@ function MyProfile_adminapi_updateTableDefinition()
     	// get value for table definition
     	switch ($field['fieldtype']) {
 		  	case 'UIN':
-			case 'INTEGER': 	$value = "I NOTNULL";break;
-		  	case 'TIMESTAMP':	$value = "T NOTNULL";break;
+			case 'INTEGER':
+				$value = "I NOTNULL";
+				break;
+		  	case 'TIMESTAMP':	
+				$value = "T NOTNULL";
+				break;
 		  	case 'URL':
 		  	case 'SKYPEID':
-		  	case 'STRING': 	$value = "XL NOTNULL";break;
-		  	case 'FLOAT':		$value = "F NOTNULL";break;
-		  	case 'DATE':		$value = "D";break;
+		  	case 'STRING': 		
+				$value = "XL NOTNULL";
+				break;
+		  	case 'FLOAT':		
+				$value = "F NOTNULL";
+				break;
+		  	case 'DATE':		
+				$value = "D";
+				break;
 		  	default: 
 		}
     	// construct array

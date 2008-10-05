@@ -101,6 +101,7 @@ function myprofile_hideAll() {
 	$('myprofile_public_status').hide();
 	$('myprofile_active').hide();
 	$('myprofile_shown').hide();
+	$('myprofile_searchable').hide();
 	return false;
 }
 
@@ -117,6 +118,7 @@ function myprofile_showSelectedFieldType() {
 		$('myprofile_public_status').show();
 		$('myprofile_active').show();
 		$('myprofile_shown').show();		    
+		$('myprofile_searchable').show();
 	}
 	else if (value == 'STRING') {
 		$('myprofile_identifier').show();
@@ -127,6 +129,7 @@ function myprofile_showSelectedFieldType() {
 		$('myprofile_public_status').show();
 		$('myprofile_active').show();
 		$('myprofile_shown').show();
+		$('myprofile_searchable').show();
 	}
 	else if ((value == 'URL') || (value == 'SKYPEID') || (value == 'UIN') || (value == 'COORD')) {
 		$('myprofile_identifier').show();
@@ -135,6 +138,7 @@ function myprofile_showSelectedFieldType() {
 		$('myprofile_public_status').show();
 		$('myprofile_active').show();
 		$('myprofile_shown').show();
+		$('myprofile_searchable').show();
 	}
 	else if (value == 'TEXTBOX') {
 		$('myprofile_identifier').show();
@@ -144,6 +148,7 @@ function myprofile_showSelectedFieldType() {
 		$('myprofile_public_status').show();
 		$('myprofile_active').show();
 		$('myprofile_shown').show();
+		$('myprofile_searchable').show();
 	}
 	else if (value == 'DATE') {
 		$('myprofile_identifier').show();
@@ -152,6 +157,7 @@ function myprofile_showSelectedFieldType() {
 		$('myprofile_public_status').show();
 		$('myprofile_active').show();
 		$('myprofile_shown').show();
+		$('myprofile_searchable').show();
 	}
 	else if (value == 'TIMESTAMP') {
 		$('myprofile_identifier').show();
@@ -160,6 +166,7 @@ function myprofile_showSelectedFieldType() {
 		$('myprofile_public_status').show();
 		$('myprofile_active').show();
 		$('myprofile_shown').show();
+		$('myprofile_searchable').show();
 	}
 	else if (value == 'SEPARATOR') {
 		$('myprofile_identifier').show();

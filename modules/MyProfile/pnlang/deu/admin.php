@@ -29,6 +29,10 @@ define('_MYPROFILEDONATETHIS',				'Spende per PayPal!');
 define('_MYPROFILEDONATE',					'Du magst dieses Modul und es nützt Dir? Dann wäre Dir der Programmierer für eine kleine Spende sehr dankbar! Na klar - ich programmiere sehr gerne und das Modul ist natürlich kostenlos und Open-Source - aber wenn Du etwas springen lässt, dann könnte ich meine Freundin zum Abendessen ausführen und es wird das nächste mal viel leichter sein, zum Programmieren frei zu bekommen ;-)');
 
 // mainsettings
+define('_MYPROFILEALLOWMEMBERLIST',			'Suchenden erlauben die komplette Mitgliederliste einzusehen, z.B. wenn kein Suchparameter übergeben wurde');
+define('_MYPROFILEAMOUNTOFRESULTSPERPAGE',	'Anzahl der Suchergebnisse pro Seite');
+define('_MYPROFILEPROFILEAPPEARANCE',		'Konfiguration Profilanzeige');
+define('_MYPROFILESEARCHAPPEARANCE',		'Konfiguration Suchmaschine');
 define('_MYPROFILEEXCLUDEGROUPFORTEMPLATING','Folgende Gruppen sollen keine individuellen Templates nutzen dürfen');
 define('_MYPROFILEALLOWINDIVIDUALTEMPLATES','Benutzern das Hochladen eigener Profil-Vorlagen gestatten.');
 define('_MYPROFILEUSERPERMISSIONS',			'Benutzerrechte');
@@ -140,6 +144,7 @@ define('_MYPROFILEELEMENTMOVED',			'Element erfolgreich verschoben');
 define('_MYPROFILESTOREDAT',				'Neue Anordnung erfolgreich gespeichert bei');
 
 // add a new field or modify an existing one
+define('_MYPROFILESEARCHABLE',				'Dieses Feld soll für alle, welche die Suchfunktion benutzen, durchsuchbar sein');
 define('_MYPROFILECOORD',					'Koordinate');
 define('_MYPROFILEADDNEWFIELD',				'Neues Feld anlegen');
 define('_MYPROFILEMODIFYFIELD',				'Existierendes Feld ändern');
