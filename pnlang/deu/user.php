@@ -11,7 +11,7 @@
 // header
 define('_MYPROFILEUSERMENU',				'Benutzer-Menü');
 define('_MYPROFILEMAINPROFILEDATA',			'Haupt-Profil-Daten');
-define('_MYPROFILEMAILANDPASSWORD',			'E-Mail-Adresse, Passwort und erweiterte Einstellungen bearbeiten');
+define('_MYPROFILEMAILANDPASSWORD',			'Zugangsdaten und Profileinstellungen');
 define('_MYPROFILESEARCHMEMBERS',			'Mitglieder suchen');
 
 // main
