@@ -46,6 +46,7 @@ class MyProfile_admin_addFieldHandler
 		$render->assign('public_status',1);
 		$render->assign('active',1);
 		$render->assign('shown',1);
+		$render->assign('searchable',1);
 		return true;
     }
     function handleCommand(&$render, &$args)
