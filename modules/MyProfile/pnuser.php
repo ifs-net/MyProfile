@@ -9,8 +9,6 @@
  */
  
 
-Loader::requireOnce('modules/MyProfile/includes/userhandlers.php');
-
 /**
  * the main user function
  * 
@@ -18,6 +16,8 @@ Loader::requireOnce('modules/MyProfile/includes/userhandlers.php');
  */
 function MyProfile_user_main()
 {
+  	// load handler class
+	Loader::requireOnce('modules/MyProfile/includes/classes/user/main.php');
     // Security check
     if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_COMMENT)) return LogUtil::registerPermissionError();
 	// Create output and call handler class
@@ -33,6 +33,8 @@ function MyProfile_user_main()
  */
 function MyProfile_user_search()
 {
+  	// load handler class
+	Loader::requireOnce('modules/MyProfile/includes/classes/user/search.php');
     // Security check
     if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_OVERVIEW)) return LogUtil::registerPermissionError();
 	// Create output and assign data
@@ -50,6 +52,8 @@ function MyProfile_user_search()
  */
 function MyProfile_user_validatemail()
 {
+  	// load handler class
+	Loader::requireOnce('modules/MyProfile/includes/classes/user/validatemail.php');
 	// Create output and assign data
 	$render = FormUtil::newpnForm('MyProfile');
     // Return the output
@@ -63,6 +67,8 @@ function MyProfile_user_validatemail()
  */
 function MyProfile_user_confirmedusers()
 {
+  	// load handler class
+	Loader::requireOnce('modules/MyProfile/includes/classes/user/confirmedusers.php');
     // Security check
     if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_COMMENT)) return LogUtil::registerPermissionError();
     // check for delete action
@@ -127,24 +133,12 @@ function MyProfile_user_tab() {
  */
 function MyProfile_user_settings()
 {
+  	// load handler class
+	Loader::requireOnce('modules/MyProfile/includes/classes/user/settings.php');
     // Security check
     if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_COMMENT)) return LogUtil::registerPermissionError();
-		
 	// Create output and assign data
 	$render = FormUtil::newpnForm('MyProfile');
-
-	// fields needed for individual templating
-	$individualtemplates = (int)pnModGetVar('MyProfile','individualtemplates');
-	if ($individualtemplates == 1) {
-		$fields = pnModAPIFunc('MyProfile','admin','getIndividualTemplateFields');
-		$render->assign('fields', $fields);
-	}
-	
-	// should just password or email management be shown?
-	$mode = strtolower(FormUtil::getPassedValue('mode'));
-	$render->assign('mode', $mode);
-	$render->assign('noverification', pnModGetVar('MyProfile','noverification'));
-
     // Return the output
     return $render->pnFormExecute('myprofile_user_settings.htm', new MyProfile_user_SettingsHandler());
 }
