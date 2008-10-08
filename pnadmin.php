@@ -8,8 +8,6 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
  
-Loader::requireOnce('modules/MyProfile/includes/adminhandlers.php');
-
 /**
  * the main administration function
  *
@@ -32,6 +30,8 @@ function MyProfile_admin_main()
  */
 function MyProfile_admin_mainsettings()
 {    
+  	// load handler class
+	Loader::requireOnce('modules/MyProfile/includes/classes/admin/settings.php');
     // Security check 
     if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_ADMIN)) return LogUtil::registerPermissionError();
     // Create output
@@ -226,6 +226,8 @@ function MyProfile_admin_addField()
 	  	return $render->fetch('myprofile_admin_configfailure.htm');
 	}
 
+  	// load handler class
+	Loader::requireOnce('modules/MyProfile/includes/classes/admin/addfield.php');
     // Create output
     $render = FormUtil::newpnForm('MyProfile');
 
