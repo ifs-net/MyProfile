@@ -13,6 +13,19 @@ class MyProfile_user_ProfileHandler
     var $id;
     function initialize(&$render)
     {	    
+		$uid 		= pnUserGetVar('uid');
+		$settings 	= pnModAPIFunc('MyProfile','user','getSettings',array('uid' => $uid));
+		$render->assign('fields',pnModAPIFunc('MyProfile','admin','getFields'));
+		$render->assign('separators',pnModAPIFunc('MyProfile','admin','countSeparators'));
+		$render->assign('uid',$uid);
+		$render->assign('mymapavailable',pnModAvailable('MyMap'));
+		$notabs = pnModGetVar('MyProfile','notabs');
+		// if the user does not have a valid (incomplete / outdated) profile we should better
+		// not use the tab-mode because the user might not see every field and only update / complete
+		// the first tab
+		if (!pnModAPIFunc('MyProfile','user','hasValidProfile')) $notabs = 1;
+		$render->assign('notabs',$notabs);
+		PageUtil::addVar('javascript','modules/MyProfile/pnjavascript/myprofile.js');   
       	// Admins should be able to modify user's profile data
       	$load_uid = (int) FormUtil::getPassedValue('load_uid');
       	if (isset($load_uid) && (($load_uid) > 0) && (SecurityUtil::checkPermission('MyProfile::', '.$load_uid', ACCESS_ADMIN))) $this->id = $load_uid;

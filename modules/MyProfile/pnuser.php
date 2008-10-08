@@ -20,21 +20,8 @@ function MyProfile_user_main()
 {
     // Security check
     if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_COMMENT)) return LogUtil::registerPermissionError();
-	
-	// Create output and assign data
-	$uid 		= pnUserGetVar('uid');
-	$settings 	= pnModAPIFunc('MyProfile','user','getSettings',array('uid' => $uid));
+	// Create output and call handler class
 	$render = FormUtil::newpnForm('MyProfile');
-	$render->assign('fields',pnModAPIFunc('MyProfile','admin','getFields'));
-	$render->assign('separators',pnModAPIFunc('MyProfile','admin','countSeparators'));
-	$render->assign('uid',$uid);
-	$notabs = pnModGetVar('MyProfile','notabs');
-	// if the user does not have a valid (incomplete / outdated) profile we should better
-	// not use the tab-mode because the user might not see every field and only update / complete
-	// the first tab
-	if (!pnModAPIFunc('MyProfile','user','hasValidProfile')) $notabs = 1;
-	$render->assign('notabs',$notabs);
-	PageUtil::addVar('javascript','modules/MyProfile/pnjavascript/myprofile.js');   
     // Return the output
     return $render->pnFormExecute('myprofile_user_main.htm', new MyProfile_user_ProfileHandler());
 }
