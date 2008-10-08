@@ -1,11 +1,7 @@
 <!--[if $items|@count gt 0]-->
-<br />
-<!--[pnml name="_MYPROFILEBIRTHDAYS"]-->:
-<br />
 <!--[foreach from=$items item="item"]-->
-    <!--[$item.uname|userprofilelink]-->,
+    <!--[$item.uname|userprofilelink]-->,<br />
 <!--[/foreach]-->
-<!--[pnml name="_MYPROFILEHAPPYBIRTHDAY"]-->
-<br />
+<!--[pnml name="_MYPROFILEHAPPYBIRTHDAY"]--><br />
 <br />
 <!--[/if]-->
