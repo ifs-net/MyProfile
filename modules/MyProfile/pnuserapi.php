@@ -458,7 +458,7 @@ function MyProfile_userapi_getBirthdays($args)
 	  	// construct where part for sql query
 	  	$where = 'MyProfile_'.$restrictiondatafield.' = '.$restrictiondatafieldvalue.' AND ';
 	}
-	$date = "'%-".date("d-m",time())."'";
+	$date = "'%-".date("m-d",time())."'";
     $where.= 'MyProfile_'.$datedatafield.' LIKE '.$date;
 
 	// This join information is the second join information so we have to use the prefix a. in the following where parts
