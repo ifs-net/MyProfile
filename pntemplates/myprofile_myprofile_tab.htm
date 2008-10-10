@@ -103,12 +103,12 @@
 		</div>
 		<!--[if $pnmessagesavailable and $viewer_uid ne $uid]-->
 			<div class="myprofile_profiletext">
-			<a href="<!--[pnmodurl fqurl="true" modname="pnMessages" type="user" func="newpm" uname="$uname"]-->"><!--[pnml name="_MYPROFILESENDPM"]--></a> <a href="<!--[pnmodurl fqurl="true" modname="pnMessages" type="user" func="compose" uname="$uname"]-->"><img src="modules/MyProfile/pnimages/sendpm.gif" /></a>
+			<img src="<!--[pngetbaseurl]-->images/icons/small/mail_generic.gif" /><a href="<!--[pnmodurl fqurl="true" modname="pnMessages" type="user" func="newpm" uname="$uname"]-->"><!--[pnml name="_MYPROFILESENDPM"]--></a>
 			</div>
 		<!--[/if]-->
 		<!--[if $contactlistavailable and $viewer_uid ne $uid]-->
 			<div class="myprofile_profiletext">
-			<a href="<!--[pnmodurl fqurl="true" modname="ContactList" type="user" func="create" uname="create" uname=$uname]-->"><!--[pnml name="_MYPROFILEADDASBUDDY"]--></a>
+			<img src="<!--[pngetbaseurl]-->images/icons/small/add_user.gif" /><a href="<!--[pnmodurl fqurl="true" modname="ContactList" type="user" func="create" uname="create" uname=$uname]-->"><!--[pnml name="_MYPROFILEADDASBUDDY"]--></a>
 			</div>
 		<!--[/if]-->
 <!--[* additional information end *]-->
