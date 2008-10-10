@@ -2,11 +2,14 @@
 
 <!--[pnajaxheader prototype="1"]-->
 
-<h1><!--[pnml name="_MYPROFILEPROFILEOF"]-->: <!--[$uname]--></h1>
-
 <!--[if $contactlistavailable and $contactlist_nopublicbuddylist ne 1]-->
+	<div class="myprofile_link">
 	<!--[pnmodapifunc modname="ContactList" type="user" func="getFOAFLink" uid1=$viewer_uid uid2=$uid]-->
+	</div>
+	<br class="myprofile_clearboth" />
 <!--[/if]-->
+
+<h1><!--[pnml name="_MYPROFILEPROFILEOF"]-->: <!--[$uname]--></h1>
 
 <!--[* plugin tabs begin *]-->
 	<div class="myprofile_tabheader">													<!-- tabheader begin -->

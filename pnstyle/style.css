@@ -16,6 +16,9 @@
 }
 
 /** user: display **/
+.myprofile_link {
+	float: right;
+}
 .myprofile_iconline img {
   	float: right;
 }
