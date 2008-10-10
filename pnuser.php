@@ -22,6 +22,8 @@ function MyProfile_user_main()
     if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_COMMENT)) return LogUtil::registerPermissionError();
 	// Create output and call handler class
 	$render = FormUtil::newpnForm('MyProfile');
+	// Caching settings
+    $render->caching = false;
     // Return the output
     return $render->pnFormExecute('myprofile_user_main.htm', new MyProfile_user_ProfileHandler());
 }
@@ -39,6 +41,8 @@ function MyProfile_user_search()
     if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_OVERVIEW)) return LogUtil::registerPermissionError();
 	// Create output and assign data
 	$render = FormUtil::newpnForm('MyProfile');
+	// Caching settings
+    $render->caching = false;
     // Return the output
     return $render->pnFormExecute('myprofile_user_search.htm', new MyProfile_user_SearchHandler());
 }
@@ -56,6 +60,8 @@ function MyProfile_user_validatemail()
 	Loader::requireOnce('modules/MyProfile/includes/classes/user/validatemail.php');
 	// Create output and assign data
 	$render = FormUtil::newpnForm('MyProfile');
+	// Caching settings
+    $render->caching = false;
     // Return the output
     return $render->pnFormExecute('myprofile_user_validatemail.htm', new MyProfile_user_ValidateMailHandler());
 }
@@ -91,6 +97,8 @@ function MyProfile_user_confirmedusers()
 	}
 	// Create output and assign data
 	$render = FormUtil::newpnForm('MyProfile');
+	// Caching settings
+    $render->caching = false;
     // Return the output
     return $render->pnFormExecute('myprofile_user_confirmedusers.htm', new MyProfile_user_ConfirmedUsersHandler());
 }
@@ -139,6 +147,8 @@ function MyProfile_user_settings()
     if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_COMMENT)) return LogUtil::registerPermissionError();
 	// Create output and assign data
 	$render = FormUtil::newpnForm('MyProfile');
+	// Caching settings
+    $render->caching = false;
     // Return the output
     return $render->pnFormExecute('myprofile_user_settings.htm', new MyProfile_user_SettingsHandler());
 }
@@ -170,6 +180,12 @@ function MyProfile_user_display()
 	$uid		= (int)FormUtil::getPassedValue('uid');
 	$viewer_uid	= pnUserGetVar('uid');
 	$uname		= FormUtil::getPassedValue('uname');
+	// Caching settings
+    if ($uid != pnUserGetVar('uid')) {
+	  	$render->caching = true;
+	  	$render->cache_id = $uid;
+	}
+	else $render->caching = false;
 	// redirect to the MyProfile display page with user id as parameter to acoid trouble with any mis-spelled usernames or special characters
 	// but only if uid is not submitted.
 	if (isset($uname)) {
