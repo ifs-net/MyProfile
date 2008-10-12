@@ -16,12 +16,12 @@
 	<div class="myprofile_tabheader">													<!-- tabheader begin -->
 		<div class="myprofile_tab<!--[if $pluginname == "MyProfile"]--> myprofile_tabactive<!--[/if]-->" id="myprofile_plugintabMyProfile">
 			<!-- tabheader item begin -->
-			<a	id="myprofile_MyProfile"
+			<a href="<!--[pnmodurl fqurl="true" modname="MyProfile" type="user" func="display" uid=$uid]-->"
+				id="myprofile_MyProfile"
 				<!--[if $plugin_noajax ne 1]-->				
 					onclick="javascript:myprofile_updateTab('<!--[$homelink]-->','myprofile_maincontent','MyProfile');return false;" 
 				<!--[/if]-->
-				href="<!--[pnmodurl modname="MyProfile" type="user" func="display" uid=$uid]-->
-				"><!--[pnml name="_MYPROFILEMAINPROF"]--></a>
+				><!--[pnml name="_MYPROFILEMAINPROF"]--></a>
 			<!--[if $plugin_noajax ne 1]-->
 				<script type="text/javascript">
 					$('myprofile_MyProfile').href="#nogo";
