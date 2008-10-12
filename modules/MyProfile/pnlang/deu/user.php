@@ -78,7 +78,7 @@ define('_MYPROFILEOVERRIDETEMPLATE',		'Individuelle Benutzervorlage ignorieren u
 define('_MYPROFILENOACCESS',				'Kein Zugriff auf dieses Profil möglich');
 define('_MYPROFILENOINDIVIDUALPERMISSION',	'Der Inhaber des Profils hat die Sichtbarkeit seines Profils so eingeschränkt, dass es für Dich leider nicht sichtbar ist.');
 define('_MYPROFILESENDPM',					'Private Nachricht senden');
-define('_MYPROFILEADDASBUDDY',				'Als Freund hinzufügen');
+define('_MYPROFILEADDASBUDDY',				'Als Kontakt hinzufügen');
 define('_MYPROFILENOPERMISSION',			'keine Zugriffsrechte auf diese Daten');
 define('_MYPROFILEREGSINCE',				'Registriert seit');
 define('_MYPROFILELASTLOGIN',				'Letzer Login');
