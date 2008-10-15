@@ -80,7 +80,7 @@
 		<!--[if $avatar eq '' or $avatar eq 'blank.gif']-->
 		  	<!--[pnimg modname=core src=personal.gif set=icons/large class="pnprofileicon"]-->
 		<!--[else]-->
-			<img src="images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" alt="<!--[$user.uname]-->" title="<!--[$user.uname]-->" />
+			<img src="<!--[pngetbaseurl]-->images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" alt="<!--[$user.uname]-->" title="<!--[$user.uname]-->" />
 		<!--[/if]-->
 
 			<div class="myprofile_profiletext">
