@@ -49,6 +49,17 @@ function MyProfile_userapi_getProfile($args)
 	}
 	foreach ($fields as $field) {
 		$field['value'] = $data[$field['identifier']];
+		// is there a list?
+		if ($field['list'] != '') {
+			if ($field['dropdownitems'] != '') $list = $field['dropdownitems'];
+			else $list = $field['radioitems'];
+			foreach ($list as $item) {
+			  	if ($item['value'] == $field['value']) {
+				    $field['list_title'] = $item['text'];
+				    break;
+				}
+			}
+		}
 		if (
 			(	($field['public_status'] > $mystatus) ||
 				(($field['public_status'] == 9) && (pnModAvailable('ContactList')) && ($userattributes['myprofile_customsettings'] == 2) && !pnModAPIFunc('ContactList','user','isBuddy',array('uid1' => $uid, 'uid2' => $viewer_uid))) ||

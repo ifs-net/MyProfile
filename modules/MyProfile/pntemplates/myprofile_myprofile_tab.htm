@@ -60,7 +60,13 @@
 				<span class="myprofile_bold"><!--[$data.description|pnvarprepfordisplay]-->:</span><br />
 				<em><!--[$data.value|pnmodcallhooks|pnvarprepfordisplay|nl2br]--></em>
 			<!--[else]-->
-				<span class="myprofile_bold"><!--[$data.description|pnvarprepfordisplay]-->:</span>	<!--[$data.value|pnvarprepfordisplay]--> <br />
+				<span class="myprofile_bold"><!--[$data.description|pnvarprepfordisplay]-->:</span>	
+				<!--[if $data.list ne ""]-->
+					<!--[$data.list_title|pnvarprepfordisplay]-->
+				<!--[else]-->
+					<!--[$data.value|pnvarprepfordisplay]-->
+				<!--[/if]--> 
+				<br />
 			<!--[/if]-->
 			
 			<!--[* closing initial div conatiner *]-->
