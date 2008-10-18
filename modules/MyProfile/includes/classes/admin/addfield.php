@@ -18,6 +18,14 @@ class MyProfile_admin_addFieldHandler
 			$data = DBUtil::selectObjectByID('myprofile_fields', $this->id);
 			$render->assign($data);
 		}
+		else {
+			// assign default values
+			$render->assign('mandatory',1);
+			$render->assign('public_status',1);
+			$render->assign('active',1);
+			$render->assign('shown',1);
+			$render->assign('searchable',1);
+		}
 		// create dropdown fields
 		$items_yesno = array (			array('text' => _MYPROFILENO,		'value' => 0),
 										array('text' => _MYPROFILEYES,		'value' => 1) );
@@ -41,12 +49,6 @@ class MyProfile_admin_addFieldHandler
 		$render->assign('items_fieldtype',		$items_fieldtype);
 		$render->assign('items_public_status',	$items_public_status);
 		
-		// assign default values
-		$render->assign('mandatory',1);
-		$render->assign('public_status',1);
-		$render->assign('active',1);
-		$render->assign('shown',1);
-		$render->assign('searchable',1);
 		return true;
     }
     function handleCommand(&$render, &$args)
