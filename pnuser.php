@@ -123,8 +123,9 @@ function MyProfile_user_tab() {
 	  	$output = pnModAPIFunc($modname,'myprofile','tab',array('uid'=>$uid));
 	  	$ajax = (int)FormUtil::getPassedValue('ajax');
 		if ($ajax == 1) {
-		  	echo DataUtil::convertToUTF8($output);
-		  	return true;
+			if (pnModGetVar('MyProfile','convertToUTF8') == 1) $output = DataUtil::convertToUTF8($output);
+			echo $output;
+			return true;
 		}
 		else {
 			return $output;		
