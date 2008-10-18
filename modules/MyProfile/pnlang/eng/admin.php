@@ -194,6 +194,7 @@ define('_MYPROFILEFIELDDELERR',				'Error while deleting the fields');
 define('_MYPROFILEFIELDDEL',				'Field was deleted successfully');
 
 // plugins
-define('_MYPROFILEPLUGINDESC',				'Some modules have plugins for the profile module. For developers: Please take a look at the plugins.txt file in the documentation directory. Found plugins will be used automatically. If you want to remove a plugin delete the directory named myprofile in the folder of the module that provides a special plugin.');
+define('_MYPROFILEREMOVEPLUGINS',			'If you want to remove a plugin from a user\'s profile page jsut delete the pnmyprofileapi.php in the root folder of the modules you want to remove');
+define('_MYPROFILEPLUGINDESC',				'Some modules have plugins for the profile module. For developers: Please take a look at the plugins.txt file in the documentation directory. Found plugins will be used automatically.');
 define('_MYPROFILENOPLUGINSFOUND',			'No plugins found!');
 ?>

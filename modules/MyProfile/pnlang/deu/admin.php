@@ -194,6 +194,7 @@ define('_MYPROFILEFIELDDELERR',				'Fehler beim Löschen des Feldes');
 define('_MYPROFILEFIELDDEL',				'Feld erfolgreich gelöscht');
 
 // plugins
-define('_MYPROFILEPLUGINDESC',				'Einige Module stellen Plugins für das Profil-Modul bereit. Für Entwickler: Bitte werft einen Blick in plugins.txt im Dokumentations-Ordner. Erkannte Plugins werden automatisch benutzt. Um ein Plugin zu entfernen, reicht es den Ordner myprofile im Ordner des Moduls zu löschen, das ein Plugin zur verfügung stellt.');
+define('_MYPROFILEREMOVEPLUGINS',			'Wenn ein Plugin nicht eingebunden werden soll einfach im entsprechenden Modul die Datei myprofileapi.php löschen oder umbenennen');
+define('_MYPROFILEPLUGINDESC',				'Einige Module stellen Plugins für das Profil-Modul bereit. Für Entwickler: Bitte werft einen Blick in plugins.txt im Dokumentations-Ordner. Erkannte Plugins werden automatisch benutzt.');
 define('_MYPROFILENOPLUGINSFOUND',			'Plugins nicht gefunden!');
 ?>
