@@ -45,6 +45,7 @@ define('_MYPROFILEAPPEARANCE',				'Appearance');
 define('_MYPROFILEBEHAVIOUR',				'Behaviour');
 define('_MYPROFILENOTABS',					'No-tab mode for user\'s profile management page');
 define('_MYPROFILENOAJAXTABS',				'Do not use AJAX for plugin loading');
+define('_MYPROFILECONVERTAJAXCONTENTTOUTF8','Convert content loaded via AJAX to UTF8');
 define('_MYPROFILEEMAILMANAGEMENT',			'Email address management');
 define('_MYPROFILENOVERIFICATION',			'Do not force verification within email change requests');
 define('_MYPROFILEREQUESTBANINDAYS',		'Forbid new change request within');

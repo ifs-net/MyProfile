@@ -25,6 +25,7 @@ class MyProfile_admin_settingsHandler
 	  	$data['expiredays'] 			= pnModGetVar('MyProfile','expiredays');
 	  	$data['searchtemplate']			= pnModGetVar('MyProfile','searchtemplate');
 	  	$data['resultsperpage']			= pnModGetVar('MyProfile','resultsperpage');
+	  	$data['convertToUTF8']			= pnModGetVar('MyProfile','convertToUTF8');
 	  	$groups	= pnModAPIFunc('MyProfile','admin','getGroupsConfiguration');
 	  	$groups_list = array();
 	  	foreach ($groups as $g) $groups_list[] = array('text' => $g['name'], 'value' => $g['gid']);

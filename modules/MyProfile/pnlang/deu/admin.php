@@ -46,6 +46,7 @@ define('_MYPROFILEBEHAVIOUR',				'Verhalten');
 define('_MYPROFILENOTABS',					'Ohne Tabellen-Reiter bei Profilverwaltung');
 define('_MYPROFILENOAJAXTABS',				'Plugins nicht per AJAX laden lassen');
 define('_MYPROFILEEMAILMANAGEMENT',			'E-Mail-Adressen Organisation');
+define('_MYPROFILECONVERTAJAXCONTENTTOUTF8','Per AJAX nachgeladene Inhalte in UTF8 umwandeln');
 define('_MYPROFILENOVERIFICATION',			'Keine Verifikation bei der E-Mail-Änderung erzwingen');
 define('_MYPROFILEREQUESTBANINDAYS',		'Erneute Änderung verbieten innerhalb von');
 define('_MYPROFILEDAYSAFTERREQUEST',		'Tagen nach der letzten Änderung');

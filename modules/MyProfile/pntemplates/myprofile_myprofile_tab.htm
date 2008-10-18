@@ -58,13 +58,13 @@
 				<a href="skype:<!--[$data.value|pnvarprepfordisplay]-->?call"><img src="http://mystatus.skype.com/smallicon/<!--[$data.value|pnvarprepfordisplay]-->" style="border: none;" width="16" height="16" alt="My status" /></a><br />
 			<!--[elseif $data.fieldtype eq "TEXTBOX"]-->
 				<span class="myprofile_bold"><!--[$data.description|pnvarprepfordisplay]-->:</span><br />
-				<em><!--[$data.value|pnmodcallhooks|pnvarprepfordisplay|nl2br]--></em>
+				<em><!--[$data.value|pnvarprepfordisplay|pnmodcallhooks|nl2br]--></em>
 			<!--[else]-->
 				<span class="myprofile_bold"><!--[$data.description|pnvarprepfordisplay]-->:</span>	
 				<!--[if $data.list ne ""]-->
-					<!--[$data.list_title|pnvarprepfordisplay]-->
+					<!--[$data.list_title|pnmodcallhooks|pnvarprepfordisplay]-->
 				<!--[else]-->
-					<!--[$data.value|pnvarprepfordisplay]-->
+					<!--[$data.value|pnmodcallhooks|pnvarprepfordisplay]-->
 				<!--[/if]--> 
 				<br />
 			<!--[/if]-->

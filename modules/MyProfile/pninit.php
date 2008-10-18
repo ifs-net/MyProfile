@@ -32,7 +32,8 @@ function MyProfile_init()
     $expiredays 			= pnSessionGetVar('myprofile_expiredays');
     $individualpermissions 	= pnSessionGetVar('myprofile_individualpermissions');
     $resultsperpage 		= pnSessionGetVar('myprofile_resultsperpage');
-    
+    $convertToUTF8			= pnSessionGetVar('myprofile_convertToUTF8');
+
     pnModSetVar('MyProfile', 'allowmemberlist', 		(($allowmemberlist<>false) ? $allowmemberlist : 0));	
     pnModSetVar('MyProfile', 'notabs', 					(($notabs<>false) ? $notabs : ''));	
     pnModSetVar('MyProfile', 'plugin_noajax',			(($plugin_noajax<>false) ? $plugin_noajax : ''));	
@@ -44,7 +45,8 @@ function MyProfile_init()
     pnModSetVar('MyProfile', 'requestban', 				(($requestban<>false) ? $requestban : 7));	
     pnModSetVar('MyProfile', 'expiredays', 				(($expiredays<>false) ? $expiredays : 70));	
     pnModSetVar('MyProfile', 'individualpermissions',	(($individualpermissions<>false) ? $individualpermissions : 0));	
-    pnModSetVar('MyProfile', 'individualtemplates',	(($individualtemplates<>false) ? $individualtemplates : 0));	
+    pnModSetVar('MyProfile', 'individualtemplates',		(($individualtemplates<>false) ? $individualtemplates : 0));	
+    pnModSetVar('MyProfile', 'convertToUTF8',			(($convertToUTF8<>false) ? $convertToUTF8 : 0));	
 
     // clean up
     pnSessionDelVar('myprofile_allowmemberlist');
@@ -59,7 +61,8 @@ function MyProfile_init()
     pnSessionDelVar('myprofile_expiredays');
     pnSessionDelVar('myprofile_individualpermissions');
     pnSessionDelVar('myprofile_individualtemplates');
-			
+    pnSessionDelVar('myprofile_convertToUTF8');
+
     // delete old config file if there is one
     $configfile = 'modules/MyProfile/config/tabledef.inc';
     if (file_exists($configfile)) unlink($configfile);
@@ -100,6 +103,8 @@ function MyProfile_upgrade($oldversion)
     	pnModSetVar('MyProfile',	'individualtemplates'	,0);
     	pnModSetVar('MyProfile',	'resultsperpage'		,50);
     	pnModSetVar('MyProfile',	'allowmemberlist'		,0);
+    	pnModSetVar('MyProfile',	'convertToUTF8'			,0);
+
     	// tables for templates and "trust list" introduced
 	  	if (!DBUtil::createTable('myprofile_confirmedusers')) return false;
 	  	if (!DBUtil::createTable('myprofile_templates')) return false;
