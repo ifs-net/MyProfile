@@ -131,12 +131,12 @@ function MyProfile_userapi_hasValidProfile($args) {
  * a user's profile data that is marked as private.
  *
  * @param	$args['uid']			int
- * @param	$args['exludeowner']	int		(= 1 if owner should not be added automatically to own list)
+ * @param	$args['excludeowner']	int		(= 1 if owner should not be added automatically to own list)
  * @return	array
  */
 function MyProfile_userapi_getCustomFieldList($args) {
   	$uid 			= $args['uid'];
-  	$exludeowner 	= (int)$args['excludeowner'];
+  	$excludeowner 	= (int)$args['excludeowner'];
   	// we'll do a little bit of caching here
   	static $myprofile_confirmedusers;
   	if (!isset($myprofile_confirmedusers)) $myprofile_confirmedusers = array();
@@ -150,7 +150,7 @@ function MyProfile_userapi_getCustomFieldList($args) {
 		$resultList = array();
 		foreach ($result as $r) $resultList[] = $r['confirmed_uid'];
 	    // add the owner because he will trust himself... Ok I hope he will :-)
-	    if (!($exludeowner == 1)) $resultList[] = $uid;
+	    if (!($excludeowner == 1)) $resultList[] = $uid;
 		$myprofile_confirmedusers = $resultList;
 		return $myprofile_confirmedusers;
 	}
