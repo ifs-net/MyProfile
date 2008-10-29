@@ -135,12 +135,12 @@ function MyProfile_userapi_hasValidProfile($args) {
  * @return	array
  */
 function MyProfile_userapi_getCustomFieldList($args) {
-  	$uid 			= $args['uid'];
+  	$uid 			= (int)$args['uid'];
   	$excludeowner 	= (int)$args['excludeowner'];
   	// we'll do a little bit of caching here
   	static $myprofile_confirmedusers;
-  	if (!isset($myprofile_confirmedusers)) $myprofile_confirmedusers = array();
-  	else return $myprofile_confirmedusers;
+  	if (!isset($myprofile_confirmedusers[$uid])) $myprofile_confirmedusers = array();
+  	else return $myprofile_confirmedusers[$uid];
   	if (!isset($uid) || (!($uid > 1))) return false;
   	else {
   	  	$tables = pnDBGetTables();
