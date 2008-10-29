@@ -148,7 +148,7 @@ function MyProfile_userapi_getCustomFieldList($args) {
 	    $result = DBUtil::selectObjectArray('myprofile_confirmedusers',$where);
 		// lets transform the result
 		$resultList = array();
-		foreach ($result as $r) $resultList[] = $r['confirmed_uid'];
+		foreach ($result as $r) $resultList[] = (int)$r['confirmed_uid'];
 	    // add the owner because he will trust himself... Ok I hope he will :-)
 	    if (!($excludeowner == 1)) $resultList[] = $uid;
 		$myprofile_confirmedusers = $resultList;
