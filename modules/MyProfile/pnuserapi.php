@@ -139,7 +139,10 @@ function MyProfile_userapi_getCustomFieldList($args) {
   	$excludeowner 	= (int)$args['excludeowner'];
   	// we'll do a little bit of caching here
   	static $myprofile_confirmedusers;
-  	if (!isset($myprofile_confirmedusers[$uid])) $myprofile_confirmedusers = array();
+  	if (!isset($myprofile_confirmedusers[$uid])) {
+	    $myprofile_confirmedusers = array();
+	    $myprofile_confirmedusers[$uid] = array();
+	}
   	else return $myprofile_confirmedusers[$uid];
   	if (!isset($uid) || (!($uid > 1))) return false;
   	else {
