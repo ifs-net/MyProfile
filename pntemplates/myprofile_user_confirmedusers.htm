@@ -19,9 +19,9 @@
 <h3><!--[pnml name="_MYPROFILEYOURLIST"]--></h3>
 <ul>
 <!--[foreach from=$users item="user"]-->
-	<!--[pnusergetvar name="uname" uid=$user.uid assign="uname"]-->
+	<!--[pnusergetvar name="uname" uid=$user assign="uname"]-->
 	<!--[if $uname ne ""]-->
-		<li><!--[$uname|userprofilelink]--> (<a href="<!--[pnmodurl modname="MyProfile" type="user" func="confirmedusers" delete=$user.id authid=$authid]-->"><!--[pnml name="_MYPROFILEDELETE"]-->)</a></li>
+		<li><!--[$uname|userprofilelink]--> (<a href="<!--[pnmodurl modname="MyProfile" type="user" func="confirmedusers" delete=$user authid=$authid]-->"><!--[pnml name="_MYPROFILEDELETE"]-->)</a></li>
 	<!--[/if]-->
 <!--[foreachelse]-->
 <li><!--[pnml name="_MYPROFILENOENTRY"]--></li>
