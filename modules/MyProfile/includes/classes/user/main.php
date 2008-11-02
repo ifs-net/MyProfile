@@ -80,7 +80,7 @@ class MyProfile_user_ProfileHandler
 						);
 					unset($obj[$lat]);
 					unset($obj[$lng]);
-					$obj[$identifier] = serialize($obj[$identifier]);
+					if ($obj['identifier'] != '') $obj[$identifier] = serialize($obj[$identifier]);
 				}
 			}
 			
