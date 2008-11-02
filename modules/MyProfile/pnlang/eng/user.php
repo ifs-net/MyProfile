@@ -107,6 +107,7 @@ define('_MYPROFILEMYPROFILEVISIBLEFOR',		'My profile page should be accessable b
 define('_MYPROFILEALL',						'everybody');
 define('_MYPROFILEMEMBERS',					'all members');
 define('_MYPROFILEBUDDIES',					'confirmed buddies');
+define('_MYPROFILEADMIN',					'administrators');
 define('_MYPROFILELISTEDUSERSONLY',			'only listed users');
 define('_MYPROFILEYOURSETTINGS',			'Here you can define some custom settings for your profile');
 define('_MYPROFILENOCOMMENTS',				'Do not allow other users to comment my profile');
