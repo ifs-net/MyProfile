@@ -66,11 +66,11 @@
 }
 .myprofile_searchresultbox {
 	float:left; 
-	width:150px; 
-	height:80px; 
+	width:167px; 
+	height:100px; 
 	border: 1px solid #aaa; 
-	margin:5px; 
-	padding:5px;  
+	margin:2px; 
+	padding:2px;  
 }
 .myprofile_searchelement {
 	clear: both;

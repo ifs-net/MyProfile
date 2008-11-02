@@ -109,12 +109,12 @@
 		<div class="myprofile_searchresultbox">
 		<!--[pnusergetvar uid=$user.id name="_YOURAVATAR" assign="avatar"]-->
 
-		<!--[if $avatar eq '' or $avatar eq 'blank.gif']-->
-			<!--[pnimg modname="MyProfile" src="avatar_male.gif" height="50" style="float:right;" class="avatar"]-->
-		<!--[else]-->
-			<img src="images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" class="avatar" width="50" style="float:right;"/>
-		<!--[/if]-->
 		<span class="myprofile_bold"><!--[$user.uname|userprofilelink]--></span>
+		<!--[if $avatar eq '' or $avatar eq 'blank.gif']-->
+			<!--[pnimg modname="MyProfile" src="avatar_male.gif" height="40" style="float:right;" class="avatar"]-->
+		<!--[else]-->
+			<img src="images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" class="avatar" width="40" style="float:right;"/>
+		<!--[/if]-->
 		<!--[if $customTemplate ne ""]-->
 			<!--[include file=$customTemplate]-->
 		<!--[/if]-->
