@@ -181,10 +181,14 @@ function MyProfile_user_display()
 	$uid		= (int)FormUtil::getPassedValue('uid');
 	$viewer_uid	= pnUserGetVar('uid');
 	$uname		= FormUtil::getPassedValue('uname');
+	// get Plugin
+	$pluginname = FormUtil::getPassedValue('pluginname');
+	if (!isset($pluginname)) $pluginname="MyProfile";
+
 	// Caching settings
     if ($uid != pnUserGetVar('uid')) {
 	  	$render->caching = true;
-	  	$render->cache_id = $uid;
+	  	$render->cache_id = $uid.'-'.$pluginname;
 	}
 	else $render->caching = false;
 	// redirect to the MyProfile display page with user id as parameter to acoid trouble with any mis-spelled usernames or special characters
@@ -229,8 +233,6 @@ function MyProfile_user_display()
 	$render->assign('contactlistavailable',	pnModAvailable('ContactList'));
 	if (pnModAvailable('ContactList')) $render->assign('contactlist_nopublicbuddylist',	pnModGetVar('ContactList','nopublicbuddylist'));
 	
-	$pluginname = FormUtil::getPassedValue('pluginname');
-	if (!isset($pluginname)) $pluginname="MyProfile";
 	$render->assign('pluginname',$pluginname);
 	if (($pluginname != "MyProfile") && pnModAvailable($pluginname)) pnModLangLoad($pluginname);
 
