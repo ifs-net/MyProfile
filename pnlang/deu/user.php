@@ -106,6 +106,7 @@ define('_MYPROFILEMYPROFILEVISIBLEFOR',		'Meine Profilseite sollen sichtbar sein
 define('_MYPROFILEALL',						'alle');
 define('_MYPROFILEMEMBERS',					'alle Mitglieder');
 define('_MYPROFILEBUDDIES',					'bestätigte Kontakte');
+define('_MYPROFILEADMIN',					'Administrator(en)');
 define('_MYPROFILEYOURSETTINGS',			'Hier können einige Einstellungen für Dein Profil festgelegt werden');
 define('_MYPROFILENOCOMMENTS',				'Anderen Benutzern nicht erlauben mein Profil zu kommentieren');
 define('_MYPROFILESETTINGSUPDATED',			'Einstellungen erfolgreich aktualisiert');
