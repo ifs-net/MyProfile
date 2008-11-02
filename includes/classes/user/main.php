@@ -73,14 +73,14 @@ class MyProfile_user_ProfileHandler
 			  	  	$identifier = $field['identifier'];
 				    $lat = $identifier.'_lat';
 				    $lng = $identifier.'_lng';
-				    if (($obj[$lng] == '') || ($obj[$lat] == '')) $obj[$identifier] = '';
+				    if (($obj[$lng] == '') || ($obj[$lat] == '')) break;
 				    else $obj[$identifier] = array(
 				    		'lng' => str_replace(',','.',$obj[$lng]),
 				    		'lat' => str_replace(',','.',$obj[$lat])
 						);
 					unset($obj[$lat]);
 					unset($obj[$lng]);
-					if ($obj['identifier'] != '') $obj[$identifier] = serialize($obj[$identifier]);
+					$obj[$identifier] = serialize($obj[$identifier]);
 				}
 			}
 			
