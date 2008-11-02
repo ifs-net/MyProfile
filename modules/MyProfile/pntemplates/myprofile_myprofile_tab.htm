@@ -44,7 +44,7 @@
 			<!--[elseif $data.fieldtype eq "DATE"]-->
 				<span class="myprofile_bold"><!--[$data.description|pnvarprepfordisplay]-->:</span>	<!--[if $data.value ne "9999-12-31"]--><!--[$data.value|pnvarprepfordisplay|date_format:"$dateformat"]--><!--[else]--><!--[pnml name="_MYPROFILENOPERMISSION"]--><!--[/if]--><br />
 			<!--[elseif $data.fieldtype eq "COORD"]-->
-				<!--[if $data.value|@unserialize ne ""]-->
+				<!--[if $data.value|@unserialize ne "" or $data.value ne ""]-->
 					<span class="myprofile_bold"><!--[$data.description|pnvarprepfordisplay]-->:</span>	
 					<!--[if $data.value ne ""]-->
 						<!--[showmap coord=$data.value]-->
