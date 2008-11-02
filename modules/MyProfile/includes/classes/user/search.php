@@ -65,6 +65,7 @@ class MyProfile_user_SearchHandler
 				array(	'text' => _MYPROFILEDESC,	'value' => 'DESC')
 			);
 		$render->assign('items_searchoptions',$items_searchoptions);
+		$render->assign('userloggedin', (int)pnUserLoggedIn());
 		$render->assign('items_connector',$items_connector);
 		$render->assign('items_ascdesc',$items_ascdesc);
 		$customtemplate = pnModGetVar('MyProfile','searchtemplate');
@@ -159,7 +160,7 @@ class MyProfile_user_SearchHandler
 			                         	'object_field_name'   =>  'uname',			// ...this name for the new column
 			                         	'compare_field_table' =>  'id',				// regular table column that should be equal to
 			                         	'compare_field_join'  =>  'uid');			// ...the table in join_table
-	
+
 				// now get the results counted only
 				$result = DBUtil::selectExpandedObjectArray('myprofile',$joinInfo,$where,$orderby);
 				$resultCount = count($result);
