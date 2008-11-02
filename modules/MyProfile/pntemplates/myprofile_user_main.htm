@@ -66,9 +66,9 @@
 		<div class="myprofile_formelement">
 		<!-- form item begin -->
 		<!--[pnformlabel for=$field.identifier text=$field.description]-->:
-		<!--[if $field.public_status eq 0]--><!--[pnml name="_MYPROFILEVIEWABLEBY"]-->&nbsp;<!--[pnml name="_MYPROFILEALL"]--><!--[/if]-->
-		<!--[if $field.public_status eq 2]--><!--[pnml name="_MYPROFILEVIEWABLEBY"]-->&nbsp;<!--[pnml name="_MYPROFILEADMIN"]--><!--[/if]-->
-		<!--[if $field.public_status eq 9]--><a href="<!--[pnmodurl modname="MyProfile" type="user" func="settings"]-->"><!--[pnml name="_MYPROFILEPRIVATEFIELD"]--></a><!--[/if]-->
+		<!--[if $field.public_status eq 0]-->(<!--[pnml name="_MYPROFILEVIEWABLEBY"]-->&nbsp;<!--[pnml name="_MYPROFILEALL"]-->)<!--[/if]-->
+		<!--[if $field.public_status eq 2]-->(<!--[pnml name="_MYPROFILEVIEWABLEBY"]-->&nbsp;<!--[pnml name="_MYPROFILEADMIN"]-->)<!--[/if]-->
+		<!--[if $field.public_status eq 9]-->(<a href="<!--[pnmodurl modname="MyProfile" type="user" func="settings"]-->"><!--[pnml name="_MYPROFILEPRIVATEFIELD"]--></a>)<!--[/if]-->
 		<br />
 		<!--[if $field.fieldtype eq "STRING" or $field.fieldtype == "TIMESTAMP"]-->
 			<!--[if $field.list eq ""]-->
