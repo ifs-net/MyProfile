@@ -38,6 +38,8 @@
 			<!--[* content for initial div container *]-->
 			
 			<!--[if $data.fieldtype eq "SEPARATOR"]-->
+			<!--[elseif $data.fieldtype eq "URL"]-->
+					<span class="myprofile_bold"><!--[$data.description|pnvarprepfordisplay]-->:</span>	<a href="<!--[$data.value]-->" target="_blanc"><!--[$data.value|truncate:30]--></a><br />
 			<!--[elseif $data.fieldtype eq "UIN"]-->
 				<!--[if $data.value ne "" and $data.value gt 0]-->
 					<span class="myprofile_bold"><!--[$data.description|pnvarprepfordisplay]-->:</span>	<!--[$data.value]--> <img src="http://status.icq.com/online.gif?icq=<!--[$data.value]-->&img=5" width="18" height="18" /><br />
