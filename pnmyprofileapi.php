@@ -89,7 +89,7 @@ function MyProfile_myprofileapi_tab ($args)
 	$render->assign('contactlistavailable',	pnModAvailable('ContactList'));
 	if (pnModAvailable('ContactList')) $render->assign('contactlist_nopublicbuddylist',	pnModGetVar('ContactList','nopublicbuddylist'));
 	if (isset($lastlogin)) $render->assign('lastlogin',$lastlogin);
-		
+
 	// return output
 	return $render->fetch('myprofile_myprofile_tab.htm');
 }
