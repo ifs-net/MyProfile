@@ -552,6 +552,7 @@ function MyProfile_userapi_getRandom($args)
  *
  * @param $args['idletime']	int		idle time	(otherwise zikula default value is taken)
  * @param $args['orderby']	string	identifier(s)
+ * @param $args['uid']		int		only check if given user id is online
  * @return array
  */
 function MyProfile_userapi_getOnline($args)
@@ -559,6 +560,7 @@ function MyProfile_userapi_getOnline($args)
   	$idletime = $args['idletime'];
   	if (!isset($idletime) || (!($idletime > 0))) $idletime = (pnConfigGetVar('secinactivemins') * 60);
   	$orderby = $args['orderby'];
+  	$uid = $args['uid'];
 
 	// join information to retrieve the users username also
 	$joinInfo[] = array (	'join_table'          =>  'users',			// table for the join
@@ -577,6 +579,7 @@ function MyProfile_userapi_getOnline($args)
     $tables 		=& pnDBGetTables();
     $sess_column 	= &$tables['session_info_column'];
     $where = $sess_column['lastused']." > '".date("Y-m-d H:i:s",(time()-$idletime))."'";
+    if ($uid > 1) $where.= "AND tbl.id = ".$uid;
     $res = DBUtil::selectExpandedObjectArray('myprofile',$joinInfo,$where,$orderby);
     // we just want every user once in the table (disctinct is not possible here or I am too stupid...)
     $in = array();

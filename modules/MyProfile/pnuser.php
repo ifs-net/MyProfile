@@ -208,6 +208,11 @@ function MyProfile_user_display()
 	// We only reach this point if there is no uname parameter. Now we have to get the username for the profile
 	// Guests are not allowed to have a profile page ;-)
 	
+	// get and assign online state of user
+	$online = pnModAPIFunc('MyProfile','user','getOnline',array('uid' => $uid));
+	if (is_array($online) && ($online[0]['id'] == $uid)) $render->assign('onlinestatus', 1);
+	else $render->assign('onlinestatus', 0);
+
 	// get profile
 	$uname = pnUserGetVar('uname', $uid);
 	if ($uid > 1) $profile = pnModAPIFunc('MyProfile','user','getProfile',array('uid'=>$uid, 'uname'=>$uname));

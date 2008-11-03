@@ -3,7 +3,14 @@
 <!--[pnajaxheader prototype="1"]-->
 
 <div style="float:left;">
-<h1><!--[pnml name="_MYPROFILEPROFILEOF"]-->: <!--[$uname]--></h1>
+<h1><!--[pnml name="_MYPROFILEPROFILEOF"]-->: <!--[$uname]--> 
+<!--[if $onlinestatus eq 1]-->
+	<img src="images/icons/medium/agt_family.gif" alt="online" title="online" style="padding-left: 20px;" />
+<!--[else]-->
+	<img src="images/icons/medium/agt_family-off.gif" alt="offline" title="offline" style="padding-left: 20px;" />
+<!--[/if]-->
+
+</h1>
 </div>
 <!--[if $contactlistavailable and $contactlist_nopublicbuddylist ne 1]-->
 	<div class="myprofile_link">
