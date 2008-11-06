@@ -15,6 +15,7 @@
 
 <!--[pnmodapifunc modname="MyProfile" type="user" func="getOnline" orderby="land, plz" assign="users"]-->
 <br /><!--[pnml name="_MYPROFILETHEREARE"]--> <!--[$users|@count]--> <!--[pnml name="_MYPROFILEREGISTEREDUSERSONLINE"]-->
+<div style="max-height: 400px; overflow-x: hidden;overflow-y:auto;">
 <!--[foreach from=$users item=user]-->
 
     <!--[* 	We want the country to be displayed - but only 
@@ -35,4 +36,5 @@
     <!--[* End of example *]-->
 
 <!--[/foreach]-->
+</div>
 <br /><br />
