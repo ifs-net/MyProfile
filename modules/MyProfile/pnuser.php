@@ -194,11 +194,8 @@ function MyProfile_user_display()
 	if (!isset($pluginname)) $pluginname="MyProfile";
 
 	// Caching settings
-    if ($uid != pnUserGetVar('uid')) {
-	  	$render->caching = true;
-	  	$render->cache_id = $uid.'-'.$pluginname;
-	}
-	else $render->caching = false;
+  	$render->cache_id = (int)pnUserLoggedIn().'-'.$uid.'-'.$pluginname;
+
 	// redirect to the MyProfile display page with user id as parameter to acoid trouble with any mis-spelled usernames or special characters
 	// but only if uid is not submitted.
 	if (isset($uname)) {
