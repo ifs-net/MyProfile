@@ -178,9 +178,17 @@ function MyProfile_user_display()
 	
 	// Create output and assign data
 	$render 	= pnRender::getInstance('MyProfile');
-	$uid		= (int)FormUtil::getPassedValue('uid');
+	$uid		= FormUtil::getPassedValue('uid');
 	$viewer_uid	= pnUserGetVar('uid');
 	$uname		= FormUtil::getPassedValue('uname');
+
+	// check for parameters and redirect to own profiel if there is no parameter
+	if (!isset($uname) && !isset($uid) && pnUserLoggedIn()) {
+		return pnRedirect(pnModURL('MyProfile','user','display',array('uid' => $viewer_uid)));
+	}
+	
+	$uid = (int)$uid;
+
 	// get Plugin
 	$pluginname = FormUtil::getPassedValue('pluginname');
 	if (!isset($pluginname)) $pluginname="MyProfile";
@@ -200,7 +208,7 @@ function MyProfile_user_display()
 		else {
 		  	// maybe the username has to be decoded due to some special characters...
 		  	$last = FormUtil::getPassedValue('last');
-		  	if (isset($last) && ($last == 1)) return pnRedirect(pnModURL('MyProfile','user','display'));
+		  	if (isset($last) && ($last == 1)) return pnRedirect(pnModURL('MyProfile','user','display',array('uid' => -1)));
 		  	else return pnRedirect(pnModURL('MyProfile','user','display',array('uname' => html_entity_decode($uname), 'last' => 1)));
 		}
 	}
