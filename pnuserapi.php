@@ -74,6 +74,9 @@ function MyProfile_userapi_getProfile($args)
 				case 'COORD':
 					$field['value'] = "";
 					break;
+				case 'URL';
+					$field['value'] = 'none';
+					break;
 				default:
 				    $field['value']=_MYPROFILENOPERMISSION;
 			}
