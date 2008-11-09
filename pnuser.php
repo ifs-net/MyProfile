@@ -205,8 +205,16 @@ function MyProfile_user_display()
 		else {
 		  	// maybe the username has to be decoded due to some special characters...
 		  	$last = FormUtil::getPassedValue('last');
-		  	if (isset($last) && ($last == 1)) return pnRedirect(pnModURL('MyProfile','user','display',array('uid' => -1)));
-		  	else return pnRedirect(pnModURL('MyProfile','user','display',array('uname' => html_entity_decode($uname), 'last' => 1)));
+		  	if (isset($last) && ($last == 1)) {
+		  	  	// is the username utf8 encoded?
+		  	  	$uname = utf8_decode($uname);
+		  	  	if (pnUserGetIDFromName($uname) > 1) return pnRedirect(pnModURL('MyProfile','user','display',array('uid' => pnUserGetIDFromName($uname))));
+				else return pnRedirect(pnModURL('MyProfile','user','display',array('uid' => -1)));
+			}
+		  	else {
+		  	  	// perhaps there are some special html characters?
+				return pnRedirect(pnModURL('MyProfile','user','display',array('uname' => html_entity_decode($uname), 'last' => 1)));
+			}
 		}
 	}
 	
