@@ -95,15 +95,16 @@ class MyProfile_user_SearchHandler
 			
 			// check for search mode first
 			if ($obj['searchoption'] == 'soft') $w = '%';
-			if ($obj['connector'] == 'and')	$connector = 'AND';
-			else $connector = 'OR';
+			if ($obj['connector'] == 'or')	$connector = 'OR';
+			else $connector = 'AND';
 
 			// lets start the search now
 			$whereArray = array();
 			$where = "";
 			// username first
 			if ($obj['uname'] != '') {
-			  	$whereArray[]= "a.".$u_column['uname']." like '".$w.DataUtil::formatForStore($obj['uname']).$w."'";
+			  	$whereArray[]= "a.".$u_column['uname']." like '"
+					.$w.DataUtil::formatForStore(str_replace('*','%',$obj['uname'])).$w."'";
 			}
 			// now all other searchable fields
 			foreach ($this->fields as $field) {
@@ -112,12 +113,14 @@ class MyProfile_user_SearchHandler
 			  	  	  	// we have to work with an array now... and in this array, we have to use the OR link
 			  	  	  	$or_where = array();
 			  	  	  	foreach ($obj[$field['identifier']] as $item) {
-							$or_where[] = "tbl.MyProfile_".$field['identifier']." like '" .DataUtil::formatForStore($item)."'";
+							$or_where[] = "tbl.MyProfile_".$field['identifier']." like '"
+								.DataUtil::formatForStore(str_replace('*','%',$item))."'";
 						}
 						if (is_array($or_where) && (count($or_where) > 0)) $whereArray[] = $or_where;
 					}
 					else if (!is_array($obj[$field['identifier']])) {
-					  $whereArray[]= "tbl.MyProfile_".$field['identifier']." like '" .$w.DataUtil::formatForStore($obj[$field['identifier']]).$w."'";
+					  $whereArray[]= "tbl.MyProfile_".$field['identifier']." like '"
+						  .$w.DataUtil::formatForStore(str_replace('*','%',$obj[$field['identifier']])).$w."'";
 					}
 				}
 			}
@@ -179,6 +182,7 @@ class MyProfile_user_SearchHandler
 				$render->assign('result', 		$result);
 				$render->assign('page',			$this->page);
 				$render->assign('pages',		$pages);
+				$render->assign('sqlWhere',		$where);
 				$this->pager($render, $pages, $resultCount);
 			}
 		}
