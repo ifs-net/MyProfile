@@ -71,6 +71,16 @@ class MyProfile_user_SearchHandler
 		$customtemplate = pnModGetVar('MyProfile','searchtemplate');
 		if (file_exists('modules/MyProfile/pntemplates/'.$customtemplate)) $render->assign('customTemplate', $customtemplate);
 		$this->pager($render);
+		
+		$showall = (int)FormUtil::getPassedValue('showall');
+		if ($showall == 1) {
+		  	$args = array (
+			  		'commandName' 	=> 'update',
+		  			'showall'		=> 1
+		  			);
+		  	$this->handleCommand($render,$args);
+		}
+		
 		return true;
     }
 	function handleCommand(&$render, &$args)
@@ -92,7 +102,7 @@ class MyProfile_user_SearchHandler
 			$tables = pnDBGetTables();
 			$mp_column 	= $tables['myprofile_column'];
 			$u_column	= $tables['users_column'];
-			
+
 			// check for search mode first
 			if ($obj['searchoption'] == 'soft') $w = '%';
 			if ($obj['connector'] == 'or')	$connector = 'OR';
@@ -150,7 +160,8 @@ class MyProfile_user_SearchHandler
 			
 			if (count($whereArray) > 0) {
 			  	// what is the orderby value?
-			  	$order = $obj['orderby'];
+			  	if (isset($obj['orderby']) && (strlen($obj['orderby'] > 0))) $order = $obj['orderby'];
+			  	else $order = 'uname';
 			  	if ($order == 'uname') $orderby = "a.".$u_column['uname'];
 				else $orderby = "tbl.MyProfile_".DataUtil::formatForStore($order);
 				// get asc or desc
