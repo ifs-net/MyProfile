@@ -95,6 +95,7 @@ define('_USERPICTURESINVALIDEXPLANATION',	'The user does not exist or there is n
 define('_USERPICTURESBACKTOLASTPAGE',		'Go back one page');
 
 // settings
+define('_MYPROFILEMYTIMEZONE',				'My timezone');
 define('_MYPROFILEMANAGECONFIRMEDUSERS',	'Manage users that are allowed to view all my data that is declared as private');
 define('_MYPROFILECUSTOMSETTINGS',			'Profile data fields that are marked as private should be viewable by');
 define('_MYPROFILETEMPLATEINCLUDEMANDATORY','You have to include all mandatory profile variables into your individual template');

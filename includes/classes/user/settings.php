@@ -29,10 +29,16 @@ class MyProfile_user_SettingsHandler
 		if ($this->id > 0) {
 			// get settings
 			$data = pnModAPIFunc('MyProfile','user','getSettings',array('uid'=>$this->id));
-			
+			// work with retrieved user settings
 			$individualtemplates = (int)pnModGetVar('MyProfile','individualtemplates');
 			if (($individualtemplates == 1) && (pnModAPIFunc('MyProfile','user','individualTemplateAllowed',array('uid' => $this->id)))) $render->assign('individualtemplates',1);
 			$render->assign($data);
+			// timezone management, get zikula's timezones
+		    $tzinfo   = pnModGetVar(PN_CONFIG_MODULE, 'timezone_info');
+			foreach ($tzinfo as $key=>$value) {
+			  	$items_timezone[] = array('text' => $value, 'value' => $key);
+			}
+			$render->assign('items_timezone', $items_timezone);
 			// individual permission settings
 			$render->assign('individualpermissions',	pnModGetVar('MyProfile','individualpermissions'));
 			$items_individualpermissions = array (
@@ -85,7 +91,8 @@ class MyProfile_user_SettingsHandler
 					'nocomments' 			=> $obj['nocomments'],
 					'individualpermission' 	=> $obj['individualpermission'],
 					'individualtemplate' 	=> $obj['individualtemplate'],
-					'customsettings'	 	=> $obj['customsettings']
+					'customsettings'	 	=> $obj['customsettings'],
+					'timezoneoffset'		=> $obj['timezoneoffset']
 					)
 				);
 	      	if ($result) LogUtil::registerStatus(_MYPROFILESETTINGSUPDATED);
