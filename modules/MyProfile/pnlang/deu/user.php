@@ -95,6 +95,7 @@ define('_USERPICTURESINVALIDEXPLANATION',	'Der Benutzer existiert nicht oder hat
 define('_USERPICTURESBACKTOLASTPAGE',		'Zurück zur letzten Seite.');
 
 // settings
+define('_MYPROFILEMYTIMEZONE',				'Meine Zeitzone');
 define('_MYPROFILEMANAGECONFIRMEDUSERS',	'Benutzer verwalten, welche alle meine als privat deklarierten Daten sehen dürfen');
 define('_MYPROFILETEMPLATEINCLUDEMANDATORY','Alle als Pflichtvariablen angegebenen Variablen müssen in der individuellen Profilvorlage enthalten sein!');
 define('_MYPROFILEINDIVIDUALTEMPLATEHINTS',	'Hinweise zur Nutzung eingener individueller Vorlagen');

@@ -206,6 +206,14 @@ function MyProfile_userapi_getSettings($args)
 	// custom settings for individual profile fields
 	$customsettings = $user['__ATTRIBUTES__']['myprofile_customsettings'];
 	if (!isset($customsettings)) $customsettings = 3;	// default: listed and confirmed users
+
+	// get timezoneoffset
+	$timezoneoffset = $user['__ATTRIBUTES__']['myprofile_timezoneoffset'];
+	if (!isset($timezoneoffset) || ($timezoneoffset == '')) {
+	  	// perhaps there is an old timezone offset from the old regular profile module?
+	  	$timezoneoffset = pnUserGetVar('_TIMEZONEOFFSET',$uid);
+	  	if (!isset($timezoneoffset) || ($timezoneoffset == '')) $timezoneoffset = pnConfigGetVar('timezone_offset');	// default: get site's timezone offset if the user did not set one
+	}
 	
 	return array(
     				'id'					=> $uid,
@@ -213,7 +221,8 @@ function MyProfile_userapi_getSettings($args)
 					'validationcode'		=> unserialize($user['__ATTRIBUTES__']['myprofile_validationcode']),
 					'individualpermission' 	=> $user['__ATTRIBUTES__']['myprofile_individualpermission'],
 					'individualtemplate' 	=> $individualtemplate,
-					'customsettings'		=> $customsettings
+					'customsettings'		=> $customsettings,
+					'timezoneoffset'		=> $timezoneoffset
 				);
 }
 
@@ -225,6 +234,7 @@ function MyProfile_userapi_getSettings($args)
  * @param	$args['individualpermission']	int
  * @param	$args['individualtemplate']		string
  * @param	$args['customsettings']			int
+ * @param	$args['timezoneoffset']			string
  * @return	array
  */
 function MyProfile_userapi_setSettings($args)
@@ -234,6 +244,7 @@ function MyProfile_userapi_setSettings($args)
 	$individualpermission 	= $args['individualpermission'];
 	$individualtemplate 	= $args['individualtemplate'];
 	$customsettings			= $args['customsettings'];
+	$timezoneoffset			= $args['timezoneoffset'];
 	if (!(($nocomments >= 0) && ($nocomments <= 1))) $nocomments = 0;
 	// get user and attributes
     $user = DBUtil::selectObjectByID('users', $uid, 'uid', null, null, null, false);
@@ -241,6 +252,9 @@ function MyProfile_userapi_setSettings($args)
 	$user['__ATTRIBUTES__']['myprofile_nocomments'] 			= $nocomments;
 	$user['__ATTRIBUTES__']['myprofile_individualpermission'] 	= $individualpermission;
 	$user['__ATTRIBUTES__']['myprofile_customsettings']		 	= $customsettings;
+	$user['__ATTRIBUTES__']['myprofile_timezoneoffset']		 	= $timezoneoffset;
+	// to be compatible to the old regular profile mdule and the way the timezoneoffset is getting stored
+	pnUserSetVar('_TIMEZONEOFFSET', $timezoneoffset);
 
 	// store individual template if there is anything to store
 	$template = DBUtil::selectObjectByID('myprofile_templates',$uid);
