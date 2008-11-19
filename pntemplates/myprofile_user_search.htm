@@ -7,7 +7,11 @@
 <!--[if $resultCount gt -1]-->
 	<h1><!--[pnml name="_MYPROFILEFOUND"]--> <!--[pnml name="_MYPROFILERESULTS"]--></h1>
 	<div id="myprofile_search_link">
-		<a href="" onclick="javascript:$('myprofile_search').show();$('myprofile_search_link').hide();return false;"><!--[pnml name="_MYPROFILESHOWSEARCHFORM"]--></a><br /><br />
+		<a href="" onclick="javascript:$('myprofile_search').show();$('myprofile_search_link').hide();return false;"><!--[pnml name="_MYPROFILESHOWSEARCHFORM"]--></a><br />
+	<!--[if $allowmemberlist eq 1]-->
+		<a href="<!--[pnmodurl modname="MyProfile" type="user" func="search" showall="1" fqurl="true"]-->"><!--[pnml name="_MYPROFILESHOWALLMEMBERS"]--></a><br />
+	<!--[/if]-->
+	<br />
 	</div>
 <!--[/if]-->
 

@@ -34,6 +34,7 @@ define('_MYPROFILELNG',						'Längengrad');
 define('_MYPROFILELAT',						'Breitengrad');
 
 // search
+define('_MYPROFILESHOWALLMEMBERS',			'Alle Mitglieder anzeigen');
 define('_MYPROFILEMEMBERLISTDESC',			'Wenn die Suche ohne Suchparameter und Eingabe gestartet wird, wird die komplette Mitgliederliste angezeigt');
 define('_MYPROFILEPAGE',					'Seite');
 define('_MYPROFILENOTHINGSEARCHABLE',		'Es sind entweder keine weiteren durchsuchbaren Felder definiert oder es Fehlen die nötigen Zugriffsrechte, darauf zuzugreifen.');
