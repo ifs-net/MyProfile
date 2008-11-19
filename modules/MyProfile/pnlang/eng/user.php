@@ -34,6 +34,7 @@ define('_MYPROFILELNG',						'Longitude');
 define('_MYPROFILELAT',						'Latitude');
 
 // search
+define('_MYPROFILESHOWALLMEMBERS',			'Show all members');
 define('_MYPROFILEMEMBERLISTDESC',			'If you just click the search button without any search parameters you will get the whole member list displayed');
 define('_MYPROFILEPAGE',					'Page');
 define('_MYPROFILENOTHINGSEARCHABLE',		'There are no more searchable fields or you do not have the permission to view these fields');
