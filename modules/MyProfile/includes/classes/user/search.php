@@ -98,7 +98,6 @@ class MyProfile_user_SearchHandler
 		    $obj = $render->pnFormGetValues();		    
 			
 			// now we'll have to construct the where statement. This might geht a little bit tricky...
-
 			$tables = pnDBGetTables();
 			$mp_column 	= $tables['myprofile_column'];
 			$u_column	= $tables['users_column'];
@@ -166,8 +165,8 @@ class MyProfile_user_SearchHandler
 				else $orderby = "tbl.MyProfile_".DataUtil::formatForStore($order);
 				// get asc or desc
 			  	$ascdesc = $obj['ascdesc'];
-			  	if ($ascdesc == 'ASC') $orderby.=" ASC";
-			  	else $orderby.=" DESC";
+			  	if ($ascdesc == 'DESC') $orderby.=" DESC";
+			  	else $orderby.=" ASC";
 				// We need this to make a join with the users table
 				$joinInfo[] = array (	'join_table'          =>  'users',			// table for the join
 										'join_field'          =>  'uname',			// field in the join table that should be in the result with
