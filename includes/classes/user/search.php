@@ -74,11 +74,12 @@ class MyProfile_user_SearchHandler
 		
 		$showall = (int)FormUtil::getPassedValue('showall');
 		if ($showall == 1) {
+		  	$obj = $render->pnFormGetValues();
 		  	$args = array (
 			  		'commandName' 	=> 'update',
 		  			'showall'		=> 1
 		  			);
-		  	$this->handleCommand($render,$args);
+		  	if (empty($obj)) $this->handleCommand($render,$args);
 		}
 		
 		return true;
@@ -158,6 +159,8 @@ class MyProfile_user_SearchHandler
 			if ((count($whereArray) == 0) && (pnModGetVar('MyProfile','allowmemberlist') == 1)) $whereArray[] = "tbl.id > 0";
 			
 			if (count($whereArray) > 0) {
+			  	// special case for showall option
+			  	if ($args['showall'] == 1) $obj['ascdesc'] = 'ASC';
 			  	// what is the orderby value?
 			  	if (isset($obj['orderby']) && (strlen($obj['orderby'] > 0))) $order = $obj['orderby'];
 			  	else $order = 'uname';
@@ -165,8 +168,8 @@ class MyProfile_user_SearchHandler
 				else $orderby = "tbl.MyProfile_".DataUtil::formatForStore($order);
 				// get asc or desc
 			  	$ascdesc = $obj['ascdesc'];
-			  	if ($ascdesc == 'DESC') $orderby.=" DESC";
-			  	else $orderby.=" ASC";
+			  	if ($ascdesc == 'ASC') $orderby.=" ASC";
+			  	else $orderby.=" DESC";
 				// We need this to make a join with the users table
 				$joinInfo[] = array (	'join_table'          =>  'users',			// table for the join
 										'join_field'          =>  'uname',			// field in the join table that should be in the result with
