@@ -166,7 +166,9 @@ class MyProfile_user_SearchHandler
 			
 			if (count($whereArray) > 0) {
 			  	// special case for showall option
-			  	if ($args['showall'] == 1) $obj['ascdesc'] = 'ASC';
+			  	if ($args['showall'] == 1) {
+				    $obj['ascdesc'] = 'ASC';
+				}
 			  	// what is the orderby value?
 			  	if (isset($obj['orderby']) && (strlen($obj['orderby'] > 0))) $order = $obj['orderby'];
 			  	else $order = 'uname';
