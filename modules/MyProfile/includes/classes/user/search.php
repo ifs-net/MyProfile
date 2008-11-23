@@ -72,12 +72,14 @@ class MyProfile_user_SearchHandler
 		if (file_exists('modules/MyProfile/pntemplates/'.$customtemplate)) $render->assign('customTemplate', $customtemplate);
 		$this->pager($render);
 		
-		$showall = (int)FormUtil::getPassedValue('showall');
+		$showall 		= (int)		FormUtil::getPassedValue('showall');
+		$direct_uname 	= (string)	FormUtil::getPassedValue('direct_uname');
 		if ($showall == 1) {
 		  	$obj = $render->pnFormGetValues();
 		  	$args = array (
 			  		'commandName' 	=> 'update',
-		  			'showall'		=> 1
+		  			'showall'		=> 1,
+		  			'direct_uname'	=> $direct_uname
 		  			);
 		  	if (empty($obj)) $this->handleCommand($render,$args);
 		}
@@ -111,6 +113,10 @@ class MyProfile_user_SearchHandler
 			// lets start the search now
 			$whereArray = array();
 			$where = "";
+			// maybe we have an username submitted by direct search form field for user profile display
+			if (isset($args['direct_uname']) && (strlen($args['direct_uname']) > 0)) {
+				$obj['uname'] = $args['direct_uname'];
+			}
 			// username first
 			if ($obj['uname'] != '') {
 			  	$whereArray[]= "a.".$u_column['uname']." like '"
