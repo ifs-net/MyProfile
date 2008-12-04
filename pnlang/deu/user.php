@@ -15,6 +15,7 @@ define('_MYPROFILEMAILANDPASSWORD',			'Zugangsdaten und Profileinstellungen');
 define('_MYPROFILESEARCHMEMBERS',			'Mitglieder suchen');
 
 // main
+define('_MYPROFILEDATEHINT',				'Format: JJJJ-MM-TT, z.B. 1981-05-25');
 define('_MYPROFILEVIEWABLEBY',				'sichtbar für');
 define('_MYPROFILEPRIVATEFIELD',			'Als privat markiert; nur durch freigegebene Kontakte sichtbar');
 define('_MYPROFILEPROFILEOF',				'Profil von');
