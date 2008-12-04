@@ -15,6 +15,7 @@ define('_MYPROFILEMAILANDPASSWORD',			'email address, password and extended sett
 define('_MYPROFILESEARCHMEMBERS',			'search members');
 
 // main
+define('_MYPROFILEDATEHINT',				'Use this format: YYYY-MM-DD. Example: 1981-05-25');
 define('_MYPROFILEVIEWABLEBY',				'Viewable for');
 define('_MYPROFILEPRIVATEFIELD',			'Private field, only viewable by users you allow to access this data');
 define('_MYPROFILEPROFILEOF',				'Profile of user');
