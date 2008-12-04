@@ -146,6 +146,7 @@ define('_MYPROFILEELEMENTMOVED',			'Element was moved successfully');
 define('_MYPROFILESTOREDAT',				'New order was saved successfully at');
 
 // add a new field or modify an existing one
+define('_MYPROFILEIDENTIFIERFORMATWARNING',	'The identifier must not contain any other characters than numbers (0-9) and regular characters (A-Z, a-z)');
 define('_MYPROFILESEARCHABLE',				'Field should be searchable by all users doing a search');
 define('_MYPROFILECOORD',					'Coordinate');
 define('_MYPROFILEADDNEWFIELD',				'Add a new field');
