@@ -1,6 +1,7 @@
 
 new in 1.1
 ==========
+- fixed many bugs. see http://code.zikula.org/myprofile/query?status=closed&group=resolution&milestone=1.1 - this is easier for me ;-)
 - [quan]	integrate mymap map into profile page for coordinate fields
 - [quan]	introduced new variable type "coordinate" (lng, lat)
 - [quan]	optional: users can integrate their own templates into 
