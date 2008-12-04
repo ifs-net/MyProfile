@@ -74,9 +74,10 @@ class MyProfile_admin_addFieldHandler
 			  	}
 				else logUtil::registerError(_MYPROFILEFIELDDELERR);
 		    }
+		    // check if the form was filled correctly
 		    if (!$render->pnFormIsValid()) return false;
+		    // get the field id into the object
 		    if ($this->id > 0) $obj['id']=$this->id;
-
 		    if ($this->id > 0) {	// an field just has to be updated
 		      	$result = DBUtil::updateObject($obj, 'myprofile_fields');
 		      	if ($result) LogUtil::registerStatus(_MYPROFILEFIELDUPDATED);
@@ -86,7 +87,12 @@ class MyProfile_admin_addFieldHandler
 			  	$obj['position']= count($fields);
 			  	// remove blanks if needed
 			  	if ($obj['fieldtype'] != 'SEPARATOR') {
-				    $obj['identifier'] = str_replace(' ','_',$obj['identifier']);
+			  	  
+					$pattern = "/\A[a-zA-Z0-9]+\z/";
+					if ((int)preg_match($pattern, $obj['identifier'], $result) ==0) {
+			  	  	  	LogUtil::registerError(_MYPROFILEIDENTIFIERFORMATWARNING.' "'.$obj['identifier'].'"');
+						return false; 
+					}
 				}
 				DBUtil::insertObject($obj, 'myprofile_fields');
 				LogUtil::registerStatus(_MYPROFILEFIELDCREATED);

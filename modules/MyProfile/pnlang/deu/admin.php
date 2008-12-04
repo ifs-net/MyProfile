@@ -124,6 +124,7 @@ define('_MYPROFILECFGWRITABLE',				'Diese Datei muss für den Webserver schreibba
 define('_MYPROFILEPROCEED',					'Nochmal versuchen zum Fortsetzen');
 
 // fields configuration
+define('_MYPROFILEIDENTIFIERFORMATWARNING',	'Es dürfen als Bezeichnung / Identifier ausschließlich Buchstaben A-Z, a-z und Zahlen genutzt werden');
 define('_MYPROFILECONFIGURATION',			'Deine Profil-Konfiguration');
 define('_MYPROFILEREDIRECTFACC',			'Es ist möglich funktionale Kennungen (administrator etc.) umzuleiten. Einfach die ID-Werte der Kennungen als Komma-getrennte Liste eingeben, die als funktionale Kennungen markiert werden sollen.');
 define('_MYPROFILEISOPTIONAL',				'optionales Feld');
