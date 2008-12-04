@@ -1,0 +1,83 @@
+<!--[include file="profile_user_menu.htm"]-->
+<!--[pnml name=_PROFILE_VIEW assign=templatetitle]-->
+<!--[pnpagesetvar name=title value=$templatetitle]-->
+
+<!--[* To include user defined field, use the constant as the value *]-->
+<!--[* example : $_TEST                                             *]-->
+
+<!--[pnusergetvar name="uname" assign="checkuname"]-->
+<div id="pnprofile">
+  <!--[if $checkuname eq $uname]-->
+	<a class="pnprofilenavicon" href="<!--[pngetbaseurl]-->"><!--[pnimg modname=core src=agt_home.gif set=icons/large class="pnprofileicon" title=_PROFILE_HOME titleml=true alt=_PROFILE_HOME altml=true]--></a>
+	<a class="pnprofilenavicon" href="<!--[pnmodurl modname="Profile" type="user" func="main"]-->"><!--[pnimg modname=core src=utilities.gif set=icons/large class="pnprofileicon" title=_PROFILE_MAIN titleml=true alt=_PROFILE_MAIN altml=true]--></a>
+	<a class="pnprofilenavicon" href="<!--[pnmodurl modname="Profile" type="user" func="modify"]-->"><!--[pnimg modname=core src=xedit.gif set=icons/large class="pnprofileicon" title=_PROFILE_MODIFY titleml=true alt=_PROFILE_MODIFY altml=true]--></a>
+  <!--[/if]-->
+  <h2>
+	<!--[if $userinfo._YOURAVATAR eq '' or $userinfo._YOURAVATAR eq 'blank.gif']-->
+	  	<!--[pnimg modname=core src=personal.gif set=icons/large class="pnprofileicon"]-->
+	<!--[else]-->
+		<img src="images/avatar/<!--[$userinfo._YOURAVATAR|pnvarprepfordisplay]-->" alt="" />
+	<!--[/if]-->
+	<!--[$uname|pnvarprepfordisplay]--> - <!--[pnml name="_PROFILE_VIEW"]-->
+  </h2>
+  <table class="pn-datatable" summary="<!--[pnml name="_PROFILE_VIEW"]--> - <!--[$uname|pnvarprepfordisplay]-->">
+    <thead>
+      <tr>
+        <th><!--[pnml name="_PROPERTIES"]--></th><th><!--[pnml name="_PROFILE_YOURINFO"]--></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><!--[pnml name="_USERNAME_FLC"]--></td><td><!--[$uname|pnvarprepfordisplay]--></td></tr>
+      <!--[foreach item='field' from=$fields]-->
+      <!--[* Settings *]-->
+      <!--[* Bold setting *]-->
+      <!--[if $field.prop_label eq '_UREALNAME']-->
+        <!--[assign var='bold' value=1]-->
+      <!--[else]-->
+        <!--[assign var='bold' value=0]-->
+      <!--[/if]-->
+
+      <!--[* Special check if user can view information *]-->
+      <!--[assign var='canview' value=false]-->
+      <!--[if $field.prop_viewby eq 0]-->
+        <!--[* Available to anyone *]-->
+        <!--[assign var='canview' value=true]-->
+      <!--[elseif $field.prop_viewby eq 1]-->
+        <!--[* Available to members only or higher *]-->
+        <!--[if $ismember]-->
+          <!--[assign var='canview' value=true]-->
+        <!--[/if]-->
+      <!--[elseif $field.prop_viewby eq 2]-->
+        <!--[* Available to the specific member or higher *]-->
+        <!--[if $sameuser OR $isadmin]-->
+          <!--[assign var='canview' value=true]-->
+        <!--[/if]-->
+      <!--[/if]-->
+
+      <!--[if $canview eq true and $field.prop_label neq '_YOURAVATAR']-->
+      <!--[* Special check in case of plugin need *]-->
+      <!--[if $field.prop_label eq '_TIMEZONEOFFSET']-->
+      <tr>
+        <td><!--[pnml name=$field.prop_label]--></td>
+        <td><!--[dudtimezoneoffset zone=$userinfo[$field.prop_label]|pnvarprepfordisplay]--></td>
+      </tr>
+      <!--[elseif $field.prop_label eq '_YOURHOMEPAGE' AND $userinfo[$field.prop_label] neq '']-->
+      <tr>
+        <td><!--[pnml name=$field.prop_label]--></td>
+        <td>
+          <a href="<!--[$userinfo[$field.prop_label]|pnvarprepfordisplay]-->" title="<!--[$uname|pnvarprepfordisplay]--> <!--[pnml name="_YOURHOMEPAGE"]-->"><!--[$userinfo[$field.prop_label]|pnvarprepfordisplay]--></a>
+        </td>
+      </tr>
+      <!--[else]-->
+      <tr>
+        <td><!--[pnml name=$field.prop_label]--></td>
+        <td><!--[if $bold]--><strong><!--[/if]--><!--[$userinfo[$field.prop_label]|pnvarprephtmldisplay]--><!--[if $bold]--></strong><!--[/if]--></td>
+      </tr>
+      <!--[/if]-->
+      <!--[/if]-->
+      <!--[/foreach]-->
+    </tbody>
+  </table>
+</div>
+
+

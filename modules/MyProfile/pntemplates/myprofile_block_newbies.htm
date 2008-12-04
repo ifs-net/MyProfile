@@ -1,0 +1,19 @@
+<!--[*
+<strong><!--[pnml name="_MYPROFILENEWUSERS"]--></strong>
+<br /><br />
+*]-->
+<!--[foreach from=$items item=user]-->
+    <!--[* YOU CAN USE EVERY FIELD YOU HAVE SPECIFIED IN YOUR MyProfile CONFIGURATION *]-->
+		&#187; <!--[$user.uname|userprofilelink]--><br />
+
+    <!--[* This is an example if you have a field plz (zip code) and hometown *]-->
+	<!--[if $user.plz ne ""]-->
+	    &nbsp;&nbsp;<!--[$user.plz|pnvarprepfordisplay]--> <!--[$user.ort|pnvarprepfordisplay]--><br />
+	<!--[/if]-->
+    <!--[* End of example *]-->
+
+<!--[/foreach]-->
+<!-- <br /><!--[pnml name="_MYPROFILEWELCOMETOOURCOMMUNITY"]-->
+<br />
+<br />
+-->

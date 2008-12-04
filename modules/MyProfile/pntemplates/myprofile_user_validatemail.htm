@@ -1,0 +1,19 @@
+<!--[include file="myprofile_user_header.htm"]-->
+<!--[include file="myprofile_user_statusmsg.htm"]-->
+
+<h1><!--[pnml name="_MYPROFILEVALIDATEEMAILADDRESS"]--></h1>
+
+<!--[pnform]-->
+<!--[pnformvalidationsummary]-->
+
+<!--[pnformlabel for=code text=_MYPROFILEVALIDATIONCODE]-->:<br />
+<!--[pnformtextinput id=code textMode="singleLine" maxLength="25" minLength="25" mandatory=1]--><br /><br />
+<!--[pnformlabel for=uid text=_MYPROFILEUSERID]-->:<br />
+<!--[pnformintinput id=uid mandatory=1]--><br /><br />
+
+<div id="myprofile_submitbutton">
+<!--[pnformbutton commandName="update" text="_MYPROFILEACTIVATENEWMAIL"]-->
+</div>
+<!--[/pnform]-->
+
+<!--[include file="myprofile_user_footer.htm"]-->

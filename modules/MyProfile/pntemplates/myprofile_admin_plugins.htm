@@ -1,0 +1,14 @@
+<!--[include file="myprofile_admin_menu.htm"]-->
+<h2><!--[pnml name="_MYPROFILEBACKEND"]--></h2>
+<!--[pnml name="_MYPROFILEPLUGINDESC"]-->
+<!--[if $plugins gt 0]-->
+<ul>
+    <!--[foreach from=$plugins item=plugin]-->
+	    <li><span class="myprofile_bold"><!--[pnml name=$plugin.name]--></span></li>
+	<!--[/foreach]-->
+</ul>
+<!--[pnml name="_MYPROFILEREMOVEPLUGINS"]-->
+<!--[else]-->
+<!--[pnml name="_MYPROFILENOPLUGINSFOUND"]-->
+<!--[/if]-->
+<!--[include file="myprofile_admin_footer.htm"]-->

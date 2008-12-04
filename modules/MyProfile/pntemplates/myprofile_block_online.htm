@@ -1,0 +1,40 @@
+<!--[* 	This is an example with an online list
+        that shows the country and the zip-code 
+	of the users ordered by country and zip-code
+	
+	Note: if you want to use this on your site 
+	you need to replace the identifiers for 
+	the country (land) and zipcode (plz) for 
+	your needs. Of course you can use any variable 
+	you have in a datafield of MyProfile.
+	
+	If you want to have an unordered list just leave
+	the paramater "orderby" in the function call below
+	blank.
+						    	*]-->
+
+<!--[pnmodapifunc modname="MyProfile" type="user" func="getOnline" orderby="land, plz" assign="users"]-->
+<br /><!--[pnml name="_MYPROFILETHEREARE"]--> <!--[$users|@count]--> <!--[pnml name="_MYPROFILEREGISTEREDUSERSONLINE"]-->
+<div style="max-height: 400px; overflow-x: hidden;overflow-y:auto;">
+<!--[foreach from=$users item=user]-->
+
+    <!--[* 	We want the country to be displayed - but only 
+		once! if the country changes the new country will be shown	*]-->
+		
+    <!--[if $lastCountry ne $user.land]--><br /><strong>&#187;&nbsp;<!--[$user.land]-->:</strong><!--[/if]-->
+    <!--[assign value=$user.land var="lastCountry"]-->
+    
+    <!--[* 	Let us show the zip code (fielname: plz) but only the first two chars	*]-->
+    <!--[* 	Then we want to display the profile link				*]-->
+    <!--[*	We'll put some additional information of MyProfile-fields
+		into the title of the link... customize them as you need it	*]-->
+		
+
+	<!--[* We do not want that tha administrator's account is shown on the list (admin-uid == 2) *]-->
+	<!--[$user.plz|truncate:2:"":true]-->..<a title="<!--[$user.plz]--> <!--[$user.ort]-->: <!--[$user.vollername]-->" href="<!--[pnmodurl modname="MyProfile" type="user" func="display" uid=$user.id]-->"><!--[$user.uname]--></a> 
+
+    <!--[* End of example *]-->
+
+<!--[/foreach]-->
+</div>
+<br /><br />

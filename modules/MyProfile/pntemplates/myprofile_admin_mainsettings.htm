@@ -1,0 +1,66 @@
+<!--[pnajaxheader prototype="1"]-->
+<!--[include file="myprofile_admin_menu.htm"]-->
+<div class="pn-informationmsg"><!--[pnml name="_MYPROFILEBACKENDDESCR"]--></div>
+<!--[pnform cssClass=pn-adminform]-->
+<fieldset>
+<legend><!--[pnml name="_MYPROFILEGLOBALETTINGS"]--></legend>
+    <!--[pnformvalidationsummary]-->
+<div class="myprofile_halfbox">
+	<h3><!--[pnml name="_MYPROFILEAPPEARANCE"]--></h3>
+	<h4><!--[pnml name="_MYPROFILEPROFILEAPPEARANCE"]--></h4>
+    <!--[pnformlabel for="dateformat" text="_MYPROFILEDATEFORMAT"]-->:
+    <!--[pnformtextinput id="dateformat" maxLength="15" textMode="singleLine"]--><br />
+    <!--[pnformcheckbox id="notabs" checked="0"]--><!--[pnformlabel for="notabs" text="_MYPROFILENOTABS"]--><br />
+    <!--[pnformcheckbox id="plugin_noajax" checked="0"]--><!--[pnformlabel for="plugin_noajax" text="_MYPROFILENOAJAXTABS"]--><br />
+    <!--[pnformcheckbox id="convertToUTF8" checked="0"]--><!--[pnformlabel for="convertToUTF8" text="_MYPROFILECONVERTAJAXCONTENTTOUTF8"]-->
+
+	<h4><!--[pnml name="_MYPROFILESEARCHAPPEARANCE"]--></h4>
+    <!--[pnformlabel for="resultsperpage" text="_MYPROFILEAMOUNTOFRESULTSPERPAGE"]--> <!--[pnformintinput id="resultsperpage" minValue="1" maxValue="9999" textMode="singleLine"]--><br />
+    <!--[pnformcheckbox id="allowmemberlist" checked="0"]--><!--[pnformlabel for="allowmemberlist" text="_MYPROFILEALLOWMEMBERLIST"]--><br />
+    <!--[pnformlabel for="searchtemplate" text="_MYPROFILESEARCHTEMPLATE"]-->:
+    <!--[pnformtextinput id="searchtemplate" maxLength="55" textMode="singleLine"]--><br /><br />
+	<h3><!--[pnml name="_MYPROFILEEMAILMANAGEMENT"]--></h3>
+    <!--[pnformcheckbox id="noverification" checked="0"]--><!--[pnformlabel for="noverification" text="_MYPROFILENOVERIFICATION"]--><br />
+    <!--[pnformlabel for="requestban" text="_MYPROFILEREQUESTBANINDAYS"]--> <!--[pnformintinput id="requestban" minValue="0" maxValue="90" textMode="singleLine"]--> <!--[pnml name="_MYPROFILEDAYSAFTERREQUEST"]--><br />
+    <!--[pnformlabel for="expiredays" text="_MYPROFILEEXPIREDAYS"]-->: 
+    <!--[pnformintinput id="expiredays" minValue="7" maxValue="365" textMode="singleLine"]--> <!--[pnml name="_MYPROFILEDAYS"]--><br />
+</div>
+<div class="myprofile_halfbox">
+	<h3><!--[pnml name="_MYPROFILEBEHAVIOUR"]--></h3>
+    <!--[pnformcheckbox id="asattributes" checked="0"]--><!--[pnformlabel for="asattributes" text="_MYPROFILEASATTRIBUTES"]--><br />
+	<!--[pnml name="_MYPROFILEATTRIBUTEUSAGE"]-->:<br />
+	<em>&lt;!--[pnusergetvar name="__ATTRIBUTES__" assign="myprofile_serialized"]--&gt;<br />
+	&lt;!--[$myprofile_serialized|@unserialize assign="myprofile"]--&gt;</em><br /><br />
+    <!--[pnml name="_MYPROFILEFORCEPROFILESCODE"]-->:<br />
+    <em>&lt;!--[myprofilemandatory]--&gt;</em><br />
+    <!--[pnformlabel for="validuntil" text="_MYPROFILEVALIDUNTILTIMESTAMP"]-->: <!--[pnformintinput mandatory="1" minValue="0" maxValue="999999999" id="validuntil" textMode="singleLine"]--> (<!--[pnml name="_MYPROFILEZERODEACTIVETED"]-->)<br />
+    <!--[pnml name="_MYPROFILEATTENTIONCHANGE"]-->.<br /><br />
+	<h3><!--[pnml name="_MYPROFILEUSERPERMISSIONS"]--></h3>
+    <!--[pnformcheckbox id="individualpermissions" checked="0"]--><!--[pnformlabel for="individualpermissions" text="_MYPROFILEALLOWINDIVIDUALVIEWPERMISSIONS"]--><br />
+    <!--[pnformcheckbox id="individualtemplates" checked="0"]--><!--[pnformlabel for="individualtemplates" text="_MYPROFILEALLOWINDIVIDUALTEMPLATES"]--><br />
+    <!--[pnml name="_MYPROFILEEXCLUDEGROUPFORTEMPLATING"]-->:<br />
+	<!--[pnformcheckboxlist id="disabledgroups" items=$groups]-->
+</div>
+</fieldset>
+<div class="pn-adminformrow pn-adminformbuttons">
+<!--[pnformimagebutton commandName="update" imageUrl=images/icons/small/button_ok.gif  text="_MYPROFILESAVECFG"]-->
+<a href="<!--[pnmodurl modname=MyProfile type=admin]-->"><!--[pnimg modname=core src=button_cancel.gif set=icons/small altml=true titleml=true alt="_CANCEL" title="_CANCEL"]--></a>
+</div>
+
+<!--[/pnform]-->
+
+<fieldset><legend><!--[pnml name="_MYPROFILEUSELASTSEEN"]--></legend>
+<!--[pnml name="_MYPROFILELASTSEENTEXT"]--><br />
+<em>
+if (pnUserLoggedIn()) pnUserSetVar('lastlogin',date("Y-m-d h:i:s",time()),pnUserGetVar('uid'));
+</em>
+</fieldset>
+
+<fieldset><legend><!--[pnml name="_MYPROFILEMYPROFILEPLUGIN"]--></legend>
+<!--[pnml name="_MYPROFILEUSEPROFILEPLUGINEXPL"]--><br />
+<em>&lt;!--[myprofile uid=$uid]--&gt;</em><br />
+<!--[pnml name="_MYPROFILEUSEPROFILEPLUGINTEMPLATE"]--><br />
+<em>modules/MyProfile/pntemplates/myprofile_plugin_myprofile.htm</em>
+</fieldset>
+<br />
+<!--[include file="myprofile_admin_footer.htm"]-->

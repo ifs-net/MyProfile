@@ -1,0 +1,77 @@
+<!--[if $viewer_uid eq $uid]--><!--[include file="myprofile_user_header.htm"]--><!--[/if]-->
+
+<!--[pnajaxheader prototype="1"]-->
+
+<div style="float:left;">
+<h1><!--[pnml name="_MYPROFILEPROFILEOF"]-->: <!--[$uname]--> 
+<!--[if $onlinestatus eq 1]-->
+	<img src="images/icons/medium/agt_family.gif" alt="online" title="online" style="padding-left: 20px;" />
+<!--[else]-->
+	<img src="images/icons/medium/agt_family-off.gif" alt="offline" title="offline" style="padding-left: 20px;" />
+<!--[/if]-->
+
+</h1>
+</div>
+<!--[if $contactlistavailable and $contactlist_nopublicbuddylist ne 1]-->
+	<div class="myprofile_link">
+	<!--[pnmodapifunc modname="ContactList" type="user" func="getFOAFLink" uid1=$viewer_uid uid2=$uid]-->
+	</div>
+<!--[/if]-->
+<br class="myprofile_clearboth" />
+
+<!--[* plugin tabs begin *]-->
+	<div class="myprofile_tabheader">													<!-- tabheader begin -->
+		<div class="myprofile_tab<!--[if $pluginname == "MyProfile"]--> myprofile_tabactive<!--[/if]-->" id="myprofile_plugintabMyProfile">
+			<!-- tabheader item begin -->
+			<a href="<!--[pnmodurl fqurl="true" modname="MyProfile" type="user" func="display" uid=$uid]-->"
+				id="myprofile_MyProfile"
+				<!--[if $plugin_noajax ne 1]-->				
+					onclick="javascript:myprofile_updateTab('<!--[$homelink]-->','myprofile_maincontent','MyProfile');return false;" 
+				<!--[/if]-->
+				><!--[pnml name="_MYPROFILEMAINPROF"]--></a>
+			<!--[if $plugin_noajax ne 1]-->
+				<script type="text/javascript">
+					$('myprofile_MyProfile').href="#nogo";
+				</script>
+			<!--[/if]-->
+			<!-- tabheader item end -->
+		</div>
+<!--[if $plugins gt 0]-->
+	<!--[foreach from=$plugins item="plugin"]-->
+		<!--[if $plugin.title ne ""]-->
+			<!--[pnmodapifunc modname=$plugin.name type="myprofile" func="getURLAddOn" assign="addon"]--> 
+			<div class="myprofile_tab<!--[if $pluginname == $plugin.dir]--> myprofile_tabactive<!--[/if]-->" id="myprofile_plugintab<!--[$plugin.dir]-->">
+				<!-- tabheader item begin -->
+				<a 
+					href="<!--[$plugin.link]-->"
+					id="myprofile_pluginlink<!--[$plugin.dir]-->"
+					><!--[$plugin.title]--></a>
+					<!--[if $plugin_noajax ne 1 and $plugin.noajax ne 1]-->
+						<script type="text/javascript">
+							$('myprofile_pluginlink<!--[$plugin.dir]-->').href="#nogo";
+						</script>
+					<!--[/if]-->
+				<!-- tabheader item end -->
+			</div>
+		<!--[/if]-->
+	<!--[/foreach]-->
+	<!-- tabheader end -->
+	</div>
+<!--[/if]-->
+<!--[* plugin tabs end *]-->
+	
+<!--[* main profile data begin *]-->
+<div class="myprofile_tabcontent_frame" >
+<div class="myprofile_tabcontent" id="myprofile_maincontent">
+<!--[$content]-->
+</div>
+</div>
+<script type="text/javascript">
+	$('myprofile_plugintabMyProfile').observe('click',function() {myprofile_updateTab('<!--[$homelink]-->','myprofile_maincontent','MyProfile');return false;});
+	<!--[foreach from=$plugins item="plugin"]-->
+	<!--[if $plugin.title ne ""]-->
+	<!--[if $plugin_noajax ne "1" and $plugin.noajax ne "1"]-->$('myprofile_plugintab<!--[$plugin.dir]-->').observe('click',function() {myprofile_updateTab('<!--[$plugin.link_ajax]-->','myprofile_maincontent','<!--[$plugin.dir]-->');return false;});<!--[/if]-->
+	<!--[/if]-->
+	<!--[/foreach]-->
+</script>
+<!--[include file="myprofile_user_footer.htm"]-->

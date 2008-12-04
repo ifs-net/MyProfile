@@ -1,0 +1,94 @@
+<!--[include file="myprofile_user_header.htm"]-->
+<!--[pnajaxheader prototype="1"]-->
+<!--[include file="myprofile_user_statusmsg.htm"]-->
+<h1><!--[pnml name="_MYPROFILEMYPROFILE"]--></h1>
+<!--[pnml name="_MYPROFILEYOURSETTINGS"]--><br /><br />
+<!--[pnform]-->
+<!--[pnformvalidationsummary]-->
+
+<div class="myprofile_separator" id="myprofile_settings">
+<span class="myprofile_bold"><!--[pnml name="_MYPROFILEGENERALSETTINGS"]--></span><br /><br />
+
+<!--[pnformlabel for="timezoneoffset" text="_MYPROFILEMYTIMEZONE"]--><br />
+<!--[pnformdropdownlist id="timezoneoffset" items=$items_timezone]--><br /><br />
+
+<!--[pnformcheckbox id="nocomments" checked="0"]--><!--[pnformlabel for="nocomments" text="_MYPROFILENOCOMMENTS"]--><br /><br />
+
+<!--[if $individualpermissions eq 1]-->
+	<!--[pnformlabel for="individualpermission" text="_MYPROFILEMYPROFILEVISIBLEFOR"]--><br />
+	<!--[pnformdropdownlist id="individualpermission" items=$items_individualpermissions]--><br /><br />
+<!--[/if]-->
+
+<!--[if $items_customfields|@count gt 0]-->
+	<!--[pnformlabel for="customsettings" text="_MYPROFILECUSTOMSETTINGS"]-->? 
+	<!--[pnformdropdownlist id="customsettings" items=$items_customfields]--><br />
+	<a href="<!--[pnmodurl modname="MyProfile" type="user" func="confirmedusers"]-->"><!--[pnml name="_MYPROFILEMANAGECONFIRMEDUSERS"]--></a>
+	<br /><br />
+<!--[/if]-->
+
+<!--[if $fields|@count gt 0]-->
+	<!--[if $individualtemplate eq "" and $individualtemplates eq 1]-->
+		<div id="mit_link"><a onclick="javascript:$('mit').show();$('mit_link').hide();" href="#mit"><!--[pnformlabel for="individualtemplate" text="_MYPROFILEMYPROFILEMYTEMPLATE"]--></a><br /></a></div>
+	<!--[/if]-->
+	<div id="mit" >
+		<a name="mit"></a>
+		<!--[pnformlabel for="individualtemplate" text="_MYPROFILEMYPROFILEMYTEMPLATE"]--><br />
+		<!--[pnformtextinput id="individualtemplate" textMode="multiLine" rows="8" cols="50"]--><br />
+		<div id="mih_link">
+			<a onclick="javascript:$('mih').show();$('mih_link').hide();" href="#mit"><!--[pnml name="_MYPROFILEINDIVIDUALTEMPLATEHINTS"]--></a>
+		</div>
+		<div id="mih">
+			<a name="mih"></a>
+			<fieldset><legend><!--[pnml name="_MYPROFILETEMPALTEUSEWHATYOUWANT"]--></legend>
+			<!--[pnml name="_MYPROFILETEMPALTEVARREPLACEMENTS"]-->:<br />
+			<ul>
+			<!--[foreach from=$fields item="field"]-->
+				<li><strong>§<!--[$field.identifier]-->§</strong> <!--[pnml name="_MYPROFILEWILLBEREPLACEDWITH"]--> <!--[$field.description]--></li>
+			<!--[/foreach]-->
+			</ul>
+			</fieldset>
+		</div>
+	</div>
+	<script type="text/javascript">
+		<!--[if $individualtemplate eq ""]-->
+			$('mit').hide();
+		<!--[/if]-->
+		$('mih').hide();
+	</script>
+	<br /><br />
+<!--[/if]-->
+</div>
+
+<div class="myprofile_separator" id="myprofile_password">
+<span class="myprofile_bold"><!--[pnml name="_MYPROFILEPASSWORDSETTINGS"]--></span><br /><br/>
+<!--[pnformlabel for="1pass" text="_MYPROFILENEWPASS"]-->:<br />
+<!--[pnformtextinput id="1pass" textMode="password" maxLength=20]--><br /><br />
+<!--[pnformlabel for="2pass" text="_MYPROFILENEWPASSAGAIN"]-->:<br />
+<!--[pnformtextinput id="2pass" textMode="password" maxLength=20]--><br /><br />
+</div>
+
+<div class="myprofile_separator" id="myprofile_email">
+<span class="myprofile_bold"><!--[pnml name="_MYPROFILECHANGEMAIL"]--></span> (<!--[pnusergetvar name="email"]-->)<br /><br/>
+<!--[pnformlabel for="users_email" text="_MYPROFILEEMAILADDRESS"]-->:<br />
+<!--[pnformemailinput id="users_email"]--><br /><br />
+<!--[if $noverification neq 1]-->
+	<a href="<!--[pnmodurl modname="MyProfile" type="user" func="validatemail"]-->"><!--[pnml name="_MYPROFILEENTERVALIDATIONCODE"]--></a><!--[/if]-->
+</div>
+<!--[pnformbutton commandName="update" text="_MYPROFILESAVE"]-->
+
+<!--[/pnform]-->
+
+
+<!--[pnajaxheader prototype="1"]-->
+<script type="text/javascript">
+<!--[if $mode eq "email"]-->
+	$('myprofile_settings').hide();
+	$('myprofile_password').hide();
+<!--[/if]-->
+<!--[if $mode eq "password"]-->
+	$('myprofile_settings').hide();
+	$('myprofile_email').hide();
+<!--[/if]-->
+</script>
+
+<!--[include file="myprofile_user_footer.htm"]-->

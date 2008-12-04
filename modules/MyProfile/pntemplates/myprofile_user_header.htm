@@ -1,0 +1,11 @@
+<!--[pnusergetvar name="uname" assign="uname"]-->
+<!--[if $uname ne ""]-->
+<div class="myprofile_header">
+<span class="myprofile_bold"><!--[pnml name="_MYPROFILEUSERMENU"]--></span>:
+<a href="<!--[pnmodurl modname="MyProfile" type="user" func="main"]-->"><!--[pnml name="_MYPROFILEMAINPROFILEDATA"]--></a>,
+<a href="<!--[pnmodurl modname="MyProfile" type="user" func="settings"]-->"><!--[pnml name="_MYPROFILEMAILANDPASSWORD"]--></a>,
+<a href="<!--[pnmodurl modname="MyProfile" type="user" func="search"]-->"><!--[pnml name="_MYPROFILESEARCHMEMBERS"]--></a>.
+</div>
+<!--[/if]-->
+
+<div class="myprofile_iconline"><!--[pnimg modname=MyProfile src=accountbutton.gif set=icons/large]--></div>

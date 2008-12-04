@@ -1,0 +1,141 @@
+<!--[pnajaxheader prototype="1"]-->
+<!--[include file="myprofile_user_header.htm"]-->
+
+<!--[pnform]-->
+<!--[pnformvalidationsummary]-->
+
+<!--[if $resultCount gt -1]-->
+	<h1><!--[pnml name="_MYPROFILEFOUND"]--> <!--[pnml name="_MYPROFILERESULTS"]--></h1>
+	<div id="myprofile_search_link">
+		<a href="" onclick="javascript:$('myprofile_search').show();$('myprofile_search_link').hide();return false;"><!--[pnml name="_MYPROFILESHOWSEARCHFORM"]--></a><br />
+	<!--[if $allowmemberlist eq 1]-->
+		<a href="<!--[pnmodurl modname="MyProfile" type="user" func="search" showall="1" fqurl="true"]-->"><!--[pnml name="_MYPROFILESHOWALLMEMBERS"]--></a><br />
+	<!--[/if]-->
+	<br />
+	</div>
+<!--[/if]-->
+
+<!--[if $page gt 0]-->
+	<center>
+	<!--[pnml name="_MYPROFILEPAGE"]--> <!--[$page]-->/<!--[$pages]-->, <!--[$resultCount]--> <!--[if $resultCount lt 2]--><!--[pnml name="_MYPROFILERESULT"]--><!--[else]--><!--[pnml name="_MYPROFILERESULTS"]--><!--[/if]--><br />
+	</center>
+<!--[/if]-->
+
+<center>
+<div style="float:left;" class="<!--[$previousButtonStyle]-->">
+	<!--[pnformimagebutton commandName="prevPage"  imageUrl="images/icons/small/2leftarrow.gif" alt="_MYPROFILEPREVIOUSPAGE" title="_MYPROFILESPREVIOUSPAGE"]-->
+</div>
+<div style="float:right;" class="<!--[$nextButtonStyle]-->" >
+	<!--[pnformimagebutton commandName="nextPage"  imageUrl="images/icons/small/2rightarrow.gif" alt="_MYPROFILENEXTPAGE" title="_MYPROFILENEXTPAGE"]-->
+</div>
+</center>
+<br class="myprofile_clearboth" />
+
+<div id="myprofile_search">
+	<h1><!--[pnml name="_MYPROFILESEARCH"]--></h1>
+	<div class="pn-informationmsg">
+		<!--[pnml name="_MYPROFILESEARCHINTRO"]-->
+	</div>
+	
+	<!--[* username should always be searchable *]-->
+	<div class="myprofile_searchelement">
+		<div class="myprofile_searchleft">
+			<span class="myprofile_bold"><!--[pnml name="_MYPROFILEUNAME"]--></span>
+		</div>
+		<div class="myprofile_searchright">
+			<!--[pnformtextinput id="uname" maxLength="150"]-->
+		</div>
+	</div>
+
+	<!--[* lets no handle all searchable fields *]-->
+	<!--[foreach from=$fields item="field"]-->
+	<div class="myprofile_searchelement">
+		<div class="myprofile_searchleft">
+			<span class="myprofile_bold"><!--[$field.description]--></span><br />
+			<!--[if $field.list ne ""]--><span class="myprofile_small"><!--[pnml name="_MYPROFILEORUSED"]--></span><!--[/if]-->
+		</div>
+		<div class="myprofile_searchright">
+			<!--[if $field.fieldtype eq "STRING" or $field.fieldtype eq "TEXTBOX" or $field.fieldtype eq "URL" or $field.fieldtype eq "SKYPEID" or $field.fieldtype eq "TIMESTAMP"  or $field.fieldtype eq "UIN" or $field.fieldtype eq "INTEGER"]-->
+				<!--[if $field.list eq ""]-->
+					<!--[pnformtextinput id=$field.identifier maxLength="150"]-->
+				<!--[else]-->
+					<!--[pnformcheckboxlist id=$field.identifier items=$field.items]-->
+				<!--[/if]-->
+			<!--[else if $field.fieldtype eq "DATE"]-->
+				<!--[pnformdateinput id=$field.identifier]-->
+			<!--[/if]-->
+		</div>
+	</div>
+	<!--[foreachelse]-->
+		<!--[pnml name="_MYPROFILENOTHINGSEARCHABLE"]-->
+	<!--[/foreach]-->
+	
+	<!--[* other search options. wildcat, order by, asc/desc etc. *]-->
+	<div class="myprofile_searchelement">
+		<div class="myprofile_searchleft">
+			<!--[pnml name="_MYPROFILESEARCHTYPE"]-->
+		</div>
+		<div class="myprofile_searchright">
+			<!--[pnformdropdownlist id="searchoption" items=$items_searchoptions]-->
+		</div>
+	</div>
+	<div class="myprofile_searchelement">
+		<div class="myprofile_searchleft">
+			<!--[pnml name="_MYPROFILECONNECTOR"]-->
+		</div>
+		<div class="myprofile_searchright">
+			<!--[pnformdropdownlist id="connector" items=$items_connector]-->
+		</div>
+	</div>
+	<div class="myprofile_searchelement">
+		<div class="myprofile_searchleft">
+			<!--[pnml name="_MYPROFILEORDERBY"]-->
+		</div>
+		<div class="myprofile_searchright">
+			<!--[pnformdropdownlist id="orderby" items=$items_orderby]-->
+			<!--[pnformdropdownlist id="ascdesc" items=$items_ascdesc]-->
+		</div>
+	</div>
+	<div class="pn-informationmsg">
+		<!--[pnml name="_MYPROFILESEARCHTYPEDESC"]-->
+	</div>
+	<!--[if $allowmemberlist eq 1]-->
+		<div class="pn-informationmsg">
+			<!--[pnml name="_MYPROFILEMEMBERLISTDESC"]-->
+		</div>
+	<!--[/if]-->
+
+	<center>
+	<!--[pnformimagebutton commandName="update"  imageUrl="images/icons/small/button_ok.gif" alt="_MYPROFILESEARCH" title="_MYPROFILESEARCH"]-->
+	<a href="<!--[pnmodurl modname=MyProfile type=admin func=search]-->"><!--[pnimg modname=core src=button_cancel.gif set=icons/small altml=true titleml=true alt="_CANCEL" title="_CANCEL"]--></a>
+	</center>
+</div>
+
+<!--[if $resultCount gt -1]-->
+	<script type="text/javascript">
+		$('myprofile_search').hide();
+	</script>
+
+	<div>
+	<!--[foreach from=$result item="user"]-->
+		<div class="myprofile_searchresultbox">
+		<!--[pnusergetvar uid=$user.id name="_YOURAVATAR" assign="avatar"]-->
+
+		<span class="myprofile_bold"><!--[$user.uname|userprofilelink]--></span>
+		<!--[if $avatar eq '' or $avatar eq 'blank.gif']-->
+			<!--[pnimg modname="MyProfile" src="avatar_male.gif" height="40" style="float:right;" class="avatar"]-->
+		<!--[else]-->
+			<img src="images/avatar/<!--[$avatar|pnvarprepfordisplay]-->" class="avatar" width="40" style="float:right;"/>
+		<!--[/if]-->
+		<!--[if $customTemplate ne ""]-->
+			<!--[include file=$customTemplate]-->
+		<!--[/if]-->
+		</div>
+	<!--[/foreach]-->
+	</div>
+	<br class="myprofile_clearboth" />
+
+<!--[/if]-->
+
+<!--[/pnform]-->
+<!--[include file="myprofile_user_footer.htm"]-->

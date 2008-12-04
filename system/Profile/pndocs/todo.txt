@@ -1,0 +1,63 @@
+Prevent removal of core items.
+API functions to be reviewed to check all functionality required by other modules can be provided.
+DUD API to be documented.
+
+Use "validation" to have info about avatars and timezoneoffset or language definition for list (if available)
+
+var:global?:timezoneoffset
+inc:img:images/avatar
+inc:lang:_FIELDCONSTANT
+     |
+     |
+     |
+     |
+     |
+	 V
+
+root/language/xxx/_FIELDCONSTANT.php ?
+     |
+     |
+     |
+     |
+     |
+	 V
+
+<?php
+
+if (isset($_FIELDCONSTANT_OPTIONS)) unset($_FIELDCONSTANT_OPTIONS);
+
+$_FIELDCONSTANT_OPTIONS = array();
+
+$_FIELDCONSTANT_OPTIONS[] = "X";
+$_FIELDCONSTANT_OPTIONS[] = "Y";
+$_FIELDCONSTANT_OPTIONS[] = "Z";
+
+?>
+
+OR............. something similar, to be discussed as the select will have a multilingual issue in the future.
+
+---------------------------------------------
+Add check "required"
+
+Test different fields type
+
+Add "multiple" feature to select
++
+plugin to show information of the select including separator param ("<br />", ", ")
+or...
+
+something similar.
+
+
+Later :
+
+Group fields
+
+Either using a different type in prop_dtype where more than one field can be merge to one field...
+
+Example : _DAYBIRTH _MONTHBIRTH _YEARBIRTH (All selects)
+
+
+To be discussed.
+
+

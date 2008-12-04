@@ -1,0 +1,72 @@
+<!--[include file=profile_admin_menu.htm]-->
+<div class="pn-admincontainer">
+<!--[pnml name=_PROFILE_PROPERTY assign=itemname]-->
+<!--[pnml name=_MODIFYITEM i=$itemname assign=templatetitle]-->
+<div class="pn-adminpageicon"><!--[pnimg modname=core src=xedit.gif set=icons/large alt=$templatetitle]--></div>
+<h2><!--[$templatetitle]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Profile" type="admin" func="update"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+  <input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Profile"]-->" />
+  <input type="hidden" name="dudid" value="<!--[$dudid]-->" />
+  <fieldset>
+  <legend><!--[pnml name=_PROFILE_EXISTINGPROPERTY]--></legend>
+  <div class="pn-adminformrow">
+    <label for="profile_label"><!--[pnml name="_PROFILE_FIELDLABEL"]--></label>
+    <input id="profile_label" name="label" type="text" size="20" maxlength="255" value="<!--[$item.prop_label|pnvarprepfordisplay]-->" />
+    <div class="pn-adminformrow"><!--[pnml name="_PROFILE_ADDINSTRUCTIONS"]--></div>
+  </div>
+  <div class="pn-adminformrow">
+    <label for="profile_required"><!--[pnml name="_REQUIRED"]--></label>
+    <select id="profile_required" name="required">
+      <!--[html_options options=$requiredoptions selected=$item.prop_required]-->
+    </select>
+  </div>
+  <div class="pn-adminformrow">
+    <label for="profile_viewby"><!--[pnml name="_PROFILE_VIEWABLEBY"]--></label>
+    <select id="profile_viewby" name="viewby">
+      <!--[html_options options=$viewbyoptions selected=$item.prop_viewby]-->
+    </select>
+  </div>
+  <!--[if $item.prop_dtype neq -1 and $item.prop_dtype neq 0]-->
+    <div class="pn-adminformrow">
+      <label for="profile_dtype"><!--[pnml name="_PROFILE_FIELDTYPE"]--></label>
+      <select id="profile_dtype" name="dtype">
+        <!--[html_options options=$dtypes selected=$item.prop_dtype]-->
+      </select>
+    </div>
+  <!--[else]-->
+    <input type="hidden" name="dtype" value="<!--[$item.prop_dtype|pnvarprepfordisplay]-->" />
+  <!--[/if]-->
+  <div class="pn-adminformrow">
+    <label for="profile_length"><!--[pnml name="_PROFILE_FIELDLENGTH"]--></label>
+    <input id="profile_length" name="length" type="text" size="3" maxlength="3" value="<!--[$item.prop_length|pnvarprepfordisplay]-->" />
+    <div class="pn-adminformrow"><!--[pnml name="_PROFILE_STRINGINSTRUCTIONS"]--></div>
+  </div>
+  <div class="pn-adminformrow">
+    <label for="profile_displaytype"><!--[pnml name="_PROFILE_DISPLAYTYPE"]--></label>
+    <select id="profile_displaytype" name="displaytype">
+      <!--[html_options options=$displaytypes selected=$item.prop_displaytype]-->
+    </select>
+  </div>
+  <div class="pn-adminformrow">
+    <label for="profile_listoptions"><!--[pnml name="_PROFILE_LISTOPTIONS" html="1"]--></label>
+    <textarea id="profile_listoptions" cols="50" rows="5" name="listoptions"><!--[$item.prop_listoptions|pnvarprepfordisplay]--></textarea>
+  </div>
+  <div class="pn-adminformrow">
+    <label for="profile_note"><!--[pnml name="_PROFILE_NOTE"]--></label>
+    <textarea id="profile_note" cols="50" rows="5" name="note"><!--[$item.prop_note|pnvarprepfordisplay]--></textarea>
+  </div>
+  <div class="pn-adminformrow">
+    <label for="profile_validation"><!--[pnml name="_PROFILE_VALIDATION"]--></label>
+    <textarea id="profile_validation" cols="50" rows="2" name="validation"><!--[$item.prop_validation|pnvarprepfordisplay]--></textarea>
+  </div>
+  <p><!--[pnml name="_PROFILE_FIELDCOMBONOTE"]--></p>
+  </fieldset>
+  <!--[pnmodcallhooks hookobject=item hookaction=modify hookid=$dudid module=Profile]-->
+  <div class="pn-adminformrow pn-adminformbuttons">
+      <!--[pnbutton src=button_ok.gif set=icons/small alt="_UPDATECONFIG" title="_UPDATECONFIG"]-->
+      <a href="<!--[pnmodurl modname=Profile type=admin func=view]-->"><!--[pnimg modname=core src=button_cancel.gif set=icons/small altml=true titleml=true alt="_CANCEL" title="_CANCEL"]--></a>
+  </div>
+</div>
+</form>
+</div>
