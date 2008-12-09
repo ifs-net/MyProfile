@@ -243,6 +243,7 @@ function MyProfile_user_display()
 	if (isset($uid) && ($uid > 1)) $uname = pnUserGetVar('uname',$uid);
 	else $name = pnUserGetIDFromName($uid);
 	$render->assign('uname',		$uname);
+	$render->assign('encuname',		rawurlencode($uname));
 	$render->assign('uid',			$uid);
 	$render->assign('viewer_uid',	$viewer_uid);
 	$render->assign('plugin_noajax',pnModGetVar('MyProfile','plugin_noajax'));
