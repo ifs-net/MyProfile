@@ -116,14 +116,22 @@
 		<div class="myprofile_profiletext myprofile_userpictures_box">
 		&nbsp;
 		</div>
-		<!--[if $pnmessagesavailable and $viewer_uid ne $uid]-->
+		<!--[pnmodavailable modname="InterCom" assign="InterComAvailable"]-->
+		<!--[if $InterComAvailable and $viewer_uid ne $uid]-->
 			<div class="myprofile_profiletext">
-			<img src="<!--[pngetbaseurl]-->images/icons/small/mail_generic.gif" /><a href="<!--[pnmodurl fqurl="true" modname="pnMessages" type="user" func="newpm" uname="$uname"]-->"><!--[pnml name="_MYPROFILESENDPM"]--></a>
+			<img src="<!--[pngetbaseurl]-->images/icons/small/mail_generic.gif" /><a href="<!--[pnmodurl fqurl="true" modname="InterCom" type="user" func="newpm" uname="$encuname"]-->"><!--[pnml name="_MYPROFILESENDPM"]--></a>
 			</div>
 		<!--[/if]-->
-		<!--[if $contactlistavailable and $viewer_uid ne $uid]-->
+		<!--[pnmodavailable modname="pnMessages" assign="pnMessagesAvailable"]-->
+		<!--[if $pnMessagesAvailable and $viewer_uid ne $uid]-->
 			<div class="myprofile_profiletext">
-			<img src="<!--[pngetbaseurl]-->images/icons/small/add_user.gif" /><a href="<!--[pnmodurl fqurl="true" modname="ContactList" type="user" func="create" uname="create" uname=$uname]-->"><!--[pnml name="_MYPROFILEADDASBUDDY"]--></a>
+			<img src="<!--[pngetbaseurl]-->images/icons/small/mail_generic.gif" /><a href="<!--[pnmodurl fqurl="true" modname="pnMessages" type="user" func="newpm" uname="$encuname"]-->"><!--[pnml name="_MYPROFILESENDPM"]--></a>
+			</div>
+		<!--[/if]-->
+		<!--[pnmodavailable modname="ContactList" assign="ContactListAvailable"]-->
+		<!--[if $ContactListAvailable and $viewer_uid ne $uid]-->
+			<div class="myprofile_profiletext">
+			<img src="<!--[pngetbaseurl]-->images/icons/small/add_user.gif" /><a href="<!--[pnmodurl fqurl="true" modname="ContactList" type="user" func="create" uname="$encuname"]-->"><!--[pnml name="_MYPROFILEADDASBUDDY"]--></a>
 			</div>
 		<!--[/if]-->
 <!--[* additional information end *]-->
