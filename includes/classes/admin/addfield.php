@@ -97,6 +97,8 @@ class MyProfile_admin_addFieldHandler
 				DBUtil::insertObject($obj, 'myprofile_fields');
 				LogUtil::registerStatus(_MYPROFILEFIELDCREATED);
 			}
+		    // rebuild table definition. many errors might be avoidable by this
+		    pnModAPIFunc('MyProfile','admin','updateTableDefinition');
 			return pnRedirect(pnModURL('MyProfile','admin','update'));
 		}
 		return true;

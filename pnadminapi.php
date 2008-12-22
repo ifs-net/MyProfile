@@ -136,8 +136,10 @@ function MyProfile_adminapi_updateTableDefinition()
 				break;
 		  	case 'URL':
 		  	case 'SKYPEID':
-		  	case 'STRING': 		
-				$value = "XL NOTNULL";
+		  	case 'STRING':
+		  		// if the length is specified we will build varchar and use longtext otherwise length only interesting for type "STRING"
+		  		if ((int)$field['str_length'] == 0)	$value = "XL NOTNULL";
+		  		else $value = "C(".(int)$field['str_length'].")";
 				break;
 		  	case 'FLOAT':		
 				$value = "F NOTNULL";
@@ -145,6 +147,8 @@ function MyProfile_adminapi_updateTableDefinition()
 		  	case 'DATE':		
 				$value = "D";
 				break;
+			case 'COORD':
+				$value = "C(99)";
 		  	default: 
 		}
     	// construct array
@@ -153,6 +157,8 @@ function MyProfile_adminapi_updateTableDefinition()
 		$column_def[] = array (	'key'	=> $field['identifier'],
 								'value'	=> $value);
 	}
+	prayer($column);
+	prayer($column_def);
   	return FileUtil::writeFile($configfile,serialize(array('column' => $column, 'column_def' => $column_def)));
 }
 

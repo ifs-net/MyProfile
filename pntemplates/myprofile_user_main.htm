@@ -4,7 +4,7 @@
 <!--[pnajaxheader prototype="1"]-->
 
 <h1><!--[pnml name="_MYPROFILEMYPROFILE"]--></h1>
-<a href="<!--[pnmodurl modname="MyProfile" type="user" func="display" uid=$uid]-->"><!--[pnml name="_MYPROFILESHOWMYPROFILE"]--></a><br/><br/>
+<img src="images/icons/extrasmall/personal.gif" /> <a href="<!--[pnmodurl modname="MyProfile" type="user" func="display" uid=$uid]-->"><!--[pnml name="_MYPROFILESHOWMYPROFILE"]--></a><br/><br/>
 
 <!--[pnform]-->
 <!--[pnformvalidationsummary]-->
@@ -58,7 +58,7 @@
 		<!-- separator end -->
 		<div class="myprofile_separator" id="myprofile_tab<!--[$field.id]-->">
 		<!-- separator begin -->
-			<h1><!--[$field.identifier]--></h1>
+			<img style="float:right" src="images/icons/medium/xedit.gif" /><h1><!--[$field.identifier]--></h1>
 			<em><!--[$field.description]--></em>
 			<div class="myprofile_tabcontent">
 			<!-- separator content begin -->
@@ -66,9 +66,9 @@
 		<div class="myprofile_formelement">
 		<!-- form item begin -->
 		<!--[pnformlabel for=$field.identifier text=$field.description]-->:
-		<!--[if $field.public_status eq 0]-->(<!--[pnml name="_MYPROFILEVIEWABLEBY"]-->&nbsp;<!--[pnml name="_MYPROFILEALL"]-->)<!--[/if]-->
-		<!--[if $field.public_status eq 2]-->(<!--[pnml name="_MYPROFILEVIEWABLEBY"]-->&nbsp;<!--[pnml name="_MYPROFILEADMIN"]-->)<!--[/if]-->
-		<!--[if $field.public_status eq 9]-->(<a href="<!--[pnmodurl modname="MyProfile" type="user" func="settings"]-->"><!--[pnml name="_MYPROFILEPRIVATEFIELD"]--></a>)<!--[/if]-->
+		<!--[if $field.public_status eq 0]-->(<img src="images/icons/extrasmall/services_flag.gif" /> <!--[pnml name="_MYPROFILEVIEWABLEBY"]-->&nbsp;<!--[pnml name="_MYPROFILEALL"]-->)<!--[/if]-->
+		<!--[if $field.public_status eq 2]-->(<img src="images/icons/extrasmall/agt_stop.gif" /> <!--[pnml name="_MYPROFILEVIEWABLEBY"]-->&nbsp;<!--[pnml name="_MYPROFILEADMIN"]-->)<!--[/if]-->
+		<!--[if $field.public_status eq 9]-->(<img src="images/icons/extrasmall/locked.gif" /><a href="<!--[pnmodurl modname="MyProfile" type="user" func="settings"]-->"><!--[pnml name="_MYPROFILEPRIVATEFIELD"]--></a>)<!--[/if]-->
 		<br />
 		<!--[if $field.fieldtype eq "STRING" or $field.fieldtype == "TIMESTAMP"]-->
 			<!--[if $field.list eq ""]-->
@@ -83,8 +83,8 @@
 					<!--[/if]-->
 			<!--[/if]-->
 		<!--[/if]-->
-		<!--[if $field.fieldtype eq "SKYPEID"]--><!--[pnformtextinput id=$field.identifier mandatory=$field.mandatory maxLength="30"]--><!--[/if]-->
-		<!--[if $field.fieldtype eq "UIN"]--><!--[pnformintinput id=$field.identifier mandatory=$field.mandatory]--><!--[/if]-->
+		<!--[if $field.fieldtype eq "SKYPEID"]--><img src="images/icons/extrasmall/voice_support.gif" /><!--[pnformtextinput id=$field.identifier mandatory=$field.mandatory maxLength="30"]--><!--[/if]-->
+		<!--[if $field.fieldtype eq "UIN"]--><img src="modules/MyProfile/pnimages/online.gif" /> <!--[pnformintinput id=$field.identifier mandatory=$field.mandatory]--><!--[/if]-->
 		<!--[if $field.fieldtype eq "URL"]--><!--[pnformurlinput id=$field.identifier mandatory=$field.mandatory]--><!--[/if]-->
 		<!--[if $field.fieldtype eq "TEXTBOX"]--><!--[pnformtextinput id=$field.identifier mandatory=$field.mandatory textMode="multiline"]--><!--[/if]-->
 		<!--[if $field.fieldtype eq "INTEGER"]--><!--[pnformintinput id=$field.identifier minValue=$field.num_minvalue maxValue=$field.num_maxvalue mandatory=$field.mandatory]--><!--[/if]-->
@@ -97,6 +97,7 @@
 			<!--[if $mymapavailable]-->
 				<!--[pnmodapifunc modname="MyMap" type="user" func="generateMap" width="400" height="150" maptype="hybrid" zoomfactor="7" lat="`$field.identifier`_lat" lng="`$field.identifier`_lng" coords=$coords[$field.identifier]]-->
 			<!--[/if]-->
+			<img src="images/icons/extrasmall/agt_internet.gif" />
 			<!--[pnml name="_MYPROFILELNG"]-->: <!--[pnformtextinput id="`$field.identifier`_lng" mandatory=$field.mandatory maxLength="25" textMode="singleLine"]-->
 			<!--[pnml name="_MYPROFILELAT"]-->: <!--[pnformtextinput id="`$field.identifier`_lat" mandatory=$field.mandatory maxLength="25" textMode="singleLine"]-->
 		<!--[/if]-->

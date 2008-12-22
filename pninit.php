@@ -109,8 +109,11 @@ function MyProfile_upgrade($oldversion)
 	  	if (!DBUtil::createTable('myprofile_confirmedusers')) return false;
 	  	if (!DBUtil::createTable('myprofile_templates')) return false;
 	  	if (!DBUtil::changeTable('myprofile_fields')) return false;
+	case '1.1':
+		// update table definition because of the new usage of varchar and longtext
+		pnModAPIFunc('MyProfile','admin','updateTableDefinition');
     default:
-    return true;
+	    return true;
     }
 }
 ?>

@@ -109,6 +109,9 @@ define('_MYPROFILECLEANEDUP',				'Datenbank wurde bereinigt');
 define('_MYPROFILECONSISTENCEOK',			'Datenbank ist bereits optimiert');
 
 // editProfile
+define('_MYPROFILEEMAILNOTEXISTENT',		'Emailadresse nicht im System vorhanden');
+define('_MYPROFILEMORETHANONEUSERFOUND',	'Mehr als ein Benutzer gefunden');
+define('_MYPROFILECHOOSEONEUSER',			'bitte einen davon direkt auswählen durch Eingabe des Benutzernamens');
 define('_MYPROFILEUNOTFOUND',				'Kein Benutzer mit dieser Kennung oder ID gefunden');
 define('_MYPROFILEFILENOTWRITEABLE',		'Konfigurationsdatei nicht schreibbar - bitte vor dem Bearbeiten der Konfiguration korrigieren');
 define('_MYPROFILEFILENOTREADABLE',			'Konfigurationsdatei nicht lesbar - bitte vor dem Bearbeiten der Konfiguration korrigieren');
@@ -147,6 +150,7 @@ define('_MYPROFILEELEMENTMOVED',			'Element erfolgreich verschoben');
 define('_MYPROFILESTOREDAT',				'Neue Anordnung erfolgreich gespeichert bei');
 
 // add a new field or modify an existing one
+define('_MYPROFILEZEROUNLIMITED',			'0 = Textlänge unbegrenzt');
 define('_MYPROFILESEARCHABLE',				'Dieses Feld soll für alle, welche die Suchfunktion benutzen, durchsuchbar sein');
 define('_MYPROFILECOORD',					'Koordinate');
 define('_MYPROFILEADDNEWFIELD',				'Neues Feld anlegen');
