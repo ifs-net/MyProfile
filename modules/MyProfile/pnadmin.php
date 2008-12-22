@@ -49,6 +49,8 @@ function MyProfile_admin_findorphans()
 {    
     // Security check 
     if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_ADMIN)) return LogUtil::registerPermissionError();
+    // rebuild table definition. many errors might be avoidable by this
+    pnModAPIFunc('MyProfile','admin','updateTableDefinition');
     // Create output and assign some data
     $render = pnRender::getInstance('MyProfile');
     // the clean-up command will be handled in the getOrphans function
@@ -160,10 +162,41 @@ function MyProfile_admin_editProfile()
 {    
 	$uid 		= FormUtil::getPassedValue('uid');
 	$uname 		= FormUtil::getPassedValue('uname');
+	$email 		= FormUtil::getPassedValue('email');
 	$trans_uid 	= pnUserGetIDFromName($uname);
-	if (isset($uname) && ($trans_uid > 0)) return pnRedirect(pnModURL('MyProfile','user','main',array('load_uid'=>$trans_uid)));
-	else if (isset($uid) && ($uid > 0)) return pnRedirect(pnModURL('MyProfile','user','main',array('load_uid'=>$uid)));
-	else LogUtil::registerError(_MYPROFILEUNOTFOUND);
+	// inclusion to get users via email
+	if (strlen($email) > 3) {
+		$tables 		= pnDBGetTables();
+		$users 			= $tables['users'];
+		$users_column 	= $tables['users_column'];
+		$where = "WHERE ".$users_column['email']." like '".$email."'";
+		$res = DBUtil::selectObjectArray('users',$where);
+		if (count($res) > 1) {
+		  	// more than one user was found
+		  	$msg = _MYPROFILEMORETHANONEUSERFOUND.': ';
+		  	foreach($res as $r) $msg.= $r['uname'].', ';
+		  	$msg.= _MYPROFILECHOOSEONEUSER;
+		  	LogUtil::registerError($msg);
+		}
+		else if (count($res) == 1) {
+		  	// one user found. redirect to management page
+		  	$uid = $res['id'];
+		  	return pnRedirect(pnModURL('MyProfile','user','main',array('load_uid' => $uid)));
+		}
+		else {
+		  	// email address not found
+			LogUtil::registerError(_MYPROFILEEMAILNOTEXISTENT);
+		}
+	}
+	else if (isset($uname) && ($trans_uid > 0)) {
+	  	return pnRedirect(pnModURL('MyProfile','user','main',array('load_uid'=>$trans_uid)));
+	}
+	else if (isset($uid) && ($uid > 0)) {
+	  	return pnRedirect(pnModURL('MyProfile','user','main',array('load_uid'=>$uid)));
+	}
+	else {
+	  	LogUtil::registerError(_MYPROFILEUNOTFOUND);
+	}
 	return pnRedirect(pnModUrl('MyProfile','admin','main'));
 }
 

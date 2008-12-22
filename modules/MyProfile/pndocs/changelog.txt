@@ -1,4 +1,14 @@
 
+new in 1.2
+==========
+- [quan]	div. optical improvements
+- [quan]	string / text fields with length = 0 == longtext, varchar otherwise
+- [quan]	when clicking on repair the tabel definition is rewritten always
+- [quan]	coord field type is varchar(99) now
+- [quan]	some optical template improvements
+- [quan]	admins can search user accounts in entering an email adress totally or partially
+- [quan]	altered module dependencies in version file
+
 new in 1.1
 ==========
 - fixed many bugs. see http://code.zikula.org/myprofile/query?status=closed&group=resolution&milestone=1.1 - this is easier for me ;-)

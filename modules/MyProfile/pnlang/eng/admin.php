@@ -109,6 +109,9 @@ define('_MYPROFILECLEANEDUP',				'Database was cleaned up');
 define('_MYPROFILECONSISTENCEOK',			'Database already optimized');
 
 // editProfile
+define('_MYPROFILEEMAILNOTEXISTENT',		'email address not found');
+define('_MYPROFILEMORETHANONEUSERFOUND',	'more than one user found');
+define('_MYPROFILECHOOSEONEUSER',			'please choose one user and enter its username');
 define('_MYPROFILEUNOTFOUND',				'No user with this username or user-ID found');
 define('_MYPROFILEFILENOTWRITEABLE',		'Config file is not writeable - change this before trying to edit the actual configuration');
 define('_MYPROFILEFILENOTREADABLE',			'Config file is not readable - change this before trying to edit the actual configuration');
@@ -146,6 +149,7 @@ define('_MYPROFILEELEMENTMOVED',			'Element was moved successfully');
 define('_MYPROFILESTOREDAT',				'New order was saved successfully at');
 
 // add a new field or modify an existing one
+define('_MYPROFILEZEROUNLIMITED',			'0 = unlimited text');
 define('_MYPROFILEIDENTIFIERFORMATWARNING',	'The identifier must not contain any other characters than numbers (0-9) and regular characters (A-Z, a-z)');
 define('_MYPROFILESEARCHABLE',				'Field should be searchable by all users doing a search');
 define('_MYPROFILECOORD',					'Coordinate');
