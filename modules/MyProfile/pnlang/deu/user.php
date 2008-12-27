@@ -15,6 +15,7 @@ define('_MYPROFILEMAILANDPASSWORD',			'Zugangsdaten und Profileinstellungen');
 define('_MYPROFILESEARCHMEMBERS',			'Mitglieder suchen');
 
 // map
+define('_MYPROFILEVISITPROFILE',			'Profil des Benutzers anzeigen');
 define('_MYPROFILEMYMAPMISSING',			'MyMap-Modul wurde nicht gefunden');
 define('_MYPROFILEMAPIDENTIFIERASPARAMETER','Es gibt mehrere Koordinatenfelder. Bitte den Parameter identifier und als Wert den Namen des Identifiers angeben, der als Grundlage für die darzustellende Karte genutzt werden soll');
 

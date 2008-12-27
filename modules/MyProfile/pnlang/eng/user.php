@@ -15,6 +15,7 @@ define('_MYPROFILEMAILANDPASSWORD',			'email address, password and extended sett
 define('_MYPROFILESEARCHMEMBERS',			'search members');
 
 // map
+define('_MYPROFILEVISITPROFILE',			'Show user\'s profile');
 define('_MYPROFILEMYMAPMISSING',			'MyMap module not found');
 define('_MYPROFILEMAPIDENTIFIERASPARAMETER','More than one coordinate field found. Please use the url parameter identifier and the value of the identifier you want to use as coordinate field and reload the page');
 // main
