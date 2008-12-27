@@ -608,4 +608,65 @@ function MyProfile_userapi_getOnline($args)
 	}
     return $result;
 }
-?>
+
+/**
+ * get coord fields
+ *
+ * This function returns all coord fields
+ *
+ * @param $args['identifier']	string		identifier of special field
+ * @return array
+ */
+function MyProfile_userapi_getCoordFields($args)
+{
+ 	$fields = pnModAPIFunc('MyProfile','admin','getFields');
+ 	$res = array();
+ 	foreach ($fields as $field) {
+ 	  	if ($field['identifier'] == $args['identifier']) return $field;
+	   	else if ($field['fieldtype'] == 'COORD') {
+		     $res[]=$field;
+		}
+	}
+	// check for requested special identifier
+	$identifier = $args['identifier'];
+	return $res;
+}
+
+/**
+ * get coords of a given field identifier
+ *
+ * This function returns all coord fields
+ *
+ * @param $args['field']	array		array with identifier / field 
+ * @return array
+ */
+function MyProfile_userapi_getCoords($args)
+{
+  	$field = $args['field'][0];
+  	
+  	$where = "MyProfile_".$field['identifier']." != ''";
+	$columnArray = array('id',$field['identifier']);
+	$joinInfo[] = array (	'join_table'          =>  'users',			// table for the join
+							'join_field'          =>  'uname',			// field in the join table that should be in the result with
+                         	'object_field_name'   =>  'uname',			// ...this name for the new column
+                         	'compare_field_table' =>  'id',			// regular table column that should be equal to
+                         	'compare_field_join'  =>  'uid');			// ...the table in join_table
+   	$items = DBUtil::selectExpandedObjectArray('myprofile',$joinInfo,$where,'',-1,-1,'',null,null,$columnArray);
+   	foreach ($items as $item) {
+   	  	$coord = unserialize($item['standort']);
+   	  	$pattern = "/^-?[\d\s]+\.?[\d\s]*$/";
+   	  	if (preg_match($pattern,$coord['lat']) && preg_match($pattern,$coord['lng']) && !eregi(' ',$coord['lat']) && !eregi(' ',$coord['lng'])) {
+			// remove leading "zero" characters
+			if ($coord['lat'][0] == '0') $coord['lat']=substr($coord['lat'],1);
+			if ($coord['lng'][0] == '0') $coord['lng']=substr($coord['lng'],1);
+			// built result coordinate
+			$res[] = array(	
+				'lat' => $coord['lat'],
+				'lng' => $coord['lng'],
+				'text' => 'User ID: '.$item['id'],
+				'title' => $item['uname']
+					);
+		}
+	}
+   	return $res;
+}

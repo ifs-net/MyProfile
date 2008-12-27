@@ -14,6 +14,10 @@ define('_MYPROFILEMAINPROFILEDATA',			'Haupt-Profil-Daten');
 define('_MYPROFILEMAILANDPASSWORD',			'Zugangsdaten und Profileinstellungen');
 define('_MYPROFILESEARCHMEMBERS',			'Mitglieder suchen');
 
+// map
+define('_MYPROFILEMYMAPMISSING',			'MyMap-Modul wurde nicht gefunden');
+define('_MYPROFILEMAPIDENTIFIERASPARAMETER','Es gibt mehrere Koordinatenfelder. Bitte den Parameter identifier und als Wert den Namen des Identifiers angeben, der als Grundlage für die darzustellende Karte genutzt werden soll');
+
 // main
 define('_MYPROFILEDATEHINT',				'Format: JJJJ-MM-TT, z.B. 1981-05-25');
 define('_MYPROFILEVIEWABLEBY',				'sichtbar für');

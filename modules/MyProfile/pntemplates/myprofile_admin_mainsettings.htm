@@ -18,7 +18,14 @@
     <!--[pnformlabel for="resultsperpage" text="_MYPROFILEAMOUNTOFRESULTSPERPAGE"]--> <!--[pnformintinput id="resultsperpage" minValue="1" maxValue="9999" textMode="singleLine"]--><br />
     <!--[pnformcheckbox id="allowmemberlist" checked="0"]--><!--[pnformlabel for="allowmemberlist" text="_MYPROFILEALLOWMEMBERLIST"]--><br />
     <!--[pnformlabel for="searchtemplate" text="_MYPROFILESEARCHTEMPLATE"]-->:
-    <!--[pnformtextinput id="searchtemplate" maxLength="55" textMode="singleLine"]--><br /><br />
+    <!--[pnformtextinput id="searchtemplate" maxLength="55" textMode="singleLine"]--><br />
+	<!--[pnml name="_MYPROFILESEARCHENGINEURL"]-->: 	<a href="<!--[pnmodurl fqurl="true" modname="MyProfile" type="user" func="search"]-->"><!--[pnmodurl fqurl="true" modname="MyProfile" type="user" func="search"]--></a>
+	
+	<h4><!--[pnml name="_MYPROFILEEMAILMYMAPDISPLAY"]--></h4>
+	<!--[pnml name="_MYPROFILEMYMAPUSECOORDFIELD"]-->: 
+	<a href="<!--[pnmodurl fqurl="true" modname="MyProfile" type="user" func="map"]-->"><!--[pnmodurl fqurl="true" modname="MyProfile" type="user" func="map"]--></a><br />
+	<!--[pnml name="_MYPROFILEMYMAPINSTALLED"]-->.<br /><br />
+	
 	<h3><!--[pnml name="_MYPROFILEEMAILMANAGEMENT"]--></h3>
     <!--[pnformcheckbox id="noverification" checked="0"]--><!--[pnformlabel for="noverification" text="_MYPROFILENOVERIFICATION"]--><br />
     <!--[pnformlabel for="requestban" text="_MYPROFILEREQUESTBANINDAYS"]--> <!--[pnformintinput id="requestban" minValue="0" maxValue="90" textMode="singleLine"]--> <!--[pnml name="_MYPROFILEDAYSAFTERREQUEST"]--><br />

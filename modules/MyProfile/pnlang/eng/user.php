@@ -14,6 +14,9 @@ define('_MYPROFILEMAINPROFILEDATA',			'my profile data');
 define('_MYPROFILEMAILANDPASSWORD',			'email address, password and extended settings');
 define('_MYPROFILESEARCHMEMBERS',			'search members');
 
+// map
+define('_MYPROFILEMYMAPMISSING',			'MyMap module not found');
+define('_MYPROFILEMAPIDENTIFIERASPARAMETER','More than one coordinate field found. Please use the url parameter identifier and the value of the identifier you want to use as coordinate field and reload the page');
 // main
 define('_MYPROFILEDATEHINT',				'Use this format: YYYY-MM-DD. Example: 1981-05-25');
 define('_MYPROFILEVIEWABLEBY',				'Viewable for');
