@@ -35,8 +35,6 @@ function MyProfile_user_main()
  */
 function MyProfile_user_map()
 {
-    // Security check
-    if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_COMMENT)) return LogUtil::registerPermissionError();
     // Check for MyMap
     if (!pnModAvailable('MyMap')) return LogUtil::registerError(_MYPROFILEMYMAPMISSING);
     // get coord fields and get coords
@@ -44,6 +42,8 @@ function MyProfile_user_map()
     $fields = pnModAPIFunc('MyProfile','user','getCoordFields',array('identifier' => $identifier));
     if (count($fields) == 1) $coords = pnModAPIFunc('MyProfile','user','getCoords',array('field' => $fields));
     else return LogUtil::registerError(_MYPROFILEMAPIDENTIFIERASPARAMETER);
+    // Security check
+    if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_COMMENT) && ($field['public_status'] != 0)) return LogUtil::registerPermissionError();
 	// Create output and call handler class
 	$render = pnRender::getInstance('MyProfile');
     if (count($coords) > 0) {
