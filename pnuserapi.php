@@ -663,7 +663,7 @@ function MyProfile_userapi_getCoords($args)
 			$res[] = array(	
 				'lat' => $coord['lat'],
 				'lng' => $coord['lng'],
-				'text' => 'User ID: '.$item['id'],
+				'text' => '<a href='.pnModURL('MyProfile','user','display',array('uid' => $item['id'])).'>'._MYPROFILEVISITPROFILE."</a>",
 				'title' => $item['uname']
 					);
 		}
