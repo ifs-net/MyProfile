@@ -29,6 +29,38 @@ function MyProfile_user_main()
 }
 
 /**
+ * show users in map function
+ * 
+ * @return       output       mymap map
+ */
+function MyProfile_user_map()
+{
+    // Security check
+    if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_COMMENT)) return LogUtil::registerPermissionError();
+    // Check for MyMap
+    if (!pnModAvailable('MyMap')) return LogUtil::registerError(_MYPROFILEMYMAPMISSING);
+    // get coord fields and get coords
+    $identifier = FormUtil::getPassedValue('identifier');
+    $fields = pnModAPIFunc('MyProfile','user','getCoordFields',array('identifier' => $identifier));
+    if (count($fields) == 1) $coords = pnModAPIFunc('MyProfile','user','getCoords',array('field' => $fields));
+    else return LogUtil::registerError(_MYPROFILEMAPIDENTIFIERASPARAMETER);
+	// Create output and call handler class
+	$render = pnRender::getInstance('MyProfile');
+    if (count($coords) > 0) {
+	    $mapcode = pnModAPIFunc('MyMap','user','generateMap',array(
+					'coords'		=> $coords,		// must be an array
+					'maptype'		=> 'HYBRID',	// HYBRID, SATELLITE or NORMAL
+					'width'			=> (int)FormUtil::getPassedValue('width',720),			// width in pixels
+					'height'		=> (int)FormUtil::getPassedValue('height',550),			// height in pixels
+					'zoomfactor' 	=> (int)FormUtil::getPassedValue('zoomfactor',13)			// zoomfactor - 1 is closest
+					));
+		$render->assign('code',$mapcode);
+	}
+    // Return the output
+    return $render->fetch('myprofile_user_map.htm');
+}
+
+/**
  * the search function
  * 
  * @return       output

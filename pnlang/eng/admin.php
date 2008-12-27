@@ -29,6 +29,10 @@ define('_MYPROFILEDONATETHIS',				'Donate with PayPal!');
 define('_MYPROFILEDONATE',					'You like this module and it is usefull for you? Thank you for some little donation for the programmer! OK - I like programming very much and this module is free and open source - but if you spend some money I\'ll go out for a nice candlelight dinner with my girlfriend and it will be much easier next time to get free time for programming ;-)');
 
 // mainsettings
+define('_MYPROFILESEARCHENGINEURL',			'URL for search engine');
+define('_MYPROFILEEMAILMYMAPDISPLAY',		'Show users in map');
+define('_MYPROFILEMYMAPUSECOORDFIELD',		'You can show all users that have filled out a field (fieldtype: COORD) using the following url');
+define('_MYPROFILEMYMAPINSTALLED',			'MyMap module has to be installed for this feature');
 define('_MYPROFILEALLOWMEMBERLIST',			'Allow users to access the whole member list in entering no search string');
 define('_MYPROFILEAMOUNTOFRESULTSPERPAGE',	'Results that should be shown per page');
 define('_MYPROFILEPROFILEAPPEARANCE',		'Profile display configuration');

@@ -29,6 +29,10 @@ define('_MYPROFILEDONATETHIS',				'Spende per PayPal!');
 define('_MYPROFILEDONATE',					'Du magst dieses Modul und es nützt Dir? Dann wäre Dir der Programmierer für eine kleine Spende sehr dankbar! Na klar - ich programmiere sehr gerne und das Modul ist natürlich kostenlos und Open-Source - aber wenn Du etwas springen lässt, dann könnte ich meine Freundin zum Abendessen ausführen und es wird das nächste mal viel leichter sein, zum Programmieren frei zu bekommen ;-)');
 
 // mainsettings
+define('_MYPROFILESEARCHENGINEURL',			'URL für Suchmaschine');
+define('_MYPROFILEEMAILMYMAPDISPLAY',		'Benutzer in Karte anzeigen');
+define('_MYPROFILEMYMAPUSECOORDFIELD',		'Wenn Feldtyp KOORDINATE verwendet wird, können die Benutzer in eine Karte eingeblendet werden unter zuhilfenahme folgender URL');
+define('_MYPROFILEMYMAPINSTALLED',			'MyMap muss installiert sein, um dieses Feature nutzen zu können');
 define('_MYPROFILESEARCHTEMPLATE',			'Nutze ein selbstverfasstes Template (Dateinamen angeben), welches auf der Suchergebnisseite für die gefundenen Mitglieder jeweils benutzt werden soll');
 define('_MYPROFILEALLOWMEMBERLIST',			'Suchenden erlauben die komplette Mitgliederliste einzusehen, z.B. wenn kein Suchparameter übergeben wurde');
 define('_MYPROFILEAMOUNTOFRESULTSPERPAGE',	'Anzahl der Suchergebnisse pro Seite');

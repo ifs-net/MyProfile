@@ -1,6 +1,7 @@
 
 new in 1.2
 ==========
+- [quan]	added mymap support for coord fields. All coord field entries can be displayed on a mymap map now
 - [quan]	div. optical improvements
 - [quan]	string / text fields with length = 0 == longtext, varchar otherwise
 - [quan]	when clicking on repair the tabel definition is rewritten always
