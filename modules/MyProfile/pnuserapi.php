@@ -655,7 +655,7 @@ function MyProfile_userapi_getCoords($args)
    	foreach ($items as $item) {
    	  	$coord = unserialize($item['standort']);
    	  	$pattern = "/^-?[\d\s]+\.?[\d\s]*$/";
-   	  	if (preg_match($pattern,$coord['lat']) && preg_match($pattern,$coord['lng']) && !eregi(' ',$coord['lat']) && !eregi(' ',$coord['lng'])) {
+   	  	if (((float)$coord['lat'] >= -180) && ((float)$coord['lat'] <= 180) && ((float)$coord['lng'] >= -90) && ((float)$coord['lng'] <= 90 ) && preg_match($pattern,$coord['lat']) && preg_match($pattern,$coord['lng']) && !eregi(' ',$coord['lat']) && !eregi(' ',$coord['lng'])) {
 			// remove leading "zero" characters
 			if ($coord['lat'][0] == '0') $coord['lat']=substr($coord['lat'],1);
 			if ($coord['lng'][0] == '0') $coord['lng']=substr($coord['lng'],1);
