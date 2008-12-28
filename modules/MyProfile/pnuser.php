@@ -305,7 +305,7 @@ function MyProfile_user_display()
 	if (($uid != $viewer_uid) && (pnModAvailable('ClickedMe'))) pnModAPIFunc('ClickedMe','user','addClick',array('clicked_uid' => $uid));
 
 	// get the plugin output
-	$output = pnModAPIFunc($pluginname,'MyProfile','tab',array('uid' => $uid, 'uname' => $uname));
+	$output = pnModAPIFunc($pluginname,'myprofile','tab',array('uid' => $uid, 'uname' => $uname));
 	$render->assign('content',$output);
 	
 	// Return the output
