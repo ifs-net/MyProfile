@@ -22,7 +22,7 @@ define('_MYPROFILEMAPIDENTIFIERASPARAMETER','Es gibt mehrere Koordinatenfelder. 
 // main
 define('_MYPROFILEDATEHINT',				'Format: JJJJ-MM-TT, z.B. 1981-05-25');
 define('_MYPROFILEVIEWABLEBY',				'sichtbar für');
-define('_MYPROFILEPRIVATEFIELD',			'Als privat markiert; nur durch freigegebene Kontakte sichtbar');
+define('_MYPROFILEPRIVATEFIELD',			'Als privat markiert; nur für speziell freigegebene Kontakte sichtbar');
 define('_MYPROFILEPROFILEOF',				'Profil von');
 define('_MYPROFILEMYPROFILE',				'Mein Profil');
 define('_MYPROFILESAVE',					'speichern / aktualisieren');
