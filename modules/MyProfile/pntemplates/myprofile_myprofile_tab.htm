@@ -131,7 +131,7 @@
 		<!--[pnmodavailable modname="ContactList" assign="ContactListAvailable"]-->
 		<!--[if $ContactListAvailable and $viewer_uid ne $uid]-->
 			<div class="myprofile_profiletext">
-			<img src="<!--[pngetbaseurl]-->images/icons/small/add_user.gif" /><a href="<!--[pnmodurl fqurl="true" modname="ContactList" type="user" func="create" uname="$encuname"]-->"><!--[pnml name="_MYPROFILEADDASBUDDY"]--></a>
+			<img src="<!--[pngetbaseurl]-->images/icons/small/add_user.gif" /><a href="<!--[pnmodurl fqurl="true" modname="ContactList" type="user" func="create" uid="$uid"]-->"><!--[pnml name="_MYPROFILEADDASBUDDY"]--></a>
 			</div>
 		<!--[/if]-->
 <!--[* additional information end *]-->
