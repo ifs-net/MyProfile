@@ -136,5 +136,10 @@
 		<!--[/if]-->
 <!--[* additional information end *]-->
 <div>
+<!--[pnmodavailable modname="Invitation" assign="Invitation"]-->
+<!--[if $Invitation]-->
+	<!--[pnmodapifunc modname="Invitation" type="user" func="getCode" uid=$uid]--> 
+<!--[/if]-->
+
 </div>
 <br class="myprofile_clearboth" />
