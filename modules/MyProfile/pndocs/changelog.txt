@@ -1,4 +1,8 @@
 
+svn:
+====
+- [quan]	added Invitation module support
+
 new in 1.2
 ==========
 - [quan]	added mymap support for coord fields. All coord field entries can be displayed on a mymap map now
