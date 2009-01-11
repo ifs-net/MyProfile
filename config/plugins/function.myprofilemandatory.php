@@ -23,7 +23,18 @@ function smarty_function_myprofilemandatory()
 	&& pnModAvailable('MyProfile')
 	&& (pnModGetName() != 'MyProfile')
 	&& (strtolower(FormUtil::getPassedValue('type') 		!= 'admin'		))) {
-	  	if (!pnModAPIFunc('MyProfile','user','hasValidProfile')) {
+	  	$attributes = pnUserGetVar('__ATTRIBUTES__');
+	  	prayer($attributes);
+	  	// first check if email address is marked as invalid
+	  	if ($attributes['myprofile_invalidemail'] == 1) {
+		    // user has invalid email address
+      	  	// load language file
+      	  	pnModLangLoad('MyProfile','plugin');
+      	  	// register error message
+		    LogUtil::registerError(_MYPROFILEYOUREMAILINVALID);
+		    return pnRedirect(pnModURL('MyProfile','user','settings',array('mode' => 'email')));
+		}
+	  	else if (!pnModAPIFunc('MyProfile','user','hasValidProfile')) {
       	  	// load language file
       	  	pnModLangLoad('MyProfile','plugin');
       	  	// register error message
