@@ -102,6 +102,7 @@ define('_USERPICTURESINVALIDEXPLANATION',	'Der Benutzer existiert nicht oder hat
 define('_USERPICTURESBACKTOLASTPAGE',		'Zurück zur letzten Seite.');
 
 // settings
+define('_MYPROFILEWAITFORVERIFICATION',		'Achtung: Bevor die Seite weiter genutzt werden kann muss zwingend der richtige Verifikationscode aus der Email, die soeben verschickt wurde, eingegeben werden. Bitte dazu das Email abwarten und die neue Emailadrese aktivieren - danach kann die Seite wieder weiter genutzt werden!');
 define('_MYPROFILEMYTIMEZONE',				'Meine Zeitzone');
 define('_MYPROFILEMANAGECONFIRMEDUSERS',	'Benutzer verwalten, welche alle meine als privat deklarierten Daten sehen dürfen');
 define('_MYPROFILETEMPLATEINCLUDEMANDATORY','Alle als Pflichtvariablen angegebenen Variablen müssen in der individuellen Profilvorlage enthalten sein!');
