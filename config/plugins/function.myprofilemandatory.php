@@ -24,7 +24,6 @@ function smarty_function_myprofilemandatory()
 	&& (pnModGetName() != 'MyProfile')
 	&& (strtolower(FormUtil::getPassedValue('type') 		!= 'admin'		))) {
 	  	$attributes = pnUserGetVar('__ATTRIBUTES__');
-	  	prayer($attributes);
 	  	// first check if email address is marked as invalid
 	  	if ($attributes['myprofile_invalidemail'] == 1) {
 		    // user has invalid email address
