@@ -12,5 +12,6 @@
 define('_MYPROFILEPROFILEOUTOFTIME',	'Dein Profil ist veraltet oder nicht komplett - bitte prüfe / komplettiere / aktualisiere Deine persönlichen Daten'); 
 // plugin myprofile showbox
 define('_MYPROFILEMOREORLESS',			'mehr/weniger');
-
+// plugin force valid email address
+define('_MYPROFILEYOUREMAILINVALID',	'Deine Emailadresse scheint nicht korrekt zu sein, denn Emails kamen als unzustellbar zurück. Du musst daher deine Emailadresse auf eine gültige Adresse abändern - denn gültige Adressen sind zwingende Voraussetzung zur Nutzung dieser Seiten!');
 ?>

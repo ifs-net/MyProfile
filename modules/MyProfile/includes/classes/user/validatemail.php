@@ -40,7 +40,14 @@ class MyProfile_user_ValidateMailHandler
 			$code = $settings['validationcode'];
 			if ($code['expire_date'] >= time()) {	// code is valid (date check)
 			  	if ($obj['code'] == $code['code']) {// code is correct
-				    if (pnUserSetVar('email',$code['email'])) LogUtil::registerStatus(_MYPROFILEEMAILCHANGED);
+				    if (pnUserSetVar('email',$code['email'])) {
+					  	LogUtil::registerStatus(_MYPROFILEEMAILCHANGED);
+						// email address was changed - we now need to delete the attribute invalidemail if it exists
+					    $user = DBUtil::selectObjectByID('users', pnUserGetVar('uid'), 'uid', null, null, null, false);
+						unset($user['__ATTRIBUTES__']['myprofile_invalidemail']);
+						// store attributes
+						DBUtil::updateObject($user, 'users', '', 'uid');			
+					}
 				    else return LogUtil::registerError(_MYPROFILEEMAILCHANGEERROR);
 				}
 				else return LogUtil::registerError(_MYPROFILEINCORRECTCODE.' code: '.$code['code'].' entered '.$obj['code']);

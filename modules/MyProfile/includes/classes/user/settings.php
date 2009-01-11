@@ -112,12 +112,21 @@ class MyProfile_user_SettingsHandler
 			// should the emailadress be changed?
 			if (($obj['users_email'] != '') && (pnUserGetVar('email') != $obj['users_email'])){
 			  	if (pnModGetVar('MyProfile','noverification') == '1') {	// change without any verification
-				    if (pnUserSetVar('email',$obj['users_email'])) LogUtil::registerStatus(_MYPROFILEEMAILCHANGED);
+				    if (pnUserSetVar('email',$obj['users_email'])) {
+					  	LogUtil::registerStatus(_MYPROFILEEMAILCHANGED);
+						// email address was changed - we now need to delete the attribute invalidemail if it exists
+					    $user = DBUtil::selectObjectByID('users', pnUserGetVar('uid'), 'uid', null, null, null, false);
+						unset($user['__ATTRIBUTES__']['myprofile_invalidemail']);
+						// store attributes
+						DBUtil::updateObject($user, 'users', '', 'uid');			
+						}
 				    else LogUtil::registerStatus(_MYPROFILEEMAILCHANGEERROR);
 				}
 			  	else {
 			  	  	// generate verification code etc.
-			  	  	if (pnModAPIFunc('MyProfile','user','generateVerificationCode',array('email' => $obj['users_email']))) LogUtil::registerStatus(_MYPROFILEMAILCHANGEREQUEST);
+			  	  	if (pnModAPIFunc('MyProfile','user','generateVerificationCode',array('email' => $obj['users_email']))) {
+						LogUtil::registerStatus(_MYPROFILEMAILCHANGEREQUEST);
+					}
 			  	  	else LogUtil::registerStatus(_MYPROFILEMAILCHANGEREQUESTERROR);
 				}
 			}

@@ -17,6 +17,7 @@ define('_MYPROFILEPLUGINS',					'profile plugins');
 define('_MYPROFILEIMPORTFUNCS',				'import');
 
 //main
+define('_MYPROFILEEMAIL',					'User\'s email address');
 define('_MYPROFILEBACKEND',					'MyProfile backend configuration');
 define('_MYPROFILEBACKENDDESCR',			'Welcome to MyProfile - the advanced zikula profile module!');
 define('_MYPROFILEEDITPROFILE',				'Modify profile');
@@ -29,6 +30,12 @@ define('_MYPROFILEDONATETHIS',				'Donate with PayPal!');
 define('_MYPROFILEDONATE',					'You like this module and it is usefull for you? Thank you for some little donation for the programmer! OK - I like programming very much and this module is free and open source - but if you spend some money I\'ll go out for a nice candlelight dinner with my girlfriend and it will be much easier next time to get free time for programming ;-)');
 
 // mainsettings
+define('_MYPROFILEEMAILNOTFOUND',			'Email address could not be found in user database');
+define('_MYPROFILEUSERALREADYADDED',		'User already marked');
+define('_MYPROFILEUSERMARKED',				'User marked');
+define('_MYPROFILEUPDATEERRORFOR',			'Error while trying to mark the user');
+define('_MYPROFILEMANAGEINVALIDEMAILS',		'Manage invalid email addresses');
+define('_MYPROFILEINVALIDEMAILMANAGEMENT',	'It is possible to exclude users that use invalid email addresses from site usage. To use this feature you have to include the following function call into your templates');
 define('_MYPROFILESEARCHENGINEURL',			'URL for search engine');
 define('_MYPROFILEEMAILMYMAPDISPLAY',		'Show users in map');
 define('_MYPROFILEMYMAPUSECOORDFIELD',		'You can show all users that have filled out a field (fieldtype: COORD) using the following url');
