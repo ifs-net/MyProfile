@@ -37,6 +37,7 @@ class MyProfile_admin_invalidemailHandler
 			  	  	$attr = $user['__ATTRIBUTES__'];
 					if (isset($attr['myprofile_invalidemail']) && $attr['myprofile_invalidemail'] == 1) {
 					  	LogUtil::registerError(_MYPROFILEUSERALREADYADDED.': '.$user['uname']);
+					  	return pnRedirect(pnModURL('MyProfile','admin','invalidemail'));
 					}
 					else {
 						// update user attributes
@@ -45,6 +46,7 @@ class MyProfile_admin_invalidemailHandler
 						
 						if (DBUtil::updateObject($new, 'users', '', 'uid')) {
 						  	LogUtil::registerStatus(_MYPROFILEUSERMARKED.': '.$user['uname']);
+						  	return pnRedirect(pnModURL('MyProfile','admin','invalidemail'));
 						}
 						else {
 						  	LogUtil::registerError(_MYPROFILEUPDATEERRORFOR.': '.$user['uname']);
