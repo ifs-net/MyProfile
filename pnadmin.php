@@ -269,4 +269,23 @@ function MyProfile_admin_addField()
     // Return the output
     return $render->pnFormExecute('myprofile_admin_addfield.htm', new myProfile_admin_addFieldHandler());
 }
+
+/**
+ * invalid email address management
+ *
+ * @return       output 
+ */
+function MyProfile_admin_invalidemail()
+{
+    // Security check 
+    if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_ADMIN)) return LogUtil::registerPermissionError();
+    
+  	// load handler class
+	Loader::requireOnce('modules/MyProfile/includes/classes/admin/invalidemail.php');
+    // Create output
+    $render = FormUtil::newpnForm('MyProfile');
+    
+    // Return the output
+    return $render->pnFormExecute('myprofile_admin_invalidemail.htm', new myProfile_admin_invalidemailHandler());
+}
 ?>

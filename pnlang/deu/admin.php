@@ -17,6 +17,7 @@ define('_MYPROFILEPLUGINS',					'Profil-Plugins');
 define('_MYPROFILEIMPORTFUNCS',				'Import');
 
 //main
+define('_MYPROFILEEMAIL',					'Emailadresse des Benutzers');
 define('_MYPROFILEBACKEND',					'MyProfile Backend-Konfiguration');
 define('_MYPROFILEBACKENDDESCR',			'Willkommen bei MyProfile - dem erweiterten zikula Profilmodul!');
 define('_MYPROFILEEDITPROFILE',				'Profil ändern');
@@ -29,6 +30,12 @@ define('_MYPROFILEDONATETHIS',				'Spende per PayPal!');
 define('_MYPROFILEDONATE',					'Du magst dieses Modul und es nützt Dir? Dann wäre Dir der Programmierer für eine kleine Spende sehr dankbar! Na klar - ich programmiere sehr gerne und das Modul ist natürlich kostenlos und Open-Source - aber wenn Du etwas springen lässt, dann könnte ich meine Freundin zum Abendessen ausführen und es wird das nächste mal viel leichter sein, zum Programmieren frei zu bekommen ;-)');
 
 // mainsettings
+define('_MYPROFILEEMAILNOTFOUND',			'Emailadresse konnte nicht gefunden werden');
+define('_MYPROFILEUSERALREADYADDED',		'Benutzer ist bereits markiert');
+define('_MYPROFILEUSERMARKED',				'Benutzer wurde markiert / deaktiviert');
+define('_MYPROFILEUPDATEERRORFOR',			'Fehler beim markieren des Benutzers');
+define('_MYPROFILEMANAGEINVALIDEMAILS',		'Ungültige EMailadressen verwalten');
+define('_MYPROFILEINVALIDEMAILMANAGEMENT',	'Es ist möglich, Benutzer zu sperren, welche eine falsche Emailadresse angegeben haben. Ein solcher, der Liste hinzugefügter Benutzer, kann sich beim nächsten Login zwar einloggen, ist aber gezwungen, seine Emailadresse zu aktualisieren. Dann wird er ausgeloggt und kann sich nur mit einer gültigen Emailadresse erst wieder anmelden. Hierzu muss in jedes Template folgender Smarty-Code integriert werden');
 define('_MYPROFILESEARCHENGINEURL',			'URL für Suchmaschine');
 define('_MYPROFILEEMAILMYMAPDISPLAY',		'Benutzer in Karte anzeigen');
 define('_MYPROFILEMYMAPUSECOORDFIELD',		'Wenn Feldtyp KOORDINATE verwendet wird, können die Benutzer in eine Karte eingeblendet werden unter zuhilfenahme folgender URL');
