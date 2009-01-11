@@ -45,7 +45,6 @@ class MyProfile_user_ConfirmedUsersHandler
 			else {
 			  	$obj = array(	'uid'			=> $uid,
 				  				'confirmed_uid'	=> $confirmed_uid);
-				prayer($obj);
 			  	if (!DBUtil::insertObject($obj,'myprofile_confirmedusers')) {
 				  	LogUtil::registerError(_MYPROFILEUSERADDERROR);
 				  	return false;
