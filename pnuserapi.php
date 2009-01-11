@@ -387,6 +387,11 @@ function MyProfile_userapi_generateVerificationCode($args)
 	// update attributes and store new validation code
 	DBUtil::updateObject($user, 'users', '', 'uid');
 
+	// if the user was forced to update the email adress a message should be displayed
+	if ($user['__ATTRIBUTES__']['myprofile_invalidemail'] == 1) {
+	  	LogUtil::registerStatus(_MYPROFILEWAITFORVERIFICATION);
+	}
+
     // send email
     $render = pnRender::getInstance('MyProfile');
     $render->assign('sitename',			pnConfigGetVar('sitename'));

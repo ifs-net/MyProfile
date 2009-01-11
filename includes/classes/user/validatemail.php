@@ -44,7 +44,7 @@ class MyProfile_user_ValidateMailHandler
 					  	LogUtil::registerStatus(_MYPROFILEEMAILCHANGED);
 						// email address was changed - we now need to delete the attribute invalidemail if it exists
 					    $user = DBUtil::selectObjectByID('users', pnUserGetVar('uid'), 'uid', null, null, null, false);
-						unset($user['__ATTRIBUTES__']['myprofile_invalidemail']);
+						$user['__ATTRIBUTES__']['myprofile_invalidemail'] = '';
 						// store attributes
 						DBUtil::updateObject($user, 'users', '', 'uid');			
 					}
@@ -56,7 +56,7 @@ class MyProfile_user_ValidateMailHandler
 			// now we have to delete the old validation code from the user's attributes
 			$uid = $obj['uid'];
 		    $user = DBUtil::selectObjectByID('users', $uid, 'uid', null, null, null, false);
-			unset($user['__ATTRIBUTES__']['myprofile_validationcode']);
+			$user['__ATTRIBUTES__']['myprofile_validationcode'] = '';
 			// store attributes
 			DBUtil::updateObject($user, 'users', '', 'uid');			
 			return pnRedirect(pnModURL('MyProfile','user','settings'));
