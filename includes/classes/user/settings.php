@@ -116,7 +116,7 @@ class MyProfile_user_SettingsHandler
 			}
 			
 			// should the emailadress be changed?
-			if (($obj['users_email'] != '') && (pnUserGetVar('email') != $obj['users_email'])){
+			if ( isset($obj['users_email']) && ($obj['users_email'] != '')){
 			  	if (pnModGetVar('MyProfile','noverification') == '1') {	// change without any verification
 				    if (pnUserSetVar('email',$obj['users_email'])) {
 					  	LogUtil::registerStatus(_MYPROFILEEMAILCHANGED);
