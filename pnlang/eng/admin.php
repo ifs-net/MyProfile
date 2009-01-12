@@ -14,7 +14,23 @@ define('_MYPROFILEMAINSETTINGS',			'module configuration');
 define('_MYPROFILEACTUALCONFIG',			'profile configuration');
 define('_MYPROFILEFINDORPHANS',				'repair');
 define('_MYPROFILEPLUGINS',					'profile plugins');
+define('_MYPROFILEINFORMATION',				'information');
 define('_MYPROFILEIMPORTFUNCS',				'import');
+
+// stats
+define('_MYPROFILESTATUSERS',				'Registered users');
+define('_MYPROFILESTATACTIVE',				'Active users');
+define('_MYPROFILESTAT14D',					'Active in last two weeks');
+define('_MYPROFILESTAT30D',					'Active in last month');
+define('_MYPROFILESTAT60D',					'Active in last two months');
+define('_MYPROFILESTAT90D',					'Active in last three months');
+define('_MYPROFILESTAT180D',				'Active in last six months');
+define('_MYPROFILESTAT365D',				'Active in last year');
+define('_MYPROFILESTATNEWUSERS30D',			'New registrations in last month');
+define('_MYPROFILESTATMYPROFILE',			'Users with a myprofile profile');
+define('_MYPROFILESTATNOPROFILE',			'Users without a myprofile profile');
+define('_MYPROFILESTATINVALIDEMAIL',		'Users with invalid email address');
+define('_MYPROFILESTATINVALIDEMAIL30D',		'Users with invalid email address and no changes in last month');
 
 //main
 define('_MYPROFILEEMAIL',					'User\'s email address');
