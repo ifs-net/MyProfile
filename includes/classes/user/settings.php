@@ -98,15 +98,21 @@ class MyProfile_user_SettingsHandler
 	      	if ($result) LogUtil::registerStatus(_MYPROFILESETTINGSUPDATED);
 
 	      	// should the password be updated?
-	      	if (isset($obj['1pass']) && ($obj['2pass'] == $obj['2pass'])) {
-	      	  	if (strlen($obj['1pass'])>3) {
-					 pnUserSetPassword($obj['1pass']); 
-					 LogUtil::registerStatus(_MYPROFILEPASSWORDCHANGED);
-				}
-				else if (strlen($obj['1pass'])>0) LogUtil::registerError(_MYPROFILEPWDTOOSHORT);
-			}
-			else if ((strlen($obj['1pass'])>0) || (strlen($obj['2pass'])>0)) {
+	      	$p1 = $obj['1pass'];
+	      	$p2 = $obj['2pass'];
+	      	if ($p1 != $p2) {
 			  	LogUtil::registerError(_MYPROFILEPASSWORDSINCORRECT);
+			}
+			else if (isset($p1) && (strlen($p1) > 0)){
+			  	$pass = $p1;
+				// now there is a password entered - and the passwort entered twice in the same way
+				if (strlen($pass) > 3) {
+					pnUserSetPassword($pass);
+					LogUtil::registerStatus(_MYPROFILEPASSWORDCHANGED);
+				}
+				else {
+					LogUtil::registerError(_MYPROFILEPWDTOOSHORT);
+				}
 			}
 			
 			// should the emailadress be changed?
