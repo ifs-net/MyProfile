@@ -25,6 +25,7 @@ function MyProfile_pntables()
     $pntable['myprofile_fields'] = $MyProfile."_fields";
     $pntable['myprofile_confirmedusers'] = $MyProfile."_confirmedusers";
     $pntable['myprofile_templates'] = $MyProfile."_templates";
+    $pntable['myprofile_stats'] = $MyProfile."_stats";
 
     // Set the column names.  Note that the array has been formatted
     // on-screen to be very easy to read by a user.
@@ -85,6 +86,41 @@ function MyProfile_pntables()
 			    );
     $pntable['myprofile_templates_column_def'] = array(
     			'id'					=> "I NOTNULL PRIMARY",
+    			'template'				=> "XL NOTNULL DEFAULT ''"
+    			);
+
+	// statistic table
+    $pntable['myprofile_stats_column'] = array(
+			    'day'      				=> 'day',	// day counted from unix timestamp's birth :-)
+			    'users'					=> 'users',
+			    'users_active'			=> 'users_active',
+			    'users_14d'				=> 'users_14d',
+			    'users_30d'				=> 'users_30d',
+			    'users_60d'				=> 'users_60d',
+			    'users_90d'				=> 'users_90d',
+			    'users_180d'			=> 'users_180d',
+			    'users_365d'			=> 'users_365d',
+			    'users_new30d'			=> 'users_new30d',
+			    'myprofile'				=> 'myprofile',
+			    'noprofile'				=> 'noprofile',
+			    'invalidemail'			=> 'invalidemail',
+			    'invalidemail30d'		=> 'invalidemail30d'
+			    );
+    $pntable['myprofile_stats_column_def'] = array(
+    			'day'					=> "I NOTNULL PRIMARY",
+    			'users'					=> "I NOTNULL DEFAULT '0'",
+    			'users_active'			=> "I NOTNULL DEFAULT '0'",
+    			'users_14d'				=> "I NOTNULL DEFAULT '0'",
+    			'users_30d'				=> "I NOTNULL DEFAULT '0'",
+    			'users_60d'				=> "I NOTNULL DEFAULT '0'",
+    			'users_90d'				=> "I NOTNULL DEFAULT '0'",
+    			'users_180d'			=> "I NOTNULL DEFAULT '0'",
+    			'users_365d'			=> "I NOTNULL DEFAULT '0'",
+    			'users_new30d'			=> "I NOTNULL DEFAULT '0'",
+    			'myprofile'				=> "I NOTNULL DEFAULT '0'",
+    			'noprofile'				=> "I NOTNULL DEFAULT '0'",
+    			'invalidemail'			=> "I NOTNULL DEFAULT '0'",
+    			'invalidemail30d'		=> "I NOTNULL DEFAULT '0'",
     			'template'				=> "XL NOTNULL DEFAULT ''"
     			);
     			

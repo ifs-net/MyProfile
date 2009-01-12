@@ -7,7 +7,10 @@
  * @copyright    Copyright (C) 2008
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
- 
+
+// load myprofile library 
+Loader::requireOnce('modules/MyProfile/includes/common.php');
+
 /**
  * the main administration function
  *
@@ -24,9 +27,28 @@ function MyProfile_admin_main()
 }
 
 /**
+ * display interesting module information
+ *
+ * @return       output
+ */
+function MyProfile_admin_information()
+{    
+  	mp_storeStats();
+    // Security check 
+    if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_ADMIN)) return LogUtil::registerPermissionError();
+    // Create output
+    $render = pnRender::getInstance('MyProfile');
+    // get information
+    $info = mp_getInformation();
+	$render->assign($info);
+    // Return output
+    return $render->fetch('myprofile_admin_information.htm');
+}
+
+/**
  * the main administration function
  *
- * @return       output       The main module admin page.
+ * @return       output
  */
 function MyProfile_admin_mainsettings()
 {    

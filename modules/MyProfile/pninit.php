@@ -19,6 +19,7 @@ function MyProfile_init()
   	if (!DBUtil::createTable('myprofile_fields')) return false;
   	if (!DBUtil::createTable('myprofile_confirmedusers')) return false;
   	if (!DBUtil::createTable('myprofile_templates')) return false;
+  	if (!DBUtil::createTable('myprofile_stats')) return false;
 
     // Module Variables
     $allowmemberlist		= pnSessionGetVar('myprofile_allowmemberlist');
@@ -82,6 +83,7 @@ function MyProfile_delete()
   	if (!DBUtil::dropTable('myprofile_fields')) return false;
   	if (!DBUtil::dropTable('myprofile_confirmedusers')) return false;
   	if (!DBUtil::dropTable('myprofile_templates')) return false;
+  	if (!DBUtil::dropTable('myprofile_stats')) return false;
 
     // Delete any module variables
     pnModDelVar('MyProfile');
@@ -112,6 +114,7 @@ function MyProfile_upgrade($oldversion)
 	case '1.1':
 		// update table definition because of the new usage of varchar and longtext
 		pnModAPIFunc('MyProfile','admin','updateTableDefinition');
+	  	if (!DBUtil::createTable('myprofile_stats')) return false;
     default:
 	    return true;
     }

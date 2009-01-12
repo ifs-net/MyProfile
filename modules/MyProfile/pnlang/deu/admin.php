@@ -14,7 +14,23 @@ define('_MYPROFILEMAINSETTINGS',			'Modul-Konfiguration');
 define('_MYPROFILEACTUALCONFIG',			'Profil-Konfiguration');
 define('_MYPROFILEFINDORPHANS',				'Reparieren');
 define('_MYPROFILEPLUGINS',					'Profil-Plugins');
+define('_MYPROFILEINFORMATION',				'Informationen');
 define('_MYPROFILEIMPORTFUNCS',				'Import');
+
+// stats
+define('_MYPROFILESTATUSERS',				'Anzahl registrierter Nutzer');
+define('_MYPROFILESTATACTIVE',				'Anzahl aktiver Nutzer');
+define('_MYPROFILESTAT14D',					'Aktiv in letzten 14 Tagen');
+define('_MYPROFILESTAT30D',					'Aktiv im letzten Monat');
+define('_MYPROFILESTAT60D',					'Aktiv in letzten zwei Monaten');
+define('_MYPROFILESTAT90D',					'Aktiv in letzten drei Monaten');
+define('_MYPROFILESTAT180D',				'Aktiv im letzten Halbjahr');
+define('_MYPROFILESTAT365D',				'Aktiv im letzten Jahr');
+define('_MYPROFILESTATNEWUSERS30D',			'Neuanmeldung die letzten 30 Tage');
+define('_MYPROFILESTATMYPROFILE',			'Nutzer mit ausgefülltem Profil');
+define('_MYPROFILESTATNOPROFILE',			'Nutzer ohne ausgefülltes Profil');
+define('_MYPROFILESTATINVALIDEMAIL',		'Nutzer mit als ungültig markierter EMailadresse');
+define('_MYPROFILESTATINVALIDEMAIL30D',		'Nutzer mit als ungültig markierter EMailadresse ohne Änderung in letztem Monat');
 
 //main
 define('_MYPROFILEEMAIL',					'Emailadresse des Benutzers');

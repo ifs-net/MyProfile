@@ -8,6 +8,8 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
  
+// load myprofile library 
+Loader::requireOnce('modules/MyProfile/includes/common.php');
 
 /**
  * the main user function
@@ -204,6 +206,10 @@ function MyProfile_user_display()
 {
     // Security check
     if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_OVERVIEW)) return LogUtil::registerPermissionError();
+
+	// integrate generation of statistics here - if there is a day where no profile is viewed this day is not woth to be recorded in the database ;-)
+	// later we can change this to an init hook or something like this.. but this solution also works :-)
+	mp_storeStats();
 
 	// Add js		
 	PageUtil::addVar('javascript','modules/MyProfile/pnjavascript/myprofile.js');
