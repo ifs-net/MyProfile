@@ -61,6 +61,9 @@ function mp_getInformation() {
 	//... last year
 	$where = $users_column['activated']." = 1 AND ".$users_column['lastlogin']." >= '".date("Y-m-d H:i:s",(time()-60*60*24*365))."'";
 	$user_365d = (int)DBUtil::selectObjectCount('users',$where);
+	//online today or yesterday
+	$where = $users_column['lastlogin']." > '".date("Y-m-d 00:00:00",(time()-60*60*24))."' AND ".$users_column['lastlogin']." < '".date("Y-m-d 23:59:59",(time()-60*60*24))."' ";
+	$user_yesterday = (int)DBUtil::selectObjectCount('users',$where);
 	//users requested account the last 30 days
 	$where = $users_column['user_regdate']." >= '".date("Y-m-d H:i:s",(time()-60*60*24*30))."'";
 	$user_new30d = (int)DBUtil::selectObjectCount('users',$where);
@@ -74,6 +77,7 @@ function mp_getInformation() {
 	return array (
 			'users' 			=> (int)$user_all,
 			'users_active'		=> (int)$user_active,
+			'users_yesterday'	=> (int)$user_yesterday,
 			'users_14d'			=> (int)$user_14d,
 			'users_30d'			=> (int)$user_30d,
 			'users_60d'			=> (int)$user_60d,

@@ -93,6 +93,7 @@ function MyProfile_pntables()
     $pntable['myprofile_stats_column'] = array(
 			    'day'      				=> 'day',	// day counted from unix timestamp's birth :-)
 			    'users'					=> 'users',
+			    'users_yesterday'		=> 'users_yesterday',
 			    'users_active'			=> 'users_active',
 			    'users_14d'				=> 'users_14d',
 			    'users_30d'				=> 'users_30d',
@@ -109,6 +110,7 @@ function MyProfile_pntables()
     $pntable['myprofile_stats_column_def'] = array(
     			'day'					=> "I NOTNULL PRIMARY",
     			'users'					=> "I NOTNULL DEFAULT '0'",
+    			'users_yesterday'		=> "I NOTNULL DEFAULT '0'",
     			'users_active'			=> "I NOTNULL DEFAULT '0'",
     			'users_14d'				=> "I NOTNULL DEFAULT '0'",
     			'users_30d'				=> "I NOTNULL DEFAULT '0'",
