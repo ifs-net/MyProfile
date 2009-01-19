@@ -40,6 +40,11 @@ function MyProfile_birthdayblock_display($blockinfo)
     // Security check
     if (!SecurityUtil::checkPermission('MyProfile:birthdayblock', "$blockinfo[title]::", ACCESS_READ)) return false;
 
+	// activate rendering for this block
+    $render->caching = true;
+    $render->cache_id= date("d",time());
+    $render->cache_lifetime = (60*60*24)+1;	// cache block for one day and one second ;-)
+    
     // Get variables from content block
     $vars = pnBlockVarsFromContent($blockinfo['content']);
 
