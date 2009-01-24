@@ -144,6 +144,7 @@ function myprofile_showSelectedFieldType() {
 		$('myprofile_identifier').show();
 		$('myprofile_mandatory').show();
 		$('myprofile_description').show();
+		$('myprofile_str_length').show();
 		$('myprofile_list').show();
 		$('myprofile_public_status').show();
 		$('myprofile_active').show();
