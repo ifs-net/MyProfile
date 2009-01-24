@@ -135,8 +135,13 @@ function MyProfile_adminapi_updateTableDefinition()
 				$value = "T NOTNULL";
 				break;
 		  	case 'URL':
+		  		$value = "C(128)";
+		  		break;
 		  	case 'SKYPEID':
+		  		$value = "C(40)";
+		  		break;
 		  	case 'STRING':
+		  	case 'TEXTBOX';
 		  		// if the length is specified we will build varchar and use longtext otherwise length only interesting for type "STRING"
 		  		if ((int)$field['str_length'] == 0)	$value = "XL NOTNULL";
 		  		else $value = "C(".(int)$field['str_length'].")";
