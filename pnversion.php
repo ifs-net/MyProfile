@@ -30,6 +30,9 @@ $modversion['contact']        = 'http://www.ifs-net.de/';
 // module has an admin option.
 $modversion['admin']          = 1;
 
+// module is a profile module
+$modversion['profile']        = 1;
+
 // module dependencies
 $modversion['dependencies'] = array(
 	array(	'modname'    => 'EZComments',
