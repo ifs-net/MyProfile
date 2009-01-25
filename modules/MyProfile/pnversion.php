@@ -53,6 +53,9 @@ $modversion['dependencies'] = array(
 	array(  'modname'    => 'InterCom',
 	        'minversion' => '2.1', 'maxversion' => '',
 	        'status'     => PNMODULE_DEPENDENCY_RECOMMENDED),
+	array(  'modname'    => 'AboutMe',
+	        'minversion' => '1.0', 'maxversion' => '',
+	        'status'     => PNMODULE_DEPENDENCY_RECOMMENDED),
     array(	'modname'    => 'MyMap',
             'minversion' => '1.3', 'maxversion' => '',
             'status'     => PNMODULE_DEPENDENCY_RECOMMENDED)
