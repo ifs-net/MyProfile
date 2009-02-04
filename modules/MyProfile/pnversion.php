@@ -13,7 +13,7 @@
 $modversion['name']           = 'MyProfile';
 // the version string must not exceed 10 characters!
 $modversion['version']        = '1.2';
-$modversion['description']    = 'MyProfile - the advanced pnRender based PostNuke profile module';
+$modversion['description']    = 'MyProfile - the advanced pnRender based Zikula profile module';
 $modversion['displayname']    = 'MyProfile';
 
 // The following in formation is used by the credits module
