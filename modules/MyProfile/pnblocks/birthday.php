@@ -12,7 +12,6 @@ function MyProfile_birthdayblock_init()
 /**
  * get information on block
  * 
- * @author       The PostNuke Development Team
  * @return       array       The block information
  */
 function MyProfile_birthdayblock_info()
