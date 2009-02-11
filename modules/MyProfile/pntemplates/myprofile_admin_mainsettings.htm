@@ -42,8 +42,8 @@
 	<!--[pnml name="_MYPROFILEATTRIBUTEUSAGE"]-->:<br />
 	<em>&lt;!--[pnusergetvar name="__ATTRIBUTES__" assign="myprofile_serialized"]--&gt;<br />
 	&lt;!--[$myprofile_serialized|@unserialize assign="myprofile"]--&gt;</em><br /><br />
-    <!--[pnml name="_MYPROFILEFORCEPROFILESCODE"]-->:<br />
-    <em>&lt;!--[myprofilemandatory]--&gt;</em><br />
+    <!--[pnformcheckbox id="mandatory" checked="0"]--><!--[pnformlabel for="mandatory" text="_MYPROFILEUSERNEEDSVALIDPROFILE"]--><br />
+
     <!--[pnformlabel for="validuntil" text="_MYPROFILEVALIDUNTILTIMESTAMP"]-->: <!--[pnformintinput mandatory="1" minValue="0" maxValue="999999999" id="validuntil" textMode="singleLine"]--> (<!--[pnml name="_MYPROFILEZERODEACTIVETED"]-->)<br />
     <!--[pnml name="_MYPROFILEATTENTIONCHANGE"]-->.<br /><br />
 	<h3><!--[pnml name="_MYPROFILEUSERPERMISSIONS"]--></h3>

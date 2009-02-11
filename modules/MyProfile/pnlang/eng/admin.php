@@ -7,7 +7,10 @@
  * @copyright    Copyright (C) 2008
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
- 
+
+// init
+define('_MYPROFILEHOOKHINT',				'MyProfile systeminit hook created');
+
 // menu
 define('_MYPROFILEMAIN',					'main / modify user');
 define('_MYPROFILEMAINSETTINGS',			'module configuration');
@@ -46,6 +49,7 @@ define('_MYPROFILEDONATETHIS',				'Donate with PayPal!');
 define('_MYPROFILEDONATE',					'You like this module and it is usefull for you? Thank you for some little donation for the programmer! OK - I like programming very much and this module is free and open source - but if you spend some money I\'ll go out for a nice candlelight dinner with my girlfriend and it will be much easier next time to get free time for programming ;-)');
 
 // mainsettings
+define('_MYPROFILEUSERNEEDSVALIDPROFILE',	'Valid profile mandatory for every user');
 define('_MYPROFILEEMAILNOTFOUND',			'Email address could not be found in user database');
 define('_MYPROFILEUSERALREADYADDED',		'User already marked');
 define('_MYPROFILEUSERMARKED',				'User marked');

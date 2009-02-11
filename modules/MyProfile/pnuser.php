@@ -317,4 +317,13 @@ function MyProfile_user_display()
 	// Return the output
     return $render->fetch('myprofile_user_display.htm');
 }
-?>
+
+/**
+ * systeminit hook function
+ * 
+ * @return       output       The main module page
+ */
+function MyProfile_user_systeminit()
+{
+  	return pnModAPIFunc('MyProfile','user','systeminit');
+}

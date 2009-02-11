@@ -7,7 +7,10 @@
  * @copyright    Copyright (C) 2008
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
- 
+
+// init
+define('_MYPROFILEHOOKHINT',				'MyProfile System-Init-Hook erstellt.');
+
 // menu
 define('_MYPROFILEMAIN',					'Hauptseite / Benutzer bearbeiten');
 define('_MYPROFILEMAINSETTINGS',			'Modul-Konfiguration');
@@ -46,6 +49,7 @@ define('_MYPROFILEDONATETHIS',				'Spende per PayPal!');
 define('_MYPROFILEDONATE',					'Du magst dieses Modul und es nützt Dir? Dann wäre Dir der Programmierer für eine kleine Spende sehr dankbar! Na klar - ich programmiere sehr gerne und das Modul ist natürlich kostenlos und Open-Source - aber wenn Du etwas springen lässt, dann könnte ich meine Freundin zum Abendessen ausführen und es wird das nächste mal viel leichter sein, zum Programmieren frei zu bekommen ;-)');
 
 // mainsettings
+define('_MYPROFILEUSERNEEDSVALIDPROFILE',	'Benutzer müssen vor Nutzung der Seite ihr Profil ausfüllen');
 define('_MYPROFILEEMAILNOTFOUND',			'Emailadresse konnte nicht gefunden werden');
 define('_MYPROFILEUSERALREADYADDED',		'Benutzer ist bereits markiert');
 define('_MYPROFILEUSERMARKED',				'Benutzer wurde markiert / deaktiviert');
