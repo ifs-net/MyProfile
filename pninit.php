@@ -68,6 +68,14 @@ function MyProfile_init()
     $configfile = 'modules/MyProfile/config/tabledef.inc';
     if (file_exists($configfile)) unlink($configfile);
 
+	// install system init hook
+    if (!pnModRegisterHook('zikula', 'systeminit', 'GUI', 'MyProfile', 'user', 'systeminit')) {
+        return LogUtil::registerError(_ERRORCREATINGHOOK);
+    }
+    pnModAPIFunc('Modules', 'admin', 'enablehooks', array('callermodname' => 'zikula', 'hookmodname' => 'MyProfile'));
+    LogUtil::registerStatus(_HOOKHINT);
+
+
     // Initialisation successful
     return true;
 }
@@ -92,6 +100,11 @@ function MyProfile_delete()
     $configfile = 'modules/MyProfile/config/tabledef.inc';
     if (file_exists($configfile)) unlink($configfile);
 
+    // delete the system init hook
+    if (!pnModUnregisterHook('zikula', 'systeminit', 'GUI', 'MyProfile', 'user', 'systeminit')) {
+        return LogUtil::registerError(_ERRORDELETINGHOOK);
+    }
+
     // Deletion successful
     return true;
 }
@@ -115,6 +128,15 @@ function MyProfile_upgrade($oldversion)
 		// update table definition because of the new usage of varchar and longtext
 		pnModAPIFunc('MyProfile','admin','updateTableDefinition');
 	  	if (!DBUtil::createTable('myprofile_stats')) return false;
+	case '1.2':
+		// install system init hook
+	    if (!pnModRegisterHook('zikula', 'systeminit', 'GUI', 'MyProfile', 'user', 'systeminit')) {
+	        LogUtil::registerError(_ERRORCREATINGHOOK);
+	        return false;
+	    }
+	    pnModAPIFunc('Modules', 'admin', 'enablehooks', array('callermodname' => 'zikula', 'hookmodname' => 'MyProfile'));
+	    LogUtil::registerStatus(_MYPROFILEHOOKHINT);
+	
     default:
 	    return true;
     }

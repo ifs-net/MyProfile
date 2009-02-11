@@ -12,7 +12,7 @@
 // for display and upgrade purposes
 $modversion['name']           = 'MyProfile';
 // the version string must not exceed 10 characters!
-$modversion['version']        = '1.2';
+$modversion['version']        = '1.3';
 $modversion['description']    = 'MyProfile - the advanced pnRender based Zikula profile module';
 $modversion['displayname']    = 'MyProfile';
 

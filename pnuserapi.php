@@ -675,3 +675,48 @@ function MyProfile_userapi_getCoords($args)
 	}
    	return $res;
 }
+
+/**
+ * System Init Hook code
+ *
+ * @return redirect || true
+ */
+function MyProfile_userapi_systeminit()
+{
+  	// Only interesting for users having an account
+	if (!pnUserLoggedIn()) {
+		return true;
+	}
+
+	// Do nothing in admin interface or if the used module's name is MyProfile
+	if ((pnModGetName() == 'MyProfile') || (strtolower(FormUtil::getPassedValue('type') == 'admin'))) {
+	  	return true;
+	} 
+
+	// First check: user needs a valid profile?
+	if (pnModGetVar('MyProfile','mandatory') == 1)	{
+	  	// Check for valid profile
+	  	if (!pnModAPIFunc('MyProfile','user','hasValidProfile')) {
+			// load language file
+			pnModLangLoad('MyProfile','plugin');
+			// register error message
+			LogUtil::registerError(_MYPROFILEPROFILEOUTOFTIME);
+			return pnRedirect(pnModURL('MyProfile','user','main'));
+	  	}
+	}
+	
+	// Is the user's email address invalid?
+  	$attributes = pnUserGetVar('__ATTRIBUTES__');
+  	if ($attributes['myprofile_invalidemail'] == 1) {
+	    // user has invalid email address
+  	  	// load language file
+  	  	pnModLangLoad('MyProfile','plugin');
+  	  	// register error message
+	    LogUtil::registerError(_MYPROFILEYOUREMAILINVALID);
+	    return pnRedirect(pnModURL('MyProfile','user','settings',array('mode' => 'email')));
+	}
+
+	// Nothing has to be done... everything seems to be great!
+	return true;
+
+}

@@ -14,6 +14,7 @@ class MyProfile_admin_settingsHandler
     {
 	  	$data['allowmemberlist']		= pnModGetVar('MyProfile','allowmemberlist');
 	  	$data['notabs'] 				= pnModGetVar('MyProfile','notabs');
+	  	$data['mandatory'] 				= pnModGetVar('MyProfile','mandatory');
 	  	$data['individualpermissions'] 	= pnModGetVar('MyProfile','individualpermissions');
 	  	$data['individualtemplates'] 	= pnModGetVar('MyProfile','individualtemplates');
 	  	$data['plugin_noajax'] 			= pnModGetVar('MyProfile','plugin_noajax');
