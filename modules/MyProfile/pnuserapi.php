@@ -8,6 +8,9 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
  
+// load myprofile library 
+Loader::requireOnce('modules/MyProfile/includes/common.php');
+
 /**
  * get a user's profile
  *
@@ -687,6 +690,9 @@ function MyProfile_userapi_systeminit()
 	if (!pnUserLoggedIn()) {
 		return true;
 	}
+
+	// Integrate generation of statistics here
+	mp_storeStats();
 
 	// Do nothing in admin interface or if the used module's name is MyProfile
 	if ((pnModGetName() == 'MyProfile') || (strtolower(FormUtil::getPassedValue('type') == 'admin'))) {
