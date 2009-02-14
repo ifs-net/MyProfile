@@ -42,10 +42,12 @@ function MyProfile_user_map()
     // get coord fields and get coords
     $identifier = FormUtil::getPassedValue('identifier');
     $fields = pnModAPIFunc('MyProfile','user','getCoordFields',array('identifier' => $identifier));
-    if (count($fields) == 1) $coords = pnModAPIFunc('MyProfile','user','getCoords',array('field' => $fields));
+    if (count($fields) == 1) {
+	  	$coords = pnModAPIFunc('MyProfile','user','getCoords',array('field' => $fields));
+	}
     else return LogUtil::registerError(_MYPROFILEMAPIDENTIFIERASPARAMETER);
     // Security check
-    if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_COMMENT) && ($field['public_status'] != 0)) return LogUtil::registerPermissionError();
+    if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_COMMENT) && ($fields['public_status'] != 0)) return LogUtil::registerPermissionError();
 	// Create output and call handler class
 	$render = pnRender::getInstance('MyProfile');
     if (count($coords) > 0) {
@@ -321,5 +323,5 @@ function MyProfile_user_display()
  */
 function MyProfile_user_systeminit()
 {
-  	return pnModAPIFunc('MyProfile','user','systeminit');
+  	return mp_systemInit();
 }

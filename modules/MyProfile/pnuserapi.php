@@ -433,25 +433,10 @@ function MyProfile_userapi_addStyleSheets($args)
 /**
  * This function redirects to the profile management BEFORE a user can surf the page
  *
- * @return	redirection
  */
 function MyProfile_userapi_checkForAccount()
 {
-    if (!pnUserLoggedIn()) return;
-    $uid	= pnUserGetVar('uid');
-    $module	= FormUtil::getPassedValue('module');
-    if ($module=='MyProfile') return;
-	// if the user has administration permissions a profile is not mandatory
-    $profile = pnModAPIFunc('MyProfile','user','getProfile',array('uid'=>$uid));
-    if (!$profile) {
-		if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_ADMIN)) {
-		modules_get_language();
-		pnModLangLoad('MyProfile', 'user');
-		LogUtil::registerError(_MYPROFILEPLEASECREATEACCOUNTFIRST);
-		return pnRedirect(pnModURL('MyProfile','user','main'));
-		}
-	}	
-	return;
+	return mp_checkForAccount();
 } 
 
 /**
@@ -661,7 +646,7 @@ function MyProfile_userapi_getCoords($args)
                          	'compare_field_join'  =>  'uid');			// ...the table in join_table
    	$items = DBUtil::selectExpandedObjectArray('myprofile',$joinInfo,$where,'',-1,-1,'',null,null,$columnArray);
    	foreach ($items as $item) {
-   	  	$coord = unserialize($item['standort']);
+   	  	$coord = unserialize($item[$field['identifier']]);
    	  	$pattern = "/^-?[\d\s]+\.?[\d\s]*$/";
    	  	if (((float)$coord['lat'] >= -180) && ((float)$coord['lat'] <= 180) && ((float)$coord['lng'] >= -90) && ((float)$coord['lng'] <= 90 ) && preg_match($pattern,$coord['lat']) && preg_match($pattern,$coord['lng']) && !eregi(' ',$coord['lat']) && !eregi(' ',$coord['lng'])) {
 			// remove leading "zero" characters
@@ -677,52 +662,4 @@ function MyProfile_userapi_getCoords($args)
 		}
 	}
    	return $res;
-}
-
-/**
- * System Init Hook code
- *
- * @return redirect || true
- */
-function MyProfile_userapi_systeminit()
-{
-  	// Only interesting for users having an account
-	if (!pnUserLoggedIn()) {
-		return true;
-	}
-
-	// Integrate generation of statistics here
-	mp_storeStats();
-
-	// Do nothing in admin interface or if the used module's name is MyProfile
-	if ((pnModGetName() == 'MyProfile') || (strtolower(FormUtil::getPassedValue('type') == 'admin'))) {
-	  	return true;
-	} 
-
-	// First check: user needs a valid profile?
-	if (pnModGetVar('MyProfile','mandatory') == 1)	{
-	  	// Check for valid profile
-	  	if (!pnModAPIFunc('MyProfile','user','hasValidProfile')) {
-			// load language file
-			pnModLangLoad('MyProfile','plugin');
-			// register error message
-			LogUtil::registerError(_MYPROFILEPROFILEOUTOFTIME);
-			return pnRedirect(pnModURL('MyProfile','user','main'));
-	  	}
-	}
-	
-	// Is the user's email address invalid?
-  	$attributes = pnUserGetVar('__ATTRIBUTES__');
-  	if ($attributes['myprofile_invalidemail'] == 1) {
-	    // user has invalid email address
-  	  	// load language file
-  	  	pnModLangLoad('MyProfile','plugin');
-  	  	// register error message
-	    LogUtil::registerError(_MYPROFILEYOUREMAILINVALID);
-	    return pnRedirect(pnModURL('MyProfile','user','settings',array('mode' => 'email')));
-	}
-
-	// Nothing has to be done... everything seems to be great!
-	return true;
-
 }
