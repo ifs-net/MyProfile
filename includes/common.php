@@ -91,3 +91,72 @@ function mp_getInformation() {
 			'invalidemail30d'	=> (int)$users_invalidemail30d
 		);
 }
+
+/**
+ * System Init Code
+ *
+ */
+function mp_systemInit()
+{
+  	// Only interesting for users having an account
+	if (!pnUserLoggedIn()) {
+		return true;
+	}
+
+	// Integrate generation of statistics here
+	mp_storeStats();
+
+	// Do nothing in admin interface or if the used module's name is MyProfile
+	if ((pnModGetName() == 'MyProfile') || (strtolower(FormUtil::getPassedValue('type') == 'admin'))) {
+	  	return true;
+	} 
+
+	// First check: user needs a valid profile?
+	if (pnModGetVar('MyProfile','mandatory') == 1)	{
+	  	// Check for valid profile
+	  	if (!pnModAPIFunc('MyProfile','user','hasValidProfile')) {
+			// load language file
+			pnModLangLoad('MyProfile','plugin');
+			// register error message
+			LogUtil::registerError(_MYPROFILEPROFILEOUTOFTIME);
+			return pnRedirect(pnModURL('MyProfile','user','main'));
+	  	}
+	}
+	
+	// Is the user's email address invalid?
+  	$attributes = pnUserGetVar('__ATTRIBUTES__');
+  	if ($attributes['myprofile_invalidemail'] == 1) {
+	    // user has invalid email address
+  	  	// load language file
+  	  	pnModLangLoad('MyProfile','plugin');
+  	  	// register error message
+	    LogUtil::registerError(_MYPROFILEYOUREMAILINVALID);
+	    return pnRedirect(pnModURL('MyProfile','user','settings',array('mode' => 'email')));
+	}
+
+	// Nothing has to be done... everything seems to be great!
+	return true;
+}
+
+/**
+ * This function redirects to the profile management BEFORE a user can surf the page
+ *
+ */
+function mp_checkForAccount()
+{
+    if (!pnUserLoggedIn()) return;
+    $uid	= pnUserGetVar('uid');
+    $module	= FormUtil::getPassedValue('module');
+    if ($module=='MyProfile') return;
+	// if the user has administration permissions a profile is not mandatory
+    $profile = pnModAPIFunc('MyProfile','user','getProfile',array('uid'=>$uid));
+    if (!$profile) {
+		if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_ADMIN)) {
+		modules_get_language();
+		pnModLangLoad('MyProfile', 'user');
+		LogUtil::registerError(_MYPROFILEPLEASECREATEACCOUNTFIRST);
+		return pnRedirect(pnModURL('MyProfile','user','main'));
+		}
+	}	
+	return;
+} 
