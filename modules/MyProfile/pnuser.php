@@ -44,8 +44,9 @@ function MyProfile_user_map()
     $fields = pnModAPIFunc('MyProfile','user','getCoordFields',array('identifier' => $identifier));
     if (count($fields) == 1) {
 	  	$coords = pnModAPIFunc('MyProfile','user','getCoords',array('field' => $fields));
+	} else {
+	  	return LogUtil::registerError(_MYPROFILEMAPIDENTIFIERASPARAMETER);
 	}
-    else return LogUtil::registerError(_MYPROFILEMAPIDENTIFIERASPARAMETER);
     // Security check
     if (($fields['public_status'] > 0) && (!pnUserLoggedIn())) return LogUtil::registerPermissionError();
 	// Create output and call handler class
