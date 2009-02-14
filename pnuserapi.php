@@ -615,9 +615,11 @@ function MyProfile_userapi_getCoordFields($args)
  	$fields = pnModAPIFunc('MyProfile','admin','getFields');
  	$res = array();
  	foreach ($fields as $field) {
- 	  	if ($field['identifier'] == $args['identifier']) return $field;
-	   	else if ($field['fieldtype'] == 'COORD') {
-		     $res[]=$field;
+ 	  	if ($field['identifier'] == $args['identifier']) {
+			$res[] = $field;
+			return $res;
+		} else if ($field['fieldtype'] == 'COORD') {
+			$res[]=$field;
 		}
 	}
 	// check for requested special identifier
