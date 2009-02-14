@@ -47,7 +47,7 @@ function MyProfile_user_map()
 	}
     else return LogUtil::registerError(_MYPROFILEMAPIDENTIFIERASPARAMETER);
     // Security check
-    if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_COMMENT) && ($fields['public_status'] != 0)) return LogUtil::registerPermissionError();
+    if (($fields['public_status'] > 0) && (!pnUserLoggedIn())) return LogUtil::registerPermissionError();
 	// Create output and call handler class
 	$render = pnRender::getInstance('MyProfile');
     if (count($coords) > 0) {
