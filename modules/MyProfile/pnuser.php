@@ -35,12 +35,15 @@ function MyProfile_user_main()
  * 
  * @return       output       mymap map
  */
-function MyProfile_user_map()
+function MyProfile_user_map($args)
 {
     // Check for MyMap
     if (!pnModAvailable('MyMap')) return LogUtil::registerError(_MYPROFILEMYMAPMISSING);
     // get coord fields and get coords
     $identifier = FormUtil::getPassedValue('identifier');
+    if (!isset($identifier) || ($identifier == '')) {
+		$identifier = $args['identifier'];
+	}
     $fields = pnModAPIFunc('MyProfile','user','getCoordFields',array('identifier' => $identifier));
     if (count($fields) == 1) {
 	  	$coords = pnModAPIFunc('MyProfile','user','getCoords',array('field' => $fields));
