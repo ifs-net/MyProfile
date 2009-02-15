@@ -94,9 +94,6 @@ define('_MYPROFILECFGSTORED',				'Konfiguration erfolgreich aktualisiert');
 define('_MYPROFILEMYPROFILEPLUGIN',			'Benutzer-Profile in jeden Zikula-Inhalt integrieren');
 define('_MYPROFILEUSEPROFILEPLUGINEXPL',	'Ein Plugin kann aus jedem anderen Modul mit folgendem Code-Stück aufgerufen werden');
 define('_MYPROFILEUSEPROFILEPLUGINTEMPLATE','Aber dieses Plugin muss über seine Vorlage manuell konfiguriert werden - die zu bearbeitende Vorlagen-Datei ist');
-define('_MYPROFILEUSELASTSEEN',				'"Zuletzt online" Datum im Benutzer-Profil verwenden');
-define('_MYPROFILELASTSEENTEXT',			'Nach Aktivierung dieser Funktion im Users-Modul speichert Zikula das Datum des letzten Login in der Benutzer-Variablen "lastlogin". Diese Variable wird in der Benutzer-Profil-Seite verwendet. Falls aber die Sicherheits-Einstellung nicht "hoch" ist, müssen sich Benutzer nicht bei jedem Zugriff anmelden und bleiben möglicherweise über längere Zeit (mehrere Tage oder sogar Monate) angemeldet und das Datum wird sich vom Zeitpunkt der letzten Aktivität des Benutzers stark unterscheiden. Um diesen "Fehler" zu korrigieren, kann die folgende Zeile in die index.php im Basis-Verzeichnis bei Zeile 25, vor der Zeile die mit "// Get Variables" beginnt, eingegeben werden:'); 
-
 
 // import
 define('_MYPROFILEIMPORTDESC',				'Hier befinden sich Funktionen mit denen Daten von anderen Profil-Modulen übernommen werden');
