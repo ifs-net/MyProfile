@@ -101,6 +101,8 @@ function mp_systemInit()
   	// Only interesting for users having an account
 	if (!pnUserLoggedIn()) {
 		return true;
+	} else {
+	  	pnUserSetVar('lastlogin',date("Y-m-d h:i:s",time()),pnUserGetVar('uid'));
 	}
 
 	// Integrate generation of statistics here

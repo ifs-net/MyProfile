@@ -59,13 +59,6 @@
 
 <!--[/pnform]-->
 
-<fieldset><legend><!--[pnml name="_MYPROFILEUSELASTSEEN"]--></legend>
-<!--[pnml name="_MYPROFILELASTSEENTEXT"]--><br />
-<em>
-if (pnUserLoggedIn()) pnUserSetVar('lastlogin',date("Y-m-d h:i:s",time()),pnUserGetVar('uid'));
-</em>
-</fieldset>
-
 <fieldset><legend><!--[pnml name="_MYPROFILEMYPROFILEPLUGIN"]--></legend>
 <!--[pnml name="_MYPROFILEUSEPROFILEPLUGINEXPL"]--><br />
 <em>&lt;!--[myprofile uid=$uid]--&gt;</em><br />
