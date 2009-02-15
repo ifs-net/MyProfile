@@ -616,6 +616,7 @@ function MyProfile_userapi_getCoordFields($args)
  	$res = array();
  	foreach ($fields as $field) {
  	  	if ($field['identifier'] == $args['identifier']) {
+ 	  	  	$res = array();
 			$res[] = $field;
 			return $res;
 		} else if ($field['fieldtype'] == 'COORD') {
@@ -638,19 +639,20 @@ function MyProfile_userapi_getCoordFields($args)
 function MyProfile_userapi_getCoords($args)
 {
   	$field = $args['field'][0];
-  	
-  	$where = "MyProfile_".$field['identifier']." != ''";
+  	$identifier = $field['identifier'];
+  	$where = "MyProfile_".$identifier." != ''";
 	$columnArray = array('id',$field['identifier']);
 	$joinInfo[] = array (	'join_table'          =>  'users',			// table for the join
 							'join_field'          =>  'uname',			// field in the join table that should be in the result with
                          	'object_field_name'   =>  'uname',			// ...this name for the new column
-                         	'compare_field_table' =>  'id',			// regular table column that should be equal to
+                         	'compare_field_table' =>  'id',				// regular table column that should be equal to
                          	'compare_field_join'  =>  'uid');			// ...the table in join_table
    	$items = DBUtil::selectExpandedObjectArray('myprofile',$joinInfo,$where,'',-1,-1,'',null,null,$columnArray);
    	foreach ($items as $item) {
-   	  	$coord = unserialize($item[$field['identifier']]);
+   	  	$coordinate = $item[$identifier];
+   	  	$coord = unserialize($coordinate);
    	  	$pattern = "/^-?[\d\s]+\.?[\d\s]*$/";
-   	  	if (((float)$coord['lat'] >= -180) && ((float)$coord['lat'] <= 180) && ((float)$coord['lng'] >= -90) && ((float)$coord['lng'] <= 90 ) && preg_match($pattern,$coord['lat']) && preg_match($pattern,$coord['lng']) && !eregi(' ',$coord['lat']) && !eregi(' ',$coord['lng'])) {
+   	  	if (((float)$coord['lat'] >= -180) && ((float)$coord['lat'] <= 180) && ((float)$coord['lng'] >= -180) && ((float)$coord['lng'] <= 180 ) && preg_match($pattern,$coord['lat']) && preg_match($pattern,$coord['lng']) && !eregi(' ',$coord['lat']) && !eregi(' ',$coord['lng'])) {
 			// remove leading "zero" characters
 			if ($coord['lat'][0] == '0') $coord['lat']=substr($coord['lat'],1);
 			if ($coord['lng'][0] == '0') $coord['lng']=substr($coord['lng'],1);
