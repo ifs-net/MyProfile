@@ -44,6 +44,7 @@ function MyProfile_user_map()
     $fields = pnModAPIFunc('MyProfile','user','getCoordFields',array('identifier' => $identifier));
     if (count($fields) == 1) {
 	  	$coords = pnModAPIFunc('MyProfile','user','getCoords',array('field' => $fields));
+	  	prayer($coords);
 	} else {
 	  	return LogUtil::registerError(_MYPROFILEMAPIDENTIFIERASPARAMETER);
 	}
