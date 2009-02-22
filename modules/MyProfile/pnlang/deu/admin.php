@@ -8,9 +8,6 @@
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
-// init
-define('_MYPROFILEHOOKHINT',				'MyProfile System-Init-Hook erstellt.');
-
 // menu
 define('_MYPROFILEMAIN',					'Hauptseite / Benutzer bearbeiten');
 define('_MYPROFILEMAINSETTINGS',			'Modul-Konfiguration');
