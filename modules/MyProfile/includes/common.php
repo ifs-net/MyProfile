@@ -18,7 +18,7 @@ function mp_storeStats() {
   	if (!isset($laststats) || ($laststats != $date)) {
   	  	// no stats for today => write stats into table!
   	  	$stats = mp_getInformation();
-  	  	$stats['day'] = mktime(12,0,0,date("m"),date("d"),date("Y"))/(60*60*24);
+  	  	$stats['day'] = (int)mktime(12,0,0,date("m"),date("d"),date("Y"))/(60*60*24);
   	  	if ((int)DBUtil::selectObjectCountByID('myprofile_stats',$stats['day'], 'day') == 0) {
 			DBUtil::insertObject($stats,'myprofile_stats');
 		}
