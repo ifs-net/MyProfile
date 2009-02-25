@@ -48,6 +48,9 @@ function MyProfile_randomblock_display($blockinfo)
     // Security check
     if (!SecurityUtil::checkPermission('MyProfile:birthdayblock', "$blockinfo[title]::", ACCESS_READ)) return false;
     
+	// Load Language files (user)
+	pnModLangLoad('MyProfile','user');
+    
     // Get variables from content block
     $vars = pnBlockVarsFromContent($blockinfo['content']);
 

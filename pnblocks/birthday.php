@@ -51,7 +51,9 @@ function MyProfile_birthdayblock_display($blockinfo)
     $restrictiondatafield		= $vars['restrictiondatafield'];
     $restrictiondatafieldvalue	= $vars['restrictiondatafieldvalue'];
 
-
+	// Load Language files (user)
+	pnModLangLoad('MyProfile','user');
+    
     // Create output object
     $pnRender = pnRender::getInstance('MyProfile');
 	

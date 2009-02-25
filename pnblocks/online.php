@@ -47,6 +47,9 @@ function MyProfile_onlineblock_display($blockinfo)
     // Get variables from content block
     $vars = pnBlockVarsFromContent($blockinfo['content']);
 
+	// Load Language files (user)
+	pnModLangLoad('MyProfile','user');
+    
     // Create output object
     $pnRender = pnRender::getInstance('MyProfile');
 
