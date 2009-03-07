@@ -48,6 +48,7 @@ function MyProfile_init()
     pnModSetVar('MyProfile', 'individualpermissions',	(($individualpermissions<>false) ? $individualpermissions : 0));	
     pnModSetVar('MyProfile', 'individualtemplates',		(($individualtemplates<>false) ? $individualtemplates : 0));	
     pnModSetVar('MyProfile', 'convertToUTF8',			(($convertToUTF8<>false) ? $convertToUTF8 : 0));	
+	pnModSetVar('MyProfile','separators_usetabs',0);
 
     // clean up
     pnSessionDelVar('myprofile_allowmemberlist');
@@ -136,7 +137,7 @@ function MyProfile_upgrade($oldversion)
 	    }
 	    pnModAPIFunc('Modules', 'admin', 'enablehooks', array('callermodname' => 'zikula', 'hookmodname' => 'MyProfile'));
 	    LogUtil::registerStatus(_MYPROFILEHOOKHINT);
-	
+		pnModSetVar('MyProfile','separators_usetabs',0);
     default:
 	    return true;
     }
