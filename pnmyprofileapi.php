@@ -29,6 +29,11 @@ function MyProfile_myprofileapi_tab ($args)
 	$settings			= pnModAPIFunc('MyProfile','user','getSettings',array('uid'=>$uid));
 	$render->assign('profile',$profile);
 
+	// we need to get the name of the first separator to avoid problems when separators are used as tabs
+	$render->assign('separators_usetabs',	pnModGetVar('MyProfile','separators_usetabs'));
+	$first_separator = mp_getFirstSeparator($profile);
+	$render->assign('first_separator',$first_separator);
+
 	// check for individual user permission settings
 	$individualpermissions = pnModGetVar('MyProfile', 'individualpermissions');
 	if ($individualpermissions == 1) {
