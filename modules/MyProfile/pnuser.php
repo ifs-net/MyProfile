@@ -278,10 +278,6 @@ function MyProfile_user_display()
 	}
 	$render->assign('profile',$profile);
 	
-	// we need to get the name of the first separator to avoid problems when separators are used as tabs
-	$first_separator = mp_getFirstSeparator($profile);
-	$render->assign('first_separator',$first_separator);
-
 	// assign user name and uid
 	if (isset($uid) && ($uid > 1)) $uname = pnUserGetVar('uname',$uid);
 	else $name = pnUserGetIDFromName($uid);
@@ -290,7 +286,6 @@ function MyProfile_user_display()
 	$render->assign('uid',					$uid);
 	$render->assign('viewer_uid',			$viewer_uid);
 	$render->assign('plugin_noajax',		pnModGetVar('MyProfile','plugin_noajax'));
-	$render->assign('separators_usetabs',	pnModGetVar('MyProfile','separators_usetabs'));
 	$render->assign('homelink',				pnGetBaseURL().pnModURL('MyProfile','user','tab',array('uid'=>$uid,'ajax'=>1,'modname'=>'MyProfile')));
 	// ContactList plugin
 	$render->assign('contactlistavailable',	pnModAvailable('ContactList'));
