@@ -24,9 +24,15 @@ function MyProfile_userapi_getProfile($args)
   	$uname = $args['uname'];
   	if (isset($uname)) $uid = pnUserGetIDFromName($uname);
  	else $uid = (int) $args['uid'];
+
   	// then check for user id
   	if (!($uid > 1)) return null;
+
   	// get profile
+  	static $myprofile_cache;
+  	if ($myprofile_cache[$uid]['id'] == $uid) {
+		return $myprofile_cache[$uid];
+	}
 	$data = DBUtil::selectObjectByID('myprofile', (int)$uid);
 	if (!(count($data)>0)) return false;
 	
@@ -87,6 +93,8 @@ function MyProfile_userapi_getProfile($args)
 		$identifier = $field['identifier'];
 		if (($field['active'] == '1') && ($field['shown'] == '1')) $profile[$identifier]=$field;
 	}
+	// cache profile data
+	$myprofile_cache[$uid] = $uid;
 	return $profile;
 }
 
