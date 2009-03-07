@@ -109,7 +109,7 @@ function mp_systemInit()
 	mp_storeStats();
 
 	// Do nothing in admin interface or if the used module's name is MyProfile
-	if ((pnModGetName() == 'MyProfile') || (strtolower(FormUtil::getPassedValue('type') == 'admin'))) {
+	if ((pnModGetName() == 'MyProfile') || (strtolower(FormUtil::getPassedValue('type') == 'admin')) || (strtolower(FormUtil::getPassedValue('type') == 'ajax'))) {
 	  	return true;
 	} 
 
