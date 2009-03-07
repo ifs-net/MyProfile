@@ -415,6 +415,7 @@ function MyProfile_userapi_generateVerificationCode($args)
     $render->assign('uid',				$uid);
     $render->assign('validationcode',	$validationcode);
     $render->assign('url',				pnGetBaseURL().pnModURL('MyProfile','user','validatemail',array('code' => $validationcode['code'],'uid' => $uid)));
+    $render->assign('validuntil',		date(str_replace('%','',pnModGetVar('MyProfile','dateformat')),$validationcode['expire_date']));
     $render->assign('alternateurl',		pnGetBaseURL().pnModURL('MyProfile','user','validatemail'));
     $body = $render->fetch('myprofile_email_validationcode.htm');
     $subject = _MYPROFILEVALIDATIONCODEFOR.' '.pnUserGetVar('uname',$uid).' '._MYPROFILEAT.' '.pnConfigGetVar('sitename');
