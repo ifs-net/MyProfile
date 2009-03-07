@@ -27,6 +27,7 @@ class MyProfile_admin_settingsHandler
 	  	$data['searchtemplate']			= pnModGetVar('MyProfile','searchtemplate');
 	  	$data['resultsperpage']			= pnModGetVar('MyProfile','resultsperpage');
 	  	$data['convertToUTF8']			= pnModGetVar('MyProfile','convertToUTF8');
+	  	$data['separators_usetabs']		= pnModGetVar('MyProfile','separators_usetabs');
 	  	$groups	= pnModAPIFunc('MyProfile','admin','getGroupsConfiguration');
 	  	$groups_list = array();
 	  	foreach ($groups as $g) $groups_list[] = array('text' => $g['name'], 'value' => $g['gid']);

@@ -25,12 +25,26 @@
 	<small><a href="<!--[pnmodurl fqurl="true" modname="MyProfile" type="user" func="display" uid=$uid overridetemplate="1"]-->"><!--[pnml name="_MYPROFILEOVERRIDETEMPLATE"]--></a></small><br />
 	<!--[$individualtemplate_content|pnmodcallhooks|pnvarprepfordisplay]-->
 <!--[else]-->
+	<div> <!-- div needed because we are using tabs for separators and their content -->
+
+	<div id="myprofile_separator_tab_bar" class="pn-hide">
+		<!--[foreach from=$profile item="data"]-->
+			<!--[if $data.fieldtype eq "SEPARATOR"]-->
+				[<a onclick="javascript:myprofile_hideAllSeparatorTabs();$('myprofile_separator_<!--[$data.id]-->').show();return false;"><!--[$data.identifier]--></a>] 
+			<!--[/if]-->
+		<!--[/foreach]-->
+	</div>
+
 	<!--[foreach from=$profile item="data"]-->
 		<!--[if ($data.value neq "") or ($data.fieldtype eq "SEPARATOR")]-->
 			<!--[* initial div container *]-->
 			<!--[if $data.fieldtype eq "SEPARATOR"]-->
+				</div>	<!-- closed div for last separator-->
+				<div id="myprofile_separator_<!--[$data.id]-->">
 				<div class="myprofile_separator">
-					<span class="myprofile_bold"><!--[$data.identifier|pnvarprepfordisplay]--></span>
+					<!--[if $separators_usetabs ne 1]-->
+						<span class="myprofile_bold"><!--[$data.identifier|pnvarprepfordisplay]--></span>
+					<!--[/if]-->
 			<!--[else]-->
 				<div class="myprofile_profiletext">
 			<!--[/if]-->
@@ -82,6 +96,7 @@
 			</div>
 		<!--[/if]-->
 	<!--[/foreach]-->
+	</div> <!-- closing div for separator usage -->
 	<!--[* main profile data end *]-->
 
 <!--[/if]-->
@@ -139,6 +154,24 @@
 <!--[pnmodavailable modname="Invitation" assign="Invitation"]-->
 <!--[if $Invitation]-->
 	<!--[pnmodapifunc modname="Invitation" type="user" func="getCode" uid=$uid]--> 
+<!--[/if]-->
+
+<!--[if $separators_usetabs]-->
+<script type="text/javascript">
+	$('myprofile_separator_tab_bar').removeClassName('pn-hide');
+	function myprofile_hideAllSeparatorTabs() {
+		<!--[foreach from=$profile item="data"]-->
+			<!--[if $data.fieldtype eq "SEPARATOR"]-->
+				$('myprofile_separator_<!--[$data.id]-->').hide();
+			<!--[/if]-->
+		<!--[/foreach]-->
+		return false;
+	}
+	myprofile_hideAllSeparatorTabs();
+	<!--[if $first_separator gt 0]-->
+		$('myprofile_separator_<!--[$first_separator]-->').show();
+	<!--[/if]-->
+</script>
 <!--[/if]-->
 
 </div>

@@ -91,6 +91,7 @@ define('_MYPROFILECFGSTORED',				'Configuration updated successfully');
 define('_MYPROFILEMYPROFILEPLUGIN',			'Integrate user profiles into any zikula content');
 define('_MYPROFILEUSEPROFILEPLUGINEXPL',	'There is a plugin that can be called in any module with this piece of code');
 define('_MYPROFILEUSEPROFILEPLUGINTEMPLATE','But you have to configure this plugin via its template manually - the template file that has to be edited is');
+define('_MYPROFILEUSETABSFORSEPARATORS',	'Use profile separators as tabs. Might be interesting for huge profile pages');
 
 // import
 define('_MYPROFILEIMPORTDESC',				'You find some import functions here to get data from other profile modules');
@@ -227,4 +228,3 @@ define('_MYPROFILEFIELDDEL',				'Field was deleted successfully');
 define('_MYPROFILEREMOVEPLUGINS',			'If you want to remove a plugin from a user\'s profile page jsut delete the pnmyprofileapi.php in the root folder of the modules you want to remove');
 define('_MYPROFILEPLUGINDESC',				'Some modules have plugins for the profile module. For developers: Please take a look at the plugins.txt file in the documentation directory. Found plugins will be used automatically.');
 define('_MYPROFILENOPLUGINSFOUND',			'No plugins found!');
-?>
