@@ -162,3 +162,16 @@ function mp_checkForAccount()
 	}	
 	return;
 } 
+
+/**
+ * This function reads out the first separator id of a profile
+ *
+*/
+function mp_getFirstSeparator($profile) {
+  	foreach ($profile as $p) {
+	    if ($p['fieldtype'] == 'SEPARATOR') {
+		  	return $p['id'];
+		}
+	}
+	return 0;
+}

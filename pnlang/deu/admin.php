@@ -91,6 +91,7 @@ define('_MYPROFILECFGSTORED',				'Konfiguration erfolgreich aktualisiert');
 define('_MYPROFILEMYPROFILEPLUGIN',			'Benutzer-Profile in jeden Zikula-Inhalt integrieren');
 define('_MYPROFILEUSEPROFILEPLUGINEXPL',	'Ein Plugin kann aus jedem anderen Modul mit folgendem Code-Stück aufgerufen werden');
 define('_MYPROFILEUSEPROFILEPLUGINTEMPLATE','Aber dieses Plugin muss über seine Vorlage manuell konfiguriert werden - die zu bearbeitende Vorlagen-Datei ist');
+define('_MYPROFILEUSETABSFORSEPARATORS',	'Abschnittstrenner als Tabs mittels Javascript nur per Klick einbinden - kann für extrem umfangreiche Profilseiten hilfreich sein.');
 
 // import
 define('_MYPROFILEIMPORTDESC',				'Hier befinden sich Funktionen mit denen Daten von anderen Profil-Modulen übernommen werden');
@@ -227,4 +228,3 @@ define('_MYPROFILEFIELDDEL',				'Feld erfolgreich gelöscht');
 define('_MYPROFILEREMOVEPLUGINS',			'Wenn ein Plugin nicht eingebunden werden soll einfach im entsprechenden Modul die Datei myprofileapi.php löschen oder umbenennen');
 define('_MYPROFILEPLUGINDESC',				'Einige Module stellen Plugins für das Profil-Modul bereit. Für Entwickler: Bitte werft einen Blick in plugins.txt im Dokumentations-Ordner. Erkannte Plugins werden automatisch benutzt.');
 define('_MYPROFILENOPLUGINSFOUND',			'Plugins nicht gefunden!');
-?>
