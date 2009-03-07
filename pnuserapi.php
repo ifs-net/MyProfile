@@ -30,7 +30,11 @@ function MyProfile_userapi_getProfile($args)
 
   	// get profile
   	static $myprofile_cache;
-  	if ($myprofile_cache[$uid]['id'] == $uid) {
+  	if (!is_array($myprofile_cache)) {
+	    $myprofile_cache = array();
+	}
+	$cache_profile = $myprofile_cache[$uid];
+  	if (is_array($cache_profile)) {
 		return $myprofile_cache[$uid];
 	}
 	$data = DBUtil::selectObjectByID('myprofile', (int)$uid);
@@ -94,7 +98,9 @@ function MyProfile_userapi_getProfile($args)
 		if (($field['active'] == '1') && ($field['shown'] == '1')) $profile[$identifier]=$field;
 	}
 	// cache profile data
-	$myprofile_cache[$uid] = $uid;
+	if ($data['id'] == $uid) {
+	  	$myprofile_cache[$uid] = $profile;
+	}
 	return $profile;
 }
 
