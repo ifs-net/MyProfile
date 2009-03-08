@@ -18,4 +18,189 @@
 <!--[pnml name="_MYPROFILESTATINVALIDEMAIL30D"]-->: <!--[$invalidemail30d]--><br />
 </p>
 
+
+<div id="my-timeplot" style="height: 600px;"></div>
+
+
+<script type="text/javascript">
+	Event.observe('body','load',onLoad());
+	Event.observe('body','resize',onResize());
+
+	var timeplot;	
+	function onLoad() {
+	}
+	
+	var resizeTimerID = null;
+	function onResize() {
+	    if (resizeTimerID == null) {
+	        resizeTimerID = window.setTimeout(function() {
+	            resizeTimerID = null;
+	            timeplot.repaint();
+	        }, 100);
+	    }
+	}
+
+	function onLoad() {
+	  var eventSource = new Timeplot.DefaultEventSource();
+
+ var plotInfo = [
+ 	// users at all
+    Timeplot.createPlotInfo({
+      id: "plot1",
+      dataSource: new Timeplot.ColumnSource(eventSource,3),
+      valueGeometry: new Timeplot.DefaultValueGeometry({
+        gridColor: "#000000",
+        min: 0,
+        max: <!--[$max]-->,
+        showValues: true
+      }),
+      timeGeometry: new Timeplot.DefaultTimeGeometry({
+        gridColor: new Timeplot.Color("#000000"),
+        axisLabelsPlacement: "top"
+      }),
+      lineColor: "#7CFC00",
+      showValues: true
+    }),
+ 	// users active last 14 days
+    Timeplot.createPlotInfo({
+      id: "plot2",
+      dataSource: new Timeplot.ColumnSource(eventSource,4),
+      valueGeometry: new Timeplot.DefaultValueGeometry({
+        gridColor: "#000000",
+        min: 0,
+        max: <!--[$max]-->,
+        showValues: true
+      }),
+      timeGeometry: new Timeplot.DefaultTimeGeometry({
+        gridColor: new Timeplot.Color("#000000"),
+        axisLabelsPlacement: "top"
+      }),
+      lineColor: "#DC143C",
+      showValues: true
+    }),
+ 	// users active last 30 days
+    Timeplot.createPlotInfo({
+      id: "plot3",
+      dataSource: new Timeplot.ColumnSource(eventSource,5),
+      valueGeometry: new Timeplot.DefaultValueGeometry({
+        gridColor: "#000000",
+        min: 0,
+        max: <!--[$max]-->,
+        showValues: true
+      }),
+      timeGeometry: new Timeplot.DefaultTimeGeometry({
+        gridColor: new Timeplot.Color("#000000"),
+        axisLabelsPlacement: "top"
+      }),
+      lineColor: "#7FFFD4",
+      showValues: true
+    }),
+ 	// users active last 60 days
+    Timeplot.createPlotInfo({
+      id: "plot5",
+      dataSource: new Timeplot.ColumnSource(eventSource,6),
+      valueGeometry: new Timeplot.DefaultValueGeometry({
+        gridColor: "#000000",
+        min: 0,
+        max: <!--[$max]-->,
+        showValues: true
+      }),
+      timeGeometry: new Timeplot.DefaultTimeGeometry({
+        gridColor: new Timeplot.Color("#000000"),
+        axisLabelsPlacement: "top"
+      }),
+      lineColor: "#B8860B",
+      showValues: true
+    }),
+   	// users active last 90 days
+    Timeplot.createPlotInfo({
+      id: "plot6",
+      dataSource: new Timeplot.ColumnSource(eventSource,7),
+      valueGeometry: new Timeplot.DefaultValueGeometry({
+        gridColor: "#000000",
+        min: 0,
+        max: <!--[$max]-->,
+        showValues: true
+      }),
+      timeGeometry: new Timeplot.DefaultTimeGeometry({
+        gridColor: new Timeplot.Color("#000000"),
+        axisLabelsPlacement: "top"
+      }),
+      lineColor: "#006400",
+      showValues: true
+    }),
+   	// users active last half year
+    Timeplot.createPlotInfo({
+      id: "plot7",
+      dataSource: new Timeplot.ColumnSource(eventSource,8),
+      valueGeometry: new Timeplot.DefaultValueGeometry({
+        gridColor: "#000000",
+        min: 0,
+        max: <!--[$max]-->,
+        showValues: true
+      }),
+      timeGeometry: new Timeplot.DefaultTimeGeometry({
+        gridColor: new Timeplot.Color("#000000"),
+        axisLabelsPlacement: "top"
+      }),
+      lineColor: "#8B008B",
+      showValues: true
+    }),
+   	// users active last year
+    Timeplot.createPlotInfo({
+      id: "plot8",
+      dataSource: new Timeplot.ColumnSource(eventSource,9),
+      valueGeometry: new Timeplot.DefaultValueGeometry({
+        gridColor: "#000000",
+        min: 0,
+        max: <!--[$max]-->,
+        showValues: true
+      }),
+      timeGeometry: new Timeplot.DefaultTimeGeometry({
+        gridColor: new Timeplot.Color("#000000"),
+        axisLabelsPlacement: "top"
+      }),
+      lineColor: "#FF8C00",
+      showValues: true
+    }),
+	// users online day before
+    Timeplot.createPlotInfo({
+      id: "plot4",
+      dataSource: new Timeplot.ColumnSource(eventSource,2),
+      valueGeometry: new Timeplot.DefaultValueGeometry({
+        gridColor: "#000000",
+        min: 0,
+        max: <!--[$max]-->,
+        showValues: true
+      }),
+      timeGeometry: new Timeplot.DefaultTimeGeometry({
+        gridColor: new Timeplot.Color("#000000"),
+        axisLabelsPlacement: "top"
+      }),
+      lineColor: "#000000",
+      showValues: true
+    })
+  ];
+
+
+	  timeplot = Timeplot.create(document.getElementById("my-timeplot"), plotInfo);
+	  var infofile = document.location.pnbaseURL + document.location.entrypoint + '?module=MyProfile&type=admin&func=getInformationRawData';
+	  timeplot.loadText(infofile, ",", eventSource);
+
+	// enable grid
+
+
+	}
+</script>
+
+<!--[pnml name="_MYPROFILELEGEND"]-->: 
+<span style="color: #7CFC00"><!--[pnml name="_MYPROFILESTATSACTIVE"]--></span>,
+<span style="color: #000000"><!--[pnml name="_MYPROFILESTATSDAY"]--></span>,
+<span style="color: #DC143C"><!--[pnml name="_MYPROFILESTATS14DAYS"]--></span>,
+<span style="color: #7FFFD4"><!--[pnml name="_MYPROFILESTATS30DAYS"]--></span>,
+<span style="color: #B8860B"><!--[pnml name="_MYPROFILESTATS60DAYS"]--></span>,
+<span style="color: #006400"><!--[pnml name="_MYPROFILESTATS90DAYS"]--></span>,
+<span style="color: #8B008B"><!--[pnml name="_MYPROFILESTATS180DAYS"]--></span>,
+<span style="color: #FF8C00"><!--[pnml name="_MYPROFILESTATSYEAR"]--></span>.
+
 <!--[include file="myprofile_admin_footer.htm"]-->

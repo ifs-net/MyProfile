@@ -93,6 +93,25 @@ function mp_getInformation() {
 }
 
 /**
+ * get raw statistic data as text
+ *
+ */
+function mp_getRawInformation() 
+{
+	$res = DBUtil::selectObjectArray('myprofile_stats');
+	foreach ($res as $item) {
+		$day = date("Y-m-d",($item['day'])*(24*60*60));
+		unset($item['day']);
+		$c.=$day;
+		foreach ($item as $key=>$value) {
+		  	$c.=",".$value;
+		}
+		$c.="\n";
+	}
+	return $c;
+}
+
+/**
  * System Init Code
  *
  */
