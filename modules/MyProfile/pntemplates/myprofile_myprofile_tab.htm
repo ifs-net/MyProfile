@@ -30,7 +30,7 @@
 	<div id="myprofile_separator_tab_bar" class="pn-hide">
 		<!--[foreach from=$profile item="data"]-->
 			<!--[if $data.fieldtype eq "SEPARATOR"]-->
-				[<a onclick="javascript:myprofile_hideAllSeparatorTabs();$('myprofile_separator_<!--[$data.id]-->').show();return false;"><!--[$data.identifier]--></a>] 
+				[<a href="#nogo" onclick="javascript:myprofile_hideAllSeparatorTabs();$('myprofile_separator_<!--[$data.id]-->').show();return false;"><!--[$data.identifier]--></a>] 
 			<!--[/if]-->
 		<!--[/foreach]-->
 	</div>
