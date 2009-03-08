@@ -31,6 +31,16 @@ define('_MYPROFILESTATMYPROFILE',			'Nutzer mit ausgefülltem Profil');
 define('_MYPROFILESTATNOPROFILE',			'Nutzer ohne ausgefülltes Profil');
 define('_MYPROFILESTATINVALIDEMAIL',		'Nutzer mit als ungültig markierter EMailadresse');
 define('_MYPROFILESTATINVALIDEMAIL30D',		'Nutzer mit als ungültig markierter EMailadresse ohne Änderung in letztem Monat');
+define('_MYPROFILELEGEND',					'Legende');
+define('_MYPROFILESTATSACTIVE',				'aktive Accounts');
+define('_MYPROFILESTATSDAY',				'online');
+define('_MYPROFILESTATS14DAYS',				'online letzte 2 Wochen');
+define('_MYPROFILESTATS30DAYS',				'online letzte 30 Tage');
+define('_MYPROFILESTATS60DAYS',				'online letzte 60 Tage');
+define('_MYPROFILESTATS90DAYS',				'online letzte 90 Tage');
+define('_MYPROFILESTATS180DAYS',			'online letztes Halbjahr');
+define('_MYPROFILESTATSYEAR',				'online letztes Jahr');
+
 
 //main
 define('_MYPROFILEEMAIL',					'Emailadresse des Benutzers');

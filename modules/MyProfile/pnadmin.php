@@ -33,16 +33,37 @@ function MyProfile_admin_main()
  */
 function MyProfile_admin_information()
 {    
-  	mp_storeStats();
     // Security check 
     if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_ADMIN)) return LogUtil::registerPermissionError();
     // Create output
     $render = pnRender::getInstance('MyProfile');
     // get information
     $info = mp_getInformation();
+	$max = DBUtil::selectObjectCount('users');
+	$render->assign('max',$max);
+    PageUtil::addVar('javascript','http://static.simile.mit.edu/timeplot/api/1.0/timeplot-api.js');
 	$render->assign($info);
     // Return output
     return $render->fetch('myprofile_admin_information.htm');
+}
+
+/**
+ * display interesting module information
+ *
+ * @return       output
+ */
+function MyProfile_admin_getInformationRawData()
+{    
+	// Security Check
+    if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_ADMIN)) return LogUtil::registerPermissionError();
+  	// rendering instance
+  	$render = pnRender::getInstance('MyProfile');
+	// get Raw information data
+	$info = mp_getRawInformation();
+	$render->assign('info',$info);
+    $output = $render->fetch('myprofile_admin_information_rawdata.htm');
+    print $output;
+    return true;
 }
 
 /**
