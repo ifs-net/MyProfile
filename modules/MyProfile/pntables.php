@@ -68,7 +68,7 @@ function MyProfile_pntables()
     			'mandatory'				=> "I(1) NOTNULL DEFAULT 0",
     			'description'			=> "XL NOTNULL",
     			'fieldtype'				=> "XL NOTNULL",
-    			'list'					=> "XL NOTNUL",
+    			'list'					=> "XL NOTNULL",
     			'public_status'			=> "I(1) NOTNULL DEFAULT 0",
     			'num_minvalue'			=> "XL NOTNULL",
     			'num_maxvalue'			=> "XL NOTNULL",
