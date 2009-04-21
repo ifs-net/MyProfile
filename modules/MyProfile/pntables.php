@@ -64,14 +64,14 @@ function MyProfile_pntables()
 			    );
     $pntable['myprofile_fields_column_def'] = array (
     			'id'					=> "I AUTOINCREMENT PRIMARY",
-    			'identifier'			=> "XL NOTNULL DEFAULT ''",
+    			'identifier'			=> "XL NOTNULL",
     			'mandatory'				=> "I(1) NOTNULL DEFAULT 0",
-    			'description'			=> "XL NOTNULL DEFAULT ''",
-    			'fieldtype'				=> "XL NOTNULL DEFAULT ''",
-    			'list'					=> "XL NOTNUL DEFAULT ''",
+    			'description'			=> "XL NOTNULL",
+    			'fieldtype'				=> "XL NOTNULL",
+    			'list'					=> "XL NOTNUL",
     			'public_status'			=> "I(1) NOTNULL DEFAULT 0",
-    			'num_minvalue'			=> "XL NOTNULL DEFAULT ''",
-    			'num_maxvalue'			=> "XL NOTNULL DEFAULT ''",
+    			'num_minvalue'			=> "XL NOTNULL",
+    			'num_maxvalue'			=> "XL NOTNULL",
     			'str_length'			=> "I NOTNULL",
     			'active'				=> "I(1) NOTNULL DEFAULT 0",
     			'shown'					=> "I(1) NOTNULL DEFAULT 0",
@@ -86,7 +86,7 @@ function MyProfile_pntables()
 			    );
     $pntable['myprofile_templates_column_def'] = array(
     			'id'					=> "I NOTNULL PRIMARY",
-    			'template'				=> "XL NOTNULL DEFAULT ''"
+    			'template'				=> "XL NOTNULL"
     			);
 
 	// statistic table
@@ -123,7 +123,7 @@ function MyProfile_pntables()
     			'noprofile'				=> "I NOTNULL DEFAULT '0'",
     			'invalidemail'			=> "I NOTNULL DEFAULT '0'",
     			'invalidemail30d'		=> "I NOTNULL DEFAULT '0'",
-    			'template'				=> "XL NOTNULL DEFAULT ''"
+    			'template'				=> "XL NOTNULL"
     			);
     			
 	// confirmed_users
