@@ -287,6 +287,10 @@ function MyProfile_user_display()
 	$render->assign('viewer_uid',			$viewer_uid);
 	$render->assign('plugin_noajax',		pnModGetVar('MyProfile','plugin_noajax'));
 	$render->assign('homelink',				pnGetBaseURL().pnModURL('MyProfile','user','tab',array('uid'=>$uid,'ajax'=>1,'modname'=>'MyProfile')));
+
+	// Set Standard page title
+	PageUtil::setVar('title', _MYPROFILEPROFILEOF.' '.$uname);
+
 	// ContactList plugin
 	$render->assign('contactlistavailable',	pnModAvailable('ContactList'));
 	if (pnModAvailable('ContactList')) $render->assign('contactlist_nopublicbuddylist',	pnModGetVar('ContactList','nopublicbuddylist'));
