@@ -1,6 +1,17 @@
 <!--[include file="myprofile_user_statusmsg.htm"]-->
+
+<!--[if $individualtemplates ne 1 || $individualtemplate_content eq ""]-->
+	<div id="myprofile_separator_tab_bar" class="pn-hide">
+		<!--[foreach from=$profile item="data"]-->
+			<!--[if $data.fieldtype eq "SEPARATOR"]-->
+				[<a href="#nogo" onclick="javascript:myprofile_hideAllSeparatorTabs();$('myprofile_separator_<!--[$data.id]-->').show();return false;"><!--[$data.identifier]--></a>] 
+			<!--[/if]-->
+		<!--[/foreach]-->
+	</div>
+<!--[/if]-->
  
 <!--[pnmodavailable modname="UserPictures" assign="UserPictures"]-->
+
 <!--[if $UserPictures]-->
 		<div id="myprofile_userpictures" class="myprofile_userpictures">
 		    <!--[pnmodapifunc modname="UserPictures" type="admin" func="getTemplates" assign="upt"]-->
@@ -26,14 +37,6 @@
 	<!--[$individualtemplate_content|pnmodcallhooks|pnvarprepfordisplay]-->
 <!--[else]-->
 	<div> <!-- div needed because we are using tabs for separators and their content -->
-
-	<div id="myprofile_separator_tab_bar" class="pn-hide">
-		<!--[foreach from=$profile item="data"]-->
-			<!--[if $data.fieldtype eq "SEPARATOR"]-->
-				[<a href="#nogo" onclick="javascript:myprofile_hideAllSeparatorTabs();$('myprofile_separator_<!--[$data.id]-->').show();return false;"><!--[$data.identifier]--></a>] 
-			<!--[/if]-->
-		<!--[/foreach]-->
-	</div>
 
 	<!--[foreach from=$profile item="data"]-->
 		<!--[if ($data.value neq "") or ($data.fieldtype eq "SEPARATOR")]-->
