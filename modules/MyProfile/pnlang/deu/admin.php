@@ -225,7 +225,7 @@ define('_MYPROFILENOCOPYVALUE',				'nichts kopieren');
 define('_MYPROFILENOPROTECT',				'Dieses Feld ist für jeden sichtbar');
 define('_MYPROFILEREGONLY',					'Nur registrierte Benutzer können den Wert dieses Feldes sehen');
 define('_MYPROFILEADMINONLY',				'Nur der Administrator kann den Wert dieses Feldes sehen');
-define('_MYPROFILECUSTOM',					'Wer den Inhalt sehen darf entscheided der Benutzer selbst');
+define('_MYPROFILECUSTOM',					'Wer den Inhalt sehen darf entscheidet der Benutzer selbst');
 define('_MYPROFILENUMMINVALUE',				'Minimalwert für Ganzzahl- oder Fließkomma-Wert');
 define('_MYPROFILENUMMAXVALUE',				'Maximalwert für Ganzzahl- oder Fließkomma-Wert');
 define('_MYPROFILEFIELDCREATED',			'Neues Feld wurde erfolgreich angelegt');
