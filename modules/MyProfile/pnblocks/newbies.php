@@ -37,7 +37,7 @@ function MyProfile_newbiesblock_display($blockinfo)
     if (!pnModAvailable('MyProfile')) return false;
 
     // Security check
-    if (!SecurityUtil::checkPermission('MyProfile:birthdayblock', "$blockinfo[title]::", ACCESS_READ)) return false;
+    if (!SecurityUtil::checkPermission('MyProfile:Newbiesblock', "$blockinfo[title]::", ACCESS_READ)) return false;
 
 	// Load Language files (user)
 	pnModLangLoad('MyProfile','user');

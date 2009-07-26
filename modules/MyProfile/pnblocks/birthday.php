@@ -37,7 +37,7 @@ function MyProfile_birthdayblock_display($blockinfo)
     if (!pnModAvailable('MyProfile')) return false;
 
     // Security check
-    if (!SecurityUtil::checkPermission('MyProfile:birthdayblock', "$blockinfo[title]::", ACCESS_READ)) return false;
+    if (!SecurityUtil::checkPermission('MyProfile:Birthdayblock', "$blockinfo[title]::", ACCESS_READ)) return false;
 
 	// activate rendering for this block
     $render->caching = true;
