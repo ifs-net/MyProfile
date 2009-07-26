@@ -23,11 +23,17 @@
 		    <!--[/foreach]-->
 		    <!--[pnmodapifunc modname="UserPictures" type="user" func="get" countonly="1" uid=$uid assign=owngallery template_id="0"]-->
 		    <center>
-		    <div class="myprofile_box">
-				<a href="<!--[pnmodurl fqurl="true" modname="MyProfile" type="user" func="display" uid=$uid pluginname="UserPictures"]-->"><!--[pnml name="_MYPROFILE_USERPICTURES_PICSINGALLERY"]-->: <!--[$owngallery]--> <!--[pnml name="_MYPROFILE_USERPICTURES_PICTURES"]--></a>.<br />
-			    <!--[pnmodapifunc modname="UserPictures" type="user" func="get" countonly="1" template_id="0" assoc_uid=$uid assign="assocpictures"]-->
-				<a href="<!--[pnmodurl fqurl="true" modname="UserPictures" type="user" func="view" template_id="0" assoc_uid=$uid]-->"><!--[pnml name="_MYPROFILE_USERPICTURES_LINKEDIN"]--> <!--[$assocpictures]--> <!--[pnml name="_MYPROFILE_USERPICTURES_PICTURES"]--></a>
-		    </div>
+	    	<!--[if $owngallery gt 0 or $assocpictures gt 0]-->
+			    <div class="myprofile_box">
+			    	<!--[$if $owngallery gt 0]-->
+					<a href="<!--[pnmodurl fqurl="true" modname="MyProfile" type="user" func="display" uid=$uid pluginname="UserPictures"]-->"><!--[pnml name="_MYPROFILE_USERPICTURES_PICSINGALLERY"]-->: <!--[$owngallery]--> <!--[pnml name="_MYPROFILE_USERPICTURES_PICTURES"]--></a>.<br />
+					<!--[/if]-->
+			    	<!--[$if $assocpictures gt 0]-->
+				    <!--[pnmodapifunc modname="UserPictures" type="user" func="get" countonly="1" template_id="0" assoc_uid=$uid assign="assocpictures"]-->
+					<a href="<!--[pnmodurl fqurl="true" modname="UserPictures" type="user" func="view" template_id="0" assoc_uid=$uid]-->"><!--[pnml name="_MYPROFILE_USERPICTURES_LINKEDIN"]--> <!--[$assocpictures]--> <!--[pnml name="_MYPROFILE_USERPICTURES_PICTURES"]--></a>
+					<!--[/if]-->
+			    </div>
+			<!--[/if]-->
 		    </center>
 		</div>
 <!--[/if]-->
