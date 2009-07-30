@@ -1,9 +1,7 @@
+Changelog will n olonger be continued.
+Pleas take a look at the milestone view at http://code.zikula.org/myprofile/report/3 for details.
 
-svn:
-====
-- [quan]	added Invitation module support
-- [quan]	added system init hooks. smarty plugins no longer needed and these 
-			plugins have to be deleted
+
 
 new in 1.2
 ==========
