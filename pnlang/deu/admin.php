@@ -45,7 +45,7 @@ define('_MYPROFILESTATSYEAR',				'online letztes Jahr');
 //main
 define('_MYPROFILEEMAIL',					'Emailadresse des Benutzers');
 define('_MYPROFILEBACKEND',					'MyProfile Backend-Konfiguration');
-define('_MYPROFILEBACKENDDESCR',			'Willkommen bei MyProfile - dem erweiterten zikula Profilmodul!');
+define('_MYPROFILEBACKENDDESCR',			'Willkommen bei MyProfile - dem erweiterten Profilmodul für Zikula!');
 define('_MYPROFILEEDITPROFILE',				'Profil ändern');
 define('_MYPROFILEDIRECTPROFILEEDIT',		'Ein Benutzerprofil kann direkt durch Eingabe');
 define('_MYPROFILEEDITUNAME',				'des Benutzernamen');
