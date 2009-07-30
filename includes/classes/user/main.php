@@ -84,6 +84,9 @@ class MyProfile_user_ProfileHandler
 				}
 			}
 			
+			// Load admin library
+			Loader::includeOnce('modules/MyProfile/includes/common_admin.php');
+			
 		    if ($this->id > 0) {	// update an existing profile
 		      	$obj['id']=$this->id;
 				$result = DBUtil::updateObject($obj, 'myprofile');
@@ -91,6 +94,7 @@ class MyProfile_user_ProfileHandler
 				// update user's attributes if neccesarry
 				if (!pnModAPIFunc('MyProfile','user','storeAsAttributes',array('data' => $obj))) LogUtil::registerError(_MYPROFILEATTRIBUTESTOREERROR);
 				
+				// Set status message for the user
 		      	if ($result) LogUtil::registerStatus(_MYPROFILEFIELDUPDATED);
 	    	  	else LogUtil::registerError(_MYPROFILEADDPROFILEFAILED);
 			}
@@ -107,6 +111,10 @@ class MyProfile_user_ProfileHandler
 				// update user's attributes if neccesarry
 				if (!pnModAPIFunc('MyProfile','user','storeAsAttributes',array('data' => $obj))) LogUtil::registerError(_MYPROFILEATTRIBUTESTOREERROR);
 
+				// Send a notification email to site admin about new user
+				mp_admin_sendNotification($obj);
+			
+				// Give success message to the user
 				LogUtil::registerStatus(_MYPROFILECREATED);
 			}
 			return pnRedirect(pnModURL('MyProfile','user','main',array('load_uid'=>$this->load_uid)));

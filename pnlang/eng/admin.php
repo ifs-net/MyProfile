@@ -101,6 +101,7 @@ define('_MYPROFILEMYPROFILEPLUGIN',			'Integrate user profiles into any zikula c
 define('_MYPROFILEUSEPROFILEPLUGINEXPL',	'There is a plugin that can be called in any module with this piece of code');
 define('_MYPROFILEUSEPROFILEPLUGINTEMPLATE','But you have to configure this plugin via its template manually - the template file that has to be edited is');
 define('_MYPROFILEUSETABSFORSEPARATORS',	'Use profile separators as tabs. Might be interesting for huge profile pages');
+define('_MYPROFILENOTIFICATION',			'Send email notification to site admin when new registration is finished');
 
 // import
 define('_MYPROFILEIMPORTDESC',				'You find some import functions here to get data from other profile modules');

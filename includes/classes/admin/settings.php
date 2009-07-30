@@ -24,6 +24,7 @@ class MyProfile_admin_settingsHandler
 	  	$data['noverification']			= pnModGetVar('MyProfile','noverification');
 	  	$data['requestban'] 			= pnModGetVar('MyProfile','requestban');
 	  	$data['expiredays'] 			= pnModGetVar('MyProfile','expiredays');
+	  	$data['notification'] 			= pnModGetVar('MyProfile','notification');
 	  	$data['searchtemplate']			= pnModGetVar('MyProfile','searchtemplate');
 	  	$data['resultsperpage']			= pnModGetVar('MyProfile','resultsperpage');
 	  	$data['convertToUTF8']			= pnModGetVar('MyProfile','convertToUTF8');
