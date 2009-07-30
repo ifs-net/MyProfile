@@ -102,6 +102,7 @@ define('_MYPROFILEMYPROFILEPLUGIN',			'Benutzer-Profile in jeden Zikula-Inhalt i
 define('_MYPROFILEUSEPROFILEPLUGINEXPL',	'Ein Plugin kann aus jedem anderen Modul mit folgendem Code-Stück aufgerufen werden');
 define('_MYPROFILEUSEPROFILEPLUGINTEMPLATE','Aber dieses Plugin muss über seine Vorlage manuell konfiguriert werden - die zu bearbeitende Vorlagen-Datei ist');
 define('_MYPROFILEUSETABSFORSEPARATORS',	'Abschnittstrenner als Tabs mittels Javascript nur per Klick einbinden - kann für extrem umfangreiche Profilseiten hilfreich sein.');
+define('_MYPROFILENOTIFICATION',			'Benachrichtigung an Administrator bei Neuregistrierungen');
 
 // import
 define('_MYPROFILEIMPORTDESC',				'Hier befinden sich Funktionen mit denen Daten von anderen Profil-Modulen übernommen werden');

@@ -37,6 +37,7 @@ define('_MYPROFILEADDPROFILEFAILED',		'Creating / Updating profile failed');
 define('_MYPROFILEATTRIBUTESTOREERROR',		'Updating / creating user attributes failed');
 define('_MYPROFILELNG',						'Longitude');
 define('_MYPROFILELAT',						'Latitude');
+define('_MYPROFILENEWPROFILE',				'New profile');
 
 // search
 define('_MYPROFILESHOWALLMEMBERS',			'Show all members');

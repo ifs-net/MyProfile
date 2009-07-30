@@ -38,6 +38,7 @@ define('_MYPROFILEADDPROFILEFAILED',		'Profil-Erzeugung / -Aktualisierung fehlge
 define('_MYPROFILEATTRIBUTESTOREERROR',		'Aktualisieren / Erzeugen der Benutzer-Attribute fehlgeschlagen');
 define('_MYPROFILELNG',						'Längengrad');
 define('_MYPROFILELAT',						'Breitengrad');
+define('_MYPROFILENEWPROFILE',				'Neues Profil');
 
 // search
 define('_MYPROFILESHOWALLMEMBERS',			'Alle Mitglieder anzeigen');
