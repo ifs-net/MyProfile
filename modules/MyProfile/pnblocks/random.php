@@ -59,10 +59,7 @@ function MyProfile_randomblock_display($blockinfo)
     if (!isset($numitems)) $numitems = 10;
 
     // Create output object
-    $pnRender =  pnRender::getInstance('MyProfile');
-	
-    $pnRender->caching = true;
-    $pnRender->cache_lifetime = 3600; // cache for 1 hour
+    $pnRender =  pnRender::getInstance('MyProfile',false);
 
     $items=pnModAPIFunc('MyProfile','user','getrandom',array('numitems'=>$numitems));
     $pnRender->assign('items', $items);
