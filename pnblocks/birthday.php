@@ -39,10 +39,6 @@ function MyProfile_birthdayblock_display($blockinfo)
     // Security check
     if (!SecurityUtil::checkPermission('MyProfile:Birthdayblock', "$blockinfo[title]::", ACCESS_READ)) return false;
 
-	// activate rendering for this block
-    $render->caching = true;
-    $render->cache_id= date("d",time());
-    $render->cache_lifetime = (60*60*24)+1;	// cache block for one day and one second ;-)
     
     // Get variables from content block
     $vars = pnBlockVarsFromContent($blockinfo['content']);
@@ -55,7 +51,7 @@ function MyProfile_birthdayblock_display($blockinfo)
 	pnModLangLoad('MyProfile','user');
     
     // Create output object
-    $pnRender = pnRender::getInstance('MyProfile');
+    $pnRender = pnRender::getInstance('MyProfile',false);
 	
     $items=pnModAPIFunc('MyProfile','user','getBirthdays',array(
 			'datedatafield'				=> $datedatafield,
@@ -94,15 +90,6 @@ function MyProfile_birthdayblock_modify($blockinfo)
 
     // Create output object
     $pnRender = pnRender::getInstance('MyProfile');
-
-    // As Admin output changes often, we do not want caching.
-    if (date("H",time()) > 23 ) {
-	    $pnRender->caching = false;
-	}
-	else {
-	    $pnRender->caching = true;
-	    $pnRender->cache_lifetime = 3500;  
-	}
 
 	// get fields
 	$fields = pnModAPIFunc('MyProfile','admin','getFields');

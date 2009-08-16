@@ -51,10 +51,7 @@ function MyProfile_onlineblock_display($blockinfo)
 	pnModLangLoad('MyProfile','user');
     
     // Create output object
-    $pnRender = pnRender::getInstance('MyProfile');
-
-    $pnRender->caching = true;
-    $pnRender->cache_lifetime = 30;
+    $pnRender = pnRender::getInstance('MyProfile',false);
 		
     // Populate block info and pass to theme
     $blockinfo['content'] = $pnRender->fetch('myprofile_block_online.htm');
