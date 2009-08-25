@@ -46,7 +46,7 @@ function MyProfile_adminapi_getPlugins($args)
     foreach ($mods as $mod) {
       	if ($mod['displayname'] != "MyProfile") {
 	      	$file_modules	= 'modules/'.$mod['directory'].'/pnmyprofileapi.php';
-	      	$file_system	= 'modules/'.$mod['directory'].'/pnmyprofileapi.php';
+	      	$file_system	= 'system/'.$mod['directory'].'/pnmyprofileapi.php';
 	      	$found = false;
 	      	if (file_exists($file_system)) {
 			    $found = true;
