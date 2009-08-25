@@ -1,0 +1,28 @@
+
+<div style="max-height:600px; overflow-y:auto;" >
+<table>
+    <tr>
+        <!--[foreach from=$th item="item"]-->
+            <th>
+                <!--[$item.description]-->
+            </th>
+        <!--[/foreach]-->
+        <th>
+            <!--[pnml name="_MYPROFILE_USERNAME"]-->
+        </th>
+    </tr>
+    <!--[foreach from=$latest item="item"]-->
+        <tr style="background-color:#<!--[cycle values="ccc,ddd"]-->">
+            <!--[foreach from=$item.data item="data"]-->
+                <td>
+                    <!--[$data.value|pnvarprepfordisplay]-->
+                </td>
+            <!--[/foreach]-->
+            <td>
+                <!--[$item.uname|userprofilelink]-->
+            </td>
+        </tr>
+    <!--[/foreach]-->
+</table>
+</div>
+<!--[pnml name="_MYPROFILE_SUM"]--> <!--[$latest|@count]--> <!--[pnml name="_MYPROFILE_MEMBERS"]--> <!--[$sincedate]--><br />
