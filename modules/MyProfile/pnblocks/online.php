@@ -44,19 +44,31 @@ function MyProfile_onlineblock_display($blockinfo)
                          "$blockinfo[title]::",
                          ACCESS_READ)) return false;
 
-    // Get variables from content block
-    $vars = pnBlockVarsFromContent($blockinfo['content']);
+	// Use ifs caching method
+	$cache = pnModAPIFunc('ifs','cache','get',array('modname' => 'MyProfile', 'cid' => 'online'));
+	if ($cache) {
+	  	// return cached output
+		$blockinfo['content'] = $cache;
+		return themesideblock($blockinfo);
+	} else {
+	    // Get variables from content block
+	    $vars = pnBlockVarsFromContent($blockinfo['content']);
+	
+		// Load Language files (user)
+		pnModLangLoad('MyProfile','user');
+	    
+	    // Create output object
+	    $pnRender = pnRender::getInstance('MyProfile',false);
+			
+	    // Populate block info and pass to theme
+	    $blockinfo['content'] = $pnRender->fetch('myprofile_block_online.htm');
 
-	// Load Language files (user)
-	pnModLangLoad('MyProfile','user');
-    
-    // Create output object
-    $pnRender = pnRender::getInstance('MyProfile',false);
-		
-    // Populate block info and pass to theme
-    $blockinfo['content'] = $pnRender->fetch('myprofile_block_online.htm');
+		// Cache now
+	    pnModAPIFunc('ifs','cache','set',array('modname' => 'MyProfile', 'cid' => 'online', 'content' => $blockinfo['content'],'sec' => 30));
 
-    return themesideblock($blockinfo);
+		// return output
+	    return themesideblock($blockinfo);
+	}
 }
 
 
