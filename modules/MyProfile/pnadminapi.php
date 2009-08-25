@@ -162,8 +162,8 @@ function MyProfile_adminapi_updateTableDefinition()
 		$column_def[] = array (	'key'	=> $field['identifier'],
 								'value'	=> $value);
 	}
-	prayer($column);
-	prayer($column_def);
+//	prayer($column);
+//	prayer($column_def);
   	return FileUtil::writeFile($configfile,serialize(array('column' => $column, 'column_def' => $column_def)));
 }
 
