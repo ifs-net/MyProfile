@@ -40,6 +40,9 @@ define('_MYPROFILESTATS60DAYS',				'online last 2 months');
 define('_MYPROFILESTATS90DAYS',				'online last three months');
 define('_MYPROFILESTATS180DAYS',			'online last 6 months');
 define('_MYPROFILESTATSYEAR',				'online last year');
+define('_MYPROFILE_SELECTRANGE',            'Range for graphical statistics');
+define('_MYPROFILE_DAYS',                   'days');
+define('_MYPROFILE_RANGEHINT',              'User-defined: Please specify range in days as url parameter named "range"!');
 
 //main
 define('_MYPROFILEEMAIL',					'User\'s email address');
