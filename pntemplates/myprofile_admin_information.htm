@@ -18,6 +18,19 @@
 <!--[pnml name="_MYPROFILESTATINVALIDEMAIL30D"]-->: <!--[$invalidemail30d]--><br />
 </p>
 
+<p>
+<!--[pnml name="_MYPROFILE_SELECTRANGE"]-->:
+<a href="<!--[pnmodurl modname="MyProfile" type="admin" func="information" range="7"]-->">7 <!--[pnml name="_MYPROFILE_DAYS"]--></a>
+| <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="information" range="14"]-->">14 <!--[pnml name="_MYPROFILE_DAYS"]--></a>
+| <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="information" range="31"]-->">31 <!--[pnml name="_MYPROFILE_DAYS"]--></a>
+| <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="information" range="62"]-->">62 <!--[pnml name="_MYPROFILE_DAYS"]--></a>
+| <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="information" range="93"]-->">93 <!--[pnml name="_MYPROFILE_DAYS"]--></a>
+| <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="information" range="170"]-->">150 <!--[pnml name="_MYPROFILE_DAYS"]--></a>
+| <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="information" range="365"]-->">365 <!--[pnml name="_MYPROFILE_DAYS"]--></a>
+| <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="information" range="730"]-->">730 <!--[pnml name="_MYPROFILE_DAYS"]--></a>
+<br />
+<!--[pnml name="_MYPROFILE_RANGEHINT"]-->
+</p>
 
 <div id="my-timeplot" style="height: 600px;"></div>
 
@@ -184,7 +197,7 @@
 
 
 	  timeplot = Timeplot.create(document.getElementById("my-timeplot"), plotInfo);
-	  var infofile = document.location.pnbaseURL + document.location.entrypoint + '?module=MyProfile&type=admin&func=getInformationRawData';
+	  var infofile = document.location.pnbaseURL + document.location.entrypoint + '?module=MyProfile&type=admin&func=getInformationRawData&range=<!--[pnvarcleanfrominput name="range"]-->';
 	  timeplot.loadText(infofile, ",", eventSource);
 
 	// enable grid

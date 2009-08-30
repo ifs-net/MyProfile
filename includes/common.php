@@ -98,7 +98,15 @@ function mp_getInformation() {
  */
 function mp_getRawInformation() 
 {
-	$res = DBUtil::selectObjectArray('myprofile_stats');
+    $range = (int) FormUtil::getPassedValue('range');
+    if ($range <= 0) {
+        $interval = 180;
+    } else {
+        $interval = $range;
+    }
+   	$day = round((time()-($interval*24*60*60) ) / (24*60*60));
+	$where = 'day > '.$day;
+	$res = DBUtil::selectObjectArray('myprofile_stats',$where);
 	foreach ($res as $item) {
 		$day = date("Y-m-d",($item['day'])*(24*60*60));
 		unset($item['day']);
@@ -123,7 +131,7 @@ function mp_systemInit()
 	} else {
 	  	pnUserSetVar('lastlogin',date("Y-m-d h:i:s",time()),pnUserGetVar('uid'));
 	}
-
+	
 	// Integrate generation of statistics here
 	mp_storeStats();
 

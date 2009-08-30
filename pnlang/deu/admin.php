@@ -40,6 +40,9 @@ define('_MYPROFILESTATS60DAYS',				'online letzte 60 Tage');
 define('_MYPROFILESTATS90DAYS',				'online letzte 90 Tage');
 define('_MYPROFILESTATS180DAYS',			'online letztes Halbjahr');
 define('_MYPROFILESTATSYEAR',				'online letztes Jahr');
+define('_MYPROFILE_SELECTRANGE',            'Zeitraum für Grafik wählen');
+define('_MYPROFILE_DAYS',                   'Tage');
+define('_MYPROFILE_RANGEHINT',              'Benutzerdefiniert: Einfach parameter "range" mit entsprechender Tageszahl in URL übergeben!');
 
 
 //main
