@@ -35,6 +35,9 @@ $modversion['profile']        = 1;
 
 // module dependencies
 $modversion['dependencies'] = array(
+	array(	'modname'    => 'ifs',
+			'minversion' => '1.0', 'maxversion' => '',
+            'status'     => PNMODULE_DEPENDENCY_REQUIRED),
 	array(	'modname'    => 'EZComments',
 			'minversion' => '1.6', 'maxversion' => '',
             'status'     => PNMODULE_DEPENDENCY_RECOMMENDED),
