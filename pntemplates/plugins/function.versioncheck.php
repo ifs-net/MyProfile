@@ -1,20 +1,11 @@
 <?php
 /**
- * Zikula Application Framework
- *
- * @copyright (c) 2001, Zikula Development Team
- * @link http://www.zikula.org
- * @license GNU/GPL - http://www.gnu.org/copyleft/gpl.html
- *
- * @package scribite!
- * @license http://www.gnu.org/copyleft/gpl.html
- *
- * @author sven schomacker, modifier by florian schiessl
- * @version 2.1
- *
- * This plugin checks current version for a given 
- * ifs-net programmed module and will
- * check if a newer version is available for download.
+ * @package      advMailer
+ * @version      $Id:  $
+ * @author       Florian Schießl
+ * @link         http://www.ifs-net.de
+ * @copyright    Copyright (C) 2009
+ * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
 function smarty_function_versioncheck($params, &$smarty) 
