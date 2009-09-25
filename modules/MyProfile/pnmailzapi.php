@@ -56,7 +56,12 @@ function MyProfile_mailzapi_getContent($args)
             if ($days > 0) {
                 $sincedate = date("Y-m-d H:i:s",(time()-($days*24*60*60)));
             } else {
-                $sincedate = date("Y-m-d",(time()-(24*60*60*35)));
+                $last = $args['last'];
+                if (isset($last) && ($last != '') && ($last != '0000-00-00 00:00:00')) {
+                    $sincedate = $last;
+                } else {
+                    $sincedate = date("Y-m-d",(time()-(24*60*60*35)));
+                }
             }
             $columnArray = array (
                 'id'
