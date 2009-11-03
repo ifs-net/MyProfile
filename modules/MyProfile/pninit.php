@@ -143,6 +143,7 @@ function MyProfile_upgrade($oldversion)
 	case '1.31':
 		pnModSetVar('MyProfile',	'nofification',	1);
 	case '1.4':
+	case '1.5':
     default:
 	    return true;
     }
