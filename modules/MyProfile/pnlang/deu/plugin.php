@@ -9,7 +9,7 @@
  */
  
 // force valid profile
-define('_MYPROFILEPROFILEOUTOFTIME',	'Dein Profil ist veraltet oder nicht komplett - bitte prüfe / komplettiere / aktualisiere Deine persönlichen Daten'); 
+define('_MYPROFILEPROFILEOUTOFTIME',	'Deine Profildaten sind noch nicht komplett oder veraltet. Bitte prüfe erst dein Profil und speichere die Daten ab - danach können alle Dienste dieser Seite in Anspruch genommen werden!'); 
 // plugin myprofile showbox
 define('_MYPROFILEMOREORLESS',			'mehr/weniger');
 // plugin force valid email address

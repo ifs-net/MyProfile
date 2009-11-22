@@ -136,8 +136,11 @@ function mp_systemInit()
 	mp_storeStats();
 
 	// Do nothing in admin interface or if the used module's name is MyProfile
-	if ((pnModGetName() == 'MyProfile') || (strtolower(FormUtil::getPassedValue('type') == 'admin')) || (strtolower(FormUtil::getPassedValue('type') == 'ajax'))) {
-	  	return true;
+	$act_mod  = pnModGetName();
+	$act_type = strtolower(FormUtil::getPassedValue('type'));
+	$act_func = strtolower(FormUtil::getPassedValue('func'));
+	if ((($act_mod == 'MyProfile') && ($act_func == '')) || ($act_type == 'admin') || ($act_type == 'ajax')) {
+        return true;
 	} 
 
 	// First check: user needs a valid profile?
