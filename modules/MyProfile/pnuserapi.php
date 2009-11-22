@@ -135,11 +135,15 @@ function MyProfile_userapi_hasValidProfile($args) {
 	if (!($uid > 0)) $uid = pnUserGetVar('uid');
 	$userattributes 	= pnUserGetVar('__ATTRIBUTES__',$uid);
   	$validuntil 		= $userattributes['myprofile_validuntil'];
-  	if ($validuntil > 0) {
+  	$db_exists = DBUtil::selectObjectCountByID('myprofile',$uid);
+  	if (($validuntil > 0) && ($db_exists > 0)) {
   	  	// valid until value is stored so the user has 
 		// entered a valid profile for at least one time
-		if (((int)pnModGetVar('MyProfile','validuntil') > 0) && ($validuntil < time())) return false;
-		else return true;		    
+		if (((int)pnModGetVar('MyProfile','validuntil') > 0) && ($validuntil < time())) {
+            return false;
+        } else {
+            return true;
+        } 
 	}
 	else return false; // to user has not enterd valid profile data yet.
 }
