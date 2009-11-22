@@ -32,7 +32,13 @@
 			<!--[/if]-->
 			<small><!--[$field.copyvalue]--></small>
 			<small><!--[$field.copyuidvalue]--></small>
-			<!--[pnml name="_MYPROFILEISACTIVE"]-->: <!--[$field.active|replace:1:yes|replace:0:no]-->, <!--[pnml name="_MYPROFILEISSHOWN"]-->: <!--[$field.shown|replace:1:yes|replace:0:no]-->.
+			<!--[pnml name="_MYPROFILEISACTIVE"]-->: <!--[$field.active|replace:1:yes|replace:0:no]-->, <!--[pnml name="_MYPROFILEISSHOWN"]-->: <!--[$field.shown|replace:1:yes|replace:0:no]-->. 
+            <!--[pnml name="_MYPROFILEUSERPROPERTYVALUE"]-->:
+            <!--[if $field.userproperty ne '']-->
+                <!--[$field.userproperty]-->
+            <!--[else]-->
+                N/A
+            <!--[/if]-->
 		<!--[else]-->
 		    <li class="myprofile_sortableseparator" id="item_<!--[$field.id]-->">
 			<span class="myprofile_bold"><!--[$field.identifier|strtoupper]-->: </span> 

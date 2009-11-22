@@ -92,6 +92,7 @@ function myprofile_observeFieldType() {
 // Hide all fields
 function myprofile_hideAll() {
 	$('myprofile_identifier').hide();
+	$('myprofile_userproperty').hide();
 	$('myprofile_mandatory').hide();
 	$('myprofile_description').hide();
 	$('myprofile_num_minvalue').hide();
@@ -119,6 +120,7 @@ function myprofile_showSelectedFieldType() {
 		$('myprofile_active').show();
 		$('myprofile_shown').show();		    
 		$('myprofile_searchable').show();
+    	$('myprofile_userproperty').show();
 	}
 	else if (value == 'STRING') {
 		$('myprofile_identifier').show();
@@ -130,6 +132,7 @@ function myprofile_showSelectedFieldType() {
 		$('myprofile_active').show();
 		$('myprofile_shown').show();
 		$('myprofile_searchable').show();
+    	$('myprofile_userproperty').show();
 	}
 	else if ((value == 'URL') || (value == 'SKYPEID') || (value == 'UIN') || (value == 'COORD')) {
 		$('myprofile_identifier').show();
@@ -139,6 +142,7 @@ function myprofile_showSelectedFieldType() {
 		$('myprofile_active').show();
 		$('myprofile_shown').show();
 		$('myprofile_searchable').show();
+    	$('myprofile_userproperty').show();
 	}
 	else if (value == 'TEXTBOX') {
 		$('myprofile_identifier').show();
@@ -150,6 +154,7 @@ function myprofile_showSelectedFieldType() {
 		$('myprofile_active').show();
 		$('myprofile_shown').show();
 		$('myprofile_searchable').show();
+    	$('myprofile_userproperty').show();
 	}
 	else if (value == 'DATE') {
 		$('myprofile_identifier').show();
@@ -159,6 +164,7 @@ function myprofile_showSelectedFieldType() {
 		$('myprofile_active').show();
 		$('myprofile_shown').show();
 		$('myprofile_searchable').show();
+    	$('myprofile_userproperty').show();
 	}
 	else if (value == 'TIMESTAMP') {
 		$('myprofile_identifier').show();
@@ -168,6 +174,7 @@ function myprofile_showSelectedFieldType() {
 		$('myprofile_active').show();
 		$('myprofile_shown').show();
 		$('myprofile_searchable').show();
+    	$('myprofile_userproperty').show();
 	}
 	else if (value == 'SEPARATOR') {
 		$('myprofile_identifier').show();

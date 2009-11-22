@@ -96,15 +96,18 @@ function MyProfile_adminapi_checkConfigFile()
   	if (!file_exists($configfile)) {
 	    if (!FileUtil::writeFile($configfile,' ')) {				// create dummy file
 		  	LogUtil::registerError(_MYPROFILEWRITEFILEPROBLEMS);
+		  	LogUtil::registerError(_MYPROFILECONFIGFILEEXPLANATION);
 		  	return false;
 		};
 	}
   	if (!is_readable($configfile)) {								// not readable
 	    LogUtil::registerError(_MYPROFILEFILENOTREADABLE);
+	  	LogUtil::registerError(_MYPROFILECONFIGFILEEXPLANATION);
 	    return false;
 	}
   	if (!is_writable($configfile)) {								// not writeable
 	    LogUtil::registerError(_MYPROFILEFILENOTWRITEABLE);
+	  	LogUtil::registerError(_MYPROFILECONFIGFILEEXPLANATION);
 	    return false;
 	}
 	return true;

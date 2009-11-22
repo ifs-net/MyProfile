@@ -156,6 +156,7 @@ define('_MYPROFILEUNOTFOUND',				'Kein Benutzer mit dieser Kennung oder ID gefun
 define('_MYPROFILEFILENOTWRITEABLE',		'Konfigurationsdatei nicht schreibbar - bitte vor dem Bearbeiten der Konfiguration korrigieren');
 define('_MYPROFILEFILENOTREADABLE',			'Konfigurationsdatei nicht lesbar - bitte vor dem Bearbeiten der Konfiguration korrigieren');
 define('_MYPROFILEWRITEFILEPROBLEMS',		'Konfigurationsdate konnte nicht erstellt werden - bitte Verzeichnis-Rechte prüfen');
+define('_MYPROFILECONFIGFILEEXPLANATION',   'Die Datei modules/MyProfile/config/tabledef.inc muss beschreibbar sein. Falls sie noch nicht existiert oder nicht angelegt werden kann, muss der Ordner selbst auch beschreibbar sein. Diese Rechte aber bitte nur vorübergehend setzen.');
 
 // configFailure
 define('_MYPROFILEERROROCCURED',			'Ein Fehler ist aufgetreten. Bitte Fehlermeldung beachten!');
@@ -237,6 +238,8 @@ define('_MYPROFILEFIELDUPDATED',			'Existierendes Feld wurde erfolgreich aktuali
 define('_MYPROFILEDELETEFIELD',				'Dieses Feld löschen');
 define('_MYPROFILEFIELDDELERR',				'Fehler beim Löschen des Feldes');
 define('_MYPROFILEFIELDDEL',				'Feld erfolgreich gelöscht');
+define('_MYPROFILEUSERPROPERTY',            'Name des Benutzer-Attributs, wenn Wert des Benutzers zusätzlich als Benutzerattribut gespeichert werden soll. Beispiel: bei Eingabe von _REALNAME wird dann der Benutzerwert zusätzlich als Attribut _REALNAME gespeichert');
+define('_MYPROFILEUSERPROPERTYVALUE',       'Auch speichern unter folgendem Benutzerattribut');
 
 // plugins
 define('_MYPROFILEREMOVEPLUGINS',			'Wenn ein Plugin nicht eingebunden werden soll einfach im entsprechenden Modul die Datei myprofileapi.php löschen oder umbenennen');
