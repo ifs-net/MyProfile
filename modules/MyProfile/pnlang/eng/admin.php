@@ -152,9 +152,10 @@ define('_MYPROFILEEMAILNOTEXISTENT',		'email address not found');
 define('_MYPROFILEMORETHANONEUSERFOUND',	'more than one user found');
 define('_MYPROFILECHOOSEONEUSER',			'please choose one user and enter its username');
 define('_MYPROFILEUNOTFOUND',				'No user with this username or user-ID found');
-define('_MYPROFILEFILENOTWRITEABLE',		'Config file is not writeable - change this before trying to edit the actual configuration');
-define('_MYPROFILEFILENOTREADABLE',			'Config file is not readable - change this before trying to edit the actual configuration');
-define('_MYPROFILEWRITEFILEPROBLEMS',		'Config file could not be created - please check the config directory permissions');
+define('_MYPROFILEFILENOTWRITEABLE',		'Config file is not writeable - change this before trying to edit the actual configuration.');
+define('_MYPROFILEFILENOTREADABLE',			'Config file is not readable - change this before trying to edit the actual configuration.');
+define('_MYPROFILEWRITEFILEPROBLEMS',		'Config file could not be created - please check the config directory permissions.');
+define('_MYPROFILECONFIGFILEEXPLANATION',   'The file modules/MyProfile/config/tabledef.inc has to be writable. If the file does not exist yet, the folder config has to be writeable.');
 
 // configFailure
 define('_MYPROFILEERROROCCURED',			'An error occured. Please regard the error message!');
@@ -236,6 +237,8 @@ define('_MYPROFILEFIELDUPDATED',			'Existing field was updated successfully');
 define('_MYPROFILEDELETEFIELD',				'Delete this field');
 define('_MYPROFILEFIELDDELERR',				'Error while deleting the fields');
 define('_MYPROFILEFIELDDEL',				'Field was deleted successfully');
+define('_MYPROFILEUSERPROPERTY',            'Name of user attribute / property to store the users value also as user attribute. Example: Entering _REALNAME here will make MyProfile to store the user\'s value also as _REALNAME');
+define('_MYPROFILEUSERPROPERTYVALUE',       'Also store value as following user attribute');
 
 // plugins
 define('_MYPROFILEREMOVEPLUGINS',			'If you want to remove a plugin from a user\'s profile page jsut delete the pnmyprofileapi.php in the root folder of the modules you want to remove');

@@ -11,8 +11,9 @@
 class MyProfile_user_ProfileHandler
 {
     var $id;
+    var $load_uid;
     function initialize(&$render)
-    {	    
+    {
 		$uid 		= pnUserGetVar('uid');
 		$settings 	= pnModAPIFunc('MyProfile','user','getSettings',array('uid' => $uid));
 		$render->assign('fields',pnModAPIFunc('MyProfile','admin','getFields'));
@@ -66,9 +67,18 @@ class MyProfile_user_ProfileHandler
 		    if (!$render->pnFormIsValid()) return false;
 			$obj['timestamp'] = date("Y-m-d",time());
 			
-			// is there a coordinate?
+			// is there a coordinate? Also check for attribute storage to be Profile-compatible
 			$fields = pnModAPIFunc('MyProfile','admin','getfields');
 			foreach ($fields as $field) {
+			    // Profile compatibility
+			    if ($field['userproperty'] != '') {
+                    $uid = $this->id;
+                    if (!($uid > 1)) {
+                        $uid = pnUserGetVar('uid');
+                    }
+                    pnUserSetVar($field['userproperty'],$obj[$field['identifier']]);
+                }
+			    // coordinate check
 			  	if ($field['fieldtype'] == 'COORD') {
 			  	  	$identifier = $field['identifier'];
 				    $lat = $identifier.'_lat';

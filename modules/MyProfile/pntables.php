@@ -60,7 +60,8 @@ function MyProfile_pntables()
 			    'active'				=> 'active',
 			    'shown'					=> 'shown',
 			    'position'				=> 'position',
-			    'searchable'			=> 'searchable'
+			    'searchable'			=> 'searchable',
+			    'userproperty'          => 'userproperty'
 			    );
     $pntable['myprofile_fields_column_def'] = array (
     			'id'					=> "I AUTOINCREMENT PRIMARY",
@@ -76,7 +77,8 @@ function MyProfile_pntables()
     			'active'				=> "I(1) NOTNULL DEFAULT 0",
     			'shown'					=> "I(1) NOTNULL DEFAULT 0",
     			'position'				=> "I NOTNULL DEFAULT 0",
-    			'searchable'			=> "I(1) NOTNULL DEFAULT 0"
+    			'searchable'			=> "I(1) NOTNULL DEFAULT 0",
+    			'userproperty'          => "XL NOTNULL"
 				);
 
 	// template-table

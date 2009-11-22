@@ -144,6 +144,8 @@ function MyProfile_upgrade($oldversion)
 		pnModSetVar('MyProfile',	'nofification',	1);
 	case '1.4':
 	case '1.5':
+	  	if (!DBUtil::changeTable('myprofile_fields')) return false;
+	case '1.6':
     default:
 	    return true;
     }
