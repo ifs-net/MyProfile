@@ -13,5 +13,5 @@ define('_MYPROFILEPROFILEOUTOFTIME',	'Deine Profildaten sind noch nicht komplett
 // plugin myprofile showbox
 define('_MYPROFILEMOREORLESS',			'mehr/weniger');
 // plugin force valid email address
-define('_MYPROFILEYOUREMAILINVALID',	'Deine Emailadresse scheint nicht korrekt zu sein, denn Emails kamen als unzustellbar zurück. Du musst daher deine Emailadresse auf eine gültige Adresse abändern - denn gültige Adressen sind zwingende Voraussetzung zur Nutzung dieser Seiten!');
+define('_MYPROFILEYOUREMAILINVALID',	'Deine Emailadresse scheint nicht korrekt zu sein, denn Emails kamen als unzustellbar zurück. Vielleicht ist dein Postfach auch einfach nur voll? Du musst daher deine Emailadresse auf eine gültige Adresse abändern - denn gültige Adressen sind zwingende Voraussetzung zur Nutzung dieser Seiten!');
 ?>

@@ -157,7 +157,10 @@ function mp_systemInit()
 	
 	// Is the user's email address invalid?
   	$attributes = pnUserGetVar('__ATTRIBUTES__');
-  	if ($attributes['myprofile_invalidemail'] == 1) {
+  	if (
+        (($attributes['myprofile_invalidemail'] == 1) && ($act_mod != 'MyProfile')) ||
+        (($attributes['myprofile_invalidemail'] == 1) && ($act_mod == 'MyProfile') && (($act_func != 'settings') && ($act_func != 'validatemail'))) 
+        ) {
 	    // user has invalid email address
   	  	// load language file
   	  	pnModLangLoad('MyProfile','plugin');
