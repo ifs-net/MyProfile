@@ -136,6 +136,7 @@ function MyProfile_userapi_hasValidProfile($args) {
 	$userattributes 	= pnUserGetVar('__ATTRIBUTES__',$uid);
   	$validuntil 		= $userattributes['myprofile_validuntil'];
   	$db_exists = DBUtil::selectObjectCountByID('myprofile',$uid);
+
   	if (($validuntil > 0) && ($db_exists > 0)) {
   	  	// valid until value is stored so the user has 
 		// entered a valid profile for at least one time
