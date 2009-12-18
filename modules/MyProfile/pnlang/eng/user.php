@@ -63,6 +63,7 @@ define('_MYPROFILERESULT',					'result');
 define('_MYPROFILESHOWSEARCHFORM',			'Show search form to change search parameters');
 define('_MYPROFILENEXTPAGE',				'next page');
 define('_MYPROFILEPREVIOUSPAGE',			'previous page');
+define('_MYPROFILESEARCHSTRING',            'Search string in all fields');
 
 // confirmedusers
 define('_MYPROFILEUSERDELETED',				'User deleted');

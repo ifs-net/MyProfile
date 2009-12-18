@@ -73,6 +73,7 @@ class MyProfile_user_SearchHandler
 		$this->pager($render);
 		
 		$showall 		= (int)		FormUtil::getPassedValue('showall');
+		$string         = (string)  FormUtil::getPassedValue('string');
 		$direct_uname 	= (string)	FormUtil::getPassedValue('direct_uname');
 		if ($showall == 1) {
 		  	$obj = $render->pnFormGetValues();
@@ -81,6 +82,15 @@ class MyProfile_user_SearchHandler
 		  			'showall'		=> 1,
 		  			'direct_uname'	=> $direct_uname
 		  			);
+		  	if (empty($obj)) $this->handleCommand($render,$args);
+		}
+		if ($string != '') {
+		  	$obj = $render->pnFormGetValues();
+		  	$args = array (
+			  		'commandName' 	=> 'update',
+		  			'string'     	=> $string
+		  			);
+		  	$render->assign('string', $string);
 		  	if (empty($obj)) $this->handleCommand($render,$args);
 		}
 		
@@ -122,6 +132,29 @@ class MyProfile_user_SearchHandler
 			  	$whereArray[]= "a.".$u_column['uname']." like '"
 					.$w.DataUtil::formatForStore(str_replace('*','%',$obj['uname'])).$w."'";
 			}
+			// check for string search query via url call (get)
+			if (isset($args['string']) && ($args['string'] != '')) {
+                unset($obj);
+                $obj['string'] = $args['string'];
+            }
+			// use the string search field and apply it to all fields
+			if ($obj['string'] != '') {
+                if (pnusergetvar('uid') == 3230) {
+    			if ($obj['searchoption'] == 'soft') {
+                    $obj['string'] = '%'.$obj['string'].'%';
+                }
+                $or_where = array();
+                foreach ($this->fields as $field) {
+                    if ($field['searchable'] == 1) {
+						$or_where[] = "tbl.MyProfile_".$field['identifier']." like '".DataUtil::formatForStore(str_replace('*','%',$obj['string']))."'";
+                    }
+                }
+                $whereArray[] = implode(' OR ', $or_where);
+                unset($or_where);
+                
+                }
+            }
+			
 			// now all other searchable fields
 			foreach ($this->fields as $field) {
 			  	if ($obj[$field['identifier']] != "") {
