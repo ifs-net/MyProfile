@@ -64,6 +64,7 @@ define('_MYPROFILERESULT',					'Ergebnis');
 define('_MYPROFILESHOWSEARCHFORM',			'Suchformular mit Suchparametern einblenden');
 define('_MYPROFILENEXTPAGE',				'nächste Seite');
 define('_MYPROFILEPREVIOUSPAGE',			'vorherige Seite');
+define('_MYPROFILESEARCHSTRING',            'Begriff (Suche in allen Feldern)');
 
 // confirmedusers
 define('_MYPROFILEUSERDELETED',				'Benutzer entfernt');
