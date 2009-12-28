@@ -20,6 +20,7 @@ Loader::requireOnce('modules/MyProfile/includes/common.php');
  */
 function MyProfile_userapi_getProfile($args)
 {
+    $dom = ZLanguage::getModuleDomain('MyProfile');
   	// first check for given username
   	$uname = $args['uname'];
   	if (isset($uname)) $uid = pnUserGetIDFromName($uname);
@@ -91,7 +92,7 @@ function MyProfile_userapi_getProfile($args)
 					$field['value'] = 'none';
 					break;
 				default:
-				    $field['value']=_MYPROFILENOPERMISSION;
+				    $field['value']=__('no permission to view this field', $dom);
 			}
 		}
 		$identifier = $field['identifier'];
@@ -371,6 +372,7 @@ function MyProfile_userapi_individualTemplateAllowed($args)
  */
 function MyProfile_userapi_generateVerificationCode($args)
 {
+    $dom = ZLanguage::getModuleDomain('MyProfile');
 	$uid = pnUserGetVar('uid');
 	// get user and attributes
     $user = DBUtil::selectObjectByID('users', $uid, 'uid', null, null, null, false);
@@ -384,7 +386,7 @@ function MyProfile_userapi_generateVerificationCode($args)
 		$ban_timestamp = ($validationcode['request_date']+(24*60*60*$requestban));	// $requestban [days]
 		if ($ban_timestamp < (time())) unset($validationcode);	// unset the code if the requestban-timelimit is over
 		else { // print error message with requestban date
-		  	LogUtil::registerError(_MYPROFILENONEWREQUESTBEFORE.' '.date(pnModGetVar('MyProfile','dateformat'),$ban_timestamp));
+		  	LogUtil::registerError(__('You can not request a new validation code before', $dom).' '.date(pnModGetVar('MyProfile','dateformat'),$ban_timestamp));
 		  	return false;
 		}
 	}
@@ -411,7 +413,7 @@ function MyProfile_userapi_generateVerificationCode($args)
 
 	// if the user was forced to update the email adress a message should be displayed
 	if ($user['__ATTRIBUTES__']['myprofile_invalidemail'] == 1) {
-	  	LogUtil::registerStatus(_MYPROFILEWAITFORVERIFICATION);
+	  	LogUtil::registerStatus(__('Attention: You have to activate your new email address before using this site again! Please read the instructions in the incoming email!', $dom));
 	}
 
     // send email
@@ -423,7 +425,7 @@ function MyProfile_userapi_generateVerificationCode($args)
     $render->assign('validuntil',		date(str_replace('%','',pnModGetVar('MyProfile','dateformat')),$validationcode['expire_date']));
     $render->assign('alternateurl',		pnGetBaseURL().pnModURL('MyProfile','user','validatemail'));
     $body = $render->fetch('myprofile_email_validationcode.htm');
-    $subject = _MYPROFILEVALIDATIONCODEFOR.' '.pnUserGetVar('uname',$uid).' '._MYPROFILEAT.' '.pnConfigGetVar('sitename');
+    $subject = __('Email verification code for', $dom).' '.pnUserGetVar('uname',$uid).' '.__('at', $dom).' '.pnConfigGetVar('sitename');
     pnMail($validationcode['email'], $subject, $body, array('header' => '\nMIME-Version: 1.0\nContent-type: text/plain'), false);
     return true;
 	
@@ -657,6 +659,7 @@ function MyProfile_userapi_getCoordFields($args)
  */
 function MyProfile_userapi_getCoords($args)
 {
+    $dom = ZLanguage::getModuleDomain('MyProfile');
   	$field = $args['field'][0];
   	$identifier = $field['identifier'];
   	$where = "MyProfile_".$identifier." != ''";
@@ -679,7 +682,7 @@ function MyProfile_userapi_getCoords($args)
 			$res[] = array(	
 				'lat' => $coord['lat'],
 				'lng' => $coord['lng'],
-				'text' => '<a href='.pnModURL('MyProfile','user','display',array('uid' => $item['id'])).'>'._MYPROFILEVISITPROFILE."</a>",
+				'text' => '<a href=' . pnModURL('MyProfile','user','display',array('uid' => $item['id'])) . '>' . __('Show user\'s profile', $dom)."</a>",
 				'title' => $item['uname']
 					);
 		}

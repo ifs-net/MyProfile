@@ -1,10 +1,10 @@
 <tr>
   <td>
-    <label for="pnprofile_datedatafield"><!--[pnml name="_MYPROFILEDATEDATAFIELD"]--></label>
+    <label for="pnprofile_datedatafield"><!--[gt text="Field in the database in which the value for the user's birthday is stored in the format YYY-MM-DD (format: DATE)"]--></label>
   </td>
   <td>
     <select id="pnprofile_datedatafield" name="datedatafield">
-        <option value=""><!--[pnml name="_MYPROFILEDATEDATAFIELDVALUEOPTION"]--></option>
+        <option value=""><!--[gt text="-- nothing is chosen --"]--></option>
         <!--[foreach from=$fields item=field]-->
             <option <!--[if $field eq $datedatafield]-->selected="selected" <!--[/if]--> value="<!--[$field]-->" ><!--[$field]--></option>
         <!--[/foreach]-->
@@ -13,11 +13,11 @@
 </tr>
 <tr>
   <td>
-    <label for="pnprofile_restrictiondatafield"><!--[pnml name="_MYPROFILERESTRICTIONDATAFIELD"]--></label>
+    <label for="pnprofile_restrictiondatafield"><!--[gt text="Field for restrictions, for example if a field is existing in which the user can manage if his birthday should be hidden and not shown in the list"]--></label>
   </td>
   <td>
     <select id="pnprofile_restrictiondatafield" name="restrictiondatafield">
-        <option value=""><!--[pnml name="_MYPROFILERESTRICTIONDATAFIELDVALUEOPTION"]--></option>
+        <option value=""><!--[gt text="-- nothing is chosen. Empty if no restriction field should be used --"]--></option>
         <!--[foreach from=$allfields item=field]-->
             <option <!--[if $field eq $restrictiondatafield]-->selected="selected" <!--[/if]--> value="<!--[$field]-->" ><!--[$field]--></option>
         <!--[/foreach]-->
@@ -26,7 +26,7 @@
 </tr>
 <tr>
   <td>
-    <label for="pnprofile_restrictiondatafieldvalue"><!--[pnml name="_MYPROFILERESTRICTIONDATAFIELDVALUE"]--></label>
+    <label for="pnprofile_restrictiondatafieldvalue"><!--[gt text="Enter the value the restriction field should have if you want to show the birthday in the list"]--></label>
   </td>
   <td>
     <input id="pnprofile_restrictiondatafieldvalue" type="text" name="restrictiondatafieldvalue" value="<!--[$restrictiondatafieldvalue|pnvarprephtmldisplay]-->" />

@@ -1,19 +1,19 @@
 <!--[include file="myprofile_admin_menu.htm"]-->
 
-<h2><!--[pnml name="_MYPROFILEMANAGEINVALIDEMAILS"]--></h2>
+<h2><!--[gt text="Manage invalid email addresses"]--></h2>
 
-<!--[pnform cssClass=pn-adminform]-->
+<!--[pnform cssClass='pn-adminform']-->
 
     <!--[pnformvalidationsummary]-->
 
 <div id="myprofile_description" class="pn-adminformrow" style="clear: both">
-    <!--[pnformlabel for="email" text="_MYPROFILEEMAIL"]-->
-    <!--[pnformtextinput id="email" maxLength=400 mandatory=1]-->
+    <!--[pnformlabel for="email" __text="User's email address"]-->
+    <!--[pnformtextinput id="email" maxLength='400' mandatory='1']-->
 </div>
 
     <div class="pn-adminformrow pn-adminformbuttons" style="clear: both">
-	<!--[pnformimagebutton commandName="update"  imageUrl=images/icons/small/button_ok.gif alt="_MYPROFILESUBMITFIELD" title="_MYPROFILESUBMITFIELD"]-->
-        <a href="<!--[pnmodurl modname=MyProfile type=admin func=fields]-->"><!--[pnimg modname=core src=button_cancel.gif set=icons/small altml=true titleml=true alt="_CANCEL" title="_CANCEL"]--></a>
+	<!--[pnformimagebutton commandName="update" imageUrl='images/icons/small/button_ok.gif' __alt="Update / create field" __title="Update / create field"]-->
+        <a href="<!--[pnmodurl modname=MyProfile type=admin func=fields]-->"><!--[pnimg modname='core' src='button_cancel.gif' set='icons/small'   __alt="Cancel" __title="Cancel"]--></a>
     </div>
 <!--[/pnform]-->
 

@@ -3,8 +3,8 @@
 
 <!--[pnajaxheader prototype="1"]-->
 
-<h1><!--[pnml name="_MYPROFILEMYPROFILE"]--></h1>
-<img src="images/icons/extrasmall/personal.gif" /> <a href="<!--[pnmodurl modname="MyProfile" type="user" func="display" uid=$uid]-->"><!--[pnml name="_MYPROFILESHOWMYPROFILE"]--></a><br/><br/>
+<h1><!--[gt text="My profile"]--></h1>
+<img src="images/icons/extrasmall/personal.gif" /> <a href="<!--[pnmodurl modname="MyProfile" type="user" func="display" uid=$uid]-->"><!--[gt text="Show my own profile page"]--></a><br/><br/>
 
 <!--[pnform]-->
 <!--[pnformvalidationsummary]-->
@@ -12,8 +12,8 @@
 <!--[if $separators gt 0 and $notabs ne "1"]-->
 	<div id="myprofile_javascript" class="myprofile_javascript">
 	<!-- javascript begin -->
-	<div id="myprofile_showalltabs"><a href="#"><!--[pnml name="_MYPROFILESHOWWALLTABS"]--></a></div>
-	<div id="myprofile_tabmode"><a href="#"><!--[pnml name="_MYPROFILETABMODE"]--></a></div>
+	<div id="myprofile_showalltabs"><a href="#"><!--[gt text="Show all tabs on one page"]--></a></div>
+	<div id="myprofile_tabmode"><a href="#"><!--[gt text="Switch to the "tab"-mode"]--></a></div>
 	<div class="myprofile_tabheader" id="myprofile_tabheader">
 	<!-- tabheader begin -->
 	<!--[foreach from=$fields item="field"]-->
@@ -31,13 +31,13 @@
 	<!-- separator begin -->
 	<div class="myprofile_tabcontent">
 	<!-- tabcontent begin -->
-	<h1><!--[pnml name="_MYPROFILEMYPROFILEDATA"]--></h1>
-	<!--[pnml name="_MYPROFILEMANAGEYOURDATA"]-->
+	<h1><!--[gt text="Manage your community profile"]--></h1>
+	<!--[gt text="Please fill the form with your input. Every field that is marked with this sign: * is mandatory."]-->
 	</div>
 	<!-- tabcontent end -->
 	<div class="myprofile_tabcontent_hidden" id="myprofile_tabinfotext">
 	<!-- tabcontent begin -->
-	<!--[pnml name="_MYPROFILEHOWTOUSETABS"]-->
+	<!--[gt text="Please click on the tabs above this text to get to the separated sections to manage your profile data. Please click the "save"-Button only if the profile is completely filled out!"]-->
 	</div>
 	<!-- tabcontent end -->
 	</div>
@@ -66,9 +66,9 @@
 		<div class="myprofile_formelement">
 		<!-- form item begin -->
 		<!--[pnformlabel for=$field.identifier text=$field.description]-->:
-		<!--[if $field.public_status eq 0]-->(<img src="images/icons/extrasmall/services_flag.gif" /> <!--[pnml name="_MYPROFILEVIEWABLEBY"]-->&nbsp;<!--[pnml name="_MYPROFILEALL"]-->)<!--[/if]-->
-		<!--[if $field.public_status eq 2]-->(<img src="images/icons/extrasmall/agt_stop.gif" /> <!--[pnml name="_MYPROFILEVIEWABLEBY"]-->&nbsp;<!--[pnml name="_MYPROFILEADMIN"]-->)<!--[/if]-->
-		<!--[if $field.public_status eq 9]-->(<img src="images/icons/extrasmall/locked.gif" /><a href="<!--[pnmodurl modname="MyProfile" type="user" func="settings"]-->"><!--[pnml name="_MYPROFILEPRIVATEFIELD"]--></a>)<!--[/if]-->
+		<!--[if $field.public_status eq 0]-->(<img src="images/icons/extrasmall/services_flag.gif" /> <!--[gt text="Viewable for"]-->&nbsp;<!--[gt text="viewable by everybody"]-->)<!--[/if]-->
+		<!--[if $field.public_status eq 2]-->(<img src="images/icons/extrasmall/agt_stop.gif" /> <!--[gt text="Viewable for"]-->&nbsp;<!--[gt text="viewable by admin users only"]-->)<!--[/if]-->
+		<!--[if $field.public_status eq 9]-->(<img src="images/icons/extrasmall/locked.gif" /><a href="<!--[pnmodurl modname="MyProfile" type="user" func="settings"]-->"><!--[gt text="Private field, only viewable by users you allow to access this data"]--></a>)<!--[/if]-->
 		<br />
 		<!--[if $field.fieldtype eq "STRING" or $field.fieldtype == "TIMESTAMP"]-->
 			<!--[if $field.list eq ""]-->
@@ -78,7 +78,7 @@
 					    <!--[pnformdropdownlist id=$field.identifier items=$field.dropdownitems]-->
 					<!--[else]-->
 						<!--[foreach from=$field.radioitems item=item]-->
-							<!--[pnformradiobutton id=$item.value dataField=$field.identifier mandatory="1"]--> <!--[pnformlabel text=$item.text for=$item.value]-->
+							<!--[pnformradiobutton id=$item.value dataField=$field.identifier mandatory="1"]--> <!--[pnformlabel __text=$item.text for=$item.value]-->
 						<!--[/foreach]-->
 					<!--[/if]-->
 			<!--[/if]-->
@@ -91,15 +91,15 @@
 		<!--[if $field.fieldtype eq "FLOAT"]--><!--[pnformfloatinput id=$field.identifier minValue=$field.num_minvalue maxValue=$field.num_maxvalue mandatory=$field.mandatory]--><!--[/if]-->
 		<!--[if $field.fieldtype eq "DATE"]-->
 			<!--[pnformdateinput id=$field.identifier mandatory=$field.mandatory]--><br />
-			<!--[pnml name="_MYPROFILEDATEHINT"]-->
+			<!--[gt text="Use this format: YYYY-MM-DD. Example: 1981-05-25"]-->
 			<!--[/if]-->
 		<!--[if $field.fieldtype eq "COORD"]-->
 			<!--[if $mymapavailable]-->
 				<!--[pnmodapifunc modname="MyMap" type="user" func="generateMap" width="400" height="150" maptype="hybrid" zoomfactor="7" lat="`$field.identifier`_lat" lng="`$field.identifier`_lng" coords=$coords[$field.identifier]]-->
 			<!--[/if]-->
 			<img src="images/icons/extrasmall/agt_internet.gif" />
-			<!--[pnml name="_MYPROFILELNG"]-->: <!--[pnformtextinput id="`$field.identifier`_lng" mandatory=$field.mandatory maxLength="25" textMode="singleLine"]-->
-			<!--[pnml name="_MYPROFILELAT"]-->: <!--[pnformtextinput id="`$field.identifier`_lat" mandatory=$field.mandatory maxLength="25" textMode="singleLine"]-->
+			<!--[gt text="Longitude"]-->: <!--[pnformtextinput id="`$field.identifier`_lng" mandatory=$field.mandatory maxLength="25" textMode="singleLine"]-->
+			<!--[gt text="Latitude"]-->: <!--[pnformtextinput id="`$field.identifier`_lat" mandatory=$field.mandatory maxLength="25" textMode="singleLine"]-->
 		<!--[/if]-->
 		</div>
 		<!-- form item end -->
@@ -111,7 +111,7 @@
 <!-- separator end -->
 
 <div id="myprofile_submitbutton">
-<!--[pnformbutton commandName="update" text="_MYPROFILESAVE"]-->
+<!--[pnformbutton commandName="update" __text="save / update"]-->
 </div>
 <!--[/pnform]-->
 

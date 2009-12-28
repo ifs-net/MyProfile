@@ -1,28 +1,28 @@
 <!--[include file="myprofile_admin_menu.htm"]-->
-<h2><!--[pnml name="_MYPROFILEPNPROFILEIMPORT"]--></h2>
+<h2><!--[gt text="Import data from pnProfile"]--></h2>
 <!--[if $pnprofileavailable]-->
-	<!--[pnml name="_MYPROFILEPNPROFILEAV"]--><br />
-	<!--[pnml name="_MYPROFILEIMPORTDATA"]-->:
-	<!--[if $pnProfileStep eq 5]--><div class="pn-informationmsg"><!--[pnml name="_MYPROFILEPNPROFILEMIGRATIONDONE"]--></div><!--[/if]-->
+	<!--[gt text="pnProfile module is available on your system. If you want to import data from this module to use it in the MyProfile module you can do this here. If you used a database dump to reconstruct pnProfile data make sure, that you also need the Users tables - not only the pnProfile tables are important!"]--><br />
+	<!--[gt text="Start import now"]-->:
+	<!--[if $pnProfileStep eq 5]--><div class="pn-informationmsg"><!--[gt text="Migration from pnProfile to MyProfile already done"]--></div><!--[/if]-->
 	<ul>
-		<li><!--[if $pnProfileStep eq 1]--><a href="<!--[pnmodurl modname="MyProfile" type="admin" func="import" source="pnProfile" authid=$authid step=1]-->"><!--[/if]-->1. <!--[pnml name="_MYPROFILEIMPORTSTRUCTURE"]--> (<!--[pnml name="_MYPROFILETRUNCATEMYPROFILETABLES"]-->)<!--[if $pnProfileStep eq 1]--></a><!--[/if]--></li>
-		<li><!--[if $pnProfileStep eq 2]--><a href="<!--[pnmodurl modname="MyProfile" type="admin" func="import" source="pnProfile" authid=$authid step=2]-->"><!--[/if]-->2. <!--[pnml name="_MYPROFILEUPDATETABLEDEFS"]--><!--[if $pnProfileStep eq 2]--></a><!--[/if]--></li>
-		<li><!--[if $pnProfileStep eq 3]--><a href="<!--[pnmodurl modname="MyProfile" type="admin" func="import" source="pnProfile" authid=$authid step=3]-->"><!--[/if]-->3. <!--[pnml name="_MYPROFILEUPDATETABLES"]--><!--[if $pnProfileStep eq 3]--></a><!--[/if]--></li>
-		<li><!--[if $pnProfileStep eq 4]--><a href="<!--[pnmodurl modname="MyProfile" type="admin" func="import" source="pnProfile" authid=$authid step=4]-->"><!--[/if]-->4. <!--[pnml name="_MYPROFILEIMPORTPROFILEDATA"]--><!--[if $pnProfileStep eq 4]--></a><!--[/if]--> (<!--[pnml name="_MYPROFILEPOSSIBLETIMEOUT"]-->)</li>
+		<li><!--[if $pnProfileStep eq 1]--><a href="<!--[pnmodurl modname="MyProfile" type="admin" func="import" source="pnProfile" authid=$authid step=1]-->"><!--[/if]-->1. <!--[gt text="import pnProfile structure"]--> (<!--[gt text="If you have already configured MyProfile your configuration will be lost! Also values users might have entered already will be lost! Merging is not supported!"]-->)<!--[if $pnProfileStep eq 1]--></a><!--[/if]--></li>
+		<li><!--[if $pnProfileStep eq 2]--><a href="<!--[pnmodurl modname="MyProfile" type="admin" func="import" source="pnProfile" authid=$authid step=2]-->"><!--[/if]-->2. <!--[gt text="update table definition"]--><!--[if $pnProfileStep eq 2]--></a><!--[/if]--></li>
+		<li><!--[if $pnProfileStep eq 3]--><a href="<!--[pnmodurl modname="MyProfile" type="admin" func="import" source="pnProfile" authid=$authid step=3]-->"><!--[/if]-->3. <!--[gt text="update table"]--><!--[if $pnProfileStep eq 3]--></a><!--[/if]--></li>
+		<li><!--[if $pnProfileStep eq 4]--><a href="<!--[pnmodurl modname="MyProfile" type="admin" func="import" source="pnProfile" authid=$authid step=4]-->"><!--[/if]-->4. <!--[gt text="import pnProfile data into MyProfile"]--><!--[if $pnProfileStep eq 4]--></a><!--[/if]--> (<!--[gt text="If you have a huge pnProfile database the update might break if the memory limit or the timeout is set to low. If the update breaks, raise your memory limit and the php maximum execution time and try this step again until it works! Also do not run any other processes you do not need when importing the database."]-->)</li>
 	</ul>
-	<!--[pnml name="_MYPROFILERESETMIGRATION"]-->: <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="import" authid=$authid action="reset"]-->"><!--[pnml name="_MYPROFILERESETSTEPSNOW"]--></a>
+	<!--[gt text="Migration failed"]-->: <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="import" authid=$authid action="reset"]-->"><!--[gt text="Reset migration and start with first step again"]--></a>
 
 <!--[else]-->
-	<!--[pnml name="_MYPROFILEPNPROFILENOTAV"]-->
+	<!--[gt text="pnProfile is not available on your system. No import possible."]-->
 <!--[/if]-->
 <!--[* Perhaps this feature will follow later.... :-(
-<h1><!--[pnml name="_MYPROFILEPROFILEIMPORT"]--></h1>
+<h1><!--[gt text="Import data from Profile"]--></h1>
 <!--[if $profileavailable]-->
-	<!--[pnml name="_MYPROFILEPROFILEAV"]--><br />
-	<!--[pnml name="_MYPROFILEOVERWRITECONF"]-->
-	<a href="<!--[pnmodurl modname="MyProfile" type="admin" func="import" source="Profile" authid=$authid]-->"><!--[pnml name="_MYPROFILEIMPORTDATA"]-->!</a>
+	<!--[gt text="Profile module found on your system. You can import all data from Profile module into MyProfile."]--><br />
+	<!--[gt text="Attention: Importing data from this module will erase an existing MyProfile configuration before importing Profile data into MyProfile."]-->
+	<a href="<!--[pnmodurl modname="MyProfile" type="admin" func="import" source="Profile" authid=$authid]-->"><!--[gt text="Start import now"]-->!</a>
 <!--[else]-->
-	<!--[pnml name="_MYPROFILEPROFILENOTAV"]-->
+	<!--[gt text="The regular Profile module could not be found on your system. No Import possible."]-->
 <!--[/if]-->
 
 *]-->

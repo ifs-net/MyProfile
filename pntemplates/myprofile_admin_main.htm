@@ -1,32 +1,32 @@
 <!--[include file="myprofile_admin_menu.htm"]-->
 <!--[versioncheck module="MyProfile"]-->
-<h1><!--[pnml name="_MYPROFILEBACKENDDESCR"]--></h1>
+<h1><!--[gt text="Welcome to MyProfile - the advanced zikula profile module!"]--></h1>
 <form class="pn-adminform" method="post" action="<!--[pnmodurl modname="myProfile" type="admin" func="editProfile"]-->" >
 <fieldset>
-<legend><!--[pnml name="_MYPROFILEEDITPROFILE"]--></legend>
-<div><!--[pnml name="_MYPROFILEDIRECTPROFILEEDIT"]--></div>
+<legend><!--[gt text="Modify profile"]--></legend>
+<div><!--[gt text="You can directly modify a user's profile in entering the"]--></div>
 <div class="pn-adminformrow">
-<label for="myprofile_uname"><!--[pnml name="_MYPROFILEEDITUNAME"]--></label>
+<label for="myprofile_uname"><!--[gt text="username"]--></label>
 <input type="text" id="myprofile_uname" name="uname" />
 </div>
 <div class="pn-adminformrow">
-<label for="myprofile_email"><!--[pnml name="_EMAIL"]--></label>
+<label for="myprofile_email"><!--[gt text="E-mail address"]--></label>
 <input type="text" id="myprofile_email" name="email" />
 </div>
 <div class="pn-adminformrow">
-<label for="myprofile_uid"><!--[pnml name="_MYPROFILEEDITUID"]--></label>
+<label for="myprofile_uid"><!--[gt text="or the user's ID"]--></label>
 <input type="text" id="myprofile_uid" name="uid" />
-<div><!--[pnml name="_MYPROFILEEDITPROFILETHEN"]--></div>
+<div><!--[gt text="... and edit the user's profile"]--></div>
 </div>
 </fieldset>
 <div class="pn-adminformrow pn-adminformbuttons">
-<!--[pnbutton src=button_ok.gif set=icons/small alt="_SUBMIT" title="_SUBMIT"]-->
-<a href="<!--[pnmodurl modname=MyProfile type=admin]-->"><!--[pnimg modname=core src=button_cancel.gif set=icons/small altml=true titleml=true alt="_CANCEL" title="_CANCEL"]--></a>
+<!--[pnbutton src='button_ok.gif' set='icons/small' __alt="Submit" __title="Submit"]-->
+<a href="<!--[pnmodurl modname=MyProfile type=admin]-->"><!--[pnimg modname='core' src='button_cancel.gif' set='icons/small'   __alt="Cancel" __title="Cancel"]--></a>
 </div>
 </form>
 <fieldset>
-<legend><!--[pnml name="_MYPROFILESUPPORTMYPROFILE"]--></legend>
-<div class="pn-informationmsg"><!--[pnml name="_MYPROFILEDONATE"]--></div>
+<legend><!--[gt text="Support this module"]--></legend>
+<div class="pn-informationmsg"><!--[gt text="You like this module and it is usefull for you? Thank you for some little donation for the programmer! OK - I like programming very much and this module is free and open source - but if you spend some money I'll go out for a nice candlelight dinner with my girlfriend and it will be much easier next time to get free time for programming ;-)"]--></div>
 <form name="_xclick" action="https://www.paypal.com/de/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_xclick" />
 <input type="hidden" name="business" value="florian.schiessl@ifs-net.de" />
@@ -43,7 +43,7 @@
 <option value="USD" selected="selected">USD&nbsp;</option>
 <option value="EUR">EUR&nbsp;</option>
 </select>
-<input type="submit" name="submit" value="<!--[pnml name="_MYPROFILEDONATETHIS"]-->"/>
+<input type="submit" name="submit" value="<!--[gt text="Donate with PayPal!"]-->"/>
 </form>
 </fieldset>
 <br class="myprofile_clearboth">

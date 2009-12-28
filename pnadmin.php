@@ -127,6 +127,7 @@ function MyProfile_admin_plugins()
  */
 function MyProfile_admin_import()
 {    
+    $dom = ZLanguage::getModuleDomain('MyProfile');
     // Security check 
     if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_ADMIN)) return LogUtil::registerPermissionError();
     
@@ -134,7 +135,7 @@ function MyProfile_admin_import()
     $reset = FormUtil::getPassedValue('action',null,'GET');
     if (isset($reset) && ($reset == 'reset')) {
 	  	pnModDelVar('MyProfile','pnProfileStep');
-	  	LogUtil::registerStatus(_MYPROFILESTEPSRESETDONE);
+	  	LogUtil::registerStatus(__('pnProfile migration reset done', $dom));
 	}
 
 	// check if config file is writable
@@ -187,12 +188,13 @@ function MyProfile_admin_ajaxSaveList()
  */
 function MyProfile_admin_saveList()
 {
+    $dom = ZLanguage::getModuleDomain('MyProfile');
 	$order = unserialize(FormUtil::getPassedValue('order'));
     // Security check
     if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_ADMIN)) return LogUtil::registerPermissionError();
  	// store the new order    
 	pnModAPIFunc('MyProfile','admin','ajaxSaveList',array('list'=>$order));
-    LogUtil::registerStatus(_MYPROFILEELEMENTMOVED);
+    LogUtil::registerStatus(__('Element was moved successfully', $dom));
     return pnRedirect(pnModURL('MyProfile','admin','fields'));
 }
 
@@ -203,6 +205,7 @@ function MyProfile_admin_saveList()
  */
 function MyProfile_admin_editProfile()
 {    
+    $dom = ZLanguage::getModuleDomain('MyProfile');
 	$uid 		= FormUtil::getPassedValue('uid');
 	$uname 		= FormUtil::getPassedValue('uname');
 	$email 		= FormUtil::getPassedValue('email');
@@ -216,9 +219,9 @@ function MyProfile_admin_editProfile()
 		$res = DBUtil::selectObjectArray('users',$where);
 		if (count($res) > 1) {
 		  	// more than one user was found
-		  	$msg = _MYPROFILEMORETHANONEUSERFOUND.': ';
+		  	$msg = __('more than one user found', $dom).': ';
 		  	foreach($res as $r) $msg.= $r['uname'].', ';
-		  	$msg.= _MYPROFILECHOOSEONEUSER;
+		  	$msg.= __('please choose one user and enter its username', $dom);
 		  	LogUtil::registerError($msg);
 		}
 		else if (count($res) == 1) {
@@ -228,7 +231,7 @@ function MyProfile_admin_editProfile()
 		}
 		else {
 		  	// email address not found
-			LogUtil::registerError(_MYPROFILEEMAILNOTEXISTENT);
+			LogUtil::registerError(__('email address not found', $dom));
 		}
 	}
 	else if (isset($uname) && ($trans_uid > 0)) {
@@ -238,7 +241,7 @@ function MyProfile_admin_editProfile()
 	  	return pnRedirect(pnModURL('MyProfile','user','main',array('load_uid'=>$uid)));
 	}
 	else {
-	  	LogUtil::registerError(_MYPROFILEUNOTFOUND);
+	  	LogUtil::registerError(__('No user with this username or user-ID found', $dom));
 	}
 	return pnRedirect(pnModUrl('MyProfile','admin','main'));
 }
@@ -331,4 +334,3 @@ function MyProfile_admin_invalidemail()
     // Return the output
     return $render->pnFormExecute('myprofile_admin_invalidemail.htm', new myProfile_admin_invalidemailHandler());
 }
-?>

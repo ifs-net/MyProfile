@@ -16,7 +16,7 @@ function mp_admin_sendNotification($obj) {
 		// Get vars
 	    $sitename 	= pnConfigGetVar('sitename');
 	    $to 		= pnConfigGetVar('adminmail');
-	    $subject = _MYPROFILENEWPROFILE.' '._MYPROFILEAT.' '.$sitename;
+	    $subject = __('New profile', $dom).' '.__('at', $dom).' '.$sitename;
 		$body = pnUserGetVar('uname',$obj['id'])." - ".pnUserGetVar('email',$obj['id'])."\n\n";
 		foreach ($profile as $p) {
 		  	if ($p['fieldtype'] != 'COORD') {

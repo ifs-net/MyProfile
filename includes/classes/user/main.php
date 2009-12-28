@@ -14,12 +14,15 @@ class MyProfile_user_ProfileHandler
     var $load_uid;
     function initialize(&$render)
     {
+        $dom = ZLanguage::getModuleDomain('MyProfile');
 		$uid 		= pnUserGetVar('uid');
 		$settings 	= pnModAPIFunc('MyProfile','user','getSettings',array('uid' => $uid));
-		$render->assign('fields',pnModAPIFunc('MyProfile','admin','getFields'));
-		$render->assign('separators',pnModAPIFunc('MyProfile','admin','countSeparators'));
-		$render->assign('uid',$uid);
-		$render->assign('mymapavailable',pnModAvailable('MyMap'));
+		$fields     = pnModAPIFunc('MyProfile','admin','getFields');
+		$separators = pnModAPIFunc('MyProfile','admin','countSeparators');
+		$render->assign('fields',         $fields);
+		$render->assign('separators',     $separators);
+		$render->assign('uid',            $uid);
+		$render->assign('mymapavailable', pnModAvailable('MyMap'));
 		$notabs = pnModGetVar('MyProfile','notabs');
 		// if the user does not have a valid (incomplete / outdated) profile we should better
 		// not use the tab-mode because the user might not see every field and only update / complete
@@ -64,6 +67,7 @@ class MyProfile_user_ProfileHandler
 
 			// get the pnForm data and do a validation check
 		    $obj = $render->pnFormGetValues();		    
+		    prayer($obj);
 		    if (!$render->pnFormIsValid()) return false;
 			$obj['timestamp'] = date("Y-m-d",time());
 			
@@ -102,11 +106,11 @@ class MyProfile_user_ProfileHandler
 				$result = DBUtil::updateObject($obj, 'myprofile');
 			
 				// update user's attributes if neccesarry
-				if (!pnModAPIFunc('MyProfile','user','storeAsAttributes',array('data' => $obj))) LogUtil::registerError(_MYPROFILEATTRIBUTESTOREERROR);
+				if (!pnModAPIFunc('MyProfile','user','storeAsAttributes',array('data' => $obj))) LogUtil::registerError(__('Updating / creating user attributes failed', $dom));
 				
 				// Set status message for the user
-		      	if ($result) LogUtil::registerStatus(_MYPROFILEFIELDUPDATED);
-	    	  	else LogUtil::registerError(_MYPROFILEADDPROFILEFAILED);
+		      	if ($result) LogUtil::registerStatus(__('Profile was updated successfully', $dom));
+	    	  	else LogUtil::registerError(__('Creating / Updating profile failed', $dom));
 			}
 			else {					// create a new profile
 				// if the user is created by the user himself we need his uid
@@ -119,13 +123,13 @@ class MyProfile_user_ProfileHandler
 				DBUtil::insertObject($obj, 'myprofile',true);
 
 				// update user's attributes if neccesarry
-				if (!pnModAPIFunc('MyProfile','user','storeAsAttributes',array('data' => $obj))) LogUtil::registerError(_MYPROFILEATTRIBUTESTOREERROR);
+				if (!pnModAPIFunc('MyProfile','user','storeAsAttributes',array('data' => $obj))) LogUtil::registerError(__('Updating / creating user attributes failed', $dom));
 
 				// Send a notification email to site admin about new user
 				mp_admin_sendNotification($obj);
 			
 				// Give success message to the user
-				LogUtil::registerStatus(_MYPROFILECREATED);
+				LogUtil::registerStatus(__('The profile was created successfully', $dom));
 			}
 			return pnRedirect(pnModURL('MyProfile','user','main',array('load_uid'=>$this->load_uid)));
 		}

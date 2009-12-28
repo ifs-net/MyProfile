@@ -1,49 +1,49 @@
 <!--[include file="myprofile_user_header.htm"]-->
 <!--[pnajaxheader prototype="1"]-->
 <!--[include file="myprofile_user_statusmsg.htm"]-->
-<h1><!--[pnml name="_MYPROFILEMYPROFILE"]--></h1>
-<!--[pnml name="_MYPROFILEYOURSETTINGS"]--><br /><br />
+<h1><!--[gt text="My profile"]--></h1>
+<!--[gt text="Here you can define some custom settings for your profile"]--><br /><br />
 <!--[pnform]-->
 <!--[pnformvalidationsummary]-->
 
 <div class="myprofile_separator" id="myprofile_settings">
-<span class="myprofile_bold"><!--[pnml name="_MYPROFILEGENERALSETTINGS"]--></span><br /><br />
+<span class="myprofile_bold"><!--[gt text="General settings"]--></span><br /><br />
 
-<!--[pnformlabel for="timezoneoffset" text="_MYPROFILEMYTIMEZONE"]--><br />
+<!--[pnformlabel for="timezoneoffset" __text="My timezone"]--><br />
 <!--[pnformdropdownlist id="timezoneoffset" items=$items_timezone]--><br /><br />
 
-<!--[pnformcheckbox id="nocomments" checked="0"]--><!--[pnformlabel for="nocomments" text="_MYPROFILENOCOMMENTS"]--><br /><br />
+<!--[pnformcheckbox id="nocomments" checked="0"]--><!--[pnformlabel for="nocomments" __text="Do not allow other users to comment my profile"]--><br /><br />
 
 <!--[if $individualpermissions eq 1]-->
-	<!--[pnformlabel for="individualpermission" text="_MYPROFILEMYPROFILEVISIBLEFOR"]--><br />
+	<!--[pnformlabel for="individualpermission" __text="My profile page should be accessable by"]--><br />
 	<!--[pnformdropdownlist id="individualpermission" items=$items_individualpermissions]--><br /><br />
 <!--[/if]-->
 
 <!--[if $items_customfields|@count gt 0]-->
-	<!--[pnformlabel for="customsettings" text="_MYPROFILECUSTOMSETTINGS"]-->? 
+	<!--[pnformlabel for="customsettings" __text="Profile data fields that are marked as private should be viewable by"]-->? 
 	<!--[pnformdropdownlist id="customsettings" items=$items_customfields]--><br />
-	<a href="<!--[pnmodurl modname="MyProfile" type="user" func="confirmedusers"]-->"><!--[pnml name="_MYPROFILEMANAGECONFIRMEDUSERS"]--></a>
+	<a href="<!--[pnmodurl modname="MyProfile" type="user" func="confirmedusers"]-->"><!--[gt text="Manage users that are allowed to view all my data that is declared as private"]--></a>
 	<br /><br />
 <!--[/if]-->
 
 <!--[if $fields|@count gt 0]-->
 	<!--[if $individualtemplate eq "" and $individualtemplates eq 1]-->
-		<div id="mit_link"><a onclick="javascript:$('mit').show();$('mit_link').hide();" href="#mit"><!--[pnformlabel for="individualtemplate" text="_MYPROFILEMYPROFILEMYTEMPLATE"]--></a><br /></a></div>
+		<div id="mit_link"><a onclick="javascript:$('mit').show();$('mit_link').hide();" href="#mit"><!--[pnformlabel for="individualtemplate" __text="Use an individual template"]--></a><br /></a></div>
 	<!--[/if]-->
 	<div id="mit" >
 		<a name="mit"></a>
-		<!--[pnformlabel for="individualtemplate" text="_MYPROFILEMYPROFILEMYTEMPLATE"]--><br />
+		<!--[pnformlabel for="individualtemplate" __text="Use an individual template"]--><br />
 		<!--[pnformtextinput id="individualtemplate" textMode="multiLine" rows="8" cols="50"]--><br />
 		<div id="mih_link">
-			<a onclick="javascript:$('mih').show();$('mih_link').hide();" href="#mit"><!--[pnml name="_MYPROFILEINDIVIDUALTEMPLATEHINTS"]--></a>
+			<a onclick="javascript:$('mih').show();$('mih_link').hide();" href="#mit"><!--[gt text="Some hints to create your own template"]--></a>
 		</div>
 		<div id="mih">
 			<a name="mih"></a>
-			<fieldset><legend><!--[pnml name="_MYPROFILETEMPALTEUSEWHATYOUWANT"]--></legend>
-			<!--[pnml name="_MYPROFILETEMPALTEVARREPLACEMENTS"]-->:<br />
+			<fieldset><legend><!--[gt text="The individual profile tempalte can be designed in HTML"]--></legend>
+			<!--[gt text="The use of the following words (bold printed) will cause a replacement with your profile data - with * marked variables are mandatory and have to be used in your template"]-->:<br />
 			<ul>
 			<!--[foreach from=$fields item="field"]-->
-				<li><strong>§<!--[$field.identifier]-->§</strong> <!--[pnml name="_MYPROFILEWILLBEREPLACEDWITH"]--> <!--[$field.description]--></li>
+				<li><strong>§<!--[$field.identifier]-->§</strong> <!--[gt text="will be replaced with"]--> <!--[$field.description]--></li>
 			<!--[/foreach]-->
 			</ul>
 			</fieldset>
@@ -60,21 +60,21 @@
 </div>
 
 <div class="myprofile_separator" id="myprofile_password">
-<span class="myprofile_bold"><!--[pnml name="_MYPROFILEPASSWORDSETTINGS"]--></span><br /><br/>
-<!--[pnformlabel for="1pass" text="_MYPROFILENEWPASS"]-->:<br />
-<!--[pnformtextinput id="1pass" textMode="password" maxLength=20]--><br /><br />
-<!--[pnformlabel for="2pass" text="_MYPROFILENEWPASSAGAIN"]-->:<br />
-<!--[pnformtextinput id="2pass" textMode="password" maxLength=20]--><br /><br />
+<span class="myprofile_bold"><!--[gt text="Manage your password"]--></span><br /><br/>
+<!--[pnformlabel for="1pass" __text="If you want to change your password enter the new one"]-->:<br />
+<!--[pnformtextinput id="1pass" textMode="password" maxLength='20']--><br /><br />
+<!--[pnformlabel for="2pass" __text="and repeat the new password please"]-->:<br />
+<!--[pnformtextinput id="2pass" textMode="password" maxLength='20']--><br /><br />
 </div>
 
 <div class="myprofile_separator" id="myprofile_email">
-<span class="myprofile_bold"><!--[pnml name="_MYPROFILECHANGEMAIL"]--></span> (<!--[pnusergetvar name="email"]-->)<br /><br/>
-<!--[pnformlabel for="users_email" text="_MYPROFILEEMAILADDRESS"]-->:<br />
+<span class="myprofile_bold"><!--[gt text="Change email address"]--></span> (<!--[pnusergetvar name="email"]-->)<br /><br/>
+<!--[pnformlabel for="users_email" __text="New email address"]-->:<br />
 <!--[pnformemailinput id="users_email"]--><br /><br />
 <!--[if $noverification neq 1]-->
-	<a href="<!--[pnmodurl modname="MyProfile" type="user" func="validatemail"]-->"><!--[pnml name="_MYPROFILEENTERVALIDATIONCODE"]--></a><!--[/if]-->
+	<a href="<!--[pnmodurl modname="MyProfile" type="user" func="validatemail"]-->"><!--[gt text="Enter verification code for new email address"]--></a><!--[/if]-->
 </div>
-<!--[pnformbutton commandName="update" text="_MYPROFILESAVE"]-->
+<!--[pnformbutton commandName="update" __text="save / update"]-->
 
 <!--[/pnform]-->
 

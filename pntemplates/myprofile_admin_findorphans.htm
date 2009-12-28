@@ -1,10 +1,10 @@
 <!--[include file="myprofile_admin_menu.htm"]-->
-<h2><!--[pnml name="_MYPROFILEFINDORPHANS"]--></h2>
-<div><!--[pnml name="_MYPROFILECONSISTENCECHECKDESC"]--></div>
+<h2><!--[gt text="repair"]--></h2>
+<div><!--[gt text="This function checks the consistency of your MyProfile database. This check might be neccessary, if you allow your user's to delete their accounts themself or if your delete users using the function the Users module offers you. In this case, old data might still be stored in the MyProfile tables. This function is the \"garbage collector\" for this module."]--></div>
 <!--[if $orphans|@count gt 0]-->
 	<div class="pn-informationmsg">
-		<!--[pnml name="_MYPROFILEYOUHAVE"]--> <!--[$orphans|@count]--> <!--[pnml name="_MYPROFILEORPHANS"]-->.
-		<a href="<!--[pnmodurl modname="MyProfile" type="admin" func="findorphans" action="delete" authid=$authid]-->"><!--[pnml name="_MYPROFILECLEANUP"]--></a>
+		<!--[gt text="You have"]--> <!--[$orphans|@count]--> <!--[gt text="orphans"]-->.
+		<a href="<!--[pnmodurl modname="MyProfile" type="admin" func="findorphans" action="delete" authid=$authid]-->"><!--[gt text="Clean up database"]--></a>
 	</div>
 	<div>
 		<ol>
@@ -14,6 +14,6 @@
 		</ol>
 	</div>
 <!--[else]-->
-	<div class="pn-informationmsg"><!--[pnml name="_MYPROFILECONSISTENCEOK"]--></div>
+	<div class="pn-informationmsg"><!--[gt text="Database already optimized"]--></div>
 <!--[/if]-->
 <!--[include file="myprofile_admin_footer.htm"]-->

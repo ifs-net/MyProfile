@@ -48,8 +48,8 @@ function MyProfile_init()
     pnModSetVar('MyProfile', 'individualpermissions',	(($individualpermissions<>false) ? $individualpermissions : 0));	
     pnModSetVar('MyProfile', 'individualtemplates',		(($individualtemplates<>false) ? $individualtemplates : 0));	
     pnModSetVar('MyProfile', 'convertToUTF8',			(($convertToUTF8<>false) ? $convertToUTF8 : 0));	
-	pnModSetVar('MyProfile', 'separators_usetabs',		0);
-	pnModSetVar('MyProfile', 'nofification',			1);
+    pnModSetVar('MyProfile', 'separators_usetabs',		0);
+    pnModSetVar('MyProfile', 'nofification',			1);
 
     // clean up
     pnSessionDelVar('myprofile_allowmemberlist');
@@ -113,41 +113,41 @@ function MyProfile_delete()
 
 function MyProfile_upgrade($oldversion)
 {
-   switch($oldversion) {
-    case '1.0':
-    	// introduce individualpermission module variable
-    	pnModSetVar('MyProfile',	'individualpermissions'	,0);
-    	pnModSetVar('MyProfile',	'individualtemplates'	,0);
-    	pnModSetVar('MyProfile',	'resultsperpage'		,50);
-    	pnModSetVar('MyProfile',	'allowmemberlist'		,0);
-    	pnModSetVar('MyProfile',	'convertToUTF8'			,0);
-
-    	// tables for templates and "trust list" introduced
-	  	if (!DBUtil::createTable('myprofile_confirmedusers')) return false;
-	  	if (!DBUtil::createTable('myprofile_templates')) return false;
-	  	if (!DBUtil::changeTable('myprofile_fields')) return false;
-	case '1.1':
-		// update table definition because of the new usage of varchar and longtext
-		pnModAPIFunc('MyProfile','admin','updateTableDefinition');
-	  	if (!DBUtil::createTable('myprofile_stats')) return false;
-	case '1.2':
-		// install system init hook
-	    if (!pnModRegisterHook('zikula', 'systeminit', 'GUI', 'MyProfile', 'user', 'systeminit')) {
-	        LogUtil::registerError(_ERRORCREATINGHOOK);
-	        return false;
-	    }
-	    pnModAPIFunc('Modules', 'admin', 'enablehooks', array('callermodname' => 'zikula', 'hookmodname' => 'MyProfile'));
-	    LogUtil::registerStatus(_MYPROFILEHOOKHINT);
-		pnModSetVar('MyProfile','separators_usetabs',0);
-	case '1.3':
-	case '1.31':
-		pnModSetVar('MyProfile',	'nofification',	1);
-	case '1.4':
-	case '1.5':
-	  	if (!DBUtil::changeTable('myprofile_fields')) return false;
-	case '1.6':
-    default:
-	    return true;
+    $dom = ZLanguage::getModuleDomain('MyProfile');
+    switch($oldversion) {
+        case '1.0':
+        	// introduce individualpermission module variable
+        	pnModSetVar('MyProfile',	'individualpermissions'	,0);
+        	pnModSetVar('MyProfile',	'individualtemplates'	,0);
+        	pnModSetVar('MyProfile',	'resultsperpage'		,50);
+        	pnModSetVar('MyProfile',	'allowmemberlist'		,0);
+        	pnModSetVar('MyProfile',	'convertToUTF8'			,0);
+    
+        	// tables for templates and "trust list" introduced
+    	  	if (!DBUtil::createTable('myprofile_confirmedusers')) return false;
+    	  	if (!DBUtil::createTable('myprofile_templates')) return false;
+	     	if (!DBUtil::changeTable('myprofile_fields')) return false;
+    	case '1.1':
+    		// update table definition because of the new usage of varchar and longtext
+    		pnModAPIFunc('MyProfile','admin','updateTableDefinition');
+    	  	if (!DBUtil::createTable('myprofile_stats')) return false;
+    	case '1.2':
+    		// install system init hook
+    	    if (!pnModRegisterHook('zikula', 'systeminit', 'GUI', 'MyProfile', 'user', 'systeminit')) {
+    	        LogUtil::registerError(_ERRORCREATINGHOOK);
+	           return false;
+    	    }
+    	    pnModAPIFunc('Modules', 'admin', 'enablehooks', array('callermodname' => 'zikula', 'hookmodname' => 'MyProfile'));
+	       LogUtil::registerStatus(__('MyProfile systeminit hook created', $dom));
+    		pnModSetVar('MyProfile','separators_usetabs',0);
+    	case '1.3':
+    	case '1.31':
+	   	pnModSetVar('MyProfile',	'nofification',	1);
+    	case '1.4':
+    	case '1.5':
+    	  	if (!DBUtil::changeTable('myprofile_fields')) return false;
+    	case '1.6':
+        default:
+    	    return true;
     }
 }
-?>

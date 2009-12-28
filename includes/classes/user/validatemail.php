@@ -41,18 +41,18 @@ class MyProfile_user_ValidateMailHandler
 			if ($code['expire_date'] >= time()) {	// code is valid (date check)
 			  	if ($obj['code'] == $code['code']) {// code is correct
 				    if (pnUserSetVar('email',$code['email'])) {
-					  	LogUtil::registerStatus(_MYPROFILEEMAILCHANGED);
+					  	LogUtil::registerStatus(__('Your email address was updated successfully', $dom));
 						// email address was changed - we now need to delete the attribute invalidemail if it exists
 					    $user = DBUtil::selectObjectByID('users', pnUserGetVar('uid'), 'uid', null, null, null, false);
 						$user['__ATTRIBUTES__']['myprofile_invalidemail'] = '';
 						// store attributes
 						DBUtil::updateObject($user, 'users', '', 'uid');			
 					}
-				    else return LogUtil::registerError(_MYPROFILEEMAILCHANGEERROR);
+				    else return LogUtil::registerError(__('An error occured while trying to change your email address', $dom));
 				}
-				else return LogUtil::registerError(_MYPROFILEINCORRECTCODE.' code: '.$code['code'].' entered '.$obj['code']);
+				else return LogUtil::registerError(__('Verification code incorrect', $dom).' code: '.$code['code'].' entered '.$obj['code']);
 			}
-			else return LogUtil::registerError(_MYPROFILEINVALIDCODE);
+			else return LogUtil::registerError(__('Verification code is no longer valid - you should start a new request for a new verification code', $dom));
 			// now we have to delete the old validation code from the user's attributes
 			$uid = $obj['uid'];
 		    $user = DBUtil::selectObjectByID('users', $uid, 'uid', null, null, null, false);

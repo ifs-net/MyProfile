@@ -21,6 +21,7 @@
  */
 function MyProfile_userdeletionapi_delUser($args)
 {
+    $dom = ZLanguage::getModuleDomain('MyProfile');
   	$uid = $args['uid'];
 	if (!pnModAPIFunc('UserDeletion','user','SecurityCheck',array('uid' => $uid))) {
 	  	$result 	= _NOTHINGDELETEDNOAUTH;
@@ -36,12 +37,11 @@ function MyProfile_userdeletionapi_delUser($args)
 		$column = $tables['myprofile_confirmedusers_column'];
 		$where = $column['confirmed_uid']." = ".$uid." OR ".$column['uid']." = ".$uid;
 		DBUtil::deleteWhere('myprofile_confirmedusers',$where);
-		$result = _MYPROFILEPROFILEDELETEDFOR." ".pnUserGetVar('uname',$uid);
+		$result = __('Profile data deleted for user', $dom)." ".pnUserGetVar('uname',$uid);
 	}
 	return array(
-			'title' 	=> _MYPROFILEMODULETITLE,
+			'title' 	=> __('User-Profile', $dom),
 			'result'	=> $result
 
 		);
 }
-?>

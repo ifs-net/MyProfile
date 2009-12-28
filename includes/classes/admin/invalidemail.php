@@ -29,14 +29,14 @@ class MyProfile_admin_invalidemailHandler
 			$where = $userscolumn['email']." like '".$email."'";
 			$users = DBUtil::selectObjectArray('users',$where);
 			if (count($users) < 1) {
-			  	LogUtil::registerError(_MYPROFILEEMAILNOTFOUND);
+			  	LogUtil::registerError(__('Email address could not be found in user database', $dom));
 			}
 			else {
 			  	// maybe there are more users than one with the same email address
 			  	foreach ($users as $user) {
 			  	  	$attr = $user['__ATTRIBUTES__'];
 					if (isset($attr['myprofile_invalidemail']) && $attr['myprofile_invalidemail'] == 1) {
-					  	LogUtil::registerError(_MYPROFILEUSERALREADYADDED.': '.$user['uname']);
+					  	LogUtil::registerError(__('User already marked', $dom).': '.$user['uname']);
 					  	return pnRedirect(pnModURL('MyProfile','admin','invalidemail'));
 					}
 					else {
@@ -45,11 +45,11 @@ class MyProfile_admin_invalidemailHandler
 						$new['__ATTRIBUTES__']['myprofile_invalidemail'] = 1;
 						
 						if (DBUtil::updateObject($new, 'users', '', 'uid')) {
-						  	LogUtil::registerStatus(_MYPROFILEUSERMARKED.': '.$user['uname']);
+						  	LogUtil::registerStatus(__('User marked', $dom).': '.$user['uname']);
 						  	return pnRedirect(pnModURL('MyProfile','admin','invalidemail'));
 						}
 						else {
-						  	LogUtil::registerError(_MYPROFILEUPDATEERRORFOR.': '.$user['uname']);
+						  	LogUtil::registerError(__('Error while trying to mark the user', $dom).': '.$user['uname']);
 						}
 					}
 				}

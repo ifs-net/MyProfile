@@ -17,7 +17,7 @@ class MyProfile_user_SearchHandler
 	  	// Admins should be able to modify user's profile data
 	  	$fields = pnModAPIFunc('MyProfile','admin','getFields');
 	  	$fieldsResult = array();
-	  	$items_orderby = array(array ('text' => _MYPROFILEUNAME, 'value' => 'uname'));
+	  	$items_orderby = array(array ('text' => __('Username', $dom), 'value' => 'uname'));
 		$viewer_uid = pnUserGetVar('uid');
 	  	foreach ($fields as $field) {
 			// status codes:
@@ -53,16 +53,16 @@ class MyProfile_user_SearchHandler
 		$render->assign('allowmemberlist',	pnModGetVar('MyProfile','allowmemberlist'));
 		$this->fields = $fields;
 		$items_searchoptions = array (
-				array(	'text' => _MYPROFILESOFT, 	'value' => 'soft'),
-				array(	'text' => _MYPROFILEEXACT, 	'value' => 'exact')
+				array(	'text' => __('soft', $dom), 	'value' => 'soft'),
+				array(	'text' => __('exact', $dom), 	'value' => 'exact')
 			);
 		$items_connector = array (
-				array(	'text' => _MYPROFILEAND,	'value' => 'and'),
-				array(	'text' => _MYPROFILEOR,		'value' => 'or')
+				array(	'text' => __('AND', $dom),	'value' => 'and'),
+				array(	'text' => __('OR', $dom),		'value' => 'or')
 			);
 		$items_ascdesc = array (
-				array(	'text' => _MYPROFILEASC,	'value' => 'ASC'),
-				array(	'text' => _MYPROFILEDESC,	'value' => 'DESC')
+				array(	'text' => __('ASC', $dom),	'value' => 'ASC'),
+				array(	'text' => __('DESC', $dom),	'value' => 'DESC')
 			);
 		$render->assign('items_searchoptions',$items_searchoptions);
 		$render->assign('userloggedin', (int)pnUserLoggedIn());

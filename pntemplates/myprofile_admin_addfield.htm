@@ -4,88 +4,88 @@
 
 <h2>
 <!--[if $id gt 0]-->
-	<!--[pnml name="_MYPROFILEMODIFYFIELD"]-->
+	<!--[gt text="Modify an existing field"]-->
 <!--[else]-->
-	<!--[pnml name="_MYPROFILEADDNEWFIELD"]-->
+	<!--[gt text="Add a new field"]-->
 <!--[/if]-->
 </h2>
 
-<div class="pn-informationmsg"><!--[pnml name="_MYPROFILEINTROTEXT"]--><br/><!--[pnml name="_MYPROFILENNOTYPECHANGESLATER"]--></div>
+<div class="pn-informationmsg"><!--[gt text="You can add or modify a custom field for the user's profile here."]--><br/><!--[gt text="Due to some technical and logical reasons the type and identifier of a regular field can not be changed after the field was created."]--></div>
 
-<!--[pnform cssClass=pn-adminform]-->
+<!--[pnform cssClass='pn-adminform']-->
     <!--[pnformvalidationsummary]-->
 
 <div id="myprofile_fieldtype" class="pn-adminformrow">
-    <!--[pnformlabel for="fieldtype" text="_MYPROFILEFIELDTYPE"]-->
+    <!--[pnformlabel for="fieldtype" __text="Type of this field"]-->
     <!--[if $id gt 0]-->
-	<!--[pnformtextinput id="fieldtype" maxLength=99 mandatory="1" readonly="true"]-->
+	<!--[pnformtextinput id="fieldtype" maxLength='99' mandatory="1" readonly="true"]-->
     <!--[else]-->
 	<!--[pnformdropdownlist id="fieldtype" items=$items_fieldtype]-->
     <!--[/if]-->
 </div>
 <div id="myprofile_identifier" class="pn-adminformrow" style="clear: both">
-    <!--[pnformlabel for="identifier" text="_MYPROFILEIDENTIFIER"]-->
+    <!--[pnformlabel for="identifier" __text="Identifier for the field (and the name of the column in the database) or title of the separator (if type is separator)"]-->
     <!--[if $id gt 0]-->
-	<!--[pnformtextinput id="identifier" maxLength=40 mandatory="1" readonly="true"]-->
+	<!--[pnformtextinput id="identifier" maxLength='40' mandatory="1" readonly="true"]-->
     <!--[else]-->
-	<!--[pnformtextinput id="identifier" maxLength=40 mandatory="1"]-->
+	<!--[pnformtextinput id="identifier" maxLength='40' mandatory="1"]-->
     <!--[/if]-->
 </div>
 <div id="myprofile_mandatory" class="pn-adminformrow" style="clear: both">
-    <!--[pnformlabel for="mandatory" text="_MYPROFILEMANDATORY"]-->
+    <!--[pnformlabel for="mandatory" __text="Should this field be mandatory"]-->
     <!--[pnformdropdownlist id="mandatory" items=$items_yesno]-->
 </div>
 <div id="myprofile_description" class="pn-adminformrow" style="clear: both">
-    <!--[pnformlabel for="description" text="_MYPROFILEDESCRIPTION"]-->
-    <!--[pnformtextinput id="description" maxLength=400 mandatory=1]-->
+    <!--[pnformlabel for="description" __text="Description"]-->
+    <!--[pnformtextinput id="description" maxLength='400' mandatory='1']-->
 </div>
 <div id="myprofile_num_minvalue" class="pn-adminformrow" style="clear: both">
-    <!--[pnformlabel for="num_minvalue" text="_MYPROFILENUMMINVALUE"]-->
+    <!--[pnformlabel for="num_minvalue" __text="Minimal value for integer or float"]-->
     <!--[pnformfloatinput id="num_minvalue"]-->
 </div>
 <div id="myprofile_num_maxvalue" class="pn-adminformrow" style="clear: both">
-    <!--[pnformlabel for="num_maxvalue" text="_MYPROFILENUMMAXVALUE"]-->
+    <!--[pnformlabel for="num_maxvalue" __text="Maximal value for integer or float"]-->
     <!--[pnformfloatinput id="num_maxvalue"]-->
 </div>
 <div id="myprofile_str_length" class="pn-adminformrow" style="clear: both">
-    <!--[pnformlabel for="str_length" text="_MYPROFILESTRINGLENGTH"]-->
+    <!--[pnformlabel for="str_length" __text="Maximal length of string"]-->
     <!--[pnformintinput id="str_length" minValue="0"]-->
 </div>
 <div id="myprofile_list" class="pn-adminformrow" style="clear: both">
-    <!--[pnformlabel for="list" text="_MYPROFILELIST"]-->
+    <!--[pnformlabel for="list" __text="List (for building a dropdown menu)"]-->
     <!--[pnformtextinput id="list" maxLength="9999" textMode="multiline"]-->
 	<div class="pn-informationmsg">
-	    <!--[pnml name="_MYPROFILEDROPDOWNEX"]-->:<br />
-	    <em>    <!--[pnml name="_MYPROFILEDROPDOWNCODE"]-->    </em><br />
-	    <!--[pnml name="_MYPROFILERADIOEX"]-->:<br />
-	    <em>    <!--[pnml name="_MYPROFILERADIOCODE"]-->    </em>
+	    <!--[gt text="Example code for dropdown menus: @@value to store||text to show"]-->:<br />
+	    <em>    <!--[gt text="@@daily||I want the daily newsletter @@monthly||Send a newsletter every month @@no||I do not want to recieve newsletters"]-->    </em><br />
+	    <!--[gt text="Example code for radiobutton menus: @*value to store||text to show"]-->:<br />
+	    <em>    <!--[gt text="@*0||No @*1||Yes"]-->    </em>
 	</div>
 </div>
 <div id="myprofile_public_status" class="pn-adminformrow" style="clear: both">
-    <!--[pnformlabel for="public_status" text="_MYPROFILEPUBLICSTATUS"]-->
+    <!--[pnformlabel for="public_status" __text="Public status"]-->
     <!--[pnformdropdownlist id="public_status" items=$items_public_status]-->
 </div>
 <div id="myprofile_active" class="pn-adminformrow" style="clear: both">
-    <!--[pnformlabel for="active" text="_MYPROFILEACTIVE"]-->
+    <!--[pnformlabel for="active" __text="Should this field be writeable and shown in the user's profile configuration"]-->
     <!--[pnformdropdownlist id="active" items=$items_yesno]-->
 </div>
 <div id="myprofile_shown" class="pn-adminformrow" style="clear: both">
-    <!--[pnformlabel for="shown" text="_MYPROFILESHOWN"]-->
+    <!--[pnformlabel for="shown" __text="Should this field be shown on the user's profile page that will be generated by this module"]-->
     <!--[pnformdropdownlist id="shown" items=$items_yesno]-->
 </div>
 <div id="myprofile_searchable" class="pn-adminformrow" style="clear: both">
-    <!--[pnformlabel for="searchable" text="_MYPROFILESEARCHABLE"]-->
+    <!--[pnformlabel for="searchable" __text="Field should be searchable by all users doing a search"]-->
     <!--[pnformdropdownlist id="searchable" items=$items_yesno]-->
 </div>
 
 <div id="myprofile_userproperty" class="pn-adminformrow" style="clear: both">
-    <!--[pnformlabel for="userproperty" text="_MYPROFILEUSERPROPERTY"]-->
+    <!--[pnformlabel for="userproperty" __text="Name of user attribute / property to store the users value also as user attribute. Example: Entering _REALNAME here will make MyProfile to store the user's value also as _REALNAME"]-->
     <!--[pnformtextinput id="userproperty" maxLength="9999"]-->
 </div>
 
 <!--[if $id gt 0]-->   
 <div id="myprofile_deletefield" class="pn-adminformrow" style="clear: both">
-    <!--[pnformlabel for="deletefield" text="_MYPROFILEDELETEFIELD"]-->
+    <!--[pnformlabel for="deletefield" __text="Delete this field"]-->
     <!--[pnformcheckbox id="deletefield" checked="0"]-->
 </div>
 <!--[/if]-->
@@ -95,8 +95,8 @@
 	myprofile_showSelectedFieldType();
 </script>
     <div class="pn-adminformrow pn-adminformbuttons" style="clear: both">
-	<!--[pnformimagebutton commandName="update"  imageUrl=images/icons/small/button_ok.gif alt="_MYPROFILESUBMITFIELD" title="_MYPROFILESUBMITFIELD"]-->
-        <a href="<!--[pnmodurl modname=MyProfile type=admin func=fields]-->"><!--[pnimg modname=core src=button_cancel.gif set=icons/small altml=true titleml=true alt="_CANCEL" title="_CANCEL"]--></a>
+	<!--[pnformimagebutton commandName="update" imageUrl='images/icons/small/button_ok.gif' __alt="Update / create field" __title="Update / create field"]-->
+        <a href="<!--[pnmodurl modname=MyProfile type=admin func=fields]-->"><!--[pnimg modname='core' src='button_cancel.gif' set='icons/small'   __alt="Cancel" __title="Cancel"]--></a>
     </div>
 <!--[/pnform]-->
 <!--[include file="myprofile_admin_footer.htm"]-->

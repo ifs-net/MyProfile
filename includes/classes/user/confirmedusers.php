@@ -31,26 +31,26 @@ class MyProfile_user_ConfirmedUsersHandler
 			$uid = (int)pnUserGetVar('uid');
 			$confirmed_uid = (int)pnUserGetIDFromName($obj['uname']);
 			if (!($confirmed_uid > 1)) {
-			  	LogUtil::registerError(_MYPROFILEUSERNOTFOUND);
+			  	LogUtil::registerError(__('The username you specified does not exist', $dom));
 			  	return false;
 			}
 			else if ($uid == $confirmed_uid) {
-			  	LogUtil::registerError(_MYPROFILEDONOTADDYOURSELF);
+			  	LogUtil::registerError(__('I hope you trust yourself, but you cannot add your own username to your list', $dom));
 			  	return false;
 			}
 			else if (in_array($confirmed_uid,pnModAPIFunc('MyProfile','user','getCustomFieldList',array('uid' => $uid)))) {
-			  	LogUtil::registerError(_MYPROFILEUSERALREADYADDED);
+			  	LogUtil::registerError(__('User already marked', $dom));
 			  	return false;
 			}
 			else {
 			  	$obj = array(	'uid'			=> $uid,
 				  				'confirmed_uid'	=> $confirmed_uid);
 			  	if (!DBUtil::insertObject($obj,'myprofile_confirmedusers')) {
-				  	LogUtil::registerError(_MYPROFILEUSERADDERROR);
+				  	LogUtil::registerError(__('An error occured while trying to add the user to your list', $dom));
 				  	return false;
 				} 
 			}
-			LogUtil::registerStatus(_MYPROFILEUSERADDED);
+			LogUtil::registerStatus(__('User was added to the list', $dom));
 			return pnRedirect(pnModURL('MyProfile','user','confirmedusers'));
 		}
 		return true;

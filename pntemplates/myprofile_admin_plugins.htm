@@ -1,14 +1,14 @@
 <!--[include file="myprofile_admin_menu.htm"]-->
-<h2><!--[pnml name="_MYPROFILEBACKEND"]--></h2>
-<!--[pnml name="_MYPROFILEPLUGINDESC"]-->
+<h2><!--[gt text="MyProfile backend configuration"]--></h2>
+<!--[gt text="Some modules have plugins for the profile module. For developers: Please take a look at the plugins.txt file in the documentation directory. Found plugins will be used automatically."]-->
 <!--[if $plugins gt 0]-->
 <ul>
     <!--[foreach from=$plugins item=plugin]-->
-	    <li><span class="myprofile_bold"><!--[pnml name=$plugin.name]--></span></li>
+	    <li><span class="myprofile_bold"><!--[gt text="$plugin.name"]--></span></li>
 	<!--[/foreach]-->
 </ul>
-<!--[pnml name="_MYPROFILEREMOVEPLUGINS"]-->
+<!--[gt text="If you want to remove a plugin from a user's profile page jsut delete the pnmyprofileapi.php in the root folder of the modules you want to remove"]-->
 <!--[else]-->
-<!--[pnml name="_MYPROFILENOPLUGINSFOUND"]-->
+<!--[gt text="No plugins found!"]-->
 <!--[/if]-->
 <!--[include file="myprofile_admin_footer.htm"]-->

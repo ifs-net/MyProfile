@@ -27,24 +27,24 @@ class MyProfile_admin_addFieldHandler
 			$render->assign('searchable',1);
 		}
 		// create dropdown fields
-		$items_yesno = array (			array('text' => _MYPROFILENO,		'value' => 0),
-										array('text' => _MYPROFILEYES,		'value' => 1) );
+		$items_yesno = array (			array('text' => __('No', $dom),		'value' => 0),
+										array('text' => __('Yes', $dom),		'value' => 1) );
 		$items_fieldtype = array (		
-										array('text' => _MYPROFILESEPARATOR,'value' => 'SEPARATOR'),
-										array('text' => _MYPROFILESTRING,	'value' => 'STRING'),
-										array('text' => _MYPROFILEINT,		'value' => 'INTEGER'),
-										array('text' => _MYPROFILEFLOAT,	'value' => 'FLOAT'),
-										array('text' => _MYPROFILETEXTBOX,	'value' => 'TEXTBOX'),
-										array('text' => _MYPROFILEURL,		'value' => 'URL'),
-										array('text' => _MYPROFILEUIN,		'value' => 'UIN'),
-										array('text' => _MYPROFILESKYPEID,	'value' => 'SKYPEID'),
-										array('text' => _MYPROFILEDATE,		'value' => 'DATE'),
-										array('text' => _MYPROFILETIMESTAMP,'value' => 'TIMESTAMP'),
-										array('text' => _MYPROFILECOORD,	'value' => 'COORD') );
-		$items_public_status = array (	array('text' => _MYPROFILENOPROTECT,'value' => 0),
-										array('text' => _MYPROFILEREGONLY,	'value' => 1),
-										array('text' => _MYPROFILEADMINONLY,'value' => 2),
-										array('text' => _MYPROFILECUSTOM,	'value' => 9) );
+										array('text' => __('Separator', $dom),'value' => 'SEPARATOR'),
+										array('text' => __('String', $dom),	'value' => 'STRING'),
+										array('text' => __('Integer', $dom),		'value' => 'INTEGER'),
+										array('text' => __('Float', $dom),	'value' => 'FLOAT'),
+										array('text' => __('String (multiline)', $dom),	'value' => 'TEXTBOX'),
+										array('text' => __('Url', $dom),		'value' => 'URL'),
+										array('text' => __('ICQ-UIN', $dom),		'value' => 'UIN'),
+										array('text' => __('Skype-ID', $dom),	'value' => 'SKYPEID'),
+										array('text' => __('Date', $dom),		'value' => 'DATE'),
+										array('text' => __('Timestamp', $dom),'value' => 'TIMESTAMP'),
+										array('text' => __('Coordinate', $dom),	'value' => 'COORD') );
+		$items_public_status = array (	array('text' => __('This field will be shown to everybody', $dom),'value' => 0),
+										array('text' => __('Only registered users will be able to see this field\'s value', $dom),	'value' => 1),
+										array('text' => __('Only the administrator will be able to see this field\'s value', $dom),'value' => 2),
+										array('text' => __('The user can choose who should be able to see this field\'s value', $dom),	'value' => 9) );
 		$render->assign('items_yesno',			$items_yesno);
 		$render->assign('items_fieldtype',		$items_fieldtype);
 		$render->assign('items_public_status',	$items_public_status);
@@ -64,15 +64,15 @@ class MyProfile_admin_addFieldHandler
 		    if ($obj['deletefield'] == "1") {
 		      	if ($obj['fieldtype']!='SEPARATOR') 
 				  	if (!DBUtil::dropColumn('myprofile','MyProfile_'.$obj['identifier'])) {
-						logUtil::registerError(_MYPROFILEFIELDDELERR);
+						logUtil::registerError(__('Error while deleting the fields', $dom));
 						return false;
 					}
 			  	if (DBUtil::deleteObjectByID('myprofile_fields',$this->id)) {
-			  	  	logUtil::registerStatus(_MYPROFILEFIELDDEL);
+			  	  	logUtil::registerStatus(__('Field was deleted successfully', $dom));
 			  	  	pnModAPIFunc('MyProfile','admin','updateTableDefinition');
 			  	  	return pnRedirect(pnModURL('MyProfile','admin','fields'));
 			  	}
-				else logUtil::registerError(_MYPROFILEFIELDDELERR);
+				else logUtil::registerError(__('Error while deleting the fields', $dom));
 		    }
 		    // check if the form was filled correctly
 		    if (!$render->pnFormIsValid()) return false;
@@ -80,7 +80,7 @@ class MyProfile_admin_addFieldHandler
 		    if ($this->id > 0) $obj['id']=$this->id;
 		    if ($this->id > 0) {	// an field just has to be updated
 		      	$result = DBUtil::updateObject($obj, 'myprofile_fields');
-		      	if ($result) LogUtil::registerStatus(_MYPROFILEFIELDUPDATED);
+		      	if ($result) LogUtil::registerStatus(__('Existing field was updated successfully', $dom));
 			}
 			else {	// field has to be inserted as new field.
 			  	$fields = pnModAPIFunc('MyProfile','admin','getFields');
@@ -90,12 +90,12 @@ class MyProfile_admin_addFieldHandler
 			  	  
 					$pattern = "/\A[a-zA-Z0-9]+\z/";
 					if ((int)preg_match($pattern, $obj['identifier'], $result) ==0) {
-			  	  	  	LogUtil::registerError(_MYPROFILEIDENTIFIERFORMATWARNING.' "'.$obj['identifier'].'"');
+			  	  	  	LogUtil::registerError(__('The identifier must not contain any other characters than numbers (0-9) and regular characters (A-Z, a-z)', $dom).' "'.$obj['identifier'].'"');
 						return false; 
 					}
 				}
 				DBUtil::insertObject($obj, 'myprofile_fields');
-				LogUtil::registerStatus(_MYPROFILEFIELDCREATED);
+				LogUtil::registerStatus(__('New field was created successfully', $dom));
 			}
 		    // rebuild table definition. many errors might be avoidable by this
 		    pnModAPIFunc('MyProfile','admin','updateTableDefinition');
