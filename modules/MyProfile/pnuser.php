@@ -37,8 +37,10 @@ function MyProfile_user_main()
  */
 function MyProfile_user_map($args)
 {
+
+    $dom = ZLanguage::getModuleDomain('MyProfile');
     // Check for MyMap
-    if (!pnModAvailable('MyMap')) return LogUtil::registerError(_MYPROFILEMYMAPMISSING);
+    if (!pnModAvailable('MyMap')) return LogUtil::registerError(__('MyMap module not found', $dom));
     // get coord fields and get coords
     $identifier = FormUtil::getPassedValue('identifier');
     if (!isset($identifier) || ($identifier == '')) {
@@ -48,7 +50,7 @@ function MyProfile_user_map($args)
     if (count($fields) == 1) {
 	  	$coords = pnModAPIFunc('MyProfile','user','getCoords',array('field' => $fields));
 	} else {
-	  	return LogUtil::registerError(_MYPROFILEMAPIDENTIFIERASPARAMETER);
+	  	return LogUtil::registerError(__('More than one coordinate field found. Please use the url parameter identifier and the value of the identifier you want to use as coordinate field and reload the page', $dom));
 	}
     // Security check
     if (($fields['public_status'] > 0) && (!pnUserLoggedIn())) return LogUtil::registerPermissionError();
@@ -113,6 +115,7 @@ function MyProfile_user_validatemail()
  */
 function MyProfile_user_confirmedusers()
 {
+    $dom = ZLanguage::getModuleDomain('MyProfile');
   	// load handler class
 	Loader::requireOnce('modules/MyProfile/includes/classes/user/confirmedusers.php');
     // Security check
@@ -126,11 +129,11 @@ function MyProfile_user_confirmedusers()
 		}
 	  	else {
 	  		if (pnModAPIFunc('MyProfile','user','deleteConfirmedUser',array('confirmed_uid' => $delete))) {
-			   	LogUtil::registerStatus(_MYPROFILEUSERDELETED);
+			   	LogUtil::registerStatus(__('User deleted', $dom));
 			   	return pnRedirect(pnModURL('MyProfile','user','confirmedusers'));
 			}
 	  		else {
-			    LogUtil::registerError(_MYPROFILEERRORDELETINGUSER);
+			    LogUtil::registerError(__('An error occured while trying to delete the user', $dom));
 			   	return pnRedirect(pnModURL('MyProfile','user','confirmedusers'));
 			}			
 		}
@@ -210,6 +213,7 @@ function MyProfile_user_view()
  */
 function MyProfile_user_display()
 {
+    $dom = ZLanguage::getModuleDomain('MyProfile');
     // Security check
     if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_OVERVIEW)) return LogUtil::registerPermissionError();
 
@@ -289,7 +293,7 @@ function MyProfile_user_display()
 	$render->assign('homelink',				pnGetBaseURL().pnModURL('MyProfile','user','tab',array('uid'=>$uid,'ajax'=>1,'modname'=>'MyProfile')));
 
 	// Set Standard page title
-	PageUtil::setVar('title', _MYPROFILEPROFILEOF.' '.$uname);
+	PageUtil::setVar('title', __('Profile of user', $dom).' '.$uname);
 
 	// ContactList plugin
 	$render->assign('contactlistavailable',	pnModAvailable('ContactList'));

@@ -7,14 +7,19 @@
  * @copyright    Copyright (C) 2008
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
- 
+
 // The following information is used by the Modules module 
+
+// Language domain
+$domain = ZLanguage::getModuleDomain('MyProfile');
 // for display and upgrade purposes
 $modversion['name']           = 'MyProfile';
-// the version string must not exceed 10 characters!
-$modversion['version']        = '1.6';
-$modversion['description']    = 'MyProfile - the advanced pnRender based Zikula profile module';
-$modversion['displayname']    = 'MyProfile';
+$modversion['displayname']    = __('MyProfile', $domain);
+//! this is the URL that will be displayed for the module
+$modversion['url']            = __('myprofile', $domain);
+$modversion['description']    = __('The advances template based zikula profile module', $domain);
+
+$modversion['version']        = '2.0';
 
 // The following in formation is used by the credits module
 // to display the correct credits

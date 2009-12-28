@@ -150,7 +150,7 @@ function mp_systemInit()
 			// load language file
 			pnModLangLoad('MyProfile','plugin');
 			// register error message
-			LogUtil::registerError(_MYPROFILEPROFILEOUTOFTIME);
+			LogUtil::registerError(__('Your profile is outdated or incomplete - please check / complete / update your personal data', $dom));
 			return pnRedirect(pnModURL('MyProfile','user','main'));
 	  	}
 	}
@@ -165,7 +165,7 @@ function mp_systemInit()
   	  	// load language file
   	  	pnModLangLoad('MyProfile','plugin');
   	  	// register error message
-	    LogUtil::registerError(_MYPROFILEYOUREMAILINVALID);
+	    LogUtil::registerError(__('Your email address has to be updated before using this site! EMails came back to the administrator that did not reach you - valid email addresses are mandatory for this site! After changing your email address you will be able to use this site again!', $dom));
 	    return pnRedirect(pnModURL('MyProfile','user','settings',array('mode' => 'email')));
 	}
 
@@ -189,7 +189,7 @@ function mp_checkForAccount()
 		if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_ADMIN)) {
 		modules_get_language();
 		pnModLangLoad('MyProfile', 'user');
-		LogUtil::registerError(_MYPROFILEPLEASECREATEACCOUNTFIRST);
+		LogUtil::registerError(__('Please fill out your personal profile first. This is neccessary before you can interact in this community!', $dom));
 		return pnRedirect(pnModURL('MyProfile','user','main'));
 		}
 	}	

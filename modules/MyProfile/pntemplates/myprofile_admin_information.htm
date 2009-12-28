@@ -1,35 +1,35 @@
 <!--[include file="myprofile_admin_menu.htm"]-->
 
-<h1><!--[pnml name="_MYPROFILEINFORMATION"]--></h1>
+<h1><!--[gt text="information"]--></h1>
 
 <p>
-<!--[pnml name="_MYPROFILESTATUSERS"]-->: <!--[$users]--><br />
-<!--[pnml name="_MYPROFILESTATACTIVE"]-->: <!--[$users_active]--><br />
-<!--[pnml name="_MYPROFILESTAT14D"]-->: <!--[$users_14d]--><br />
-<!--[pnml name="_MYPROFILESTAT30D"]-->: <!--[$users_30d]--><br />
-<!--[pnml name="_MYPROFILESTAT60D"]-->: <!--[$users_60d]--><br />
-<!--[pnml name="_MYPROFILESTAT90D"]-->: <!--[$users_90d]--><br />
-<!--[pnml name="_MYPROFILESTAT180D"]-->: <!--[$users_180d]--><br />
-<!--[pnml name="_MYPROFILESTAT365D"]-->: <!--[$users_365d]--><br />
-<!--[pnml name="_MYPROFILESTATNEWUSERS30D"]-->: <!--[$users_new30d]--><br />
-<!--[pnml name="_MYPROFILESTATMYPROFILE"]-->: <!--[$myprofile]--><br />
-<!--[pnml name="_MYPROFILESTATNOPROFILE"]-->: <!--[$noprofile]--><br />
-<!--[pnml name="_MYPROFILESTATINVALIDEMAIL"]-->: <!--[$invalidemail]--><br />
-<!--[pnml name="_MYPROFILESTATINVALIDEMAIL30D"]-->: <!--[$invalidemail30d]--><br />
+<!--[gt text="Registered users"]-->: <!--[$users]--><br />
+<!--[gt text="Active users"]-->: <!--[$users_active]--><br />
+<!--[gt text="Active in last two weeks"]-->: <!--[$users_14d]--><br />
+<!--[gt text="Active in last month"]-->: <!--[$users_30d]--><br />
+<!--[gt text="Active in last two months"]-->: <!--[$users_60d]--><br />
+<!--[gt text="Active in last three months"]-->: <!--[$users_90d]--><br />
+<!--[gt text="Active in last six months"]-->: <!--[$users_180d]--><br />
+<!--[gt text="Active in last year"]-->: <!--[$users_365d]--><br />
+<!--[gt text="New registrations in last month"]-->: <!--[$users_new30d]--><br />
+<!--[gt text="Users with a myprofile profile"]-->: <!--[$myprofile]--><br />
+<!--[gt text="Users without a myprofile profile"]-->: <!--[$noprofile]--><br />
+<!--[gt text="Users with invalid email address"]-->: <!--[$invalidemail]--><br />
+<!--[gt text="Users with invalid email address and no changes in last month"]-->: <!--[$invalidemail30d]--><br />
 </p>
 
 <p>
-<!--[pnml name="_MYPROFILE_SELECTRANGE"]-->:
-<a href="<!--[pnmodurl modname="MyProfile" type="admin" func="information" range="7"]-->">7 <!--[pnml name="_MYPROFILE_DAYS"]--></a>
-| <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="information" range="14"]-->">14 <!--[pnml name="_MYPROFILE_DAYS"]--></a>
-| <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="information" range="31"]-->">31 <!--[pnml name="_MYPROFILE_DAYS"]--></a>
-| <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="information" range="62"]-->">62 <!--[pnml name="_MYPROFILE_DAYS"]--></a>
-| <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="information" range="93"]-->">93 <!--[pnml name="_MYPROFILE_DAYS"]--></a>
-| <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="information" range="170"]-->">150 <!--[pnml name="_MYPROFILE_DAYS"]--></a>
-| <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="information" range="365"]-->">365 <!--[pnml name="_MYPROFILE_DAYS"]--></a>
-| <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="information" range="730"]-->">730 <!--[pnml name="_MYPROFILE_DAYS"]--></a>
+<!--[gt text="Range for graphical statistics"]-->:
+<a href="<!--[pnmodurl modname="MyProfile" type="admin" func="information" range="7"]-->">7 <!--[gt text="days"]--></a>
+| <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="information" range="14"]-->">14 <!--[gt text="days"]--></a>
+| <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="information" range="31"]-->">31 <!--[gt text="days"]--></a>
+| <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="information" range="62"]-->">62 <!--[gt text="days"]--></a>
+| <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="information" range="93"]-->">93 <!--[gt text="days"]--></a>
+| <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="information" range="170"]-->">150 <!--[gt text="days"]--></a>
+| <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="information" range="365"]-->">365 <!--[gt text="days"]--></a>
+| <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="information" range="730"]-->">730 <!--[gt text="days"]--></a>
 <br />
-<!--[pnml name="_MYPROFILE_RANGEHINT"]-->
+<!--[gt text="User-defined: Please specify range in days as url parameter named "range"!"]-->
 </p>
 
 <div id="my-timeplot" style="height: 600px;"></div>
@@ -206,14 +206,14 @@
 	}
 </script>
 
-<!--[pnml name="_MYPROFILELEGEND"]-->: 
-<span style="color: #7CFC00"><!--[pnml name="_MYPROFILESTATSACTIVE"]--></span>,
-<span style="color: #000000"><!--[pnml name="_MYPROFILESTATSDAY"]--></span>,
-<span style="color: #DC143C"><!--[pnml name="_MYPROFILESTATS14DAYS"]--></span>,
-<span style="color: #7FFFD4"><!--[pnml name="_MYPROFILESTATS30DAYS"]--></span>,
-<span style="color: #B8860B"><!--[pnml name="_MYPROFILESTATS60DAYS"]--></span>,
-<span style="color: #006400"><!--[pnml name="_MYPROFILESTATS90DAYS"]--></span>,
-<span style="color: #8B008B"><!--[pnml name="_MYPROFILESTATS180DAYS"]--></span>,
-<span style="color: #FF8C00"><!--[pnml name="_MYPROFILESTATSYEAR"]--></span>.
+<!--[gt text="Explanation"]-->: 
+<span style="color: #7CFC00"><!--[gt text="active accounts"]--></span>,
+<span style="color: #000000"><!--[gt text="online"]--></span>,
+<span style="color: #DC143C"><!--[gt text="online last 2 weeks"]--></span>,
+<span style="color: #7FFFD4"><!--[gt text="online last month"]--></span>,
+<span style="color: #B8860B"><!--[gt text="online last 2 months"]--></span>,
+<span style="color: #006400"><!--[gt text="online last three months"]--></span>,
+<span style="color: #8B008B"><!--[gt text="online last 6 months"]--></span>,
+<span style="color: #FF8C00"><!--[gt text="online last year"]--></span>.
 
 <!--[include file="myprofile_admin_footer.htm"]-->

@@ -3,7 +3,7 @@
 <!--[pnajaxheader prototype="1"]-->
 
 <div style="float:left;">
-<h1><!--[pnml name="_MYPROFILEPROFILEOF"]-->: <!--[$uname|userprofilelink]--> 
+<h1><!--[gt text="Profile of user"]-->: <!--[$uname|userprofilelink]--> 
 <!--[if $onlinestatus eq 1]-->
 	<img src="images/icons/medium/agt_family.gif" alt="online" title="online" style="padding-left: 20px;" />
 <!--[else]-->
@@ -28,7 +28,7 @@
 				<!--[if $plugin_noajax ne 1]-->				
 					onclick="javascript:myprofile_updateTab('<!--[$homelink]-->','myprofile_maincontent','MyProfile');return false;" 
 				<!--[/if]-->
-				><!--[pnml name="_MYPROFILEMAINPROF"]--></a>
+				><!--[gt text="User's main profile"]--></a>
 			<!--[if $plugin_noajax ne 1]-->
 				<script type="text/javascript">
 					$('myprofile_MyProfile').href="#nogo";

@@ -1,70 +1,70 @@
 <!--[pnajaxheader prototype="1"]-->
 <!--[include file="myprofile_admin_menu.htm"]-->
-<div class="pn-informationmsg"><!--[pnml name="_MYPROFILEBACKENDDESCR"]--></div>
-<!--[pnform cssClass=pn-adminform]-->
+<div class="pn-informationmsg"><!--[gt text="Welcome to MyProfile - the advanced zikula profile module!"]--></div>
+<!--[pnform cssClass='pn-adminform']-->
 <fieldset>
-<legend><!--[pnml name="_MYPROFILEGLOBALETTINGS"]--></legend>
+<legend><!--[gt text="General module settings"]--></legend>
     <!--[pnformvalidationsummary]-->
 <div class="myprofile_halfbox">
-	<h3><!--[pnml name="_MYPROFILEAPPEARANCE"]--></h3>
-	<h4><!--[pnml name="_MYPROFILEPROFILEAPPEARANCE"]--></h4>
-    <!--[pnformlabel for="dateformat" text="_MYPROFILEDATEFORMAT"]-->:
+	<h3><!--[gt text="Appearance"]--></h3>
+	<h4><!--[gt text="Profile display configuration"]--></h4>
+    <!--[pnformlabel for="dateformat" __text="Date format to be used"]-->:
     <!--[pnformtextinput id="dateformat" maxLength="15" textMode="singleLine"]--><br />
-    <!--[pnformcheckbox id="notabs" checked="0"]--><!--[pnformlabel for="notabs" text="_MYPROFILENOTABS"]--><br />
-    <!--[pnformcheckbox id="plugin_noajax" checked="0"]--><!--[pnformlabel for="plugin_noajax" text="_MYPROFILENOAJAXTABS"]--><br />
-    <!--[pnformcheckbox id="convertToUTF8" checked="0"]--><!--[pnformlabel for="convertToUTF8" text="_MYPROFILECONVERTAJAXCONTENTTOUTF8"]--><br />
-    <!--[pnformcheckbox id="separators_usetabs" checked="0"]--><!--[pnformlabel for="separators_usetabs" text="_MYPROFILEUSETABSFORSEPARATORS"]-->
+    <!--[pnformcheckbox id="notabs" checked="0"]--><!--[pnformlabel for="notabs" __text="No-tab mode for user's profile management page"]--><br />
+    <!--[pnformcheckbox id="plugin_noajax" checked="0"]--><!--[pnformlabel for="plugin_noajax" __text="Do not use AJAX for plugin loading"]--><br />
+    <!--[pnformcheckbox id="convertToUTF8" checked="0"]--><!--[pnformlabel for="convertToUTF8" __text="Convert content loaded via AJAX to UTF8"]--><br />
+    <!--[pnformcheckbox id="separators_usetabs" checked="0"]--><!--[pnformlabel for="separators_usetabs" __text="Use profile separators as tabs. Might be interesting for huge profile pages"]-->
 
-	<h4><!--[pnml name="_MYPROFILESEARCHAPPEARANCE"]--></h4>
-    <!--[pnformlabel for="resultsperpage" text="_MYPROFILEAMOUNTOFRESULTSPERPAGE"]--> <!--[pnformintinput id="resultsperpage" minValue="1" maxValue="9999" textMode="singleLine"]--><br />
-    <!--[pnformcheckbox id="allowmemberlist" checked="0"]--><!--[pnformlabel for="allowmemberlist" text="_MYPROFILEALLOWMEMBERLIST"]--><br />
-    <!--[pnformlabel for="searchtemplate" text="_MYPROFILESEARCHTEMPLATE"]-->:
+	<h4><!--[gt text="Search engine configuration"]--></h4>
+    <!--[pnformlabel for="resultsperpage" __text="Results that should be shown per page"]--> <!--[pnformintinput id="resultsperpage" minValue="1" maxValue="9999" textMode="singleLine"]--><br />
+    <!--[pnformcheckbox id="allowmemberlist" checked="0"]--><!--[pnformlabel for="allowmemberlist" __text="Allow users to access the whole member list in entering no search string"]--><br />
+    <!--[pnformlabel for="searchtemplate" __text="You can specify a tempalte that should be included in the vcards that are displayed in a search result page that will have all user data assigned; Enter filename to use this feature"]-->:
     <!--[pnformtextinput id="searchtemplate" maxLength="55" textMode="singleLine"]--><br />
-	<!--[pnml name="_MYPROFILESEARCHENGINEURL"]-->: 	<a href="<!--[pnmodurl fqurl="true" modname="MyProfile" type="user" func="search"]-->"><!--[pnmodurl fqurl="true" modname="MyProfile" type="user" func="search"]--></a>
+	<!--[gt text="URL for search engine"]-->: 	<a href="<!--[pnmodurl fqurl="true" modname="MyProfile" type="user" func="search"]-->"><!--[pnmodurl fqurl="true" modname="MyProfile" type="user" func="search"]--></a>
 	
-	<h4><!--[pnml name="_MYPROFILEEMAILMYMAPDISPLAY"]--></h4>
-	<!--[pnml name="_MYPROFILEMYMAPUSECOORDFIELD"]-->: 
+	<h4><!--[gt text="Show users in map"]--></h4>
+	<!--[gt text="You can show all users that have filled out a field (fieldtype: COORD) using the following url"]-->: 
 	<a href="<!--[pnmodurl fqurl="true" modname="MyProfile" type="user" func="map"]-->"><!--[pnmodurl fqurl="true" modname="MyProfile" type="user" func="map"]--></a><br />
-	<!--[pnml name="_MYPROFILEMYMAPINSTALLED"]-->.<br /><br />
+	<!--[gt text="MyMap module has to be installed for this feature"]-->.<br /><br />
 	
-	<h3><!--[pnml name="_MYPROFILEEMAILMANAGEMENT"]--></h3>
-    <!--[pnformcheckbox id="noverification" checked="0"]--><!--[pnformlabel for="noverification" text="_MYPROFILENOVERIFICATION"]--><br />
-    <!--[pnformlabel for="requestban" text="_MYPROFILEREQUESTBANINDAYS"]--> <!--[pnformintinput id="requestban" minValue="0" maxValue="90" textMode="singleLine"]--> <!--[pnml name="_MYPROFILEDAYSAFTERREQUEST"]--><br />
-    <!--[pnformlabel for="expiredays" text="_MYPROFILEEXPIREDAYS"]-->: 
-    <!--[pnformintinput id="expiredays" minValue="7" maxValue="365" textMode="singleLine"]--> <!--[pnml name="_MYPROFILEDAYS"]--><br />
+	<h3><!--[gt text="Email address management"]--></h3>
+    <!--[pnformcheckbox id="noverification" checked="0"]--><!--[pnformlabel for="noverification" __text="Do not force verification within email change requests"]--><br />
+    <!--[pnformlabel for="requestban" __text="Forbid new change request within"]--> <!--[pnformintinput id="requestban" minValue="0" maxValue="90" textMode="singleLine"]--> <!--[gt text="days after last request"]--><br />
+    <!--[pnformlabel for="expiredays" __text="Validation code's expiration of validity"]-->: 
+    <!--[pnformintinput id="expiredays" minValue="7" maxValue="365" textMode="singleLine"]--> <!--[gt text="days"]--><br />
     <br />
-    <!--[pnml name="_MYPROFILEINVALIDEMAILMANAGEMENT"]-->:<br />
-    <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="invalidemail"]-->"><!--[pnml name="_MYPROFILEMANAGEINVALIDEMAILS"]--></a>
+    <!--[gt text="It is possible to exclude users that use invalid email addresses from site usage. To use this feature you have to include the following function call into your templates"]-->:<br />
+    <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="invalidemail"]-->"><!--[gt text="Manage invalid email addresses"]--></a>
 </div>
 <div class="myprofile_halfbox">
-	<h3><!--[pnml name="_MYPROFILEBEHAVIOUR"]--></h3>
-    <!--[pnformcheckbox id="notification" checked="0"]--><!--[pnformlabel for="notification" text="_MYPROFILENOTIFICATION"]--><br />
-    <!--[pnformcheckbox id="asattributes" checked="0"]--><!--[pnformlabel for="asattributes" text="_MYPROFILEASATTRIBUTES"]--><br />
-	<!--[pnml name="_MYPROFILEATTRIBUTEUSAGE"]-->:<br />
-	<em>&lt;!--[pnusergetvar name="__ATTRIBUTES__" assign="myprofile_serialized"]--&gt;<br />
+	<h3><!--[gt text="Behaviour"]--></h3>
+    <!--[pnformcheckbox id="notification" checked="0"]--><!--[pnformlabel for="notification" __text="Send email notification to site admin when new registration is finished"]--><br />
+    <!--[pnformcheckbox id="asattributes" checked="0"]--><!--[pnformlabel for="asattributes" __text="Also store profile as a user object attribute"]--><br />
+	<!--[gt text="You can access a user's profile as $myprofile.youridentifier with this code"]-->:<br />
+	<em>&lt;!--[pnusergetvar name="_Attributes__" assign="myprofile_serialized"]--&gt;<br />
 	&lt;!--[$myprofile_serialized|@unserialize assign="myprofile"]--&gt;</em><br /><br />
-    <!--[pnformcheckbox id="mandatory" checked="0"]--><!--[pnformlabel for="mandatory" text="_MYPROFILEUSERNEEDSVALIDPROFILE"]--><br />
+    <!--[pnformcheckbox id="mandatory" checked="0"]--><!--[pnformlabel for="mandatory" __text="Valid profile mandatory for every user"]--><br />
 
-    <!--[pnformlabel for="validuntil" text="_MYPROFILEVALIDUNTILTIMESTAMP"]-->: <!--[pnformintinput mandatory="1" minValue="0" maxValue="999999999" id="validuntil" textMode="singleLine"]--> (<!--[pnml name="_MYPROFILEZERODEACTIVETED"]-->)<br />
-    <!--[pnml name="_MYPROFILEATTENTIONCHANGE"]-->.<br /><br />
-	<h3><!--[pnml name="_MYPROFILEUSERPERMISSIONS"]--></h3>
-    <!--[pnformcheckbox id="individualpermissions" checked="0"]--><!--[pnformlabel for="individualpermissions" text="_MYPROFILEALLOWINDIVIDUALVIEWPERMISSIONS"]--><br />
-    <!--[pnformcheckbox id="individualtemplates" checked="0"]--><!--[pnformlabel for="individualtemplates" text="_MYPROFILEALLOWINDIVIDUALTEMPLATES"]--><br />
-    <!--[pnml name="_MYPROFILEEXCLUDEGROUPFORTEMPLATING"]-->:<br />
+    <!--[pnformlabel for="validuntil" __text="User profile's expiration of validity"]-->: <!--[pnformintinput mandatory="1" minValue="0" maxValue="999999999" id="validuntil" textMode="singleLine"]--> (<!--[gt text="in seconds, 0 = no expiration"]-->)<br />
+    <!--[gt text="If you only want to force every user to complete the profile insert the code and set the expiration period to 0"]-->.<br /><br />
+	<h3><!--[gt text="User's permissions"]--></h3>
+    <!--[pnformcheckbox id="individualpermissions" checked="0"]--><!--[pnformlabel for="individualpermissions" __text="Allow users to set individual permissions who can see their profile page"]--><br />
+    <!--[pnformcheckbox id="individualtemplates" checked="0"]--><!--[pnformlabel for="individualtemplates" __text="Users should be allowed to upload theis own templates for their profile."]--><br />
+    <!--[gt text="Exclude selected groups from the permission to upload and use own individual profile templates"]-->:<br />
 	<!--[pnformcheckboxlist id="disabledgroups" items=$groups]-->
 </div>
 </fieldset>
 <div class="pn-adminformrow pn-adminformbuttons">
-<!--[pnformimagebutton commandName="update" imageUrl=images/icons/small/button_ok.gif  text="_MYPROFILESAVECFG"]-->
-<a href="<!--[pnmodurl modname=MyProfile type=admin]-->"><!--[pnimg modname=core src=button_cancel.gif set=icons/small altml=true titleml=true alt="_CANCEL" title="_CANCEL"]--></a>
+<!--[pnformimagebutton commandName="update" imageUrl='images/icons/small/button_ok.gif' __text="Update configuration"]-->
+<a href="<!--[pnmodurl modname=MyProfile type=admin]-->"><!--[pnimg modname='core' src='button_cancel.gif' set='icons/small'   __alt="Cancel" __title="Cancel"]--></a>
 </div>
 
 <!--[/pnform]-->
 
-<fieldset><legend><!--[pnml name="_MYPROFILEMYPROFILEPLUGIN"]--></legend>
-<!--[pnml name="_MYPROFILEUSEPROFILEPLUGINEXPL"]--><br />
+<fieldset><legend><!--[gt text="Integrate user profiles into any zikula content"]--></legend>
+<!--[gt text="There is a plugin that can be called in any module with this piece of code"]--><br />
 <em>&lt;!--[myprofile uid=$uid]--&gt;</em><br />
-<!--[pnml name="_MYPROFILEUSEPROFILEPLUGINTEMPLATE"]--><br />
+<!--[gt text="But you have to configure this plugin via its template manually - the template file that has to be edited is"]--><br />
 <em>modules/MyProfile/pntemplates/myprofile_plugin_myprofile.htm</em>
 </fieldset>
 <br />

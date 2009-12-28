@@ -15,19 +15,20 @@
  */
 function MyProfile_accountapi_getall($args)
 {
+    $dom = ZLanguage::getModuleDomain('MyProfile');
     // Create an array of links to return
     pnModLangLoad('MyProfile');
     $items = array(
 					array(	'url'     => pnModURL('MyProfile', 'user','main'),
-                         	'title'   => _MYPROFILEPROFILEDATA,
+                         	'title'   => __('My profile data', $dom),
                         	 'icon'    => 'accountbutton.gif')
                         	 ,
 					array(	'url'     => pnModURL('MyProfile', 'user','settings',array('mode' => 'password')),
-                         	'title'   => _MYPROFILEPASSWORD,
+                         	'title'   => __('My password', $dom),
                          	'icon'    => 'keybutton.gif')
 							 ,
 					array(	'url'     => pnModURL('MyProfile', 'user','settings',array('mode' => 'email')),
-                         	'title'   => _MYPROFILEMAILADDRESS,
+                         	'title'   => __('My email address', $dom),
                          	'icon'    => 'mailbutton.gif')
 							 );
     // Return the items

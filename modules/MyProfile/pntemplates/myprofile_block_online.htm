@@ -14,7 +14,7 @@
 						    	*]-->
 
 <!--[pnmodapifunc modname="MyProfile" type="user" func="getOnline" orderby="land, plz" assign="users"]-->
-<br /><!--[pnml name="_MYPROFILETHEREARE"]--> <!--[$users|@count]--> <!--[pnml name="_MYPROFILEREGISTEREDUSERSONLINE"]-->
+<br /><!--[gt text="There are"]--> <!--[$users|@count]--> <!--[gt text="members online"]-->
 <div style="max-height: 400px; overflow-x: hidden;overflow-y:auto;">
 <!--[foreach from=$users item=user]-->
 

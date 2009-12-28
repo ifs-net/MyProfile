@@ -15,8 +15,8 @@ function MyProfile_mailzapi_getPlugins($args)
     // Add first plugin.. You can add more using more arrays
     $plugins[] = array(
         'pluginid'      => 1,   // internal id for this module
-        'title'         => _MYPROFILE_NEW_MEMBERS,
-        'description'   => _MYPROFILE_NEW_MEMBERS_DESCRIPTION,
+        'title'         => _MYPROFILE_NEW__('registered users', $dom),
+        'description'   => _MYPROFILE_NEW_MEMBERS__('Description', $dom),
         'module'        => 'MyProfile'
     );
     return $plugins;
@@ -113,7 +113,7 @@ function MyProfile_mailzapi_getContent($args)
                     }
                     $output.=" ".$item['uname']." \n";
                 }
-                $output.= '> '._MYPROFILE_SUM." ".$counter." "._MYPROFILE_MEMBERS." ".$sincedate."\n";
+                $output.= '> '._MYPROFILE_SUM." ".$counter." "._MYPROFILE__('registered users', $dom)." ".$sincedate."\n";
             } else {
                 $th = $resList[0];
                 $render = pnRender::getInstance('MyProfile');

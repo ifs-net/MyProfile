@@ -51,7 +51,7 @@ class MyProfile_admin_settingsHandler
 		      	if (is_array($value)) $value=serialize($value);
 			  	pnModSetVar('MyProfile',(string)$key,(string)$value);
 			}
-			LogUtil::registerStatus(_MYPROFILECFGSTORED);
+			LogUtil::registerStatus(__('Configuration updated successfully', $dom));
 		}
 		return true;
     }

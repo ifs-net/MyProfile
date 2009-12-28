@@ -90,24 +90,25 @@ function MyProfile_adminapi_getPlugins($args)
  */
 function MyProfile_adminapi_checkConfigFile()
 {
+    $dom = ZLanguage::getModuleDomain('MyProfile');
   	$configfile = 'modules/MyProfile/config/tabledef.inc';
   	// if config file does not exist we'll create one
   	Loader::loadClass('FileUtil');
   	if (!file_exists($configfile)) {
 	    if (!FileUtil::writeFile($configfile,' ')) {				// create dummy file
-		  	LogUtil::registerError(_MYPROFILEWRITEFILEPROBLEMS);
-		  	LogUtil::registerError(_MYPROFILECONFIGFILEEXPLANATION);
+		  	LogUtil::registerError(__('Config file could not be created - please check the config directory permissions.', $dom));
+		  	LogUtil::registerError(__('The file modules/MyProfile/config/tabledef.inc has to be writable. If the file does not exist yet, the folder config has to be writeable.', $dom));
 		  	return false;
 		};
 	}
   	if (!is_readable($configfile)) {								// not readable
-	    LogUtil::registerError(_MYPROFILEFILENOTREADABLE);
-	  	LogUtil::registerError(_MYPROFILECONFIGFILEEXPLANATION);
+	    LogUtil::registerError(__('Config file is not readable - change this before trying to edit the actual configuration.', $dom));
+	  	LogUtil::registerError(__('The file modules/MyProfile/config/tabledef.inc has to be writable. If the file does not exist yet, the folder config has to be writeable.', $dom));
 	    return false;
 	}
   	if (!is_writable($configfile)) {								// not writeable
-	    LogUtil::registerError(_MYPROFILEFILENOTWRITEABLE);
-	  	LogUtil::registerError(_MYPROFILECONFIGFILEEXPLANATION);
+	    LogUtil::registerError(__('Config file is not writeable - change this before trying to edit the actual configuration.', $dom));
+	  	LogUtil::registerError(__('The file modules/MyProfile/config/tabledef.inc has to be writable. If the file does not exist yet, the folder config has to be writeable.', $dom));
 	    return false;
 	}
 	return true;
@@ -352,21 +353,22 @@ function MyProfile_adminapi_ajaxSaveList($args)
  */
 function MyProfile_adminapi_import($args)
 {
+    $dom = ZLanguage::getModuleDomain('MyProfile');
   	$step = FormUtil::getPassedValue('step','1');	// first step if no step given
   	if ($step == 2) {
-		if (!MyProfile_adminapi_updateTableDefinition()) return LogUtil::registerError(_MYPROFILEUPDATETABLEDEFERROR);
+		if (!MyProfile_adminapi_updateTableDefinition()) return LogUtil::registerError(__('An error occured while trying to update the table definition', $dom));
 	    else {
 		  	pnModSetVar('MyProfile','pnProfileStep',3);
-		  	return LogUtil::RegisterStatus(_MYPROFILETABLEDEFUPDATED);
+		  	return LogUtil::RegisterStatus(__('Table definition updated successfully', $dom));
 		}
 	}
   	else if ($step == 3) {
 	    DBUtil::ChangeTable('myprofile');
 	  	pnModSetVar('MyProfile','pnProfileStep',4);
-	    return LogUtil::RegisterStatus(_MYPROFILETABLESTRUCTUREUPDATED);
+	    return LogUtil::RegisterStatus(__('Table structure updated', $dom));
 	}
   	$uid = pnUserGetVar('uid');
-  	if (!isset($args['source'])) return LogUtil::registerError(_MYPROFILENOSOURCEGIVEN);
+  	if (!isset($args['source'])) return LogUtil::registerError(__('Parameter is missing: no source given', $dom));
   	else switch ($args['source']) {
 	    case 'pnProfile':
 	    	// get pnProfile fields
@@ -401,10 +403,10 @@ function MyProfile_adminapi_import($args)
 						unset($newField);
 					}
 					// insert the new objects...
-					if (!DBUtil::InsertObjectArray($newFields,'myprofile_fields')) return logUtil::registerError(_MYPROFILEFIELDSIMPORTERROR);
+					if (!DBUtil::InsertObjectArray($newFields,'myprofile_fields')) return logUtil::registerError(__('An error occured importing the pnProfile configuration', $dom));
 					else {
 					  	pnModSetVar('MyProfile','pnProfileStep',2);
-					  	return LogUtil::registerStatus(_MYPROFILESTRUCTUREUPDATED);
+					  	return LogUtil::registerStatus(__('pnProfile structure imported into MyProfile', $dom));
 					}
 				}
 				else if ($step == 4){
@@ -446,14 +448,14 @@ function MyProfile_adminapi_import($args)
 				  	if (!is_array($pnProfileUsers) || (count($pnProfileUsers) == 0)) {
 						pnSessionDelVar('pnProfileUsers');
 					    pnModSetVar('MyProfile','pnProfileStep',5);
-						return LogUtil::registerStatus(_MYPROFILEIMPORTSUCCESSFULL.' '.$c.' '._MYPROFILEITEMSIMPORTES);
+						return LogUtil::registerStatus(__('Import done', $dom).' '.$c.' '.__('items imported', $dom));
 					}
 				  	else {
-						return LogUtil::registerStatus(_MYPROFILEIMPORTSTEPSUCCESSFULL.' '.$c.' '._MYPROFILEITEMSIMPORTES.", "._MYPROFILEABOUT." ".(int)count($pnProfileUsers)." "._MYPROFILELEFT);
+						return LogUtil::registerStatus(__('One import step done.. This step has to be repeated in large communities', $dom).' '.$c.' '.__('items imported', $dom).", ".__('about', $dom)." ".(int)count($pnProfileUsers)." ".__('left', $dom));
 					}
 				}
 			}
-			else return LogUtil::registerError(_MYPROFILEPNPROFILECONFUNREADABLE);
+			else return LogUtil::registerError(__('pnProfile configuration could not be read', $dom));
 	    	break;
 	    case 'Profile':
 	    	die("Profile migration function will follow - perhaps :-)");
@@ -487,7 +489,7 @@ function MyProfile_adminapi_import($args)
 				    	
 	    	break;
 	    default:
-	    	LogUtil::registerError(_MYPROFILEINVALIDSOURCE);
+	    	LogUtil::registerError(__('Parameter error: invalid source given', $dom));
 	    	break;
 	}
 }
@@ -499,6 +501,7 @@ function MyProfile_adminapi_import($args)
  */
 function MyProfile_adminapi_getOrphans($args)
 {
+    $dom = ZLanguage::getModuleDomain('MyProfile');
   	// get all items
   	$objArray = DBUtil::selectObjectArray('myprofile');
   	$res = array();
@@ -512,10 +515,8 @@ function MyProfile_adminapi_getOrphans($args)
 		}
 	}
 	if ($delete) {
-	  	LogUtil::registerStatus(_MYPROFILECLEANEDUP);
+	  	LogUtil::registerStatus(__('Database was cleaned up', $dom));
 	  	return array();
 	}
 	else return $res;
 }
-
-?>

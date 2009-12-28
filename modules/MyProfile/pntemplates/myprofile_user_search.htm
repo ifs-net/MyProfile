@@ -5,11 +5,11 @@
 <!--[pnformvalidationsummary]-->
 
 <!--[if $resultCount gt -1]-->
-	<h1><!--[pnml name="_MYPROFILEFOUND"]--> <!--[pnml name="_MYPROFILERESULTS"]--></h1>
+	<h1><!--[gt text="Found"]--> <!--[gt text="results"]--></h1>
 	<div id="myprofile_search_link">
-		<a href="" onclick="javascript:$('myprofile_search').show();$('myprofile_search_link').hide();return false;"><!--[pnml name="_MYPROFILESHOWSEARCHFORM"]--></a><br />
+		<a href="" onclick="javascript:$('myprofile_search').show();$('myprofile_search_link').hide();return false;"><!--[gt text="Show search form to change search parameters"]--></a><br />
 	<!--[if $allowmemberlist eq 1]-->
-		<a href="<!--[pnmodurl modname="MyProfile" type="user" func="search" showall="1" fqurl="true"]-->"><!--[pnml name="_MYPROFILESHOWALLMEMBERS"]--></a><br />
+		<a href="<!--[pnmodurl modname="MyProfile" type="user" func="search" showall="1" fqurl="true"]-->"><!--[gt text="Show all members"]--></a><br />
 	<!--[/if]-->
 	<br />
 	</div>
@@ -17,30 +17,30 @@
 
 <!--[if $page gt 0]-->
 	<center>
-	<!--[pnml name="_MYPROFILEPAGE"]--> <!--[$page]-->/<!--[$pages]-->, <!--[$resultCount]--> <!--[if $resultCount lt 2]--><!--[pnml name="_MYPROFILERESULT"]--><!--[else]--><!--[pnml name="_MYPROFILERESULTS"]--><!--[/if]--><br />
+	<!--[gt text="Page"]--> <!--[$page]-->/<!--[$pages]-->, <!--[$resultCount]--> <!--[if $resultCount lt 2]--><!--[gt text="result"]--><!--[else]--><!--[gt text="results"]--><!--[/if]--><br />
 	</center>
 <!--[/if]-->
 
 <center>
 <div style="float:left;" class="<!--[$previousButtonStyle]-->">
-	<!--[pnformimagebutton commandName="prevPage"  imageUrl="images/icons/small/2leftarrow.gif" alt="_MYPROFILEPREVIOUSPAGE" title="_MYPROFILESPREVIOUSPAGE"]-->
+	<!--[pnformimagebutton commandName="prevPage" imageUrl="images/icons/small/2leftarrow.gif" __alt="previous page" __title="_MYPROFILESPREVIOUSPAGE"]-->
 </div>
 <div style="float:right;" class="<!--[$nextButtonStyle]-->" >
-	<!--[pnformimagebutton commandName="nextPage"  imageUrl="images/icons/small/2rightarrow.gif" alt="_MYPROFILENEXTPAGE" title="_MYPROFILENEXTPAGE"]-->
+	<!--[pnformimagebutton commandName="nextPage" imageUrl="images/icons/small/2rightarrow.gif" __alt="next page" __title="next page"]-->
 </div>
 </center>
 <br class="myprofile_clearboth" />
 
 <div id="myprofile_search">
-	<h1><!--[pnml name="_MYPROFILESEARCH"]--></h1>
+	<h1><!--[gt text="Search"]--></h1>
 	<div class="pn-informationmsg">
-		<!--[pnml name="_MYPROFILESEARCHINTRO"]-->
+		<!--[gt text="You can now use the following form to search for other users. The more fields you fill out the less results you will get."]-->
 	</div>
 	
 	<!--[* search in all fields *]-->
 	<div class="myprofile_searchelement">
 		<div class="myprofile_searchleft">
-			<span class="myprofile_bold"><!--[pnml name="_MYPROFILESEARCHSTRING"]--></span>
+			<span class="myprofile_bold"><!--[gt text="Search string in all fields"]--></span>
 		</div>
 		<div class="myprofile_searchright">
 			<!--[pnformtextinput id="string" maxLength="150"]-->
@@ -50,7 +50,7 @@
 	<!--[* username should always be searchable *]-->
 	<div class="myprofile_searchelement">
 		<div class="myprofile_searchleft">
-			<span class="myprofile_bold"><!--[pnml name="_MYPROFILEUNAME"]--></span>
+			<span class="myprofile_bold"><!--[gt text="Username"]--></span>
 		</div>
 		<div class="myprofile_searchright">
 			<!--[pnformtextinput id="uname" maxLength="150"]-->
@@ -62,7 +62,7 @@
 	<div class="myprofile_searchelement">
 		<div class="myprofile_searchleft">
 			<span class="myprofile_bold"><!--[$field.description]--></span><br />
-			<!--[if $field.list ne ""]--><span class="myprofile_small"><!--[pnml name="_MYPROFILEORUSED"]--></span><!--[/if]-->
+			<!--[if $field.list ne ""]--><span class="myprofile_small"><!--[gt text="Choosing more than one item will link them using OR"]--></span><!--[/if]-->
 		</div>
 		<div class="myprofile_searchright">
 			<!--[if $field.fieldtype eq "STRING" or $field.fieldtype eq "TEXTBOX" or $field.fieldtype eq "URL" or $field.fieldtype eq "SKYPEID" or $field.fieldtype eq "TIMESTAMP"  or $field.fieldtype eq "UIN" or $field.fieldtype eq "INTEGER"]-->
@@ -77,13 +77,13 @@
 		</div>
 	</div>
 	<!--[foreachelse]-->
-		<!--[pnml name="_MYPROFILENOTHINGSEARCHABLE"]-->
+		<!--[gt text="There are no more searchable fields or you do not have the permission to view these fields"]-->
 	<!--[/foreach]-->
 	
 	<!--[* other search options. wildcat, order by, asc/desc etc. *]-->
 	<div class="myprofile_searchelement">
 		<div class="myprofile_searchleft">
-			<!--[pnml name="_MYPROFILESEARCHTYPE"]-->
+			<!--[gt text="Search type"]-->
 		</div>
 		<div class="myprofile_searchright">
 			<!--[pnformdropdownlist id="searchoption" items=$items_searchoptions]-->
@@ -91,7 +91,7 @@
 	</div>
 	<div class="myprofile_searchelement">
 		<div class="myprofile_searchleft">
-			<!--[pnml name="_MYPROFILECONNECTOR"]-->
+			<!--[gt text="Connector for search logic"]-->
 		</div>
 		<div class="myprofile_searchright">
 			<!--[pnformdropdownlist id="connector" items=$items_connector]-->
@@ -99,7 +99,7 @@
 	</div>
 	<div class="myprofile_searchelement">
 		<div class="myprofile_searchleft">
-			<!--[pnml name="_MYPROFILEORDERBY"]-->
+			<!--[gt text="Sort result by"]-->
 		</div>
 		<div class="myprofile_searchright">
 			<!--[pnformdropdownlist id="orderby" items=$items_orderby]-->
@@ -107,17 +107,17 @@
 		</div>
 	</div>
 	<div class="pn-informationmsg">
-		<!--[pnml name="_MYPROFILESEARCHTYPEDESC"]-->
+		<!--[gt text="Using the search type "soft" and searching for "sun" you will also get results like "sunset" too because the searched word is in it. If you do not want to use this select "exact" as search type!"]-->
 	</div>
 	<!--[if $allowmemberlist eq 1]-->
 		<div class="pn-informationmsg">
-			<!--[pnml name="_MYPROFILEMEMBERLISTDESC"]-->
+			<!--[gt text="If you just click the search button without any search parameters you will get the whole member list displayed"]-->
 		</div>
 	<!--[/if]-->
 
 	<center>
-	<!--[pnformimagebutton commandName="update"  imageUrl="images/icons/small/button_ok.gif" alt="_MYPROFILESEARCH" title="_MYPROFILESEARCH"]-->
-	<a href="<!--[pnmodurl modname=MyProfile type=admin func=search]-->"><!--[pnimg modname=core src=button_cancel.gif set=icons/small altml=true titleml=true alt="_CANCEL" title="_CANCEL"]--></a>
+	<!--[pnformimagebutton commandName="update" imageUrl="images/icons/small/button_ok.gif" __alt="Search" __title="Search"]-->
+	<a href="<!--[pnmodurl modname=MyProfile type=admin func=search]-->"><!--[pnimg modname='core' src='button_cancel.gif' set='icons/small'   __alt="Cancel" __title="Cancel"]--></a>
 	</center>
 </div>
 

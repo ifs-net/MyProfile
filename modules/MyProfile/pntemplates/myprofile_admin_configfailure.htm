@@ -1,15 +1,15 @@
 <!--[include file="myprofile_admin_menu.htm"]-->
-<h2><!--[pnml name="_MYPROFILEBACKEND"]--></h2>
-<!--[pnml name="_MYPROFILEERROROCCURED"]-->
+<h2><!--[gt text="MyProfile backend configuration"]--></h2>
+<!--[gt text="An error occured. Please regard the error message!"]-->
 <br /><br />
 <ul>
-<li><!--[pnml name="_MYPROFILECFGDIREXIST"]--></li>
-<li><!--[pnml name="_MYPROFILECFGDIRWRITABLE"]--></li>
-<li><!--[pnml name="_MYPROFILECFGFILENAME"]--></li>
-<li><!--[pnml name="_MYPROFILECFGREADABLE"]--></li>
-<li><!--[pnml name="_MYPROFILECFGWRITABLE"]--></li>
+<li><!--[gt text="A directory inside the MyProfile module named "config" must exist"]--></li>
+<li><!--[gt text="This directory has to be writable by the webserver"]--></li>
+<li><!--[gt text="In this directory a file called tabledef.inc will be created by the module"]--></li>
+<li><!--[gt text="This file has to be readable by the webserver"]--></li>
+<li><!--[gt text="This file has to be writable by the webserver"]--></li>
 </ul>
 <!--[if $id gt 0]-->
-<a href="<!--[pnmodurl modname="MyProfile" type="admin" func="addfield" id=$id]-->"><!--[pnml name="_MYPROFILEPROCEED"]--></a>
+<a href="<!--[pnmodurl modname="MyProfile" type="admin" func="addfield" id=$id]-->"><!--[gt text="Try again and proceed"]--></a>
 <!--[/if]-->
 <!--[include file="myprofile_admin_footer.htm"]-->
