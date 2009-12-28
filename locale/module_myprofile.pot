@@ -1,0 +1,464 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Zikula component\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-12-27 12:03+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: pnuserapi.php:95
+msgid "no permission to view this field"
+msgstr ""
+
+#: pnuserapi.php:389
+msgid "You can not request a new validation code before"
+msgstr ""
+
+#: pnuserapi.php:416
+msgid ""
+"Attention: You have to activate your new email address before using this "
+"site again! Please read the instructions in the incoming email!"
+msgstr ""
+
+#: pnuserapi.php:428
+msgid "Email verification code for"
+msgstr ""
+
+#: pnuserapi.php:428 includes/common_admin.php:19
+msgid "at"
+msgstr ""
+
+#: pnuserapi.php:685
+msgid "Show user's profile"
+msgstr ""
+
+#: pnaccountapi.php:23
+msgid "My profile data"
+msgstr ""
+
+#: pnaccountapi.php:27
+msgid "My password"
+msgstr ""
+
+#: pnaccountapi.php:31
+msgid "My email address"
+msgstr ""
+
+#: pnuserdeletionapi.php:40
+msgid "Profile data deleted for user"
+msgstr ""
+
+#: pnuserdeletionapi.php:43
+msgid "User-Profile"
+msgstr ""
+
+#: pninit.php:141
+msgid "MyProfile systeminit hook created"
+msgstr ""
+
+#: pnadminapi.php:99
+msgid ""
+"Config file could not be created - please check the config directory "
+"permissions."
+msgstr ""
+
+#: pnadminapi.php:100 pnadminapi.php:106 pnadminapi.php:111
+msgid ""
+"The file modules/MyProfile/config/tabledef.inc has to be writable. If the "
+"file does not exist yet, the folder config has to be writeable."
+msgstr ""
+
+#: pnadminapi.php:105
+msgid ""
+"Config file is not readable - change this before trying to edit the actual "
+"configuration."
+msgstr ""
+
+#: pnadminapi.php:110
+msgid ""
+"Config file is not writeable - change this before trying to edit the actual "
+"configuration."
+msgstr ""
+
+#: pnadminapi.php:359
+msgid "An error occured while trying to update the table definition"
+msgstr ""
+
+#: pnadminapi.php:362
+msgid "Table definition updated successfully"
+msgstr ""
+
+#: pnadminapi.php:368
+msgid "Table structure updated"
+msgstr ""
+
+#: pnadminapi.php:371
+msgid "Parameter is missing: no source given"
+msgstr ""
+
+#: pnadminapi.php:406
+msgid "An error occured importing the pnProfile configuration"
+msgstr ""
+
+#: pnadminapi.php:409
+msgid "pnProfile structure imported into MyProfile"
+msgstr ""
+
+#: pnadminapi.php:451
+msgid "Import done"
+msgstr ""
+
+#: pnadminapi.php:451 pnadminapi.php:454
+msgid "items imported"
+msgstr ""
+
+#: pnadminapi.php:454
+msgid ""
+"One import step done.. This step has to be repeated in large communities"
+msgstr ""
+
+#: pnadminapi.php:454
+msgid "about"
+msgstr ""
+
+#: pnadminapi.php:454
+msgid "left"
+msgstr ""
+
+#: pnadminapi.php:458
+msgid "pnProfile configuration could not be read"
+msgstr ""
+
+#: pnadminapi.php:492
+msgid "Parameter error: invalid source given"
+msgstr ""
+
+#: pnadminapi.php:518
+msgid "Database was cleaned up"
+msgstr ""
+
+#: pnuser.php:43
+msgid "MyMap module not found"
+msgstr ""
+
+#: pnuser.php:53
+msgid ""
+"More than one coordinate field found. Please use the url parameter "
+"identifier and the value of the identifier you want to use as coordinate "
+"field and reload the page"
+msgstr ""
+
+#: pnuser.php:132
+msgid "User deleted"
+msgstr ""
+
+#: pnuser.php:136
+msgid "An error occured while trying to delete the user"
+msgstr ""
+
+#: pnuser.php:296
+msgid "Profile of user"
+msgstr ""
+
+#: includes/classes/user/confirmedusers.php:34
+msgid "The username you specified does not exist"
+msgstr ""
+
+#: includes/classes/user/confirmedusers.php:38
+msgid ""
+"I hope you trust yourself, but you cannot add your own username to your list"
+msgstr ""
+
+#: includes/classes/user/confirmedusers.php:42
+#: includes/classes/admin/invalidemail.php:39
+msgid "User already marked"
+msgstr ""
+
+#: includes/classes/user/confirmedusers.php:49
+msgid "An error occured while trying to add the user to your list"
+msgstr ""
+
+#: includes/classes/user/confirmedusers.php:53
+msgid "User was added to the list"
+msgstr ""
+
+#: includes/classes/user/main.php:109 includes/classes/user/main.php:126
+msgid "Updating / creating user attributes failed"
+msgstr ""
+
+#: includes/classes/user/main.php:112
+msgid "Profile was updated successfully"
+msgstr ""
+
+#: includes/classes/user/main.php:113
+msgid "Creating / Updating profile failed"
+msgstr ""
+
+#: includes/classes/user/main.php:132
+msgid "The profile was created successfully"
+msgstr ""
+
+#: includes/classes/user/search.php:20
+msgid "Username"
+msgstr ""
+
+#: includes/classes/user/search.php:56
+msgid "soft"
+msgstr ""
+
+#: includes/classes/user/search.php:57
+msgid "exact"
+msgstr ""
+
+#: includes/classes/user/search.php:60
+msgid "AND"
+msgstr ""
+
+#: includes/classes/user/search.php:61
+msgid "OR"
+msgstr ""
+
+#: includes/classes/user/search.php:64
+msgid "ASC"
+msgstr ""
+
+#: includes/classes/user/search.php:65
+msgid "DESC"
+msgstr ""
+
+#: includes/classes/user/validatemail.php:44
+#: includes/classes/user/settings.php:122
+msgid "Your email address was updated successfully"
+msgstr ""
+
+#: includes/classes/user/validatemail.php:51
+#: includes/classes/user/settings.php:129
+msgid "An error occured while trying to change your email address"
+msgstr ""
+
+#: includes/classes/user/validatemail.php:53
+msgid "Verification code incorrect"
+msgstr ""
+
+#: includes/classes/user/validatemail.php:55
+msgid ""
+"Verification code is no longer valid - you should start a new request for a "
+"new verification code"
+msgstr ""
+
+#: includes/classes/user/settings.php:45 includes/classes/user/settings.php:58
+msgid "viewable by everybody"
+msgstr ""
+
+#: includes/classes/user/settings.php:46 includes/classes/user/settings.php:59
+msgid "all members"
+msgstr ""
+
+#: includes/classes/user/settings.php:48 includes/classes/user/settings.php:60
+msgid "confirmed buddies"
+msgstr ""
+
+#: includes/classes/user/settings.php:61
+msgid "only listed users"
+msgstr ""
+
+#: includes/classes/user/settings.php:83
+msgid ""
+"You have to include all mandatory profile variables into your individual "
+"template"
+msgstr ""
+
+#: includes/classes/user/settings.php:98
+msgid "Settings updated successfully"
+msgstr ""
+
+#: includes/classes/user/settings.php:104
+msgid ""
+"The new password was not entered twice the same way - there might be a typo "
+"in a password - password was not changed"
+msgstr ""
+
+#: includes/classes/user/settings.php:111
+msgid "Your password was changed successfully"
+msgstr ""
+
+#: includes/classes/user/settings.php:114
+msgid "The new password is too short"
+msgstr ""
+
+#: includes/classes/user/settings.php:134
+msgid ""
+"An verification email with further instructions has been sent to your new "
+"email address."
+msgstr ""
+
+#: includes/classes/user/settings.php:136
+msgid ""
+"An error occured while trying to send an verification code to your new, "
+"entered email address"
+msgstr ""
+
+#: includes/classes/admin/invalidemail.php:32
+msgid "Email address could not be found in user database"
+msgstr ""
+
+#: includes/classes/admin/invalidemail.php:48
+msgid "User marked"
+msgstr ""
+
+#: includes/classes/admin/invalidemail.php:52
+msgid "Error while trying to mark the user"
+msgstr ""
+
+#: includes/classes/admin/addfield.php:30
+msgid "No"
+msgstr ""
+
+#: includes/classes/admin/addfield.php:31
+msgid "Yes"
+msgstr ""
+
+#: includes/classes/admin/addfield.php:33
+msgid "Separator"
+msgstr ""
+
+#: includes/classes/admin/addfield.php:34
+msgid "String"
+msgstr ""
+
+#: includes/classes/admin/addfield.php:35
+msgid "Integer"
+msgstr ""
+
+#: includes/classes/admin/addfield.php:36
+msgid "Float"
+msgstr ""
+
+#: includes/classes/admin/addfield.php:37
+msgid "String (multiline)"
+msgstr ""
+
+#: includes/classes/admin/addfield.php:38
+msgid "Url"
+msgstr ""
+
+#: includes/classes/admin/addfield.php:39
+msgid "ICQ-UIN"
+msgstr ""
+
+#: includes/classes/admin/addfield.php:40
+msgid "Skype-ID"
+msgstr ""
+
+#: includes/classes/admin/addfield.php:41
+msgid "Date"
+msgstr ""
+
+#: includes/classes/admin/addfield.php:42
+msgid "Timestamp"
+msgstr ""
+
+#: includes/classes/admin/addfield.php:43
+msgid "Coordinate"
+msgstr ""
+
+#: includes/classes/admin/addfield.php:44
+msgid "This field will be shown to everybody"
+msgstr ""
+
+#: includes/classes/admin/addfield.php:45
+msgid "Only registered users will be able to see this field's value"
+msgstr ""
+
+#: includes/classes/admin/addfield.php:46
+msgid "Only the administrator will be able to see this field's value"
+msgstr ""
+
+#: includes/classes/admin/addfield.php:47
+msgid "The user can choose who should be able to see this field's value"
+msgstr ""
+
+#: includes/classes/admin/addfield.php:67
+#: includes/classes/admin/addfield.php:75
+msgid "Error while deleting the fields"
+msgstr ""
+
+#: includes/classes/admin/addfield.php:71
+msgid "Field was deleted successfully"
+msgstr ""
+
+#: includes/classes/admin/addfield.php:83
+msgid "Existing field was updated successfully"
+msgstr ""
+
+#: includes/classes/admin/addfield.php:93
+msgid ""
+"The identifier must not contain any other characters than numbers (0-9) and "
+"regular characters (A-Z, a-z)"
+msgstr ""
+
+#: includes/classes/admin/addfield.php:98
+msgid "New field was created successfully"
+msgstr ""
+
+#: includes/classes/admin/settings.php:54
+msgid "Configuration updated successfully"
+msgstr ""
+
+#: includes/common.php:153
+msgid ""
+"Your profile is outdated or incomplete - please check / complete / update "
+"your personal data"
+msgstr ""
+
+#: includes/common.php:168
+msgid ""
+"Your email address has to be updated before using this site! EMails came "
+"back to the administrator that did not reach you - valid email addresses are "
+"mandatory for this site! After changing your email address you will be able "
+"to use this site again!"
+msgstr ""
+
+#: includes/common.php:192
+msgid ""
+"Please fill out your personal profile first. This is neccessary before you "
+"can interact in this community!"
+msgstr ""
+
+#: includes/common_admin.php:19
+msgid "New profile"
+msgstr ""
+
+#: pnadmin.php:138
+msgid "pnProfile migration reset done"
+msgstr ""
+
+#: pnadmin.php:197
+msgid "Element was moved successfully"
+msgstr ""
+
+#: pnadmin.php:222
+msgid "more than one user found"
+msgstr ""
+
+#: pnadmin.php:224
+msgid "please choose one user and enter its username"
+msgstr ""
+
+#: pnadmin.php:234
+msgid "email address not found"
+msgstr ""
+
+#: pnadmin.php:244
+msgid "No user with this username or user-ID found"
+msgstr ""
