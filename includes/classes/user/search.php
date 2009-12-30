@@ -14,6 +14,7 @@ class MyProfile_user_SearchHandler
   	var $page;
 	function initialize(&$render)
 	{	    
+        $dom = ZLanguage::getModuleDomain('MyProfile');
 	  	// Admins should be able to modify user's profile data
 	  	$fields = pnModAPIFunc('MyProfile','admin','getFields');
 	  	$fieldsResult = array();
@@ -98,6 +99,7 @@ class MyProfile_user_SearchHandler
     }
 	function handleCommand(&$render, &$args)
 	{
+        $dom = ZLanguage::getModuleDomain('MyProfile');
 		if ($args['commandName']=='prevPage') {
 		  	$this->page--;
 		  	$args['commandName'] = 'update';

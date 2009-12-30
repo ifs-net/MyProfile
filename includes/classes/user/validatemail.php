@@ -29,6 +29,7 @@ class MyProfile_user_ValidateMailHandler
     }
 	function handleCommand(&$render, &$args)
 	{
+        $dom = ZLanguage::getModuleDomain('MyProfile');
 		if ($args['commandName']=='update') {
 			// get the pnForm data and do a validation check
 		    $obj = $render->pnFormGetValues();		    

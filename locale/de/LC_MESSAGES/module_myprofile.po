@@ -1127,7 +1127,7 @@ msgstr "Meine Profildaten"
 
 #: pntemplates/myprofile_user_header.htm:6
 msgid "email address, password and extended settings"
-msgstr "zugangsdaten und Profileinstellungen"
+msgstr "Zugangsdaten und Profileinstellungen"
 
 #: pntemplates/myprofile_user_header.htm:7
 msgid "search members"
@@ -1136,7 +1136,7 @@ msgstr "Mitgliedersuche"
 #: pntemplates/myprofile_user_settings.htm:4
 #: pntemplates/myprofile_user_main.htm:6
 msgid "My profile"
-msgstr "Mein profile"
+msgstr "Mein Profil"
 
 #: pntemplates/myprofile_user_settings.htm:5
 msgid "Here you can define some custom settings for your profile"

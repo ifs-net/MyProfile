@@ -69,6 +69,7 @@ class MyProfile_user_SettingsHandler
     }
 	function handleCommand(&$render, &$args)
 	{
+        $dom = ZLanguage::getModuleDomain('MyProfile');
 		if ($args['commandName']=='update') {
 		    // Security check 
 		    if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_COMMENT)) return LogUtil::registerPermissionError();
