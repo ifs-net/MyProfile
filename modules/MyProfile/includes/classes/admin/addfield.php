@@ -13,6 +13,7 @@ class MyProfile_admin_addFieldHandler
     var $id;
     function initialize(&$render)
     {
+        $dom = ZLanguage::getModuleDomain('MyProfile');
 		$this->id = (int)FormUtil::getPassedValue('id');
 		if ($this->id > 0) {
 			$data = DBUtil::selectObjectByID('myprofile_fields', $this->id);
@@ -53,6 +54,7 @@ class MyProfile_admin_addFieldHandler
     }
     function handleCommand(&$render, &$args)
     {
+        $dom = ZLanguage::getModuleDomain('MyProfile');
 		if ($args['commandName']=='update') {
 		    // Security check 
 		    if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_ADMIN)) return LogUtil::registerPermissionError();

@@ -78,7 +78,7 @@
 					    <!--[pnformdropdownlist id=$field.identifier items=$field.dropdownitems mandatory=$field.mandatory]-->
 					<!--[else]-->
 						<!--[foreach from=$field.radioitems item=item]-->
-							<!--[pnformradiobutton id=$item.value dataField=$field.identifier mandatory=$field.mandatory]--> <!--[pnformlabel __text=$item.text for=$item.value]-->
+							<!--[pnformradiobutton id=$item.value dataField=$field.identifier mandatory=$field.mandatory]--> <!--[pnformlabel text=$item.text for=$item.value]-->
 						<!--[/foreach]-->
 					<!--[/if]-->
 			<!--[/if]-->
