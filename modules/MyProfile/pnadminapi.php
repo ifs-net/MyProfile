@@ -522,3 +522,45 @@ function MyProfile_adminapi_getOrphans($args)
 	}
 	else return $res;
 }
+
+/**
+ * construct sql statement for Profile to MyProfile import routine
+ *
+ * @param   $args['source']         User property (string)
+ * @param   $args['destination']    MyProfile identifier
+ * @return array
+ */
+function MyProfile_adminapi_importProfile($args)
+{
+    // Get Parameters
+    $s = $args['source'];
+    $d = $args['destination'];
+    
+    // get all users
+    $users     = pnModAPIFunc('Users','user','getall');
+    $myprofile = DBUtil::selectObjectArray('myprofile','','',-1,-1,'',null,null,array('id'));
+    $hasMyProfile = array();
+    foreach ($myprofile as $dummy) {
+        $hasMyProfile[$dummy['id']] = $dummy['id'];
+    }
+//    prayer($hasMyProfile);
+//    prayer($users);
+        
+    // construct statement
+    $sql = array();
+    $myprofiletable = DBUtil::getLimitedTablename('myprofile');
+    $profiletable = DBUtil::getLimitedTablename('user_property');
+    foreach ($users as $user) {
+        if ($user['uid'] > 1) {
+            // Is there already a myprofile profile?
+            if (!in_array($user['uid'],$hasMyProfile)) {
+                $sql[] = "insert into ".myprofiletable." ('id') values ('".FormUtil::formatForStore($user['uid'])."')";
+            }
+            // get source value
+            $value = str_replace("'","\'",pnUserGetVar($s,$user['uid']));
+            $sql[] = "update ".$myprofiletable." set MyProfile_".$d." = '".$value."' where id = ".$user['uid'].";";
+        }
+    }
+    return $sql;
+    
+}

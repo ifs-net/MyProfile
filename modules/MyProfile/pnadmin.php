@@ -151,18 +151,43 @@ function MyProfile_admin_import()
 		if (!SecurityUtil::confirmAuthKey()) LogUtil::registerAuthIDError();
 		else pnModAPIFunc('MyProfile','admin','import',array('source'=>$source));
 	}
+
     // Create output
     $render = pnRender::getInstance('MyProfile');
+
     // Assign data
     $pnProfileStep = pnModGetVar('MyProfile','pnProfileStep');
     if (!($pnProfileStep) || !isset($pnProfileStep) || (!($pnProfileStep > 0) && !($pnProfileStep < 6))) {
 	  	$pnProfileStep=1;
 	  	pnModSetVar('MyProfile','pnProfileStep',1);
 	}
+
+    $profileavailable = pnModAvailable('Profile');
+    if ($profileavailable) {
+        $properties = pnModAPIFunc('Profile', 'user', 'getall'); 
+        $render->assign('properties', $properties);
+    }
+    
+    $action = FormUtil::getPassedValue('action');
+    if (isset($action) && ($action == 'profileimport')) {
+        $source      = FormUtil::getPassedValue('source');
+        $destination = FormUtil::getPassedValue('destination');
+        $sql = pnModAPIFunc('MyProfile','admin','importProfile',array('source' => $source, 'destination' => $destination));
+        if (isset($sql) && (count($sql > 0))) {
+            $render->assign('sql', $sql);
+        }
+    }
+
+	$fields = pnModAPIFunc('MyProfile','admin','getFields');
     $render->assign('pnProfileStep',		$pnProfileStep);
     $render->assign('pnprofileavailable',	pnModAvailable('pnProfile'));
-    $render->assign('profileavailable',		pnModAvailable('Profile'));
+    $render->assign('profileavailable',		$profileavailable);
     $render->assign('authid',				SecurityUtil::generateAuthKey());
+    $render->assign('fields',               $fields);
+    
+
+
+
     // Return output
     return $render->fetch('myprofile_admin_import.htm');
 }

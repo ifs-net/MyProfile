@@ -1,6 +1,9 @@
 <!--[include file="myprofile_admin_menu.htm"]-->
+
 <h2><!--[gt text="Import data from pnProfile"]--></h2>
+
 <!--[if $pnprofileavailable]-->
+
 	<!--[gt text="pnProfile module is available on your system. If you want to import data from this module to use it in the MyProfile module you can do this here. If you used a database dump to reconstruct pnProfile data make sure, that you also need the Users tables - not only the pnProfile tables are important!"]--><br />
 	<!--[gt text="Start import now"]-->:
 	<!--[if $pnProfileStep eq 5]--><div class="pn-informationmsg"><!--[gt text="Migration from pnProfile to MyProfile already done"]--></div><!--[/if]-->
@@ -13,17 +16,55 @@
 	<!--[gt text="Migration failed"]-->: <a href="<!--[pnmodurl modname="MyProfile" type="admin" func="import" authid=$authid action="reset"]-->"><!--[gt text="Reset migration and start with first step again"]--></a>
 
 <!--[else]-->
+
 	<!--[gt text="pnProfile is not available on your system. No import possible."]-->
-<!--[/if]-->
-<!--[* Perhaps this feature will follow later.... :-(
-<h1><!--[gt text="Import data from Profile"]--></h1>
-<!--[if $profileavailable]-->
-	<!--[gt text="Profile module found on your system. You can import all data from Profile module into MyProfile."]--><br />
-	<!--[gt text="Attention: Importing data from this module will erase an existing MyProfile configuration before importing Profile data into MyProfile."]-->
-	<a href="<!--[pnmodurl modname="MyProfile" type="admin" func="import" source="Profile" authid=$authid]-->"><!--[gt text="Start import now"]-->!</a>
-<!--[else]-->
-	<!--[gt text="The regular Profile module could not be found on your system. No Import possible."]-->
+
 <!--[/if]-->
 
-*]-->
+<h2><!--[gt text="Import data from Profile"]--></h2>
+
+<!--[if $profileavailable]-->
+
+	<!--[gt text="Profile module found on your system. You can import all data from Profile module into MyProfile."]--><br />
+	<!--[gt text="Attention: You first have to setup the structur of the MyProfile user profile. Having done this will enable you to import User-Properties step by step for each user... Just choose the porperty, the target the data should be written into and then import from Profile module."]-->
+
+<p>
+<textarea rows="10" cols="70">
+<!--[foreach from=$sql item="item"]-->
+<!--[$item]-->
+<!--[foreachelse]-->
+<!--[gt text="After selecting a source user property and a destination MyProfile identifier you will have some sql code shown in here. Please copy and paste this code and execute it in phpmyadmin for example to import your Profile data into MyProfile"]-->
+<!--[/foreach]-->
+</textarea>
+</p>
+
+	
+	<form method="post" action="<!--[pnmodurl modname="MyProfile" type="admin" func="import"]-->">
+	   <input type="hidden" name="authid" value="<!--[$authid]-->" />
+	   <input type="hidden" name="action" value="profileimport" />
+	       <!--[gt text="Source field"]-->:
+	       <select name="source">
+	       <!--[foreach from=$properties item="item"]-->
+    	           <option value="<!--[$item.prop_label]-->"><!--[$item.prop_label]--></option>
+	       <!--[/foreach]-->
+	       </select>
+	       <!--[gt text="Destination field"]-->:
+	       <select name="destination">
+	       <!--[foreach from=$fields item="item"]-->
+	           <!--[if $item.fieldtype ne 'SEPARATOR']-->
+    	           <option value="<!--[$item.identifier]-->"><!--[$item.identifier]--></option>
+	           <!--[/if]-->
+	       <!--[/foreach]-->
+	       </select>
+	   <input type="submit" value="<!--[gt text="Import this user property"]-->" />
+	</form>
+	
+	
+	
+<!--[else]-->
+
+	<!--[gt text="The regular Profile module could not be found on your system. No Import possible."]-->
+
+<!--[/if]-->
+
 <!--[include file="myprofile_admin_footer.htm"]-->
