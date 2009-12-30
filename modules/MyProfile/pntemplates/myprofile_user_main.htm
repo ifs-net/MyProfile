@@ -75,10 +75,10 @@
 				<!--[pnformtextinput mandatory=$field.mandatory id=$field.identifier maxLength=$field.str_length]-->
 				<!--[else]-->
 					<!--[if $field.dropdownitems ne '']-->
-					    <!--[pnformdropdownlist id=$field.identifier items=$field.dropdownitems]-->
+					    <!--[pnformdropdownlist id=$field.identifier items=$field.dropdownitems mandatory=$field.mandatory]-->
 					<!--[else]-->
 						<!--[foreach from=$field.radioitems item=item]-->
-							<!--[pnformradiobutton id=$item.value dataField=$field.identifier mandatory="1"]--> <!--[pnformlabel __text=$item.text for=$item.value]-->
+							<!--[pnformradiobutton id=$item.value dataField=$field.identifier mandatory=$field.mandatory]--> <!--[pnformlabel __text=$item.text for=$item.value]-->
 						<!--[/foreach]-->
 					<!--[/if]-->
 			<!--[/if]-->
