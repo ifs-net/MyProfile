@@ -73,13 +73,15 @@ class MyProfile_user_ProfileHandler
     }
     function handleCommand(&$render, &$args)
     {
+        $dom = ZLanguage::getModuleDomain('MyProfile');
 		if ($args['commandName']=='update') {
 		    // Security check 
 		    if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_COMMENT)) return LogUtil::registerPermissionError();
 
 			// get the pnForm data and do a validation check
 		    $obj = $render->pnFormGetValues();		    
-		    prayer($obj);
+//		    prayer($obj);
+//		    die("..");
 		    if (!$render->pnFormIsValid()) return false;
 			$obj['timestamp'] = date("Y-m-d",time());
 			
