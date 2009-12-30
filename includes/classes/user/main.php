@@ -82,7 +82,6 @@ class MyProfile_user_ProfileHandler
 		    $obj = $render->pnFormGetValues();		    
 		    if (!$render->pnFormIsValid()) return false;
 			$obj['timestamp'] = date("Y-m-d",time());
-			
 			// is there a coordinate? Also check for attribute storage to be Profile-compatible
 			$fields = pnModAPIFunc('MyProfile','admin','getfields');
 			foreach ($fields as $field) {
