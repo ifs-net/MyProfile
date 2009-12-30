@@ -80,8 +80,6 @@ class MyProfile_user_ProfileHandler
 
 			// get the pnForm data and do a validation check
 		    $obj = $render->pnFormGetValues();		    
-//		    prayer($obj);
-//		    die("..");
 		    if (!$render->pnFormIsValid()) return false;
 			$obj['timestamp'] = date("Y-m-d",time());
 			

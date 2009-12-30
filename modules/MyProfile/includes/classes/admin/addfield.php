@@ -76,8 +76,10 @@ class MyProfile_admin_addFieldHandler
 			  	}
 				else logUtil::registerError(__('Error while deleting the fields', $dom));
 		    }
+
 		    // check if the form was filled correctly
 		    if (!$render->pnFormIsValid()) return false;
+
 		    // get the field id into the object
 		    if ($this->id > 0) $obj['id']=$this->id;
 		    if ($this->id > 0) {	// an field just has to be updated
@@ -86,6 +88,13 @@ class MyProfile_admin_addFieldHandler
 			}
 			else {	// field has to be inserted as new field.
 			  	$fields = pnModAPIFunc('MyProfile','admin','getFields');
+			  	// Check if there is already a field with the given / new identifier
+			  	foreach ($fields as $field) {
+                    if ( ($obj['fieldtype'] != 'SEPARATOR') && (strtoupper($field['identifier']) == strtoupper($obj['identifier']))) {
+                        LogUtil::registerError(__('A field named with this identifier exists already - please choose another value for the identifier!'));
+                        return false;
+                    }
+                }
 			  	$obj['position']= count($fields);
 			  	// remove blanks if needed
 			  	if ($obj['fieldtype'] != 'SEPARATOR') {
