@@ -19,11 +19,24 @@ class MyProfile_user_ProfileHandler
 		$settings 	= pnModAPIFunc('MyProfile','user','getSettings',array('uid' => $uid));
 		$fields     = pnModAPIFunc('MyProfile','admin','getFields');
 		$separators = pnModAPIFunc('MyProfile','admin','countSeparators');
+		
+		// We first have to filter out fields that are not active - these should not be writable by the user
+		$resultfields = array();
+		foreach ($fields as $field) {
+            if ($field['active'] != 0) {
+                $resultfields[] = $field;
+            }
+        }
+        $fields = $resultfields;
+        unset($resultfields);
+
+        // Assign data to template
 		$render->assign('fields',         $fields);
 		$render->assign('separators',     $separators);
 		$render->assign('uid',            $uid);
 		$render->assign('mymapavailable', pnModAvailable('MyMap'));
 		$notabs = pnModGetVar('MyProfile','notabs');
+		
 		// if the user does not have a valid (incomplete / outdated) profile we should better
 		// not use the tab-mode because the user might not see every field and only update / complete
 		// the first tab
@@ -39,7 +52,6 @@ class MyProfile_user_ProfileHandler
 			if (!isset($data)) unset($this->id);
 			else {
 				// extract coordinates if there are some
-				$fields = pnModAPIFunc('MyProfile','admin','getFields');
 				$resultfields = array();
 				foreach ($fields as $field) if ($field['fieldtype'] == 'COORD') $resultfields[] = $field;
 				foreach ($resultfields as $field) {
