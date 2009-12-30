@@ -260,7 +260,9 @@ function MyProfile_adminapi_buildSelection($list,$type) {
 		$ra = explode($chars,$list);
 		foreach ($ra as $element) {
 			$ea = explode('||',$element);
-			if ($ea[0]!='') $result[]=array('text'=>$ea[1],'value'=>$ea[0]);
+			if ($ea[1]!='') {
+                $result[]=array('text'=>$ea[1],'value'=>$ea[0]);
+            }
 		}
 	return $result;
 	}
