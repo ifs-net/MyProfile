@@ -74,26 +74,29 @@ function MyProfile_userapi_getProfile($args)
 				}
 			}
 		}
+		$customFieldList = pnModAPIFunc('MyProfile','user','getCustomFieldList',array('uid' => $uid));
 		if (
 			(	($field['public_status'] > $mystatus) ||
 				(($field['public_status'] == 9) && (pnModAvailable('ContactList')) && ($userattributes['myprofile_customsettings'] == 2) && !pnModAPIFunc('ContactList','user','isBuddy',array('uid1' => $uid, 'uid2' => $viewer_uid))) ||
-				(($field['public_status'] == 9) && ($viewer_uid > 1) && !in_array($viewer_uid,pnModAPIFunc('MyProfile','user','getCustomFieldList',array('uid' => $uid)))) 
+				(($field['public_status'] == 9) && ($viewer_uid > 1) && !in_array($viewer_uid,$customFieldList)) 
 				)
 			&& ($field['value']!="")
 			) {	// now display permission
-			switch ($field['fieldtype']) {
-				case 'DATE':
-					$field['value'] = "9999-12-31";
-					break;
-				case 'COORD':
+			if ($viewer_uid != $uid) {
+    			switch ($field['fieldtype']) {
+    				case 'DATE':
+    					$field['value'] = "9999-12-31";
+    					break;
+    				case 'COORD':
 					$field['value'] = "";
-					break;
-				case 'URL';
-					$field['value'] = 'none';
-					break;
-				default:
-				    $field['value']=__('no permission to view this field', $dom);
-			}
+    					break;
+    				case 'URL';
+    					$field['value'] = 'none';
+    					break;
+    				default:
+    				    $field['value']=__('no permission to view this field', $dom);
+    			}
+            }
 		}
 		$identifier = $field['identifier'];
 		if (($field['active'] == '1') && ($field['shown'] == '1')) $profile[$identifier]=$field;
