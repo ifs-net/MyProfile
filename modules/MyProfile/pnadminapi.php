@@ -532,6 +532,8 @@ function MyProfile_adminapi_getOrphans($args)
  *
  * @param   $args['source']         User property (string)
  * @param   $args['destination']    MyProfile identifier
+ * @param   $args['start']          Start interval for user ids
+ * @param   $args['end']          Start interval for user ids
  * @return array
  */
 function MyProfile_adminapi_importProfile($args)
@@ -539,16 +541,30 @@ function MyProfile_adminapi_importProfile($args)
     // Get Parameters
     $s = $args['source'];
     $d = $args['destination'];
-    
+    $start = (int) $args['start'];
+    $end   = (int) $args['end'];
+
     // get all users
-    $users     = pnModAPIFunc('Users','user','getall');
+//    $usersresult     = pnModAPIFunc('Users','user','getall');
+  	$tables = pnDBGetTables();
+  	$usercolumn = $tables['users_column'];
+    if (($start > 0) || ($end > 0)) {
+        $where = $usercolumn['uid']." >= ".$start." AND ".$usercolumn['uid']." <= ".$end;
+    }
+    $usersresult = DBUtil::selectObjectArray('users',$where,'',-1,-1,'',null,null,array('uid'));
+    $users = array();
+    foreach ($usersresult as $dummy) {
+        $users[$dummy['uid']] = $dummy['uid'];
+    }
+    unset($users[1]);
+    unset($usersresult);
+    
     $myprofile = DBUtil::selectObjectArray('myprofile','','',-1,-1,'',null,null,array('id'));
     $hasMyProfile = array();
     foreach ($myprofile as $dummy) {
         $hasMyProfile[$dummy['id']] = $dummy['id'];
     }
-//    prayer($hasMyProfile);
-//    prayer($users);
+    unset($myprofile);
         
     // construct statement
     $sql = array();

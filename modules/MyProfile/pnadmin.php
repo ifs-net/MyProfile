@@ -172,7 +172,9 @@ function MyProfile_admin_import()
     if (isset($action) && ($action == 'profileimport')) {
         $source      = FormUtil::getPassedValue('source');
         $destination = FormUtil::getPassedValue('destination');
-        $sql = pnModAPIFunc('MyProfile','admin','importProfile',array('source' => $source, 'destination' => $destination));
+        $start       = FormUtil::getPassedValue('start');
+        $end         = FormUtil::getPassedValue('end');
+        $sql = pnModAPIFunc('MyProfile','admin','importProfile',array('source' => $source, 'destination' => $destination, 'start' => $start, 'end' => $end));
         if (isset($sql) && (count($sql > 0))) {
             $render->assign('sql', $sql);
         }
