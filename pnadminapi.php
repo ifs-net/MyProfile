@@ -261,7 +261,11 @@ function MyProfile_adminapi_buildSelection($list,$type) {
 		foreach ($ra as $element) {
 			$ea = explode('||',$element);
 			if ($ea[1]!='') {
-                $result[]=array('text'=>$ea[1],'value'=>$ea[0]);
+                $result[] = array(
+                    'text'  =>  $ea[1],
+                    'value' =>  $ea[0],
+                    'id'    =>  md5($ea[1].$ea[0])
+                    );
             }
 		}
 	return $result;
