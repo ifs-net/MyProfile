@@ -571,16 +571,17 @@ function MyProfile_adminapi_importProfile($args)
     $myprofiletable = DBUtil::getLimitedTablename('myprofile');
     $profiletable = DBUtil::getLimitedTablename('user_property');
     foreach ($users as $user) {
-        if ($user['uid'] > 1) {
+        if ($user > 1) {
             // Is there already a myprofile profile?
-            if (!in_array($user['uid'],$hasMyProfile)) {
-                $sql[] = "insert into ".myprofiletable." ('id') values ('".DataUtil::formatForStore($user['uid'])."')";
+            if (!in_array($user,$hasMyProfile)) {
+                $sql[] = "insert into ".myprofiletable." ('id') values ('".DataUtil::formatForStore($user)."')";
             }
             // get source value
-            $value = str_replace("'","\'",pnUserGetVar($s,$user['uid']));
-            $sql[] = "update ".$myprofiletable." set MyProfile_".$d." = '".$value."' where id = ".$user['uid'].";";
+            $value = str_replace("'","\'",pnUserGetVar($s,$user));
+            $sql[] = "update ".$myprofiletable." set MyProfile_".$d." = '".$value."' where id = ".$user.";";
         }
     }
+
     return $sql;
     
 }
