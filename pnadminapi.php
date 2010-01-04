@@ -574,7 +574,7 @@ function MyProfile_adminapi_importProfile($args)
         if ($user['uid'] > 1) {
             // Is there already a myprofile profile?
             if (!in_array($user['uid'],$hasMyProfile)) {
-                $sql[] = "insert into ".myprofiletable." ('id') values ('".FormUtil::formatForStore($user['uid'])."')";
+                $sql[] = "insert into ".myprofiletable." ('id') values ('".DataUtil::formatForStore($user['uid'])."')";
             }
             // get source value
             $value = str_replace("'","\'",pnUserGetVar($s,$user['uid']));
