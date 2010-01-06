@@ -574,14 +574,12 @@ function MyProfile_adminapi_importProfile($args)
         if ($user > 1) {
             // Is there already a myprofile profile?
             if (!in_array($user,$hasMyProfile)) {
-                $sql[] = "insert into ".myprofiletable." ('id') values ('".DataUtil::formatForStore($user)."')";
+                $sql[] = "INSERT INTO `".$myprofiletable."` (`id`) VALUES ('".DataUtil::formatForStore($user)."')";
             }
             // get source value
             $value = str_replace("'","\'",pnUserGetVar($s,$user));
-            $sql[] = "update ".$myprofiletable." set MyProfile_".$d." = '".$value."' where id = ".$user.";";
+            $sql[] = "UPDATE `".$myprofiletable."` SET `MyProfile_".$d."` = '".$value."' WHERE id = ".$user.";";
         }
     }
-
     return $sql;
-    
 }
