@@ -12,7 +12,9 @@
 <!--[pnformlabel for="timezoneoffset" __text="My timezone"]--><br />
 <!--[pnformdropdownlist id="timezoneoffset" items=$items_timezone]--><br /><br />
 
-<!--[pnformcheckbox id="nocomments" checked="0"]--><!--[pnformlabel for="nocomments" __text="Do not allow other users to comment my profile"]--><br /><br />
+<!--[if $ezcommentsenabled]-->
+    <!--[pnformcheckbox id="nocomments" checked="0"]--><!--[pnformlabel for="nocomments" __text="Do not allow other users to comment my profile"]--><br /><br />
+<!--[/if]-->
 
 <!--[if $individualpermissions eq 1]-->
 	<!--[pnformlabel for="individualpermission" __text="My profile page should be accessable by"]--><br />
