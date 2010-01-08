@@ -25,6 +25,14 @@ class MyProfile_user_SettingsHandler
 		$mode = strtolower(FormUtil::getPassedValue('mode'));
 		$render->assign('mode', $mode);
 		$render->assign('noverification', pnModGetVar('MyProfile','noverification'));
+		
+		// Is EZComments enabled?
+		if (pnModAvailable('EZComments') && pnModIsHooked('EZComments','MyProfile')) {
+            $ezcommentsenabled = true;
+        } else {
+            $ezcommentsenabled = false;
+        }
+        $render->assign('ezcommentsenabled', $ezcommentsenabled);
 	
 		$this->id = (int)pnUserGetVar('uid');
 		if ($this->id > 0) {
