@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MyProfile\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-28 11:48+0100\n"
+"POT-Creation-Date: 2010-01-10 19:35+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Florian Schießl <florian.schiessl@ifs-net.de>\n"
 "Language-Team: Florian Schießl\n"
@@ -97,60 +97,60 @@ msgstr "Die Konfigurationsdatei kann nicht eingelesen werden. Bitte passen Sie d
 msgid "Config file is not writeable - change this before trying to edit the actual configuration."
 msgstr "Die Konfigurationsdatei kann nicht beschrieben werden. Bitte passen Sie die Rechte entsprechend an bevor Sie versuchen, die aktuelle Konfiguration zu bearbeiten."
 
-#: pnadminapi.php:359
+#: pnadminapi.php:361
 msgid "An error occured while trying to update the table definition"
 msgstr "Beim Aktualisieren der Tabellendefinition ist ein Fehler aufgetreten."
 
-#: pnadminapi.php:362
+#: pnadminapi.php:364
 msgid "Table definition updated successfully"
 msgstr "Die Tabellendefinition wurde aktualisiert."
 
-#: pnadminapi.php:368
+#: pnadminapi.php:370
 msgid "Table structure updated"
 msgstr "Die Struktur der Profiltabelle wurde aktualisiert"
 
-#: pnadminapi.php:371
+#: pnadminapi.php:373
 msgid "Parameter is missing: no source given"
 msgstr "Ein Parameter fehlt: Es wurde keine Quelle angegeben"
 
-#: pnadminapi.php:406
+#: pnadminapi.php:408
 msgid "An error occured importing the pnProfile configuration"
 msgstr "Ein Fehler ist beim Import der pnProfile-Profildaten aufgetreten"
 
-#: pnadminapi.php:409
+#: pnadminapi.php:411
 msgid "pnProfile structure imported into MyProfile"
 msgstr "Die pnProfile-Struktur wurde importiert"
 
-#: pnadminapi.php:451
+#: pnadminapi.php:453
 msgid "Import done"
 msgstr "Import beendet"
 
-#: pnadminapi.php:451
-#: pnadminapi.php:454
+#: pnadminapi.php:453
+#: pnadminapi.php:456
 msgid "items imported"
 msgstr "Profile wurden Importiert"
 
-#: pnadminapi.php:454
+#: pnadminapi.php:456
 msgid "One import step done.. This step has to be repeated in large communities"
 msgstr "Ein Importschritt wurde durchlaufen. Bei großen Mitgliederdatensammlungen kann es sein, dass dieses mehrfach wiederholt werden muss"
 
-#: pnadminapi.php:454
+#: pnadminapi.php:456
 msgid "about"
 msgstr "über"
 
-#: pnadminapi.php:454
+#: pnadminapi.php:456
 msgid "left"
 msgstr "verbleibend"
 
-#: pnadminapi.php:458
+#: pnadminapi.php:460
 msgid "pnProfile configuration could not be read"
 msgstr "die pnProfile-Konfiguration kann nicht ausgelesen werden"
 
-#: pnadminapi.php:492
+#: pnadminapi.php:494
 msgid "Parameter error: invalid source given"
 msgstr "Parameter falsch angegeben: Ungültige Quelle spezifiziert."
 
-#: pnadminapi.php:518
+#: pnadminapi.php:520
 msgid "Database was cleaned up"
 msgstr "Die Datenbank wurde optimiert"
 
@@ -175,245 +175,248 @@ msgstr "Beim Löschen eines Benutzer trat ein Fehler auf"
 msgid "Profile of user"
 msgstr "Profil von"
 
-#: includes/classes/user/confirmedusers.php:34
+#: includes/classes/user/confirmedusers.php:35
 msgid "The username you specified does not exist"
 msgstr "Der angegebene Benutzername exitiert nicht oder hat noch kein Profil"
 
-#: includes/classes/user/confirmedusers.php:38
+#: includes/classes/user/confirmedusers.php:39
 msgid "I hope you trust yourself, but you cannot add your own username to your list"
 msgstr "Wir hoffen, dass sich jeder selbst traut... Der eigene Benutzername kann nicht zu dieser Liste hinzugefügt werden!"
 
-#: includes/classes/user/confirmedusers.php:42
-#: includes/classes/admin/invalidemail.php:39
+#: includes/classes/user/confirmedusers.php:43
+#: includes/classes/admin/invalidemail.php:40
 msgid "User already marked"
 msgstr "Bbenutzer wurde bereits ausgewählt"
 
-#: includes/classes/user/confirmedusers.php:49
+#: includes/classes/user/confirmedusers.php:50
 msgid "An error occured while trying to add the user to your list"
 msgstr "Beim Hinzufügen des Benutzers trat ein Fehler auf"
 
-#: includes/classes/user/confirmedusers.php:53
+#: includes/classes/user/confirmedusers.php:54
 msgid "User was added to the list"
 msgstr "Der Benutzer wurde hinzugefügt"
 
-#: includes/classes/user/main.php:109
-#: includes/classes/user/main.php:126
+#: includes/classes/user/main.php:120
+#: includes/classes/user/main.php:137
 msgid "Updating / creating user attributes failed"
 msgstr "Beim Aktualisieren bzw. Erstellen der Benutzerattribute trat ein Fehler auf"
 
-#: includes/classes/user/main.php:112
+#: includes/classes/user/main.php:123
 msgid "Profile was updated successfully"
 msgstr "Das Profil wurde aktualisiert"
 
-#: includes/classes/user/main.php:113
+#: includes/classes/user/main.php:124
 msgid "Creating / Updating profile failed"
 msgstr "Beim Aktualisieren / Erstellen des Profils ist ein Fehler aufgetreten"
 
-#: includes/classes/user/main.php:132
+#: includes/classes/user/main.php:143
 msgid "The profile was created successfully"
 msgstr "Das Profil wurde erstellt"
 
-#: includes/classes/user/search.php:20
+#: includes/classes/user/search.php:21
 #: pntemplates/myprofile_user_confirmedusers.htm:10
 #: pntemplates/myprofile_user_search.htm:53
 msgid "Username"
 msgstr "Benutzername"
 
-#: includes/classes/user/search.php:56
-#, fuzzy
+#: includes/classes/user/search.php:57
 msgid "soft"
 msgstr "soft"
 
-#: includes/classes/user/search.php:57
+#: includes/classes/user/search.php:58
 msgid "exact"
 msgstr "genau"
 
-#: includes/classes/user/search.php:60
+#: includes/classes/user/search.php:61
 msgid "AND"
 msgstr "UND"
 
-#: includes/classes/user/search.php:61
+#: includes/classes/user/search.php:62
 msgid "OR"
 msgstr "ODER"
 
-#: includes/classes/user/search.php:64
+#: includes/classes/user/search.php:65
 msgid "ASC"
 msgstr "aufsteigend"
 
-#: includes/classes/user/search.php:65
+#: includes/classes/user/search.php:66
 msgid "DESC"
 msgstr "absteigend"
 
-#: includes/classes/user/validatemail.php:44
-#: includes/classes/user/settings.php:123
+#: includes/classes/user/validatemail.php:45
+#: includes/classes/user/settings.php:132
 msgid "Your email address was updated successfully"
 msgstr "Die Emailadresse wurde aktualisiert"
 
-#: includes/classes/user/validatemail.php:51
-#: includes/classes/user/settings.php:130
+#: includes/classes/user/validatemail.php:52
+#: includes/classes/user/settings.php:139
 msgid "An error occured while trying to change your email address"
 msgstr "Beim Ändern der Emailadresse ist ein Fehler aufgetreten"
 
-#: includes/classes/user/validatemail.php:53
+#: includes/classes/user/validatemail.php:54
 msgid "Verification code incorrect"
 msgstr "Verifikationscode nicht korrekt"
 
-#: includes/classes/user/validatemail.php:55
+#: includes/classes/user/validatemail.php:56
 msgid "Verification code is no longer valid - you should start a new request for a new verification code"
 msgstr "Verifikationscode inzwischen ungültig. Bitte neuen Verifikationscode für den Wechsel der Emailadresse beantragen und die Änderung schnellstmöglich durchführen"
 
-#: includes/classes/user/settings.php:46
-#: includes/classes/user/settings.php:59
+#: includes/classes/user/settings.php:54
+#: includes/classes/user/settings.php:67
 #: pntemplates/myprofile_admin_fields.htm:20
 #: pntemplates/myprofile_user_main.htm:69
 msgid "viewable by everybody"
 msgstr "sichtbar für jeden"
 
-#: includes/classes/user/settings.php:47
-#: includes/classes/user/settings.php:60
+#: includes/classes/user/settings.php:55
+#: includes/classes/user/settings.php:68
 msgid "all members"
 msgstr "alle Mitglieder"
 
-#: includes/classes/user/settings.php:49
-#: includes/classes/user/settings.php:61
+#: includes/classes/user/settings.php:57
+#: includes/classes/user/settings.php:69
 msgid "confirmed buddies"
 msgstr "Freunde"
 
-#: includes/classes/user/settings.php:62
+#: includes/classes/user/settings.php:70
 msgid "only listed users"
 msgstr "individuelle Nutzerauswahl"
 
-#: includes/classes/user/settings.php:84
+#: includes/classes/user/settings.php:93
 msgid "You have to include all mandatory profile variables into your individual template"
 msgstr "Alle als Pflichtfelder gekennzeichneten Daten müssen im individuellen Template vorhanden sein"
 
-#: includes/classes/user/settings.php:99
+#: includes/classes/user/settings.php:108
 msgid "Settings updated successfully"
 msgstr "Einstellungen wurden aktualisiert"
 
-#: includes/classes/user/settings.php:105
+#: includes/classes/user/settings.php:114
 msgid "The new password was not entered twice the same way - there might be a typo in a password - password was not changed"
 msgstr "Das Passwort wurde nicht übereinstimmend angegeben. Bitte auf Tippfehler, Groß- und Kleinschreibung prüfen. Passwort wurde daher nicht geändert."
 
-#: includes/classes/user/settings.php:112
+#: includes/classes/user/settings.php:121
 msgid "Your password was changed successfully"
 msgstr "Das Passwort wurde aktualisiert"
 
-#: includes/classes/user/settings.php:115
+#: includes/classes/user/settings.php:124
 msgid "The new password is too short"
 msgstr "Das neue Passwort ist zu kurz"
 
-#: includes/classes/user/settings.php:135
+#: includes/classes/user/settings.php:144
 msgid "An verification email with further instructions has been sent to your new email address."
 msgstr "Ein Verifizierungscode mit weiteren Anweisungen zur Beendigung dieses Schrittes wurde an die neue Emailadresse geschickt. Nachdem diese Schritte durchlaufen sind, wird die neue Adresse erst aktiv."
 
-#: includes/classes/user/settings.php:137
+#: includes/classes/user/settings.php:146
 msgid "An error occured while trying to send an verification code to your new, entered email address"
 msgstr "Der Verifikationscode konnte nicht an die neue Emailadresse geschickt werden"
 
-#: includes/classes/admin/invalidemail.php:32
+#: includes/classes/admin/invalidemail.php:33
 msgid "Email address could not be found in user database"
 msgstr "Die Emailadresse konnte nicht in der Datenbank gefunden werden"
 
-#: includes/classes/admin/invalidemail.php:48
+#: includes/classes/admin/invalidemail.php:49
 msgid "User marked"
 msgstr "Benutzer markiert"
 
-#: includes/classes/admin/invalidemail.php:52
+#: includes/classes/admin/invalidemail.php:53
 msgid "Error while trying to mark the user"
 msgstr "Beim markieren des Benutzers ist ein Fehler aufgetreten"
 
-#: includes/classes/admin/addfield.php:30
+#: includes/classes/admin/addfield.php:31
 msgid "No"
 msgstr "Nein"
 
-#: includes/classes/admin/addfield.php:31
+#: includes/classes/admin/addfield.php:32
 msgid "Yes"
 msgstr "Ja"
 
-#: includes/classes/admin/addfield.php:33
+#: includes/classes/admin/addfield.php:34
 msgid "Separator"
 msgstr "Separator"
 
-#: includes/classes/admin/addfield.php:34
+#: includes/classes/admin/addfield.php:35
 msgid "String"
 msgstr "Zeichenkette (String)"
 
-#: includes/classes/admin/addfield.php:35
+#: includes/classes/admin/addfield.php:36
 msgid "Integer"
 msgstr "Ganzzahliger Wert (Integer)"
 
-#: includes/classes/admin/addfield.php:36
+#: includes/classes/admin/addfield.php:37
 msgid "Float"
 msgstr "Gleitkommazahl (Float)"
 
-#: includes/classes/admin/addfield.php:37
+#: includes/classes/admin/addfield.php:38
 msgid "String (multiline)"
 msgstr "Mehrzeilige Zeichenkette (string, multiline)"
 
-#: includes/classes/admin/addfield.php:38
+#: includes/classes/admin/addfield.php:39
 msgid "Url"
 msgstr "Internetadresse (URL)"
 
-#: includes/classes/admin/addfield.php:39
+#: includes/classes/admin/addfield.php:40
 msgid "ICQ-UIN"
 msgstr "ICQ-Nummer (UIN)"
 
-#: includes/classes/admin/addfield.php:40
+#: includes/classes/admin/addfield.php:41
 msgid "Skype-ID"
 msgstr "Skype-ID"
 
-#: includes/classes/admin/addfield.php:41
+#: includes/classes/admin/addfield.php:42
 msgid "Date"
 msgstr "Datum"
 
-#: includes/classes/admin/addfield.php:42
+#: includes/classes/admin/addfield.php:43
 msgid "Timestamp"
 msgstr "Datum und Zeit"
 
-#: includes/classes/admin/addfield.php:43
+#: includes/classes/admin/addfield.php:44
 msgid "Coordinate"
 msgstr "Koordinate"
 
-#: includes/classes/admin/addfield.php:44
+#: includes/classes/admin/addfield.php:45
 msgid "This field will be shown to everybody"
 msgstr "Dieses Feld wird für jeden sichtbar sein"
 
-#: includes/classes/admin/addfield.php:45
+#: includes/classes/admin/addfield.php:46
 msgid "Only registered users will be able to see this field's value"
 msgstr "Nur registrierte Mitglieder werden den Inhalt dieses Feldes sehen können"
 
-#: includes/classes/admin/addfield.php:46
+#: includes/classes/admin/addfield.php:47
 msgid "Only the administrator will be able to see this field's value"
 msgstr "Nur der Administrator wird Zugriff auf den Inhalt dieses Feldes haben"
 
-#: includes/classes/admin/addfield.php:47
+#: includes/classes/admin/addfield.php:48
 #: pntemplates/myprofile_admin_fields.htm:23
 msgid "The user can choose who should be able to see this field's value"
 msgstr "Der Benutzer kann individuell festlegen, wer dieses Feld sehen können soll"
 
-#: includes/classes/admin/addfield.php:67
-#: includes/classes/admin/addfield.php:75
+#: includes/classes/admin/addfield.php:69
+#: includes/classes/admin/addfield.php:77
 msgid "Error while deleting the fields"
 msgstr "Beim Löschen der Felder ist ein Fehler aufgetreten"
 
-#: includes/classes/admin/addfield.php:71
+#: includes/classes/admin/addfield.php:73
 msgid "Field was deleted successfully"
 msgstr "Das Feld wurde gelöscht"
 
-#: includes/classes/admin/addfield.php:83
+#: includes/classes/admin/addfield.php:87
 msgid "Existing field was updated successfully"
 msgstr "Das Feld wurde aktualisiert"
 
-#: includes/classes/admin/addfield.php:93
+#: includes/classes/admin/addfield.php:94
+msgid "A field named with this identifier exists already - please choose another value for the identifier!"
+msgstr "Ein feld mit dieser Feldbezeichnung (Identifier) existiert bereits. Bitte den Feld-Wert anpassen / ändern!"
+
+#: includes/classes/admin/addfield.php:104
 msgid "The identifier must not contain any other characters than numbers (0-9) and regular characters (A-Z, a-z)"
 msgstr "Der Identifier-Wert darf nur Nummern und Buchstaben und keine Sonderzeichen enthalten"
 
-#: includes/classes/admin/addfield.php:98
+#: includes/classes/admin/addfield.php:109
 msgid "New field was created successfully"
 msgstr "Das Feld wurde erstellt"
 
-#: includes/classes/admin/settings.php:54
+#: includes/classes/admin/settings.php:55
 msgid "Configuration updated successfully"
 msgstr "Die Konfiguration wurde aktualisiert"
 
@@ -698,68 +701,99 @@ msgstr "Dieses Feld löschen"
 msgid "Update / create field"
 msgstr "Feld erstellen / aktualisieren"
 
-#: pntemplates/myprofile_admin_import.htm:2
+#: pntemplates/myprofile_admin_import.htm:3
 msgid "Import data from pnProfile"
 msgstr "Daten von pnProfile importieren"
 
-#: pntemplates/myprofile_admin_import.htm:4
+#: pntemplates/myprofile_admin_import.htm:7
 msgid "pnProfile module is available on your system. If you want to import data from this module to use it in the MyProfile module you can do this here. If you used a database dump to reconstruct pnProfile data make sure, that you also need the Users tables - not only the pnProfile tables are important!"
 msgstr "pnProfile ist installiert auf diesem System. Hier können diese Daten in MyProfile importiert werden. Wenn Sie einen SQL-Dump benutzt haben um die Daten zu rekonstruieren stellen Sie sicher, dass auch die Users-tabelle vorhanden ist. Nicht nur die pnProfile-Tabelle ist wichtig!"
 
-#: pntemplates/myprofile_admin_import.htm:5
-#: pntemplates/myprofile_admin_import.htm:22
+#: pntemplates/myprofile_admin_import.htm:8
 msgid "Start import now"
 msgstr "Import starten"
 
-#: pntemplates/myprofile_admin_import.htm:6
+#: pntemplates/myprofile_admin_import.htm:9
 msgid "Migration from pnProfile to MyProfile already done"
 msgstr "Die Migration wurde bereits durchgeführt"
 
-#: pntemplates/myprofile_admin_import.htm:8
+#: pntemplates/myprofile_admin_import.htm:11
 msgid "import pnProfile structure"
 msgstr "Stuktur von pnProfile importieren"
 
-#: pntemplates/myprofile_admin_import.htm:8
+#: pntemplates/myprofile_admin_import.htm:11
 msgid "If you have already configured MyProfile your configuration will be lost! Also values users might have entered already will be lost! Merging is not supported!"
 msgstr "Wenn MyProfile bereits konfiguriert wurde wird diese Konfiguration verloren gehen!"
 
-#: pntemplates/myprofile_admin_import.htm:9
+#: pntemplates/myprofile_admin_import.htm:12
 msgid "update table definition"
 msgstr "Tabellendefinition aktualisieren"
 
-#: pntemplates/myprofile_admin_import.htm:10
+#: pntemplates/myprofile_admin_import.htm:13
 msgid "update table"
 msgstr "Tabelle aktualisieren"
 
-#: pntemplates/myprofile_admin_import.htm:11
+#: pntemplates/myprofile_admin_import.htm:14
 msgid "import pnProfile data into MyProfile"
 msgstr "importiere pnProfile-Daten in MyProfile"
 
-#: pntemplates/myprofile_admin_import.htm:11
+#: pntemplates/myprofile_admin_import.htm:14
 msgid "If you have a huge pnProfile database the update might break if the memory limit or the timeout is set to low. If the update breaks, raise your memory limit and the php maximum execution time and try this step again until it works! Also do not run any other processes you do not need when importing the database."
 msgstr "Bei einer sehr großen pnProfile-Datenbank kann es zu Timeouts oder Problemen mit einem eingestellten, niedrigen PHP-Memory-Limit kommen. Sollte das Update fehlschlagen, Memorylimit und maximum execution time erhöhen udn erneut versuchen, bis es geht. Es empfiehlt sich zusätzlich, alle anderen Anwendugen am Server für diese Zeit zu stoppen."
 
-#: pntemplates/myprofile_admin_import.htm:13
+#: pntemplates/myprofile_admin_import.htm:16
 msgid "Migration failed"
 msgstr "Migration mit Fehler abgebrochen"
 
-#: pntemplates/myprofile_admin_import.htm:13
+#: pntemplates/myprofile_admin_import.htm:16
 msgid "Reset migration and start with first step again"
 msgstr "Migration zurücksetzen und mit erstem Schritt beginnen"
 
-#: pntemplates/myprofile_admin_import.htm:16
+#: pntemplates/myprofile_admin_import.htm:20
 msgid "pnProfile is not available on your system. No import possible."
 msgstr "pnProfile ist nicht im System verfügbar, ein Import daher nicht möglich."
 
-#: pntemplates/myprofile_admin_import.htm:20
+#: pntemplates/myprofile_admin_import.htm:24
+msgid "Import data from Profile"
+msgstr "Daten von pnProfile importieren"
+
+#: pntemplates/myprofile_admin_import.htm:28
 msgid "Profile module found on your system. You can import all data from Profile module into MyProfile."
 msgstr "Das Profile-Modul wurde gefunden. Daten können in MyProfile importiert werden."
 
-#: pntemplates/myprofile_admin_import.htm:21
-msgid "Attention: Importing data from this module will erase an existing MyProfile configuration before importing Profile data into MyProfile."
-msgstr "Achtung: Ein Import der Daten wird eine eventuell bestehende MyProfile-Konfiguration kompeltt zerstören."
+#: pntemplates/myprofile_admin_import.htm:29
+msgid "Attention: You first have to setup the structur of the MyProfile user profile. Having done this will enable you to import User-Properties step by step for each user... Just choose the porperty, the target the data should be written into and then import from Profile module."
+msgstr "Achtung: Zuerst muss das Benutzerprofil angelegt sein. Nachdem dies getan ist, können die Benutzerattribute, welche das Profile-Modul speichert, importiert werden. Dazu bitte das gewünschte Benutzerattribut wählen und das Zielfeld, welches in MyProfile damit befüllt werden soll, wählen. Dann wird ein SQL-Dump generiert, welcher noch ausgeführt werden muss. Dann sind die Daten importiert."
 
-#: pntemplates/myprofile_admin_import.htm:24
+#: pntemplates/myprofile_admin_import.htm:36
+msgid "After selecting a source user property and a destination MyProfile identifier you will have some sql code shown in here. Please copy and paste this code and execute it in phpmyadmin for example to import your Profile data into MyProfile"
+msgstr "Nachdem ein zu importierende Benutzerattribut ausgewählt wurde, wird hier entsprechender SQL-Code dargestellt. Diesen bitte in Tools wie phpmyadmin manuell ausführen und so Stück für Stück und Attribut für Attribut die Daten importieren"
+
+#: pntemplates/myprofile_admin_import.htm:45
+msgid "Source field"
+msgstr "Quellen-Feld"
+
+#: pntemplates/myprofile_admin_import.htm:51
+msgid "Destination field"
+msgstr "Zielfeld"
+
+#: pntemplates/myprofile_admin_import.htm:60
+msgid "If your memory limit is to low or your database to huge you can select a start and stop interval for user IDs"
+msgstr "Falls das Memory-Limit des Servers zu gering ist bzw. die Benutzerdatenbank zu groß ist bitte Intervallweise die Daten importieren."
+
+#: pntemplates/myprofile_admin_import.htm:61
+msgid "Begin of User-ID interval"
+msgstr "Start der Benutzer-ID-Intervalls"
+
+#: pntemplates/myprofile_admin_import.htm:63
+msgid "End of User-ID interval"
+msgstr "Ende des Benutzer-ID-Intervalls"
+
+#: pntemplates/myprofile_admin_import.htm:65
+msgid "Import this user property"
+msgstr "Benutzerattribut importieren"
+
+#: pntemplates/myprofile_admin_import.htm:72
 msgid "The regular Profile module could not be found on your system. No Import possible."
 msgstr "Das reguläre Profie-Modul wurde nciht gefunden - kein Import möglich"
 
@@ -1150,68 +1184,68 @@ msgstr "Allgemeine Einstellungen"
 msgid "My timezone"
 msgstr "Meine Zeitzone"
 
-#: pntemplates/myprofile_user_settings.htm:15
+#: pntemplates/myprofile_user_settings.htm:16
 msgid "Do not allow other users to comment my profile"
 msgstr "Anderen Benutzern nicht erlauben mein Profil zu kommentieren"
 
-#: pntemplates/myprofile_user_settings.htm:18
+#: pntemplates/myprofile_user_settings.htm:20
 msgid "My profile page should be accessable by"
 msgstr "Mein Profil soll sichtbar sein für"
 
-#: pntemplates/myprofile_user_settings.htm:23
+#: pntemplates/myprofile_user_settings.htm:25
 msgid "Profile data fields that are marked as private should be viewable by"
 msgstr "Einige Profildaten sind als privat deklariert. Diese sollen sichtbar sein für"
 
-#: pntemplates/myprofile_user_settings.htm:25
+#: pntemplates/myprofile_user_settings.htm:27
 msgid "Manage users that are allowed to view all my data that is declared as private"
 msgstr "Liste der Benutzer verwalten, welche meine diese privaten Daten sehen dürfen"
 
-#: pntemplates/myprofile_user_settings.htm:31
-#: pntemplates/myprofile_user_settings.htm:35
+#: pntemplates/myprofile_user_settings.htm:33
+#: pntemplates/myprofile_user_settings.htm:37
 msgid "Use an individual template"
 msgstr "Individuelle Vorlage benutzen"
 
-#: pntemplates/myprofile_user_settings.htm:38
+#: pntemplates/myprofile_user_settings.htm:40
 msgid "Some hints to create your own template"
 msgstr "Einige Hinweise zur Benutzung eigener Vorlagen"
 
-#: pntemplates/myprofile_user_settings.htm:42
+#: pntemplates/myprofile_user_settings.htm:44
 msgid "The individual profile tempalte can be designed in HTML"
 msgstr "Die Vorlage kann in HTML entworfen werden."
 
-#: pntemplates/myprofile_user_settings.htm:43
+#: pntemplates/myprofile_user_settings.htm:45
 msgid "The use of the following words (bold printed) will cause a replacement with your profile data - with * marked variables are mandatory and have to be used in your template"
 msgstr "Die Fettgedruckten Wörter werden im Template automatisch ersetzt mit den jeweiligen eigenen Profildaten. Mit einem Stern versehene Variablen müssen zwingend in der Vorlage vorkommen"
 
-#: pntemplates/myprofile_user_settings.htm:46
+#: pntemplates/myprofile_user_settings.htm:48
 msgid "will be replaced with"
 msgstr "wird ersetzt durch"
 
-#: pntemplates/myprofile_user_settings.htm:63
+#: pntemplates/myprofile_user_settings.htm:65
 msgid "Manage your password"
 msgstr "Mein Passwort verwalten"
 
-#: pntemplates/myprofile_user_settings.htm:64
+#: pntemplates/myprofile_user_settings.htm:66
 msgid "If you want to change your password enter the new one"
 msgstr "Wenn das Passwort geändert werden soll, bitte hier das neue Passwort eingeben"
 
-#: pntemplates/myprofile_user_settings.htm:66
+#: pntemplates/myprofile_user_settings.htm:68
 msgid "and repeat the new password please"
 msgstr "und das Passwort zur Sicherheit nochmal wiederholen"
 
-#: pntemplates/myprofile_user_settings.htm:71
+#: pntemplates/myprofile_user_settings.htm:73
 msgid "Change email address"
 msgstr "Emailadresse ändern"
 
-#: pntemplates/myprofile_user_settings.htm:72
+#: pntemplates/myprofile_user_settings.htm:74
 msgid "New email address"
 msgstr "Neue Email-Adresse"
 
-#: pntemplates/myprofile_user_settings.htm:75
+#: pntemplates/myprofile_user_settings.htm:77
 msgid "Enter verification code for new email address"
 msgstr "Emailadressen-Verifikationscode für neue Emailadresse eingeben"
 
-#: pntemplates/myprofile_user_settings.htm:77
+#: pntemplates/myprofile_user_settings.htm:79
 #: pntemplates/myprofile_user_main.htm:114
 msgid "save / update"
 msgstr "speichern / aktualisieren"
@@ -1294,8 +1328,8 @@ msgid "Show all tabs on one page"
 msgstr "Alle Karteireiter als eine Seite darstellen"
 
 #: pntemplates/myprofile_user_main.htm:16
-msgid "Switch to the "
-msgstr "wechseln zum"
+msgid "Switch to the tab-mode"
+msgstr "Zur Profilreiter-Ansicht wechseln"
 
 #: pntemplates/myprofile_user_main.htm:34
 msgid "Manage your community profile"
@@ -1306,8 +1340,8 @@ msgid "Please fill the form with your input. Every field that is marked with thi
 msgstr "Bitte die folgenden Felder ausfüllen. Jedes mit * markierte feld ist ein Pflichtfeld."
 
 #: pntemplates/myprofile_user_main.htm:40
-msgid "Please click on the tabs above this text to get to the separated sections to manage your profile data. Please click the "
-msgstr "Bitte auf die Karteireiter über diesem Text klicken um alle Bereiche des Benutzerprofils bearbeiten zu können. Bitte klicken auf"
+msgid "Please click on the tabs above this text to get to the separated sections to manage your profile data. Please click the save-Button only if the profile is completely filled out!"
+msgstr "Bitte auf die Karteireiter über diesem Text klicken um alle Bereiche des Benutzerprofils bearbeiten zu können. Nachdem alle Karteireiter ausgefüllt wurde, kann das Profil gespeichert werden."
 
 #: pntemplates/myprofile_user_main.htm:69
 #: pntemplates/myprofile_user_main.htm:70
@@ -1503,4 +1537,11 @@ msgstr "Bitte nicht auf diese automatisch vom System generierte Email antworten 
 #: pntemplates/myprofile_plugin_myprofile.htm:17
 msgid "more/less"
 msgstr "mehr / weniger"
+
+#~ msgid ""
+#~ "Attention: Importing data from this module will erase an existing "
+#~ "MyProfile configuration before importing Profile data into MyProfile."
+#~ msgstr ""
+#~ "Achtung: Ein Import der Daten wird eine eventuell bestehende MyProfile-"
+#~ "Konfiguration kompeltt zerstören."
 
