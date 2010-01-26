@@ -8,7 +8,7 @@
             </th>
         <!--[/foreach]-->
         <th>
-            <!--[gt text="_MYPROFILEUser Name"]-->
+            <!--[gt text="User Name" domain="module_myprofile"]-->
         </th>
     </tr>
     <!--[foreach from=$latest item="item"]-->
@@ -25,4 +25,4 @@
     <!--[/foreach]-->
 </table>
 </div>
-<!--[gt text="_MYPROFILE_SUM"]--> <!--[$latest|@count]--> <!--[gt text="_MYPROFILEregistered users"]--> <!--[$sincedate]--><br />
+<!--[gt text="Sum" domain="module_myprofile"]-->: <!--[$latest|@count]--> <!--[gt text="registered users since" domain="module_myprofile"]--> <!--[$sincedate]--><br />
