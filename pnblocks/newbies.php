@@ -16,9 +16,10 @@ function MyProfile_newbiesblock_init()
  */
 function MyProfile_newbiesblock_info()
 {
+    $dom = ZLanguage::getModuleDomain('MyProfile');
     return array('text_type'      => 'Newbies',
                  'module'         => 'MyProfile',
-                 'text_type_long' => 'Show new users',
+                 'text_type_long' => __('Show latest user registrations', $dom),
                  'allow_multiple' => true,
                  'form_content'   => false,
                  'form_refresh'   => false,

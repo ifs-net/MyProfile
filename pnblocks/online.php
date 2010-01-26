@@ -16,9 +16,10 @@ function MyProfile_onlineblock_init()
  */
 function MyProfile_onlineblock_info()
 {
+    $dom = ZLanguage::getModuleDomain('MyProfile');
     return array('text_type'      => 'Online',
                  'module'         => 'MyProfile',
-                 'text_type_long' => 'Show users that are online now',
+                 'text_type_long' => __('Show users that are online now (please customize template myprofile_block_online.htm for your needs)',$dom),
                  'allow_multiple' => true,
                  'form_content'   => false,
                  'form_refresh'   => false,
