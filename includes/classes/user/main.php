@@ -107,6 +107,11 @@ class MyProfile_user_ProfileHandler
 					unset($obj[$lng]);
 					$obj[$identifier] = serialize($obj[$identifier]);
 				}
+				// check for date
+				if ($field['fieldtype'] == 'DATE') {
+                    $identifier = $field['identifier'];
+                    $obj[$identifier] = date("Y-m-d",DateUtil::parseUIDate($obj[$identifier]));
+                }
 			}
 			
 			// Load admin library
