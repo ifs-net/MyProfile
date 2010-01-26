@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MyProfile\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-26 18:31+0100\n"
+"POT-Creation-Date: 2010-01-26 18:57+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Florian Schießl <florian.schiessl@ifs-net.de>\n"
 "Language-Team: Florian Schießl\n"
@@ -13,6 +13,24 @@ msgstr ""
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
 "X-Poedit-SourceCharset: utf-8\n"
+
+#: pnmailzapi.php:26
+msgid "Latest registrations"
+msgstr "Neue Profile"
+
+#: pnmailzapi.php:27
+msgid "Show latest user registrations"
+msgstr "Neueste Anmeldungen und Profile anzeigen"
+
+#: pnmailzapi.php:124
+#: pntemplates/myprofile_mailz_latest.htm:28
+msgid "Sum"
+msgstr "Summe"
+
+#: pnmailzapi.php:124
+#: pntemplates/myprofile_mailz_latest.htm:28
+msgid "registered users since"
+msgstr "registrierte Benutzer seit"
 
 #: pnuserapi.php:95
 #: pntemplates/myprofile_myprofile_tab.htm:69
@@ -866,10 +884,6 @@ msgstr "Ergebnis"
 msgid "previous page"
 msgstr "Vorherige Seite"
 
-#: pntemplates/myprofile_user_search.htm:26
-msgid "_MYPROFILESPREVIOUSPAGE"
-msgstr ""
-
 #: pntemplates/myprofile_user_search.htm:29
 msgid "next page"
 msgstr "nächste Seite"
@@ -908,8 +922,8 @@ msgid "Sort result by"
 msgstr "Sortieren nach"
 
 #: pntemplates/myprofile_user_search.htm:110
-msgid "Using the search type "
-msgstr "Benutzen des Suchtyps"
+msgid "Using the search type soft and searching for sun you will also get results like sunset because the searched word is in it. If you do not want to use this select exact as search type!"
+msgstr "Wenn der Suchtyp \"soft\" verwendet wird, werden bei Suche nach \"Sonne\" auch Ergebnisse mit \"Sonnenschein\" im Suchausdruck angezeigt. Wenn exakt nur das Gesuchte angezeigt werden soll, bitte Suchtyp \"genau\" wählen."
 
 #: pntemplates/myprofile_user_search.htm:114
 msgid "If you just click the search button without any search parameters you will get the whole member list displayed"
@@ -1299,16 +1313,8 @@ msgid "Try again and proceed"
 msgstr "Bitte erneut versuchen und fortfahren"
 
 #: pntemplates/myprofile_mailz_latest.htm:11
-msgid "_MYPROFILEUser Name"
-msgstr ""
-
-#: pntemplates/myprofile_mailz_latest.htm:28
-msgid "_MYPROFILE_SUM"
-msgstr ""
-
-#: pntemplates/myprofile_mailz_latest.htm:28
-msgid "_MYPROFILEregistered users"
-msgstr ""
+msgid "User Name"
+msgstr "Benutzername"
 
 #: pntemplates/myprofile_admin_menu.htm:8
 msgid "main / modify user"
@@ -1550,6 +1556,8 @@ msgstr "Bitte nicht auf diese automatisch vom System generierte Email antworten 
 msgid "more/less"
 msgstr "mehr / weniger"
 
+#~ msgid "Using the search type "
+#~ msgstr "Benutzen des Suchtyps"
 #~ msgid "Use this format: YYYY-MM-DD. Example: 1981-05-25"
 #~ msgstr "Bitte format JJJJ-MM-TT benutzen, z.B. 1981-05-25"
 #~ msgid ""

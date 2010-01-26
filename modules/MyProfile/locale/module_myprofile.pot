@@ -8,13 +8,29 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zikula component\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-26 18:31+0100\n"
+"POT-Creation-Date: 2010-01-26 18:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: pnmailzapi.php:26
+msgid "Latest registrations"
+msgstr ""
+
+#: pnmailzapi.php:27
+msgid "Show latest user registrations"
+msgstr ""
+
+#: pnmailzapi.php:124 pntemplates/myprofile_mailz_latest.htm:28
+msgid "Sum"
+msgstr ""
+
+#: pnmailzapi.php:124 pntemplates/myprofile_mailz_latest.htm:28
+msgid "registered users since"
+msgstr ""
 
 #: pnuserapi.php:95 pntemplates/myprofile_myprofile_tab.htm:69
 #: pntemplates/myprofile_myprofile_tab.htm:76
@@ -945,10 +961,6 @@ msgstr ""
 msgid "previous page"
 msgstr ""
 
-#: pntemplates/myprofile_user_search.htm:26
-msgid "_MYPROFILESPREVIOUSPAGE"
-msgstr ""
-
 #: pntemplates/myprofile_user_search.htm:29
 msgid "next page"
 msgstr ""
@@ -991,7 +1003,10 @@ msgid "Sort result by"
 msgstr ""
 
 #: pntemplates/myprofile_user_search.htm:110
-msgid "Using the search type "
+msgid ""
+"Using the search type soft and searching for sun you will also get results "
+"like sunset because the searched word is in it. If you do not want to use "
+"this select exact as search type!"
 msgstr ""
 
 #: pntemplates/myprofile_user_search.htm:114
@@ -1415,15 +1430,7 @@ msgid "Try again and proceed"
 msgstr ""
 
 #: pntemplates/myprofile_mailz_latest.htm:11
-msgid "_MYPROFILEUser Name"
-msgstr ""
-
-#: pntemplates/myprofile_mailz_latest.htm:28
-msgid "_MYPROFILE_SUM"
-msgstr ""
-
-#: pntemplates/myprofile_mailz_latest.htm:28
-msgid "_MYPROFILEregistered users"
+msgid "User Name"
 msgstr ""
 
 #: pntemplates/myprofile_admin_menu.htm:8
