@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MyProfile\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-10 19:35+0100\n"
+"POT-Creation-Date: 2010-01-26 18:31+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Florian Schießl <florian.schiessl@ifs-net.de>\n"
 "Language-Team: Florian Schießl\n"
@@ -75,7 +75,23 @@ msgstr "Die Profildaten wurden gelöscht für den Benutzer"
 msgid "User-Profile"
 msgstr "Benutzerprofil"
 
-#: pninit.php:141
+#: pninit.php:76
+msgid "Error registering System Init Hook for MyProfile module"
+msgstr "Ein Fehler ist beim Registrieren des System-Init-Hooks für das Module MyProfile aufgetreten. Bitte prüfen und ggf. manuell den Hook für MyProfile an den Zikula core aktivieren."
+
+#: pninit.php:79
+msgid "System Init Hook was created for MyProfile module"
+msgstr "Ein System-Init-Hook wurde erfolgreich für MyProfile erstellt."
+
+#: pninit.php:109
+msgid "System Init Hook remove error"
+msgstr "Ein Fehler ist beim Entfernen des System-Init-Hooks aufgetreten. Das Modul wird dennoch deinstalliert, ggf. sind in der Datenbank für Hooks jedoch noch Rückstände. Ein Problem für die Funktionalität von Zikula ist dies jedoch nicht."
+
+#: pninit.php:111
+msgid "System Init Hook for MyProfile module was removed"
+msgstr "Der für MyProfile notwendige System-Init-Hook wurde erfolgreich entfernt"
+
+#: pninit.php:145
 msgid "MyProfile systeminit hook created"
 msgstr "Systeminithook wurde angelegt"
 
@@ -1246,7 +1262,7 @@ msgid "Enter verification code for new email address"
 msgstr "Emailadressen-Verifikationscode für neue Emailadresse eingeben"
 
 #: pntemplates/myprofile_user_settings.htm:79
-#: pntemplates/myprofile_user_main.htm:114
+#: pntemplates/myprofile_user_main.htm:113
 msgid "save / update"
 msgstr "speichern / aktualisieren"
 
@@ -1352,15 +1368,11 @@ msgstr "Sichtbar für"
 msgid "Private field, only viewable by users you allow to access this data"
 msgstr "Privates Feld, nur sichtbar für speziell freigegebene Benutzer"
 
-#: pntemplates/myprofile_user_main.htm:94
-msgid "Use this format: YYYY-MM-DD. Example: 1981-05-25"
-msgstr "Bitte format JJJJ-MM-TT benutzen, z.B. 1981-05-25"
-
-#: pntemplates/myprofile_user_main.htm:101
+#: pntemplates/myprofile_user_main.htm:100
 msgid "Longitude"
 msgstr "Längengrad"
 
-#: pntemplates/myprofile_user_main.htm:102
+#: pntemplates/myprofile_user_main.htm:101
 msgid "Latitude"
 msgstr "Breitengrad"
 
@@ -1538,6 +1550,8 @@ msgstr "Bitte nicht auf diese automatisch vom System generierte Email antworten 
 msgid "more/less"
 msgstr "mehr / weniger"
 
+#~ msgid "Use this format: YYYY-MM-DD. Example: 1981-05-25"
+#~ msgstr "Bitte format JJJJ-MM-TT benutzen, z.B. 1981-05-25"
 #~ msgid ""
 #~ "Attention: Importing data from this module will erase an existing "
 #~ "MyProfile configuration before importing Profile data into MyProfile."
