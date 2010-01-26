@@ -104,8 +104,11 @@ function MyProfile_delete()
     if (file_exists($configfile)) unlink($configfile);
 
     // delete the system init hook
+    $dom = ZLanguage::getModuleDomain('MyProfile');
     if (!pnModUnregisterHook('zikula', 'systeminit', 'GUI', 'MyProfile', 'user', 'systeminit')) {
-        return LogUtil::registerError(_ERRORDELETINGHOOK);
+        LogUtil::registerError(__('System Init Hook remove error', $dom));
+    } else {
+        LogUtil::registerStatus(__('System Init Hook for MyProfile module was removed', $dom));
     }
 
     // Deletion successful
