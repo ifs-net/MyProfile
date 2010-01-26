@@ -487,7 +487,7 @@ msgstr "Profil bearbeiten"
 
 #: pntemplates/myprofile_admin_main.htm:7
 msgid "You can directly modify a user's profile in entering the"
-msgstr "Ein Benutzerprofil kann direkt durch Eingabe des"
+msgstr "Ein Benutzerprofil direkt durch Eingabe von"
 
 #: pntemplates/myprofile_admin_main.htm:9
 msgid "username"
