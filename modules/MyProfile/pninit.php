@@ -71,11 +71,12 @@ function MyProfile_init()
     if (file_exists($configfile)) unlink($configfile);
 
 	// install system init hook
+    $dom = ZLanguage::getModuleDomain('MyProfile');
     if (!pnModRegisterHook('zikula', 'systeminit', 'GUI', 'MyProfile', 'user', 'systeminit')) {
-        return LogUtil::registerError(_ERRORCREATINGHOOK);
+        return LogUtil::registerError(__('Error registering System Init Hook for MyProfile module', $dom));
     }
     pnModAPIFunc('Modules', 'admin', 'enablehooks', array('callermodname' => 'zikula', 'hookmodname' => 'MyProfile'));
-    LogUtil::registerStatus(_HOOKHINT);
+    LogUtil::registerStatus(__('System Init Hook was created for MyProfile module', $dom));
 
 
     // Initialisation successful
