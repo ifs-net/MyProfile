@@ -72,33 +72,33 @@
 		<br />
 		<!--[if $field.fieldtype eq "STRING" or $field.fieldtype == "TIMESTAMP"]-->
 			<!--[if $field.list eq ""]-->
-				<!--[pnformtextinput mandatory=$field.mandatory id=$field.identifier maxLength=$field.str_length]-->
+				<!--[pnformtextinput mandatorysym='1' mandatory=$field.mandatory id=$field.identifier maxLength=$field.str_length]-->
 				<!--[else]-->
 					<!--[if $field.dropdownitems ne '']-->
-					    <!--[pnformdropdownlist id=$field.identifier items=$field.dropdownitems mandatory=$field.mandatory]-->
+					    <!--[pnformdropdownlist id=$field.identifier items=$field.dropdownitems mandatorysym='1' mandatory=$field.mandatory]-->
 					<!--[else]-->
 						<!--[foreach from=$field.radioitems item=item]-->
-							<!--[pnformradiobutton id=$item.id dataField=$field.identifier mandatory=$field.mandatory]--> <!--[pnformlabel text=$item.text for=$item.value]-->
+							<!--[pnformradiobutton id=$item.id dataField=$field.identifier mandatorysym='1' mandatory=$field.mandatory]--> <!--[pnformlabel text=$item.text for=$item.value]-->
 						<!--[/foreach]-->
 					<!--[/if]-->
 			<!--[/if]-->
 		<!--[/if]-->
-		<!--[if $field.fieldtype eq "SKYPEID"]--><img src="images/icons/extrasmall/voice_support.gif" /><!--[pnformtextinput id=$field.identifier mandatory=$field.mandatory maxLength="30"]--><!--[/if]-->
-		<!--[if $field.fieldtype eq "UIN"]--><img src="modules/MyProfile/pnimages/online.gif" /> <!--[pnformintinput id=$field.identifier mandatory=$field.mandatory]--><!--[/if]-->
-		<!--[if $field.fieldtype eq "URL"]--><!--[pnformurlinput id=$field.identifier mandatory=$field.mandatory]--><!--[/if]-->
-		<!--[if $field.fieldtype eq "TEXTBOX"]--><!--[pnformtextinput id=$field.identifier mandatory=$field.mandatory textMode="multiline" rows="5" cols="50"]--><!--[/if]-->
-		<!--[if $field.fieldtype eq "INTEGER"]--><!--[pnformintinput id=$field.identifier minValue=$field.num_minvalue maxValue=$field.num_maxvalue mandatory=$field.mandatory]--><!--[/if]-->
-		<!--[if $field.fieldtype eq "FLOAT"]--><!--[pnformfloatinput id=$field.identifier minValue=$field.num_minvalue maxValue=$field.num_maxvalue mandatory=$field.mandatory]--><!--[/if]-->
+		<!--[if $field.fieldtype eq "SKYPEID"]--><img src="images/icons/extrasmall/voice_support.gif" /><!--[pnformtextinput id=$field.identifier mandatorysym='1' mandatory=$field.mandatory maxLength="30"]--><!--[/if]-->
+		<!--[if $field.fieldtype eq "UIN"]--><img src="modules/MyProfile/pnimages/online.gif" /> <!--[pnformintinput id=$field.identifier mandatorysym='1' mandatory=$field.mandatory]--><!--[/if]-->
+		<!--[if $field.fieldtype eq "URL"]--><!--[pnformurlinput id=$field.identifier mandatorysym='1' mandatory=$field.mandatory]--><!--[/if]-->
+		<!--[if $field.fieldtype eq "TEXTBOX"]--><!--[pnformtextinput id=$field.identifier mandatorysym='1' mandatory=$field.mandatory textMode="multiline" rows="5" cols="50"]--><!--[/if]-->
+		<!--[if $field.fieldtype eq "INTEGER"]--><!--[pnformintinput id=$field.identifier minValue=$field.num_minvalue maxValue=$field.num_maxvalue mandatorysym='1' mandatory=$field.mandatory]--><!--[/if]-->
+		<!--[if $field.fieldtype eq "FLOAT"]--><!--[pnformfloatinput id=$field.identifier minValue=$field.num_minvalue maxValue=$field.num_maxvalue mandatorysym='1' mandatory=$field.mandatory]--><!--[/if]-->
 		<!--[if $field.fieldtype eq "DATE"]-->
-			<!--[pnformdateinput id=$field.identifier mandatory=$field.mandatory]-->
+			<!--[pnformdateinput id=$field.identifier mandatorysym='1' mandatory=$field.mandatory]-->
 		<!--[/if]-->
 		<!--[if $field.fieldtype eq "COORD"]-->
 			<!--[if $mymapavailable]-->
 				<!--[pnmodapifunc modname="MyMap" type="user" func="generateMap" width="400" height="150" maptype="hybrid" zoomfactor="7" lat="`$field.identifier`_lat" lng="`$field.identifier`_lng" coords=$coords[$field.identifier]]-->
 			<!--[/if]-->
 			<img src="images/icons/extrasmall/agt_internet.gif" />
-			<!--[gt text="Longitude"]-->: <!--[pnformtextinput id="`$field.identifier`_lng" mandatory=$field.mandatory maxLength="25" textMode="singleLine"]-->
-			<!--[gt text="Latitude"]-->: <!--[pnformtextinput id="`$field.identifier`_lat" mandatory=$field.mandatory maxLength="25" textMode="singleLine"]-->
+			<!--[gt text="Longitude"]-->: <!--[pnformtextinput id="`$field.identifier`_lng" mandatorysym='1' mandatory=$field.mandatory maxLength="25" textMode="singleLine"]-->
+			<!--[gt text="Latitude"]-->: <!--[pnformtextinput id="`$field.identifier`_lat" mandatorysym='1' mandatory=$field.mandatory maxLength="25" textMode="singleLine"]-->
 		<!--[/if]-->
 		</div>
 		<!-- form item end -->
