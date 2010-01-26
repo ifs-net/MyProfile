@@ -25,9 +25,10 @@ function MyProfile_randomblock_init()
  */
 function MyProfile_randomblock_info()
 {
+    $dom = ZLanguage::getModuleDomain('MyProfile');
     return array('text_type'      => 'random',
                  'module'         => 'MyProfile',
-                 'text_type_long' => 'Show random users',
+                 'text_type_long' => __('Show random users',$dom),
                  'allow_multiple' => true,
                  'form_content'   => false,
                  'form_refresh'   => false,

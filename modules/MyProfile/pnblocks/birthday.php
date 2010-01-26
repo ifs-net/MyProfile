@@ -16,9 +16,10 @@ function MyProfile_birthdayblock_init()
  */
 function MyProfile_birthdayblock_info()
 {
+    $dom = ZLanguage::getModuleDomain('MyProfile');
     return array('text_type'      => 'Birthday',
                  'module'         => 'MyProfile',
-                 'text_type_long' => 'Show nicknames that celebrate their birthday today',
+                 'text_type_long' => __('Show nicknames that celebrate their birthday today',$dom),
                  'allow_multiple' => true,
                  'form_content'   => false,
                  'form_refresh'   => false,

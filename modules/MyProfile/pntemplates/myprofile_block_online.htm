@@ -14,7 +14,7 @@
 						    	*]-->
 
 <!--[pnmodapifunc modname="MyProfile" type="user" func="getOnline" orderby="land, plz" assign="users"]-->
-<br /><!--[gt text="There are"]--> <!--[$users|@count]--> <!--[gt text="members online"]-->
+<br /><!--[gt text="There are" domain="module_myprofile"]--> <!--[$users|@count]--> <!--[gt text="members online" domain="module_myprofile"]-->
 <div style="max-height: 400px; overflow-x: hidden;overflow-y:auto;">
 <!--[foreach from=$users item=user]-->
 
