@@ -90,9 +90,8 @@
 		<!--[if $field.fieldtype eq "INTEGER"]--><!--[pnformintinput id=$field.identifier minValue=$field.num_minvalue maxValue=$field.num_maxvalue mandatory=$field.mandatory]--><!--[/if]-->
 		<!--[if $field.fieldtype eq "FLOAT"]--><!--[pnformfloatinput id=$field.identifier minValue=$field.num_minvalue maxValue=$field.num_maxvalue mandatory=$field.mandatory]--><!--[/if]-->
 		<!--[if $field.fieldtype eq "DATE"]-->
-			<!--[pnformdateinput id=$field.identifier mandatory=$field.mandatory]--><br />
-			<!--[gt text="Use this format: YYYY-MM-DD. Example: 1981-05-25"]-->
-			<!--[/if]-->
+			<!--[pnformdateinput id=$field.identifier mandatory=$field.mandatory]-->
+		<!--[/if]-->
 		<!--[if $field.fieldtype eq "COORD"]-->
 			<!--[if $mymapavailable]-->
 				<!--[pnmodapifunc modname="MyMap" type="user" func="generateMap" width="400" height="150" maptype="hybrid" zoomfactor="7" lat="`$field.identifier`_lat" lng="`$field.identifier`_lng" coords=$coords[$field.identifier]]-->
