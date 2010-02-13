@@ -239,8 +239,20 @@ function MyProfile_adminapi_getFields($args)
     $cache = DBUtil::selectObjectArray('myprofile_fields','',$orderby);
     foreach ($cache as $field) {
       	if ($field['list']!='') {
-		    $field['dropdownitems'] = MyProfile_adminapi_buildSelection($field['list'],'dropdown');
-		    $field['radioitems'] = MyProfile_adminapi_buildSelection($field['list'],'radio');
+      	    // Ckeck for special code-words...
+      	    // ZCOUNTRYMAP
+      	    if ($field['list'] == 'ZCOUNTRYMAP') {
+                $map = ZLanguage::countryMap();
+                $mapResult = '';
+                foreach ($map as $k=>$v) {
+                    $mapResult.= '@@' . $k . '||' . __($v);
+                  
+                }
+                $field['dropdownitems'] = MyProfile_adminapi_buildSelection($mapResult,'dropdown');
+            } else {
+    	   	    $field['dropdownitems'] = MyProfile_adminapi_buildSelection($field['list'],'dropdown');
+    		    $field['radioitems'] = MyProfile_adminapi_buildSelection($field['list'],'radio');
+            }
 		}
 	  	$fields[]=$field;
 	}
