@@ -18,7 +18,7 @@
 <div id="myprofile_fieldtype" class="pn-adminformrow">
     <!--[pnformlabel for="fieldtype" __text="Type of this field"]-->
     <!--[if $id gt 0]-->
-	<!--[pnformtextinput id="fieldtype" maxLength='99' mandatory="1" readonly="true"]-->
+	<!--[pnformtextinput id="fieldtype" maxLength='99' mandatory="1" mandatorysym='1' readonly="true"]-->
     <!--[else]-->
 	<!--[pnformdropdownlist id="fieldtype" items=$items_fieldtype]-->
     <!--[/if]-->
@@ -26,9 +26,9 @@
 <div id="myprofile_identifier" class="pn-adminformrow" style="clear: both">
     <!--[pnformlabel for="identifier" __text="Identifier for the field (and the name of the column in the database) or title of the separator (if type is separator)"]-->
     <!--[if $id gt 0]-->
-	<!--[pnformtextinput id="identifier" maxLength='40' mandatory="1" readonly="true"]-->
+	<!--[pnformtextinput id="identifier" maxLength='40' mandatory="1" mandatorysym='1' readonly="true"]-->
     <!--[else]-->
-	<!--[pnformtextinput id="identifier" maxLength='40' mandatory="1"]-->
+	<!--[pnformtextinput id="identifier" maxLength='40' mandatory="1" mandatorysym='1']-->
     <!--[/if]-->
 </div>
 <div id="myprofile_mandatory" class="pn-adminformrow" style="clear: both">
@@ -37,7 +37,7 @@
 </div>
 <div id="myprofile_description" class="pn-adminformrow" style="clear: both">
     <!--[pnformlabel for="description" __text="Description"]-->
-    <!--[pnformtextinput id="description" maxLength='400' mandatory='1']-->
+    <!--[pnformtextinput id="description" maxLength='400' mandatory="1" mandatorysym='1' ]-->
 </div>
 <div id="myprofile_num_minvalue" class="pn-adminformrow" style="clear: both">
     <!--[pnformlabel for="num_minvalue" __text="Minimal value for integer or float"]-->
