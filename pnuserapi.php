@@ -692,3 +692,26 @@ function MyProfile_userapi_getCoords($args)
 	}
    	return $res;
 }
+
+/**
+ * get guest users
+ *
+ * This function returns guest users when guestsessions are activated
+ * part taken from Theme Manager - function.online.php
+ *
+ * @return int
+ */
+function MyProfile_userapi_getGuests()
+{
+    $dbconn = pnDBGetConn(true);
+    $pntable = pnDBGetTables();
+    $sessioninfocolumn = $pntable['session_info_column'];
+    $sessioninfotable = $pntable['session_info'];
+
+    $activetime = DateUtil::getDatetime(time() - (pnConfigGetVar('secinactivemins') * 60));
+
+    $where = "$sessioninfocolumn[lastused] > '$activetime' AND $sessioninfocolumn[uid] = '0'";
+    $guests = DBUtil::selectObjectCount('session_info',$where);
+
+    return $guests;
+}
