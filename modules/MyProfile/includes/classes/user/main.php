@@ -98,11 +98,24 @@ class MyProfile_user_ProfileHandler
 			  	  	$identifier = $field['identifier'];
 				    $lat = $identifier.'_lat';
 				    $lng = $identifier.'_lng';
-				    if (($obj[$lng] == '') || ($obj[$lat] == '')) break;
-				    else $obj[$identifier] = array(
-				    		'lng' => str_replace(',','.',$obj[$lng]),
-				    		'lat' => str_replace(',','.',$obj[$lat])
+				    if (($obj[$lng] == '') || ($obj[$lat] == '')) {
+				        $obj[$identifier] = '';
+                        break;
+                    } else {
+                        $pattern = '/^[0-9+-][0-9]*(|\.)[0-9]*$/';
+                        $obj[$lng] = str_replace(',','.',$obj[$lng]);
+                        $obj[$lat] = str_replace(',','.',$obj[$lat]);
+    					if ((!preg_match($pattern,$obj[$lat])) || (!preg_match($pattern,$obj[$lng]))) {
+    					   LogUtil::registerError(__('Please check the format you entered for your coordinates!',$dom));
+    					   return false;
+                        }
+                      
+                        $obj[$identifier] = array(
+				    		'lng' => $obj[$lng],
+				    		'lat' => $obj[$lat]
 						);
+					}
+						
 					unset($obj[$lat]);
 					unset($obj[$lng]);
 					$obj[$identifier] = serialize($obj[$identifier]);
