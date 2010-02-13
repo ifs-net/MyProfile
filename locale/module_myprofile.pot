@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zikula component\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-26 18:57+0100\n"
+"POT-Creation-Date: 2010-02-13 18:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 msgid "Latest registrations"
 msgstr ""
 
-#: pnmailzapi.php:27
+#: pnmailzapi.php:27 pnblocks/newbies.php:22
 msgid "Show latest user registrations"
 msgstr ""
 
@@ -32,31 +32,31 @@ msgstr ""
 msgid "registered users since"
 msgstr ""
 
-#: pnuserapi.php:95 pntemplates/myprofile_myprofile_tab.htm:69
+#: pnuserapi.php:97 pntemplates/myprofile_myprofile_tab.htm:69
 #: pntemplates/myprofile_myprofile_tab.htm:76
 #: pntemplates/myprofile_myprofile_tab.htm:83
 msgid "no permission to view this field"
 msgstr ""
 
-#: pnuserapi.php:389
+#: pnuserapi.php:392
 msgid "You can not request a new validation code before"
 msgstr ""
 
-#: pnuserapi.php:416
+#: pnuserapi.php:419
 msgid ""
 "Attention: You have to activate your new email address before using this "
 "site again! Please read the instructions in the incoming email!"
 msgstr ""
 
-#: pnuserapi.php:428
+#: pnuserapi.php:431
 msgid "Email verification code for"
 msgstr ""
 
-#: pnuserapi.php:428 includes/common_admin.php:19
+#: pnuserapi.php:431 includes/common_admin.php:19
 msgid "at"
 msgstr ""
 
-#: pnuserapi.php:685
+#: pnuserapi.php:688
 msgid "Show user's profile"
 msgstr ""
 
@@ -137,60 +137,60 @@ msgid ""
 "configuration."
 msgstr ""
 
-#: pnadminapi.php:361
+#: pnadminapi.php:377
 msgid "An error occured while trying to update the table definition"
 msgstr ""
 
-#: pnadminapi.php:364
+#: pnadminapi.php:380
 msgid "Table definition updated successfully"
 msgstr ""
 
-#: pnadminapi.php:370
+#: pnadminapi.php:386
 msgid "Table structure updated"
 msgstr ""
 
-#: pnadminapi.php:373
+#: pnadminapi.php:389
 msgid "Parameter is missing: no source given"
 msgstr ""
 
-#: pnadminapi.php:408
+#: pnadminapi.php:424
 msgid "An error occured importing the pnProfile configuration"
 msgstr ""
 
-#: pnadminapi.php:411
+#: pnadminapi.php:427
 msgid "pnProfile structure imported into MyProfile"
 msgstr ""
 
-#: pnadminapi.php:453
+#: pnadminapi.php:469
 msgid "Import done"
 msgstr ""
 
-#: pnadminapi.php:453 pnadminapi.php:456
+#: pnadminapi.php:469 pnadminapi.php:472
 msgid "items imported"
 msgstr ""
 
-#: pnadminapi.php:456
+#: pnadminapi.php:472
 msgid ""
 "One import step done.. This step has to be repeated in large communities"
 msgstr ""
 
-#: pnadminapi.php:456
+#: pnadminapi.php:472
 msgid "about"
 msgstr ""
 
-#: pnadminapi.php:456
+#: pnadminapi.php:472
 msgid "left"
 msgstr ""
 
-#: pnadminapi.php:460
+#: pnadminapi.php:476
 msgid "pnProfile configuration could not be read"
 msgstr ""
 
-#: pnadminapi.php:494
+#: pnadminapi.php:510
 msgid "Parameter error: invalid source given"
 msgstr ""
 
-#: pnadminapi.php:520
+#: pnadminapi.php:536
 msgid "Database was cleaned up"
 msgstr ""
 
@@ -239,19 +239,19 @@ msgstr ""
 msgid "User was added to the list"
 msgstr ""
 
-#: includes/classes/user/main.php:120 includes/classes/user/main.php:137
+#: includes/classes/user/main.php:125 includes/classes/user/main.php:142
 msgid "Updating / creating user attributes failed"
 msgstr ""
 
-#: includes/classes/user/main.php:123
+#: includes/classes/user/main.php:128
 msgid "Profile was updated successfully"
 msgstr ""
 
-#: includes/classes/user/main.php:124
+#: includes/classes/user/main.php:129
 msgid "Creating / Updating profile failed"
 msgstr ""
 
-#: includes/classes/user/main.php:143
+#: includes/classes/user/main.php:148
 msgid "The profile was created successfully"
 msgstr ""
 
@@ -497,27 +497,41 @@ msgstr ""
 msgid "New profile"
 msgstr ""
 
+#: pnblocks/online.php:22
+msgid ""
+"Show users that are online now (please customize template "
+"myprofile_block_online.htm for your needs)"
+msgstr ""
+
+#: pnblocks/random.php:31
+msgid "Show random users"
+msgstr ""
+
+#: pnblocks/birthday.php:22
+msgid "Show nicknames that celebrate their birthday today"
+msgstr ""
+
 #: pnadmin.php:138
 msgid "pnProfile migration reset done"
 msgstr ""
 
-#: pnadmin.php:197
+#: pnadmin.php:224
 msgid "Element was moved successfully"
 msgstr ""
 
-#: pnadmin.php:222
+#: pnadmin.php:249
 msgid "more than one user found"
 msgstr ""
 
-#: pnadmin.php:224
+#: pnadmin.php:251
 msgid "please choose one user and enter its username"
 msgstr ""
 
-#: pnadmin.php:234
+#: pnadmin.php:261
 msgid "email address not found"
 msgstr ""
 
-#: pnadmin.php:244
+#: pnadmin.php:271
 msgid "No user with this username or user-ID found"
 msgstr ""
 
@@ -571,7 +585,7 @@ msgid "Submit"
 msgstr ""
 
 #: pntemplates/myprofile_admin_main.htm:24
-#: pntemplates/myprofile_admin_addfield.htm:99
+#: pntemplates/myprofile_admin_addfield.htm:105
 #: pntemplates/myprofile_user_search.htm:120
 #: pntemplates/myprofile_admin_mainsettings.htm:59
 #: pntemplates/myprofile_admin_invalidemail.htm:16
@@ -751,37 +765,48 @@ msgstr ""
 msgid "@*0||No @*1||Yes"
 msgstr ""
 
-#: pntemplates/myprofile_admin_addfield.htm:65
+#: pntemplates/myprofile_admin_addfield.htm:64
+msgid "Special code parts"
+msgstr ""
+
+#: pntemplates/myprofile_admin_addfield.htm:66
+msgid ""
+"Just enter the word 'ZCOUNTRYMAP' as list value and all available country "
+"codes and the name of each country will appear as dropdown list in the "
+"user's profile setup page."
+msgstr ""
+
+#: pntemplates/myprofile_admin_addfield.htm:71
 msgid "Public status"
 msgstr ""
 
-#: pntemplates/myprofile_admin_addfield.htm:69
+#: pntemplates/myprofile_admin_addfield.htm:75
 msgid ""
 "Should this field be writeable and shown in the user's profile configuration"
 msgstr ""
 
-#: pntemplates/myprofile_admin_addfield.htm:73
+#: pntemplates/myprofile_admin_addfield.htm:79
 msgid ""
 "Should this field be shown on the user's profile page that will be generated "
 "by this module"
 msgstr ""
 
-#: pntemplates/myprofile_admin_addfield.htm:77
+#: pntemplates/myprofile_admin_addfield.htm:83
 msgid "Field should be searchable by all users doing a search"
 msgstr ""
 
-#: pntemplates/myprofile_admin_addfield.htm:82
+#: pntemplates/myprofile_admin_addfield.htm:88
 msgid ""
 "Name of user attribute / property to store the users value also as user "
 "attribute. Example: Entering _REALNAME here will make MyProfile to store the "
 "user's value also as _REALNAME"
 msgstr ""
 
-#: pntemplates/myprofile_admin_addfield.htm:88
+#: pntemplates/myprofile_admin_addfield.htm:94
 msgid "Delete this field"
 msgstr ""
 
-#: pntemplates/myprofile_admin_addfield.htm:98
+#: pntemplates/myprofile_admin_addfield.htm:104
 #: pntemplates/myprofile_admin_invalidemail.htm:15
 msgid "Update / create field"
 msgstr ""
@@ -1485,11 +1510,6 @@ msgid ""
 "Please click on the tabs above this text to get to the separated sections to "
 "manage your profile data. Please click the save-Button only if the profile "
 "is completely filled out!"
-msgstr ""
-
-#: pntemplates/myprofile_user_main.htm:69
-#: pntemplates/myprofile_user_main.htm:70
-msgid "Viewable for"
 msgstr ""
 
 #: pntemplates/myprofile_user_main.htm:71
