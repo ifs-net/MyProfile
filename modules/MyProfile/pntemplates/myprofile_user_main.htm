@@ -66,8 +66,8 @@
 		<div class="myprofile_formelement">
 		<!-- form item begin -->
 		<!--[pnformlabel for=$field.identifier text=$field.description]-->:
-		<!--[if $field.public_status eq 0]-->(<img src="images/icons/extrasmall/services_flag.gif" /> <!--[gt text="Viewable for"]-->&nbsp;<!--[gt text="viewable by everybody"]-->)<!--[/if]-->
-		<!--[if $field.public_status eq 2]-->(<img src="images/icons/extrasmall/agt_stop.gif" /> <!--[gt text="Viewable for"]-->&nbsp;<!--[gt text="viewable by admin users only"]-->)<!--[/if]-->
+		<!--[if $field.public_status eq 0]-->(<img src="images/icons/extrasmall/services_flag.gif" /> <!--[gt text="viewable by everybody"]-->)<!--[/if]-->
+		<!--[if $field.public_status eq 2]-->(<img src="images/icons/extrasmall/agt_stop.gif" /> <!--[gt text="viewable by admin users only"]-->)<!--[/if]-->
 		<!--[if $field.public_status eq 9]-->(<img src="images/icons/extrasmall/locked.gif" /><a href="<!--[pnmodurl modname="MyProfile" type="user" func="settings"]-->"><!--[gt text="Private field, only viewable by users you allow to access this data"]--></a>)<!--[/if]-->
 		<br />
 		<!--[if $field.fieldtype eq "STRING" or $field.fieldtype == "TIMESTAMP"]-->
