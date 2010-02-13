@@ -19,7 +19,7 @@ $modversion['displayname']    = __('MyProfile', $domain);
 $modversion['url']            = __('myprofile', $domain);
 $modversion['description']    = __('The advances template based zikula profile module', $domain);
 
-$modversion['version']        = '2.0';
+$modversion['version']        = '2.1';
 
 // The following in formation is used by the credits module
 // to display the correct credits
