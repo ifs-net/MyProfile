@@ -151,6 +151,7 @@ function MyProfile_upgrade($oldversion)
     	case '1.5':
     	  	if (!DBUtil::changeTable('myprofile_fields')) return false;
     	case '1.6':
+    	case '2.0':
         default:
     	    return true;
     }
