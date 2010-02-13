@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zikula component\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-13 18:02+0100\n"
+"POT-Creation-Date: 2010-02-13 19:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -239,19 +239,23 @@ msgstr ""
 msgid "User was added to the list"
 msgstr ""
 
-#: includes/classes/user/main.php:125 includes/classes/user/main.php:142
+#: includes/classes/user/main.php:109
+msgid "Please check the format you entered for your coordinates!"
+msgstr ""
+
+#: includes/classes/user/main.php:138 includes/classes/user/main.php:155
 msgid "Updating / creating user attributes failed"
 msgstr ""
 
-#: includes/classes/user/main.php:128
+#: includes/classes/user/main.php:141
 msgid "Profile was updated successfully"
 msgstr ""
 
-#: includes/classes/user/main.php:129
+#: includes/classes/user/main.php:142
 msgid "Creating / Updating profile failed"
 msgstr ""
 
-#: includes/classes/user/main.php:148
+#: includes/classes/user/main.php:161
 msgid "The profile was created successfully"
 msgstr ""
 
@@ -1109,6 +1113,10 @@ msgstr ""
 
 #: pntemplates/myprofile_block_online.htm:4
 msgid "members online"
+msgstr ""
+
+#: pntemplates/myprofile_block_online.htm:27
+msgid "Guests online"
 msgstr ""
 
 #: pntemplates/myprofile_admin_plugins.htm:2
