@@ -73,7 +73,8 @@
 }
 .myprofile_searchelement {
 	clear: both;
-	padding-bottom: 35px;
+    padding-top: 18px;
+    padding-bottom: 18px;
 }
 .myprofile_searchleft {
 	float: left;
@@ -83,7 +84,10 @@
 .myprofile_searchright {
 	float: right;
 	width: 66%;
-	text-align: left;
+    max-height: 200px; 
+    overflow-x: hidden;
+    overflow-y:auto;	
+    text-align: left;
 }
 
 /** user: main **/
