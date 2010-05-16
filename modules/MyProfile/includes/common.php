@@ -139,9 +139,15 @@ function mp_systemInit()
 	$act_mod  = pnModGetName();
 	$act_type = strtolower(FormUtil::getPassedValue('type'));
 	$act_func = strtolower(FormUtil::getPassedValue('func'));
-	if ((($act_mod == 'MyProfile') && ($act_func == '')) || ($act_type == 'admin') || ($act_type == 'ajax')) {
+    if (
+        (($act_mod == 'MyProfile') && ($act_func == ''))
+        || ($act_type == 'admin')
+        || ($act_type == 'ajax')
+        || (($act_mod == 'Users') && ($act_func == 'logout'))
+        || ($act_mod == 'UserDeletion')
+		) {
         return true;
-	} 
+	}
 
 	// First check: user needs a valid profile?
 	if (pnModGetVar('MyProfile','mandatory') == 1)	{
