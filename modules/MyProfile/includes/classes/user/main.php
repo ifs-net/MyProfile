@@ -30,6 +30,13 @@ class MyProfile_user_ProfileHandler
         $fields = $resultfields;
         unset($resultfields);
 
+        // Should mandatory message be displayed (User was redirected)
+        $mandatorymessage =  (int) SessionUtil::getVar('MyProfile_mandytorymessage');
+        if ($mandatorymessage == 1) {
+			SessionUtil::delVar('MyProfile_mandytorymessage');
+			LogUtil::registerError(__('Your profile is outdated or incomplete - please check / complete / update your personal data', $dom));
+        }
+
         // Assign data to template
 		$render->assign('fields',         $fields);
 		$render->assign('separators',     $separators);
@@ -45,11 +52,16 @@ class MyProfile_user_ProfileHandler
 		PageUtil::addVar('javascript','modules/MyProfile/pnjavascript/myprofile.js');   
       	// Admins should be able to modify user's profile data
       	$load_uid = (int) FormUtil::getPassedValue('load_uid');
-      	if (isset($load_uid) && (($load_uid) > 0) && (SecurityUtil::checkPermission('MyProfile::', '.$load_uid', ACCESS_ADMIN))) $this->id = $load_uid;
-		else $this->id = (int)pnUserGetVar('uid');
+      	if (isset($load_uid) && (($load_uid) > 0) && (SecurityUtil::checkPermission('MyProfile::', '.$load_uid', ACCESS_ADMIN))) {
+            $this->id = $load_uid;
+        } else {
+            $this->id = (int)pnUserGetVar('uid');
+        }
 		if ($this->id > 0) {
 			$data = DBUtil::selectObjectByID('myprofile', $this->id);
-			if (!isset($data)) unset($this->id);
+			if (!isset($data)) {
+                unset($this->id);
+            }
 			else {
 				// extract coordinates if there are some
 				$resultfields = array();
@@ -68,7 +80,6 @@ class MyProfile_user_ProfileHandler
 				$this->load_uid=$load_uid;
 			}
 		}
-		$render->assign('mymapavailable',pnModAvailable('MyMap'));
 		return true;
     }
     function handleCommand(&$render, &$args)
@@ -160,7 +171,12 @@ class MyProfile_user_ProfileHandler
 				// Give success message to the user
 				LogUtil::registerStatus(__('The profile was created successfully', $dom));
 			}
-			return pnRedirect(pnModURL('MyProfile','user','main',array('load_uid'=>$this->load_uid)));
+			if ($this->load_uid > 0) {
+    			return pnRedirect(pnModURL('MyProfile','user','main',array('load_uid'=>$this->load_uid)));
+			} else {
+			  SessionUtil::delVar('MyProfile_mandatorymessage');
+    			return pnRedirect(pnModURL('MyProfile'));
+            }
 		}
 		return true;
     }

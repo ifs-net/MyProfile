@@ -132,8 +132,6 @@ function mp_systemInit()
 	  	pnUserSetVar('lastlogin',date("Y-m-d h:i:s",time()),pnUserGetVar('uid'));
 	}
 
-    $dom = ZLanguage::getModuleDomain('MyProfile');
-	
 	// Integrate generation of statistics here
 	mp_storeStats();
 
@@ -142,9 +140,7 @@ function mp_systemInit()
 	$act_type = strtolower(FormUtil::getPassedValue('type'));
 	$act_func = strtolower(FormUtil::getPassedValue('func'));
 	if (
-        (($act_mod == 'myprofile') && ($act_func == 'main')) 
-        || 
-        (($act_mod == 'myprofile') && ($act_func == '')) 
+        (($act_mod == 'myprofile') && (!in_array($act_func,'display','search'))) 
         || 
         (($act_mod == 'users') && ($act_func == 'logout')) 
         || 
@@ -153,6 +149,8 @@ function mp_systemInit()
         ($act_type == 'admin') 
         || 
         ($act_type == 'ajax')
+        || 
+        ($act_func == 'subpages')   // Zikula bug?
         ) {
         return true;
 	} 
@@ -161,10 +159,9 @@ function mp_systemInit()
 	if (pnModGetVar('MyProfile','mandatory') == 1)	{
 	  	// Check for valid profile
 	  	if (!pnModAPIFunc('MyProfile','user','hasValidProfile')) {
-			// load language file
-			pnModLangLoad('MyProfile','plugin');
+	  	    SessionUtil::setVar('MyProfile_mandytorymessage',1);
+// debug	  	    LogUtil::registerError("act module $act_module type $act_type func $act_func");
 			// register error message
-			LogUtil::registerError(__('Your profile is outdated or incomplete - please check / complete / update your personal data', $dom));
 			return pnRedirect(pnModURL('MyProfile','user','main'));
 	  	}
 	}
