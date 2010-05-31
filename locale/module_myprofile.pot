@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zikula component\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-13 19:15+0100\n"
+"POT-Creation-Date: 2010-05-31 18:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -239,24 +239,34 @@ msgstr ""
 msgid "User was added to the list"
 msgstr ""
 
-#: includes/classes/user/main.php:109
+#: includes/classes/user/main.php:37
+msgid ""
+"Your profile is outdated or incomplete - please check / complete / update "
+"your personal data"
+msgstr ""
+
+#: includes/classes/user/main.php:128
 msgid "Please check the format you entered for your coordinates!"
 msgstr ""
 
-#: includes/classes/user/main.php:138 includes/classes/user/main.php:155
+#: includes/classes/user/main.php:154 includes/classes/user/main.php:173
 msgid "Updating / creating user attributes failed"
 msgstr ""
 
-#: includes/classes/user/main.php:141
+#: includes/classes/user/main.php:157
 msgid "Profile was updated successfully"
 msgstr ""
 
-#: includes/classes/user/main.php:142
+#: includes/classes/user/main.php:158
 msgid "Creating / Updating profile failed"
 msgstr ""
 
-#: includes/classes/user/main.php:161
+#: includes/classes/user/main.php:177
 msgid "The profile was created successfully"
+msgstr ""
+
+#: includes/classes/user/main.php:180
+msgid "Profile creation error"
 msgstr ""
 
 #: includes/classes/user/search.php:21
@@ -463,13 +473,13 @@ msgid ""
 "value for the identifier!"
 msgstr ""
 
-#: includes/classes/admin/addfield.php:104
+#: includes/classes/admin/addfield.php:105
 msgid ""
 "The identifier must not contain any other characters than numbers (0-9) and "
 "regular characters (A-Z, a-z)"
 msgstr ""
 
-#: includes/classes/admin/addfield.php:109
+#: includes/classes/admin/addfield.php:110
 msgid "New field was created successfully"
 msgstr ""
 
@@ -477,13 +487,7 @@ msgstr ""
 msgid "Configuration updated successfully"
 msgstr ""
 
-#: includes/common.php:153
-msgid ""
-"Your profile is outdated or incomplete - please check / complete / update "
-"your personal data"
-msgstr ""
-
-#: includes/common.php:168
+#: includes/common.php:179
 msgid ""
 "Your email address has to be updated before using this site! EMails came "
 "back to the administrator that did not reach you - valid email addresses are "
@@ -491,7 +495,7 @@ msgid ""
 "to use this site again!"
 msgstr ""
 
-#: includes/common.php:192
+#: includes/common.php:203
 msgid ""
 "Please fill out your personal profile first. This is neccessary before you "
 "can interact in this community!"
@@ -589,7 +593,7 @@ msgid "Submit"
 msgstr ""
 
 #: pntemplates/myprofile_admin_main.htm:24
-#: pntemplates/myprofile_admin_addfield.htm:105
+#: pntemplates/myprofile_admin_addfield.htm:118
 #: pntemplates/myprofile_user_search.htm:120
 #: pntemplates/myprofile_admin_mainsettings.htm:59
 #: pntemplates/myprofile_admin_invalidemail.htm:16
@@ -692,7 +696,7 @@ msgid "Send private message"
 msgstr ""
 
 #: pntemplates/myprofile_myprofile_tab.htm:157
-msgid "Add as buddy"
+msgid "Add as buddy or memorize user"
 msgstr ""
 
 #: pntemplates/myprofile_admin_addfield.htm:7
@@ -733,84 +737,86 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: pntemplates/myprofile_admin_addfield.htm:43
+#: pntemplates/myprofile_admin_addfield.htm:45
+#: pntemplates/myprofile_admin_addfield.htm:54
 msgid "Minimal value for integer or float"
 msgstr ""
 
-#: pntemplates/myprofile_admin_addfield.htm:47
+#: pntemplates/myprofile_admin_addfield.htm:49
+#: pntemplates/myprofile_admin_addfield.htm:58
 msgid "Maximal value for integer or float"
 msgstr ""
 
-#: pntemplates/myprofile_admin_addfield.htm:51
+#: pntemplates/myprofile_admin_addfield.htm:63
 #: pntemplates/myprofile_admin_fields.htm:28
 msgid "Maximal length of string"
 msgstr ""
 
-#: pntemplates/myprofile_admin_addfield.htm:55
+#: pntemplates/myprofile_admin_addfield.htm:68
 #: pntemplates/myprofile_admin_fields.htm:30
 msgid "List (for building a dropdown menu)"
 msgstr ""
 
-#: pntemplates/myprofile_admin_addfield.htm:58
+#: pntemplates/myprofile_admin_addfield.htm:71
 msgid "Example code for dropdown menus: @@value to store||text to show"
 msgstr ""
 
-#: pntemplates/myprofile_admin_addfield.htm:59
+#: pntemplates/myprofile_admin_addfield.htm:72
 msgid ""
 "@@daily||I want the daily newsletter @@monthly||Send a newsletter every "
 "month @@no||I do not want to recieve newsletters"
 msgstr ""
 
-#: pntemplates/myprofile_admin_addfield.htm:60
+#: pntemplates/myprofile_admin_addfield.htm:73
 msgid "Example code for radiobutton menus: @*value to store||text to show"
 msgstr ""
 
-#: pntemplates/myprofile_admin_addfield.htm:61
+#: pntemplates/myprofile_admin_addfield.htm:74
 msgid "@*0||No @*1||Yes"
 msgstr ""
 
-#: pntemplates/myprofile_admin_addfield.htm:64
+#: pntemplates/myprofile_admin_addfield.htm:77
 msgid "Special code parts"
 msgstr ""
 
-#: pntemplates/myprofile_admin_addfield.htm:66
+#: pntemplates/myprofile_admin_addfield.htm:79
 msgid ""
 "Just enter the word 'ZCOUNTRYMAP' as list value and all available country "
 "codes and the name of each country will appear as dropdown list in the "
 "user's profile setup page."
 msgstr ""
 
-#: pntemplates/myprofile_admin_addfield.htm:71
+#: pntemplates/myprofile_admin_addfield.htm:84
 msgid "Public status"
 msgstr ""
 
-#: pntemplates/myprofile_admin_addfield.htm:75
+#: pntemplates/myprofile_admin_addfield.htm:88
 msgid ""
 "Should this field be writeable and shown in the user's profile configuration"
 msgstr ""
 
-#: pntemplates/myprofile_admin_addfield.htm:79
+#: pntemplates/myprofile_admin_addfield.htm:92
 msgid ""
 "Should this field be shown on the user's profile page that will be generated "
 "by this module"
 msgstr ""
 
-#: pntemplates/myprofile_admin_addfield.htm:83
+#: pntemplates/myprofile_admin_addfield.htm:96
 msgid "Field should be searchable by all users doing a search"
 msgstr ""
 
-#: pntemplates/myprofile_admin_addfield.htm:88
+#: pntemplates/myprofile_admin_addfield.htm:101
 msgid ""
 "Name of user attribute / property to store the users value also as user "
 "attribute. Example: Entering _REALNAME here will make MyProfile to store the "
 "user's value also as _REALNAME"
 msgstr ""
 
-#: pntemplates/myprofile_admin_addfield.htm:94
+#: pntemplates/myprofile_admin_addfield.htm:107
 msgid "Delete this field"
 msgstr ""
 
-#: pntemplates/myprofile_admin_addfield.htm:104
+#: pntemplates/myprofile_admin_addfield.htm:117
 #: pntemplates/myprofile_admin_invalidemail.htm:15
 msgid "Update / create field"
 msgstr ""
