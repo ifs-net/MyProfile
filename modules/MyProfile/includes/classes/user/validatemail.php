@@ -51,7 +51,7 @@ class MyProfile_user_ValidateMailHandler
 					}
 				    else return LogUtil::registerError(__('An error occured while trying to change your email address', $dom));
 				}
-				else return LogUtil::registerError(__('Verification code incorrect', $dom).' code: '.$code['code'].' entered '.$obj['code']);
+				else return LogUtil::registerError(__('Verification code incorrect', $dom));
 			}
 			else return LogUtil::registerError(__('Verification code is no longer valid - you should start a new request for a new verification code', $dom));
 			// now we have to delete the old validation code from the user's attributes
