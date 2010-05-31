@@ -19,7 +19,7 @@ $modversion['displayname']    = __('MyProfile', $domain);
 $modversion['url']            = __('myprofile', $domain);
 $modversion['description']    = __('The advances template based zikula profile module', $domain);
 
-$modversion['version']        = '2.1';
+$modversion['version']        = '2.2';
 
 // The following in formation is used by the credits module
 // to display the correct credits
@@ -58,8 +58,8 @@ $modversion['dependencies'] = array(
 	array(  'modname'    => 'UserPictures',
 	        'minversion' => '1.1', 'maxversion' => '',
 	        'status'     => PNMODULE_DEPENDENCY_RECOMMENDED),
-	array(  'modname'    => 'InterCom',
-	        'minversion' => '2.1', 'maxversion' => '',
+	array(  'modname'    => 'Communicator',
+	        'minversion' => '1.0.0', 'maxversion' => '',
 	        'status'     => PNMODULE_DEPENDENCY_RECOMMENDED),
 	array(  'modname'    => 'AboutMe',
 	        'minversion' => '1.0', 'maxversion' => '',
