@@ -19,7 +19,7 @@ class MyProfile_user_ProfileHandler
 		$settings 	= pnModAPIFunc('MyProfile','user','getSettings',array('uid' => $uid));
 		$fields     = pnModAPIFunc('MyProfile','admin','getFields');
 		$separators = pnModAPIFunc('MyProfile','admin','countSeparators');
-		
+
 		// We first have to filter out fields that are not active - these should not be writable by the user
 		$resultfields = array();
 		foreach ($fields as $field) {
@@ -57,6 +57,14 @@ class MyProfile_user_ProfileHandler
         } else {
             $this->id = (int)pnUserGetVar('uid');
         }
+
+        // Load admin library
+        if (SessionUtil::getVar('MyProfile_sendnotification') == 1) {
+            Loader::includeOnce('modules/MyProfile/includes/common_admin.php');
+            mp_admin_sendNotification(array('id' => $this->id));			
+            SessionUtil::delVar('MyProfile_sendnotification');
+        }
+
 		if ($this->id > 0) {
 			$data = DBUtil::selectObjectByID('myprofile', $this->id);
 			if (!isset($data)) {
@@ -138,9 +146,6 @@ class MyProfile_user_ProfileHandler
                 }
 			}
 			
-			// Load admin library
-			Loader::includeOnce('modules/MyProfile/includes/common_admin.php');
-			
 		    if ($this->id > 0) {	// update an existing profile
 		      	$obj['id']=$this->id;
 				$result = DBUtil::updateObject($obj, 'myprofile');
@@ -159,18 +164,23 @@ class MyProfile_user_ProfileHandler
 				if (($load_uid > 0) && (!pnModAPIFunc('MyProfile','user','getProfile',array('uid'=>$load_uid)) && SecurityUtil::checkPermission('MyProfile::','::', ACCESS_ADMIN)) ) $obj['id'] = $load_uid;
 				else $obj['id'] = pnUserGetVar('uid');
 			  	$this->id = $obj['id'];
-			  	$thid->load_uid = $obj['id'];
-				DBUtil::insertObject($obj, 'myprofile',true);
+			  	$this->load_uid = $obj['id'];
+				$createAction = DBUtil::insertObject($obj, 'myprofile',true);
 
-				// update user's attributes if neccesarry
-				if (!pnModAPIFunc('MyProfile','user','storeAsAttributes',array('data' => $obj))) LogUtil::registerError(__('Updating / creating user attributes failed', $dom));
-
-				// Send a notification email to site admin about new user
-				mp_admin_sendNotification($obj);
-			
 				// Give success message to the user
-				LogUtil::registerStatus(__('The profile was created successfully', $dom));
+                if ($createAction) {
+    				// update user's attributes if neccesarry
+    				if (!pnModAPIFunc('MyProfile','user','storeAsAttributes',array('data' => $obj))) LogUtil::registerError(__('Updating / creating user attributes failed', $dom));
+    				// Send a notification email - but we have to send it later because API will not return correct profile now
+    				SessionUtil::setVar('MyProfile_sendnotification',1);
+    				// Register Status Message
+                    LogUtil::registerStatus(__('The profile was created successfully', $dom));
+                } else {
+                    // Register Error message
+                    LogUtil::registerError(__('Profile creation error', $dom));
+                }
 			}
+
 			if ($this->load_uid > 0) {
     			return pnRedirect(pnModURL('MyProfile','user','main',array('load_uid'=>$this->load_uid)));
 			} else {
