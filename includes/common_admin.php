@@ -11,6 +11,7 @@
 function mp_admin_sendNotification($obj) {
   	$notification = pnModGetVar('MyProfile','notification');
   	if ($notification == 1) {
+        $dom = ZLanguage::getModuleDomain('MyProfile');
 	  	// get profile
 	  	$profile = pnModAPIFunc('MyProfile','user','getProfile',array('uid' => $obj['id']));
 		// Get vars
