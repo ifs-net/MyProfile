@@ -28,23 +28,23 @@ class MyProfile_admin_addFieldHandler
 			$render->assign('searchable',1);
 		}
 		// create dropdown fields
-		$items_yesno = array (			array('text' => __('No', $dom),		'value' => 0),
-										array('text' => __('Yes', $dom),		'value' => 1) );
+		$items_yesno = array (			array('text' => __('No', $dom),                   'value' => 0),
+										array('text' => __('Yes', $dom),                  'value' => 1) );
 		$items_fieldtype = array (		
-										array('text' => __('Separator', $dom),'value' => 'SEPARATOR'),
-										array('text' => __('String', $dom),	'value' => 'STRING'),
-										array('text' => __('Integer', $dom),		'value' => 'INTEGER'),
-										array('text' => __('Float', $dom),	'value' => 'FLOAT'),
-										array('text' => __('String (multiline)', $dom),	'value' => 'TEXTBOX'),
-										array('text' => __('Url', $dom),		'value' => 'URL'),
-										array('text' => __('ICQ-UIN', $dom),		'value' => 'UIN'),
-										array('text' => __('Skype-ID', $dom),	'value' => 'SKYPEID'),
-										array('text' => __('Date', $dom),		'value' => 'DATE'),
-										array('text' => __('Timestamp', $dom),'value' => 'TIMESTAMP'),
-										array('text' => __('Coordinate', $dom),	'value' => 'COORD') );
-		$items_public_status = array (	array('text' => __('This field will be shown to everybody', $dom),'value' => 0),
-										array('text' => __('Only registered users will be able to see this field\'s value', $dom),	'value' => 1),
-										array('text' => __('Only the administrator will be able to see this field\'s value', $dom),'value' => 2),
+										array('text' => __('Separator', $dom),            'value' => 'SEPARATOR'),
+										array('text' => __('String', $dom),	              'value' => 'STRING'),
+										array('text' => __('Integer', $dom),              'value' => 'INTEGER'),
+										array('text' => __('Float', $dom),                'value' => 'FLOAT'),
+										array('text' => __('String (multiline)', $dom),   'value' => 'TEXTBOX'),
+										array('text' => __('Url', $dom),                  'value' => 'URL'),
+										array('text' => __('ICQ-UIN', $dom),              'value' => 'UIN'),
+										array('text' => __('Skype-ID', $dom),             'value' => 'SKYPEID'),
+										array('text' => __('Date', $dom),                 'value' => 'DATE'),
+										array('text' => __('Timestamp', $dom),            'value' => 'TIMESTAMP'),
+										array('text' => __('Coordinate', $dom),	          'value' => 'COORD') );
+		$items_public_status = array (	array('text' => __('This field will be shown to everybody', $dom),                              'value' => 0),
+										array('text' => __('Only registered users will be able to see this field\'s value', $dom),	    'value' => 1),
+										array('text' => __('Only the administrator will be able to see this field\'s value', $dom),     'value' => 2),
 										array('text' => __('The user can choose who should be able to see this field\'s value', $dom),	'value' => 9) );
 		$render->assign('items_yesno',			$items_yesno);
 		$render->assign('items_fieldtype',		$items_fieldtype);
@@ -95,6 +95,7 @@ class MyProfile_admin_addFieldHandler
                         return false;
                     }
                 }
+                
 			  	$obj['position']= count($fields);
 			  	// remove blanks if needed
 			  	if ($obj['fieldtype'] != 'SEPARATOR') {
