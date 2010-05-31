@@ -39,18 +39,31 @@
     <!--[pnformlabel for="description" __text="Description"]-->
     <!--[pnformtextinput id="description" maxLength='400' mandatory="1" mandatorysym='1' ]-->
 </div>
-<div id="myprofile_num_minvalue" class="pn-adminformrow" style="clear: both">
-    <!--[pnformlabel for="num_minvalue" __text="Minimal value for integer or float"]-->
-    <!--[pnformfloatinput id="num_minvalue"]-->
-</div>
-<div id="myprofile_num_maxvalue" class="pn-adminformrow" style="clear: both">
-    <!--[pnformlabel for="num_maxvalue" __text="Maximal value for integer or float"]-->
-    <!--[pnformfloatinput id="num_maxvalue"]-->
-</div>
+
+<!--[if $id gt 0 and $fieldtype eq 'INTEGER']-->
+    <div id="myprofile_num_minvalue" class="pn-adminformrow" style="clear: both">
+        <!--[pnformlabel for="num_minvalue" __text="Minimal value for integer or float"]-->
+        <!--[pnformintinput id="num_minvalue"]-->
+    </div>
+    <div id="myprofile_num_maxvalue" class="pn-adminformrow" style="clear: both">
+        <!--[pnformlabel for="num_maxvalue" __text="Maximal value for integer or float"]-->
+        <!--[pnformintinput id="num_maxvalue"]-->
+    </div>
+<!--[else]-->
+    <div id="myprofile_num_minvalue" class="pn-adminformrow" style="clear: both">
+        <!--[pnformlabel for="num_minvalue" __text="Minimal value for integer or float"]-->
+        <!--[pnformfloatinput id="num_minvalue"]-->
+    </div>
+    <div id="myprofile_num_maxvalue" class="pn-adminformrow" style="clear: both">
+        <!--[pnformlabel for="num_maxvalue" __text="Maximal value for integer or float"]-->
+        <!--[pnformfloatinput id="num_maxvalue"]-->
+    </div>
+<!--[/if]-->
 <div id="myprofile_str_length" class="pn-adminformrow" style="clear: both">
     <!--[pnformlabel for="str_length" __text="Maximal length of string"]-->
     <!--[pnformintinput id="str_length" minValue="0"]-->
 </div>
+
 <div id="myprofile_list" class="pn-adminformrow" style="clear: both">
     <!--[pnformlabel for="list" __text="List (for building a dropdown menu)"]-->
     <!--[pnformtextinput id="list" maxLength="9999" textMode="multiline"]-->
