@@ -139,12 +139,15 @@
 		<div class="myprofile_profiletext myprofile_userpictures_box">
 		&nbsp;
 		</div>
-		<!--[pnmodavailable modname="InterCom" assign="InterComAvailable"]-->
-		<!--[if $InterComAvailable and $viewer_uid ne $uid]-->
+
+
+        <!--[pnconfiggetvar name='messagemodule' assign='msgmodule']-->
+        <!--[if $msgmodule and $viewer_uid ne $uid]-->
 			<div class="myprofile_profiletext">
-			<img src="<!--[pngetbaseurl]-->images/icons/small/mail_generic.gif" /><a href="<!--[pnmodurl fqurl="true" modname="InterCom" type="user" func="newpm" uname="$encuname"]-->"><!--[gt text="Send private message"]--></a>
+			<img src="<!--[pngetbaseurl]-->images/icons/small/mail_generic.gif" /><a href="<!--[pnmodurl modname=$msgmodule func="user" func="newpm" uid=$uid]-->"><!--[gt text="Send private message"]--></a>
 			</div>
-		<!--[/if]-->
+        <!--[/if]-->
+
 		<!--[pnmodavailable modname="pnMessages" assign="pnMessagesAvailable"]-->
 		<!--[if $pnMessagesAvailable and $viewer_uid ne $uid]-->
 			<div class="myprofile_profiletext">
