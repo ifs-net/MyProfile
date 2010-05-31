@@ -131,23 +131,31 @@ function mp_systemInit()
 	} else {
 	  	pnUserSetVar('lastlogin',date("Y-m-d h:i:s",time()),pnUserGetVar('uid'));
 	}
+
+    $dom = ZLanguage::getModuleDomain('MyProfile');
 	
 	// Integrate generation of statistics here
 	mp_storeStats();
 
 	// Do nothing in admin interface or if the used module's name is MyProfile
-	$act_mod  = pnModGetName();
+	$act_mod  = strtolower(pnModGetName());
 	$act_type = strtolower(FormUtil::getPassedValue('type'));
 	$act_func = strtolower(FormUtil::getPassedValue('func'));
-    if (
-        (($act_mod == 'MyProfile') && ($act_func == ''))
-        || ($act_type == 'admin')
-        || ($act_type == 'ajax')
-        || (($act_mod == 'Users') && ($act_func == 'logout'))
-        || ($act_mod == 'UserDeletion')
-		) {
+	if (
+        (($act_mod == 'myprofile') && ($act_func == 'main')) 
+        || 
+        (($act_mod == 'myprofile') && ($act_func == '')) 
+        || 
+        (($act_mod == 'users') && ($act_func == 'logout')) 
+        || 
+        ($act_mod == 'userdeletion')
+        ||
+        ($act_type == 'admin') 
+        || 
+        ($act_type == 'ajax')
+        ) {
         return true;
-	}
+	} 
 
 	// First check: user needs a valid profile?
 	if (pnModGetVar('MyProfile','mandatory') == 1)	{
