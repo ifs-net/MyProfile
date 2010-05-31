@@ -21,7 +21,7 @@ function smarty_function_versioncheck($params, &$smarty)
     // get newest version number
     require_once('Snoopy.class.php');
     $snoopy = new Snoopy;
-    $snoopy->fetchtext("http://updates.zksoft.de/zikula/".$params['module'].".php?".pnGetBaseURI());
+    $snoopy->fetchtext("http://updates.zksoft.de/zikula/MyProfile.txt");
 
     $newestversion = $snoopy->results;
     $newestversion = trim($newestversion);   
