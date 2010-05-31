@@ -685,11 +685,12 @@ function MyProfile_userapi_getCoords($args)
 			$res[] = array(	
 				'lat' => $coord['lat'],
 				'lng' => $coord['lng'],
-				'text' => '<a href="' . pnModURL('MyProfile','user','display',array('uid' => $item['id'])) . '">' . __('Show user\'s profile', $dom)."</a>",
+				'text' => '<a href=' .pnModURL('MyProfile','user','display',array('uid' => $item['id']),null,null,true) . '>' . __('Show user\'s profile', $dom)."</a>",
 				'title' => $item['uname']
 					);
 		}
 	}
+	prayer($res);
    	return $res;
 }
 
