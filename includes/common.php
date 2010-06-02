@@ -173,9 +173,8 @@ function mp_systemInit()
         (($attributes['myprofile_invalidemail'] == 1) && ($act_mod == 'MyProfile') && (($act_func != 'settings') && ($act_func != 'validatemail'))) 
         ) {
 	    // user has invalid email address
-  	  	// load language file
-  	  	pnModLangLoad('MyProfile','plugin');
   	  	// register error message
+        $dom = ZLanguage::getModuleDomain('MyProfile');
 	    LogUtil::registerError(__('Your email address has to be updated before using this site! EMails came back to the administrator that did not reach you - valid email addresses are mandatory for this site! After changing your email address you will be able to use this site again!', $dom));
 	    return pnRedirect(pnModURL('MyProfile','user','settings',array('mode' => 'email')));
 	}
@@ -197,9 +196,8 @@ function mp_checkForAccount()
 	// if the user has administration permissions a profile is not mandatory
     $profile = pnModAPIFunc('MyProfile','user','getProfile',array('uid'=>$uid));
     if (!$profile) {
+        $dom = ZLanguage::getModuleDomain('MyProfile');
 		if (!SecurityUtil::checkPermission('MyProfile::', '::', ACCESS_ADMIN)) {
-		modules_get_language();
-		pnModLangLoad('MyProfile', 'user');
 		LogUtil::registerError(__('Please fill out your personal profile first. This is neccessary before you can interact in this community!', $dom));
 		return pnRedirect(pnModURL('MyProfile','user','main'));
 		}
