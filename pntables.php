@@ -124,8 +124,7 @@ function MyProfile_pntables()
     			'myprofile'				=> "I NOTNULL DEFAULT '0'",
     			'noprofile'				=> "I NOTNULL DEFAULT '0'",
     			'invalidemail'			=> "I NOTNULL DEFAULT '0'",
-    			'invalidemail30d'		=> "I NOTNULL DEFAULT '0'",
-    			'template'				=> "XL NOTNULL"
+    			'invalidemail30d'		=> "I NOTNULL DEFAULT '0'"
     			);
     			
 	// confirmed_users
