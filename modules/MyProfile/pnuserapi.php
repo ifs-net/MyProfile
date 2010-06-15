@@ -690,7 +690,6 @@ function MyProfile_userapi_getCoords($args)
 					);
 		}
 	}
-	prayer($res);
    	return $res;
 }
 
