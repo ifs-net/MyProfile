@@ -21,7 +21,6 @@ function MyProfile_pluginapi_myprofile($args)
     $render = pnRender::getInstance('MyProfile');
     // add stylesheet and language
 	PageUtil::AddVar('stylesheet', ThemeUtil::getModuleStylesheet('MyProfile'));
-	pnModLangLoad('MyProfile','plugin');
 	
 	// assign data
 	$render->assign('user',		$args['user']);
@@ -29,4 +28,3 @@ function MyProfile_pluginapi_myprofile($args)
 	$output = $render->fetch('myprofile_plugin_myprofile.htm');
     return $output;
 }
-?>
