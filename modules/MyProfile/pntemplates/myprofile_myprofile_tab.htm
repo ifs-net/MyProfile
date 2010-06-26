@@ -11,13 +11,12 @@
 <!--[/if]-->
  
 <!--[pnmodavailable modname="UserPictures" assign="UserPictures"]-->
-
 <!--[if $UserPictures]-->
 		<div id="myprofile_userpictures" class="myprofile_userpictures">
 		    <!--[pnmodapifunc modname="UserPictures" type="admin" func="getTemplates" assign="upt"]-->
 		    <!--[foreach from=$upt item="up"]-->
-				<strong><!--[$up.title]--></strong><br />
 				<!--[pnmodapifunc modname="UserPictures" type="user" func="showPicture" uid=$uid template_id=$up.id assign=picture]-->
+				<strong><!--[$up.title]--></strong> <!--[if $picture.uid eq $viewer_uid]-->[<a href="<!--[pnmodurl modname="UserPictures" func="managePicture" template_id=$up.id]-->"><!--[gt text="edit"]-->]</a><!--[/if]--><br />
 				<!--[$picture.code]--><br />
 				<!--[$picture.comment]--><br /><br />
 		    <!--[/foreach]-->
