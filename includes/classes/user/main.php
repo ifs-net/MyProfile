@@ -154,8 +154,13 @@ class MyProfile_user_ProfileHandler
 				if (!pnModAPIFunc('MyProfile','user','storeAsAttributes',array('data' => $obj))) LogUtil::registerError(__('Updating / creating user attributes failed', $dom));
 				
 				// Set status message for the user
-		      	if ($result) LogUtil::registerStatus(__('Profile was updated successfully', $dom));
-	    	  	else LogUtil::registerError(__('Creating / Updating profile failed', $dom));
+		      	if ($result) {
+		      	    LogUtil::registerStatus(__('Profile was updated successfully', $dom));
+		      	}
+	    	  	else {
+	    	  	    LogUtil::registerError(__('Creating / Updating profile failed', $dom));
+	    	  	    $error = true;
+	    	  	}
 			}
 			else {					// create a new profile
 				// if the user is created by the user himself we need his uid
@@ -178,6 +183,7 @@ class MyProfile_user_ProfileHandler
                 } else {
                     // Register Error message
                     LogUtil::registerError(__('Profile creation error', $dom));
+                    $error = true;
                 }
 			}
 
@@ -185,7 +191,11 @@ class MyProfile_user_ProfileHandler
     			return pnRedirect(pnModURL('MyProfile','user','main',array('load_uid'=>$this->load_uid)));
 			} else {
 			  SessionUtil::delVar('MyProfile_mandatorymessage');
-    			return pnRedirect(pnModURL('MyProfile'));
+    			if (!$error) {
+                    return $render->pnFormRedirect(pnModURL('MyProfile','user','display'));    			    
+    			} else {
+                    return $render->pnFormRedirect(pnModURL('MyProfile'));    			    
+       			}
             }
 		}
 		return true;
