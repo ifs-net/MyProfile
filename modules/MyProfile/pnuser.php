@@ -227,7 +227,7 @@ function MyProfile_user_display()
 	$uname		= FormUtil::getPassedValue('uname');
 
 	// check for parameters and redirect to own profiel if there is no parameter
-	if (!isset($uname) && !isset($uid) && pnUserLoggedIn()) {
+	if (!isset($uname) && ($uid < 2) && pnUserLoggedIn()) {
 		return pnRedirect(pnModURL('MyProfile','user','display',array('uid' => $viewer_uid)));
 	}
 
