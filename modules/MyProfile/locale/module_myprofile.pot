@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zikula component\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-31 18:47+0200\n"
+"POT-Creation-Date: 2010-06-27 12:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,9 +32,9 @@ msgstr ""
 msgid "registered users since"
 msgstr ""
 
-#: pnuserapi.php:97 pntemplates/myprofile_myprofile_tab.htm:69
-#: pntemplates/myprofile_myprofile_tab.htm:76
-#: pntemplates/myprofile_myprofile_tab.htm:83
+#: pnuserapi.php:97 pntemplates/myprofile_myprofile_tab.htm:70
+#: pntemplates/myprofile_myprofile_tab.htm:77
+#: pntemplates/myprofile_myprofile_tab.htm:84
 msgid "no permission to view this field"
 msgstr ""
 
@@ -213,7 +213,7 @@ msgstr ""
 msgid "An error occured while trying to delete the user"
 msgstr ""
 
-#: pnuser.php:296 pntemplates/myprofile_user_display.htm:6
+#: pnuser.php:294 pntemplates/myprofile_user_display.htm:6
 msgid "Profile of user"
 msgstr ""
 
@@ -249,23 +249,23 @@ msgstr ""
 msgid "Please check the format you entered for your coordinates!"
 msgstr ""
 
-#: includes/classes/user/main.php:154 includes/classes/user/main.php:173
+#: includes/classes/user/main.php:154 includes/classes/user/main.php:178
 msgid "Updating / creating user attributes failed"
 msgstr ""
 
-#: includes/classes/user/main.php:157
+#: includes/classes/user/main.php:158
 msgid "Profile was updated successfully"
 msgstr ""
 
-#: includes/classes/user/main.php:158
+#: includes/classes/user/main.php:161
 msgid "Creating / Updating profile failed"
 msgstr ""
 
-#: includes/classes/user/main.php:177
+#: includes/classes/user/main.php:182
 msgid "The profile was created successfully"
 msgstr ""
 
-#: includes/classes/user/main.php:180
+#: includes/classes/user/main.php:185
 msgid "Profile creation error"
 msgstr ""
 
@@ -661,41 +661,49 @@ msgstr ""
 msgid "Go back one page"
 msgstr ""
 
-#: pntemplates/myprofile_myprofile_tab.htm:30
+#: pntemplates/myprofile_myprofile_tab.htm:19
+msgid "edit"
+msgstr ""
+
+#: pntemplates/myprofile_myprofile_tab.htm:29
 msgid "User's gallery"
 msgstr ""
 
-#: pntemplates/myprofile_myprofile_tab.htm:30
-#: pntemplates/myprofile_myprofile_tab.htm:33
+#: pntemplates/myprofile_myprofile_tab.htm:29
+#: pntemplates/myprofile_myprofile_tab.htm:32
 msgid "picture(s)"
 msgstr ""
 
-#: pntemplates/myprofile_myprofile_tab.htm:33
+#: pntemplates/myprofile_myprofile_tab.htm:32
 msgid "User linked at"
 msgstr ""
 
-#: pntemplates/myprofile_myprofile_tab.htm:42
+#: pntemplates/myprofile_myprofile_tab.htm:41
 msgid "Override individual profile template"
 msgstr ""
 
-#: pntemplates/myprofile_myprofile_tab.htm:125
+#: pntemplates/myprofile_myprofile_tab.htm:46
+msgid "edit my profile"
+msgstr ""
+
+#: pntemplates/myprofile_myprofile_tab.htm:126
 msgid "Registerd since"
 msgstr ""
 
-#: pntemplates/myprofile_myprofile_tab.htm:128
+#: pntemplates/myprofile_myprofile_tab.htm:129
 msgid "Last update"
 msgstr ""
 
-#: pntemplates/myprofile_myprofile_tab.htm:132
+#: pntemplates/myprofile_myprofile_tab.htm:133
 msgid "Last login"
 msgstr ""
 
-#: pntemplates/myprofile_myprofile_tab.htm:145
-#: pntemplates/myprofile_myprofile_tab.htm:151
+#: pntemplates/myprofile_myprofile_tab.htm:148
+#: pntemplates/myprofile_myprofile_tab.htm:155
 msgid "Send private message"
 msgstr ""
 
-#: pntemplates/myprofile_myprofile_tab.htm:157
+#: pntemplates/myprofile_myprofile_tab.htm:161
 msgid "Add as buddy or memorize user"
 msgstr ""
 
@@ -1431,7 +1439,7 @@ msgid "Enter verification code for new email address"
 msgstr ""
 
 #: pntemplates/myprofile_user_settings.htm:79
-#: pntemplates/myprofile_user_main.htm:113
+#: pntemplates/myprofile_user_main.htm:116
 msgid "save / update"
 msgstr ""
 
@@ -1530,11 +1538,25 @@ msgstr ""
 msgid "Private field, only viewable by users you allow to access this data"
 msgstr ""
 
-#: pntemplates/myprofile_user_main.htm:100
+#: pntemplates/myprofile_user_main.htm:98
+msgid ""
+"You can specify a coordinate for this profile field. The latitudes and "
+"longtitudes values can be entered as decimal value with a dot as separator "
+"or - if you want to have no work - you can use the map that is displayed "
+"below this text. Best way is: Click on fullscreen mode, search the cordinate "
+"you need, click right into the map. The clicked point always gets centered "
+"after you clicked at it. The last click into the map is always stored and "
+"the coordinates are automatically filled into the coordinate fields below "
+"the map. This is done automatically and you will not see a bubble in the map "
+"or anything else. After clicking the coordinate minimize the fullscreen mode "
+"again. Then store your profile."
+msgstr ""
+
+#: pntemplates/myprofile_user_main.htm:103
 msgid "Longitude"
 msgstr ""
 
-#: pntemplates/myprofile_user_main.htm:101
+#: pntemplates/myprofile_user_main.htm:104
 msgid "Latitude"
 msgstr ""
 
