@@ -42,7 +42,9 @@
 	<!--[$individualtemplate_content|pnmodcallhooks|pnvarprepfordisplay]-->
 <!--[else]-->
 	<div> <!-- div needed because we are using tabs for separators and their content -->
-
+	<!--[if $uid eq $viewer_uid]-->
+		<p>[<a href="<!--[pnmodurl modname="MyProfile" fqurl="true"]-->"><!--[gt text="edit my profile"]-->]</a></p>
+	<!--[/if]-->
 	<!--[foreach from=$profile item="data"]-->
 		<!--[if ($data.value neq "") or ($data.fieldtype eq "SEPARATOR")]-->
 			<!--[* initial div container *]-->
