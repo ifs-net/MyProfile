@@ -52,8 +52,7 @@ function MyProfile_user_map($args)
 	} else {
 	  	return LogUtil::registerError(__('More than one coordinate field found. Please use the url parameter identifier and the value of the identifier you want to use as coordinate field and reload the page', $myprofile_dom));
 	}
-    // Security check
-    if (($fields['public_status'] > 0) && (!pnUserLoggedIn())) return LogUtil::registerPermissionError();
+    // Security check is included into the map function and data is anonymized if neccessary
 	// Create output and call handler class
 	$render = pnRender::getInstance('MyProfile');
     if (count($coords) > 0) {
@@ -66,7 +65,7 @@ function MyProfile_user_map($args)
 					));
 		$render->assign('code',$mapcode);
 	}
-    // Return the output
+	// Return the output
     return $render->fetch('myprofile_user_map.htm');
 }
 
