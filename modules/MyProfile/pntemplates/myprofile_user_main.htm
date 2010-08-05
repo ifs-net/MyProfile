@@ -3,8 +3,8 @@
 
 <!--[pnajaxheader prototype="1"]-->
 
-<h1><!--[gt text="My profile"]--></h1>
-<img src="images/icons/extrasmall/personal.gif" /> <a href="<!--[pnmodurl modname="MyProfile" type="user" func="display" uid=$uid]-->"><!--[gt text="Show my own profile page"]--></a><br/><br/>
+<h1><!--[gt domain="module_myprofile" text="My profile"]--></h1>
+<img src="images/icons/extrasmall/personal.gif" /> <a href="<!--[pnmodurl modname="MyProfile" type="user" func="display" uid=$uid]-->"><!--[gt domain="module_myprofile" text="Show my own profile page"]--></a><br/><br/>
 
 <!--[pnform]-->
 <!--[pnformvalidationsummary]-->
@@ -12,8 +12,8 @@
 <!--[if $separators gt 0 and $notabs ne "1"]-->
 	<div id="myprofile_javascript" class="myprofile_javascript">
 	<!-- javascript begin -->
-	<div id="myprofile_showalltabs"><a href="#"><!--[gt text="Show all tabs on one page"]--></a></div>
-	<div id="myprofile_tabmode"><a href="#"><!--[gt text="Switch to the tab-mode"]--></a></div>
+	<div id="myprofile_showalltabs"><a href="#"><!--[gt domain="module_myprofile" text="Show all tabs on one page"]--></a></div>
+	<div id="myprofile_tabmode"><a href="#"><!--[gt domain="module_myprofile" text="Switch to the tab-mode"]--></a></div>
 	<div class="myprofile_tabheader" id="myprofile_tabheader">
 	<!-- tabheader begin -->
 	<!--[foreach from=$fields item="field"]-->
@@ -31,13 +31,13 @@
 	<!-- separator begin -->
 	<div class="myprofile_tabcontent">
 	<!-- tabcontent begin -->
-	<h1><!--[gt text="Manage your community profile"]--></h1>
-	<!--[gt text="Please fill the form with your input. Every field that is marked with this sign: * is mandatory."]-->
+	<h1><!--[gt domain="module_myprofile" text="Manage your community profile"]--></h1>
+	<!--[gt domain="module_myprofile" text="Please fill the form with your input. Every field that is marked with this sign: * is mandatory."]-->
 	</div>
 	<!-- tabcontent end -->
 	<div class="myprofile_tabcontent_hidden" id="myprofile_tabinfotext">
 	<!-- tabcontent begin -->
-	<!--[gt text="Please click on the tabs above this text to get to the separated sections to manage your profile data. Please click the save-Button only if the profile is completely filled out!"]-->
+	<!--[gt domain="module_myprofile" text="Please click on the tabs above this text to get to the separated sections to manage your profile data. Please click the save-Button only if the profile is completely filled out!"]-->
 	</div>
 	<!-- tabcontent end -->
 	</div>
@@ -66,9 +66,9 @@
 		<div class="myprofile_formelement">
 		<!-- form item begin -->
 		<!--[pnformlabel for=$field.identifier text=$field.description]-->:
-		<!--[if $field.public_status eq 0]-->(<img src="images/icons/extrasmall/services_flag.gif" /> <!--[gt text="viewable by everybody"]-->)<!--[/if]-->
-		<!--[if $field.public_status eq 2]-->(<img src="images/icons/extrasmall/agt_stop.gif" /> <!--[gt text="viewable by admin users only"]-->)<!--[/if]-->
-		<!--[if $field.public_status eq 9]-->(<img src="images/icons/extrasmall/locked.gif" /><a href="<!--[pnmodurl modname="MyProfile" type="user" func="settings"]-->"><!--[gt text="Private field, only viewable by users you allow to access this data"]--></a>)<!--[/if]-->
+		<!--[if $field.public_status eq 0]-->(<img src="images/icons/extrasmall/services_flag.gif" /> <!--[gt domain="module_myprofile" text="viewable by everybody"]-->)<!--[/if]-->
+		<!--[if $field.public_status eq 2]-->(<img src="images/icons/extrasmall/agt_stop.gif" /> <!--[gt domain="module_myprofile" text="viewable by admin users only"]-->)<!--[/if]-->
+		<!--[if $field.public_status eq 9]-->(<img src="images/icons/extrasmall/locked.gif" /><a href="<!--[pnmodurl modname="MyProfile" type="user" func="settings"]-->"><!--[gt domain="module_myprofile" text="Private field, only viewable by users you allow to access this data"]--></a>)<!--[/if]-->
 		<br />
 		<!--[if $field.fieldtype eq "STRING" or $field.fieldtype == "TIMESTAMP"]-->
 			<!--[if $field.list eq ""]-->
@@ -95,13 +95,13 @@
 		<!--[if $field.fieldtype eq "COORD"]-->
 			<!--[if $mymapavailable]-->
 				<div class="z-informationmsg">
-					<!--[gt text="You can specify a coordinate for this profile field. The latitudes and longtitudes values can be entered as decimal value with a dot as separator or - if you want to have no work - you can use the map that is displayed below this text. Best way is: Click on fullscreen mode, search the cordinate you need, click right into the map. The clicked point always gets centered after you clicked at it. The last click into the map is always stored and the coordinates are automatically filled into the coordinate fields below the map. This is done automatically and you will not see a bubble in the map or anything else. After clicking the coordinate minimize the fullscreen mode again. Then store your profile."]-->
+					<!--[gt domain="module_myprofile" text="You can specify a coordinate for this profile field. The latitudes and longtitudes values can be entered as decimal value with a dot as separator or - if you want to have no work - you can use the map that is displayed below this text. Best way is: Click on fullscreen mode, search the cordinate you need, click right into the map. The clicked point always gets centered after you clicked at it. The last click into the map is always stored and the coordinates are automatically filled into the coordinate fields below the map. This is done automatically and you will not see a bubble in the map or anything else. After clicking the coordinate minimize the fullscreen mode again. Then store your profile."]-->
 				</div>
 				<!--[pnmodapifunc modname="MyMap" type="user" func="generateMap" width="400" height="150" maptype="hybrid" zoomfactor="7" lat="`$field.identifier`_lat" lng="`$field.identifier`_lng" coords=$coords[$field.identifier]]-->
 			<!--[/if]-->
 			<img src="images/icons/extrasmall/agt_internet.gif" />
-			<!--[gt text="Longitude"]-->: <!--[pnformtextinput id="`$field.identifier`_lng" mandatorysym='1' mandatory=$field.mandatory maxLength="25" textMode="singleLine"]-->
-			<!--[gt text="Latitude"]-->: <!--[pnformtextinput id="`$field.identifier`_lat" mandatorysym='1' mandatory=$field.mandatory maxLength="25" textMode="singleLine"]-->
+			<!--[gt domain="module_myprofile" text="Longitude"]-->: <!--[pnformtextinput id="`$field.identifier`_lng" mandatorysym='1' mandatory=$field.mandatory maxLength="25" textMode="singleLine"]-->
+			<!--[gt domain="module_myprofile" text="Latitude"]-->: <!--[pnformtextinput id="`$field.identifier`_lat" mandatorysym='1' mandatory=$field.mandatory maxLength="25" textMode="singleLine"]-->
 		<!--[/if]-->
 		</div>
 		<!-- form item end -->
