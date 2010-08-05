@@ -9,6 +9,13 @@
 	</div>
 <!--[/if]-->
  
+<!--[if $viewer_uid lt 2]-->
+	<div class="z-informationmsg">
+		<!--[gt text="You are not logged in. You need to register to view profiles, contact other users or to see their photogalleries..."]--><br />
+		<!--[gt text="Please"]--> <a href="<!--[pnmodurl modname="Users" func="loginscreen"]-->"><!--[gt text="Log in"]--></a> <!--[gt text="or"]--> <a href="<!--[pnmodurl modname="Users" func="register"]-->"><!--[gt text="register a new account"]--></a>!
+	</div>
+<!--[/if]-->
+ 
 <!--[pnmodavailable modname="UserPictures" assign="UserPictures"]-->
 <!--[if $UserPictures]-->
 		<div id="myprofile_userpictures" class="myprofile_userpictures">
