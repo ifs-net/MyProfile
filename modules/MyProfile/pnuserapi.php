@@ -682,11 +682,18 @@ function MyProfile_userapi_getCoords($args)
 			if ($coord['lat'][0] == '0') $coord['lat']=substr($coord['lat'],1);
 			if ($coord['lng'][0] == '0') $coord['lng']=substr($coord['lng'],1);
 			// built result coordinate
+			if ( ($field['public_status'] == 0) || ( ($field['public_status'] > 0) && (pnUserLoggedIn()) ) ) {
+			    $title = $item['uname'];
+			    $text = '<a href=' .pnModURL('MyProfile','user','display',array('uid' => $item['id']),null,null,true) . '>' . __('Show user\'s profile', $dom)."</a>";
+			} else {
+			    $title = __('Please log in!',$dom);
+			    $text = __('Username is not visible for you - please log in or create an account to be able to view this information!',$dom);
+			}
 			$res[] = array(	
 				'lat' => $coord['lat'],
 				'lng' => $coord['lng'],
-				'text' => '<a href=' .pnModURL('MyProfile','user','display',array('uid' => $item['id']),null,null,true) . '>' . __('Show user\'s profile', $dom)."</a>",
-				'title' => $item['uname']
+				'text' => $text,
+				'title' => $title
 					);
 		}
 	}
