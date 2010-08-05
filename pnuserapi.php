@@ -95,6 +95,7 @@ function MyProfile_userapi_getProfile($args)
     					break;
     				default:
     				    $field['value']=__('no permission to view this field', $dom);
+    				    $field['list_title']=__('no permission to view this field', $dom);
     			}
             }
 		}
