@@ -11,8 +11,8 @@
  
 <!--[if $viewer_uid lt 2]-->
 	<div class="z-informationmsg">
-		<!--[gt text="You are not logged in. You need to register to view profiles, contact other users or to see their photogalleries..."]--><br />
-		<!--[gt text="Please"]--> <a href="<!--[pnmodurl modname="Users" func="loginscreen"]-->"><!--[gt text="Log in"]--></a> <!--[gt text="or"]--> <a href="<!--[pnmodurl modname="Users" func="register"]-->"><!--[gt text="register a new account"]--></a>!
+		<!--[gt domain="module_myprofile" text="You are not logged in. You need to register to view profiles, contact other users or to see their photogalleries..."]--><br />
+		<!--[gt domain="module_myprofile" text="Please"]--> <a href="<!--[pnmodurl modname="Users" func="loginscreen"]-->"><!--[gt domain="module_myprofile" text="Log in"]--></a> <!--[gt domain="module_myprofile" text="or"]--> <a href="<!--[pnmodurl modname="Users" func="register"]-->"><!--[gt domain="module_myprofile" text="register a new account"]--></a>!
 	</div>
 <!--[/if]-->
  
@@ -22,7 +22,7 @@
 		    <!--[pnmodapifunc modname="UserPictures" type="admin" func="getTemplates" assign="upt"]-->
 		    <!--[foreach from=$upt item="up"]-->
 				<!--[pnmodapifunc modname="UserPictures" type="user" func="showPicture" uid=$uid template_id=$up.id assign=picture]-->
-				<strong><!--[$up.title]--></strong> <!--[if $picture.uid eq $viewer_uid]-->[<a href="<!--[pnmodurl modname="UserPictures" func="managePicture" template_id=$up.id]-->"><!--[gt text="edit"]-->]</a><!--[/if]--><br />
+				<strong><!--[$up.title]--></strong> <!--[if $picture.uid eq $viewer_uid]-->[<a href="<!--[pnmodurl modname="UserPictures" func="managePicture" template_id=$up.id]-->"><!--[gt domain="module_myprofile" text="edit"]-->]</a><!--[/if]--><br />
 				<!--[$picture.code]--><br />
 				<!--[$picture.comment]--><br /><br />
 		    <!--[/foreach]-->
@@ -32,10 +32,10 @@
 	    	<!--[if $owngallery gt 0 or $assocpictures gt 0]-->
 			    <div class="myprofile_box">
 			    	<!--[if $owngallery gt 0]-->
-					<a href="<!--[pnmodurl fqurl="true" modname="MyProfile" type="user" func="display" uid=$uid pluginname="UserPictures"]-->"><!--[gt text="User's gallery"]-->: <!--[$owngallery]--> <!--[gt text="picture(s)"]--></a>.<br />
+					<a href="<!--[pnmodurl fqurl="true" modname="MyProfile" type="user" func="display" uid=$uid pluginname="UserPictures"]-->"><!--[gt domain="module_myprofile" text="User's gallery"]-->: <!--[$owngallery]--> <!--[gt domain="module_myprofile" text="picture(s)"]--></a>.<br />
 					<!--[/if]-->
 				<!--[if $assocpictures gt 0]-->
-					<a href="<!--[pnmodurl fqurl="true" modname="UserPictures" type="user" func="view" template_id="0" assoc_uid=$uid]-->"><!--[gt text="User linked at"]--> <!--[$assocpictures]--> <!--[gt text="picture(s)"]--></a>
+					<a href="<!--[pnmodurl fqurl="true" modname="UserPictures" type="user" func="view" template_id="0" assoc_uid=$uid]-->"><!--[gt domain="module_myprofile" text="User linked at"]--> <!--[$assocpictures]--> <!--[gt domain="module_myprofile" text="picture(s)"]--></a>
 				<!--[/if]-->
 			    </div>
 			<!--[/if]-->
@@ -44,12 +44,12 @@
 <!--[/if]-->
 
 <!--[if $individualtemplates eq 1 and $individualtemplate_content ne ""]-->
-	<small><a href="<!--[pnmodurl fqurl="true" modname="MyProfile" type="user" func="display" uid=$uid overridetemplate="1"]-->"><!--[gt text="Override individual profile template"]--></a></small><br />
+	<small><a href="<!--[pnmodurl fqurl="true" modname="MyProfile" type="user" func="display" uid=$uid overridetemplate="1"]-->"><!--[gt domain="module_myprofile" text="Override individual profile template"]--></a></small><br />
 	<!--[$individualtemplate_content|pnmodcallhooks|pnvarprepfordisplay]-->
 <!--[else]-->
 	<div> <!-- div needed because we are using tabs for separators and their content -->
 	<!--[if $uid eq $viewer_uid]-->
-		<p>[<a href="<!--[pnmodurl modname="MyProfile" fqurl="true"]-->"><!--[gt text="edit my profile"]-->]</a></p>
+		<p>[<a href="<!--[pnmodurl modname="MyProfile" fqurl="true"]-->"><!--[gt domain="module_myprofile" text="edit my profile"]-->]</a></p>
 	<!--[/if]-->
 	<!--[foreach from=$profile item="data"]-->
 		<!--[if ($data.value neq "") or ($data.fieldtype eq "SEPARATOR")]-->
@@ -73,21 +73,21 @@
 					<!--[if $data.value ne 'none']-->
 						<a href="<!--[$data.value]-->" target="_blanc"><!--[$data.value|truncate:30]--></a>
 					<!--[else]-->
-						<!--[gt text="no permission to view this field"]-->
+						<!--[gt domain="module_myprofile" text="no permission to view this field"]-->
 					<!--[/if]--><br />
 			<!--[elseif $data.fieldtype eq "UIN"]-->
 				<!--[if $data.value ne "" and $data.value gt 0]-->
 					<span class="myprofile_bold"><!--[$data.description|pnvarprepfordisplay]-->:</span>	<!--[$data.value]--> <img src="http://status.icq.com/online.gif?icq=<!--[$data.value]-->&img=5" width="18" height="18" /><br />
 				<!--[/if]-->
 			<!--[elseif $data.fieldtype eq "DATE"]-->
-				<span class="myprofile_bold"><!--[$data.description|pnvarprepfordisplay]-->:</span>	<!--[if $data.value ne "9999-12-31"]--><!--[$data.value|pnvarprepfordisplay|date_format:"$dateformat"]--><!--[else]--><!--[gt text="no permission to view this field"]--><!--[/if]--><br />
+				<span class="myprofile_bold"><!--[$data.description|pnvarprepfordisplay]-->:</span>	<!--[if $data.value ne "9999-12-31"]--><!--[$data.value|pnvarprepfordisplay|date_format:"$dateformat"]--><!--[else]--><!--[gt domain="module_myprofile" text="no permission to view this field"]--><!--[/if]--><br />
 			<!--[elseif $data.fieldtype eq "COORD"]-->
 				<!--[if $data.value|@unserialize ne "" or $data.value ne ""]-->
 					<span class="myprofile_bold"><!--[$data.description|pnvarprepfordisplay]-->:</span>	
 					<!--[if $data.value ne ""]-->
 						<!--[showmap coord=$data.value]-->
 					<!--[else]-->
-						<!--[gt text="no permission to view this field"]-->
+						<!--[gt domain="module_myprofile" text="no permission to view this field"]-->
 					<!--[/if]--><br />
 				<!--[/if]-->
 			<!--[elseif $data.fieldtype eq "SKYPEID"]-->
@@ -130,14 +130,14 @@
 		<!--[/if]-->
 
 			<div class="myprofile_profiletext">
-			<!--[gt text="Registerd since"]-->: <!--[$regdate|date_format:"$dateformat"]--><br />
+			<!--[gt domain="module_myprofile" text="Registerd since"]-->: <!--[$regdate|date_format:"$dateformat"]--><br />
 			</div>
 			<div class="myprofile_profiletext">
-			<!--[gt text="Last update"]-->: <!--[$lastupdate|date_format:"$dateformat"]--><br />
+			<!--[gt domain="module_myprofile" text="Last update"]-->: <!--[$lastupdate|date_format:"$dateformat"]--><br />
 			</div>
 			<!--[if $lastlogin ne ""]-->
 				<div class="myprofile_profiletext">
-				<!--[gt text="Last login"]-->: <!--[$lastlogin|date_format:"$dateformat"]--><br />
+				<!--[gt domain="module_myprofile" text="Last login"]-->: <!--[$lastlogin|date_format:"$dateformat"]--><br />
 				</div>
 			<!--[/if]-->
 		</div>
@@ -154,20 +154,20 @@
         <!--[pnconfiggetvar name='messagemodule' assign='msgmodule']-->
         <!--[if $msgmodule and $viewer_uid ne $uid]-->
 			<div class="myprofile_profiletext">
-			<img src="<!--[pngetbaseurl]-->images/icons/small/mail_generic.gif" /><a href="<!--[pnmodurl fqurl=true modname=$msgmodule func="user" func="newpm" uid=$uid]-->"><!--[gt text="Send private message"]--></a>
+			<img src="<!--[pngetbaseurl]-->images/icons/small/mail_generic.gif" /><a href="<!--[pnmodurl fqurl=true modname=$msgmodule func="user" func="newpm" uid=$uid]-->"><!--[gt domain="module_myprofile" text="Send private message"]--></a>
 			</div>
         <!--[/if]-->
 
 		<!--[pnmodavailable modname="pnMessages" assign="pnMessagesAvailable"]-->
 		<!--[if $pnMessagesAvailable and $viewer_uid ne $uid]-->
 			<div class="myprofile_profiletext">
-			<img src="<!--[pngetbaseurl]-->images/icons/small/mail_generic.gif" /><a href="<!--[pnmodurl fqurl="true" modname="pnMessages" type="user" func="newpm" uname="$encuname"]-->"><!--[gt text="Send private message"]--></a>
+			<img src="<!--[pngetbaseurl]-->images/icons/small/mail_generic.gif" /><a href="<!--[pnmodurl fqurl="true" modname="pnMessages" type="user" func="newpm" uname="$encuname"]-->"><!--[gt domain="module_myprofile" text="Send private message"]--></a>
 			</div>
 		<!--[/if]-->
 		<!--[pnmodavailable modname="ContactList" assign="ContactListAvailable"]-->
 		<!--[if $ContactListAvailable and $viewer_uid ne $uid]-->
 			<div class="myprofile_profiletext">
-			<img src="<!--[pngetbaseurl]-->images/icons/small/add_user.gif" /><a href="<!--[pnmodurl fqurl="true" modname="ContactList" type="user" func="create" uid="$uid"]-->"><!--[gt text="Add as buddy or memorize user"]--></a>
+			<img src="<!--[pngetbaseurl]-->images/icons/small/add_user.gif" /><a href="<!--[pnmodurl fqurl="true" modname="ContactList" type="user" func="create" uid="$uid"]-->"><!--[gt domain="module_myprofile" text="Add as buddy or memorize user"]--></a>
 			</div>
 		<!--[/if]-->
 <!--[* additional information end *]-->

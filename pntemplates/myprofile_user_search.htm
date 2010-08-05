@@ -5,11 +5,11 @@
 <!--[pnformvalidationsummary]-->
 
 <!--[if $resultCount gt -1]-->
-	<h1><!--[gt text="Found"]--> <!--[gt text="results"]--></h1>
+	<h1><!--[gt domain="module_myprofile" text="Found"]--> <!--[gt domain="module_myprofile" text="results"]--></h1>
 	<div id="myprofile_search_link">
-		<a href="" onclick="javascript:$('myprofile_search').show();$('myprofile_search_link').hide();return false;"><!--[gt text="Show search form to change search parameters"]--></a><br />
+		<a href="" onclick="javascript:$('myprofile_search').show();$('myprofile_search_link').hide();return false;"><!--[gt domain="module_myprofile" text="Show search form to change search parameters"]--></a><br />
 	<!--[if $allowmemberlist eq 1]-->
-		<a href="<!--[pnmodurl modname="MyProfile" type="user" func="search" showall="1" fqurl="true"]-->"><!--[gt text="Show all members"]--></a><br />
+		<a href="<!--[pnmodurl modname="MyProfile" type="user" func="search" showall="1" fqurl="true"]-->"><!--[gt domain="module_myprofile" text="Show all members"]--></a><br />
 	<!--[/if]-->
 	<br />
 	</div>
@@ -17,7 +17,7 @@
 
 <!--[if $page gt 0]-->
 	<center>
-	<!--[gt text="Page"]--> <!--[$page]-->/<!--[$pages]-->, <!--[$resultCount]--> <!--[if $resultCount lt 2]--><!--[gt text="result"]--><!--[else]--><!--[gt text="results"]--><!--[/if]--><br />
+	<!--[gt domain="module_myprofile" text="Page"]--> <!--[$page]-->/<!--[$pages]-->, <!--[$resultCount]--> <!--[if $resultCount lt 2]--><!--[gt domain="module_myprofile" text="result"]--><!--[else]--><!--[gt domain="module_myprofile" text="results"]--><!--[/if]--><br />
 	</center>
 <!--[/if]-->
 
@@ -32,15 +32,15 @@
 <br class="myprofile_clearboth" />
 
 <div id="myprofile_search">
-	<h1><!--[gt text="Search"]--></h1>
+	<h1><!--[gt domain="module_myprofile" text="Search"]--></h1>
 	<div class="pn-informationmsg">
-		<!--[gt text="You can now use the following form to search for other users. The more fields you fill out the less results you will get."]-->
+		<!--[gt domain="module_myprofile" text="You can now use the following form to search for other users. The more fields you fill out the less results you will get."]-->
 	</div>
 	
 	<!--[* search in all fields *]-->
 	<div class="myprofile_searchelement">
 		<div class="myprofile_searchleft">
-			<span class="myprofile_bold"><!--[gt text="Search string in all fields"]--></span>
+			<span class="myprofile_bold"><!--[gt domain="module_myprofile" text="Search string in all fields"]--></span>
 		</div>
 		<div class="myprofile_searchright">
 			<!--[pnformtextinput id="string" maxLength="150"]-->
@@ -50,7 +50,7 @@
 	<!--[* username should always be searchable *]-->
 	<div class="myprofile_searchelement">
 		<div class="myprofile_searchleft">
-			<span class="myprofile_bold"><!--[gt text="Username"]--></span>
+			<span class="myprofile_bold"><!--[gt domain="module_myprofile" text="Username"]--></span>
 		</div>
 		<div class="myprofile_searchright">
 			<!--[pnformtextinput id="uname" maxLength="150"]-->
@@ -62,7 +62,7 @@
 	<div class="myprofile_searchelement">
 		<div class="myprofile_searchleft">
 			<span class="myprofile_bold"><!--[$field.description]--></span><br />
-			<!--[if $field.list ne ""]--><span class="myprofile_small"><!--[gt text="Choosing more than one item will link them using OR"]--></span><!--[/if]-->
+			<!--[if $field.list ne ""]--><span class="myprofile_small"><!--[gt domain="module_myprofile" text="Choosing more than one item will link them using OR"]--></span><!--[/if]-->
 		</div>
 		<div class="myprofile_searchright">
 			<!--[if $field.fieldtype eq "STRING" or $field.fieldtype eq "TEXTBOX" or $field.fieldtype eq "URL" or $field.fieldtype eq "SKYPEID" or $field.fieldtype eq "TIMESTAMP"  or $field.fieldtype eq "UIN" or $field.fieldtype eq "INTEGER"]-->
@@ -77,13 +77,13 @@
 		</div>
 	</div>
 	<!--[foreachelse]-->
-		<!--[gt text="There are no more searchable fields or you do not have the permission to view these fields"]-->
+		<!--[gt domain="module_myprofile" text="There are no more searchable fields or you do not have the permission to view these fields"]-->
 	<!--[/foreach]-->
 	
 	<!--[* other search options. wildcat, order by, asc/desc etc. *]-->
 	<div class="myprofile_searchelement">
 		<div class="myprofile_searchleft">
-			<!--[gt text="Search type"]-->
+			<!--[gt domain="module_myprofile" text="Search type"]-->
 		</div>
 		<div class="myprofile_searchright">
 			<!--[pnformdropdownlist id="searchoption" items=$items_searchoptions]-->
@@ -91,7 +91,7 @@
 	</div>
 	<div class="myprofile_searchelement">
 		<div class="myprofile_searchleft">
-			<!--[gt text="Connector for search logic"]-->
+			<!--[gt domain="module_myprofile" text="Connector for search logic"]-->
 		</div>
 		<div class="myprofile_searchright">
 			<!--[pnformdropdownlist id="connector" items=$items_connector]-->
@@ -99,7 +99,7 @@
 	</div>
 	<div class="myprofile_searchelement">
 		<div class="myprofile_searchleft">
-			<!--[gt text="Sort result by"]-->
+			<!--[gt domain="module_myprofile" text="Sort result by"]-->
 		</div>
 		<div class="myprofile_searchright">
 			<!--[pnformdropdownlist id="orderby" items=$items_orderby]-->
@@ -107,11 +107,11 @@
 		</div>
 	</div>
 	<div class="pn-informationmsg">
-		<!--[gt text="Using the search type soft and searching for sun you will also get results like sunset because the searched word is in it. If you do not want to use this select exact as search type!"]-->
+		<!--[gt domain="module_myprofile" text="Using the search type soft and searching for sun you will also get results like sunset because the searched word is in it. If you do not want to use this select exact as search type!"]-->
 	</div>
 	<!--[if $allowmemberlist eq 1]-->
 		<div class="pn-informationmsg">
-			<!--[gt text="If you just click the search button without any search parameters you will get the whole member list displayed"]-->
+			<!--[gt domain="module_myprofile" text="If you just click the search button without any search parameters you will get the whole member list displayed"]-->
 		</div>
 	<!--[/if]-->
 

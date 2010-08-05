@@ -1,13 +1,13 @@
 <!--[include file="myprofile_user_header.htm"]-->
 <!--[pnajaxheader prototype="1"]-->
 <!--[include file="myprofile_user_statusmsg.htm"]-->
-<h1><!--[gt text="My profile"]--></h1>
-<!--[gt text="Here you can define some custom settings for your profile"]--><br /><br />
+<h1><!--[gt domain="module_myprofile" text="My profile"]--></h1>
+<!--[gt domain="module_myprofile" text="Here you can define some custom settings for your profile"]--><br /><br />
 <!--[pnform]-->
 <!--[pnformvalidationsummary]-->
 
 <div class="myprofile_separator" id="myprofile_settings">
-<span class="myprofile_bold"><!--[gt text="General settings"]--></span><br /><br />
+<span class="myprofile_bold"><!--[gt domain="module_myprofile" text="General settings"]--></span><br /><br />
 
 <!--[pnformlabel for="timezoneoffset" __text="My timezone"]--><br />
 <!--[pnformdropdownlist id="timezoneoffset" items=$items_timezone]--><br /><br />
@@ -24,7 +24,7 @@
 <!--[if $items_customfields|@count gt 0]-->
 	<!--[pnformlabel for="customsettings" __text="Profile data fields that are marked as private should be viewable by"]-->? 
 	<!--[pnformdropdownlist id="customsettings" items=$items_customfields]--><br />
-	<a href="<!--[pnmodurl modname="MyProfile" type="user" func="confirmedusers"]-->"><!--[gt text="Manage users that are allowed to view all my data that is declared as private"]--></a>
+	<a href="<!--[pnmodurl modname="MyProfile" type="user" func="confirmedusers"]-->"><!--[gt domain="module_myprofile" text="Manage users that are allowed to view all my data that is declared as private"]--></a>
 	<br /><br />
 <!--[/if]-->
 
@@ -37,15 +37,15 @@
 		<!--[pnformlabel for="individualtemplate" __text="Use an individual template"]--><br />
 		<!--[pnformtextinput id="individualtemplate" textMode="multiLine" rows="8" cols="50"]--><br />
 		<div id="mih_link">
-			<a onclick="javascript:$('mih').show();$('mih_link').hide();" href="#mit"><!--[gt text="Some hints to create your own template"]--></a>
+			<a onclick="javascript:$('mih').show();$('mih_link').hide();" href="#mit"><!--[gt domain="module_myprofile" text="Some hints to create your own template"]--></a>
 		</div>
 		<div id="mih">
 			<a name="mih"></a>
-			<fieldset><legend><!--[gt text="The individual profile tempalte can be designed in HTML"]--></legend>
-			<!--[gt text="The use of the following words (bold printed) will cause a replacement with your profile data - with * marked variables are mandatory and have to be used in your template"]-->:<br />
+			<fieldset><legend><!--[gt domain="module_myprofile" text="The individual profile tempalte can be designed in HTML"]--></legend>
+			<!--[gt domain="module_myprofile" text="The use of the following words (bold printed) will cause a replacement with your profile data - with * marked variables are mandatory and have to be used in your template"]-->:<br />
 			<ul>
 			<!--[foreach from=$fields item="field"]-->
-				<li><strong>§<!--[$field.identifier]-->§</strong> <!--[gt text="will be replaced with"]--> <!--[$field.description]--></li>
+				<li><strong>§<!--[$field.identifier]-->§</strong> <!--[gt domain="module_myprofile" text="will be replaced with"]--> <!--[$field.description]--></li>
 			<!--[/foreach]-->
 			</ul>
 			</fieldset>
@@ -62,7 +62,7 @@
 </div>
 
 <div class="myprofile_separator" id="myprofile_password">
-<span class="myprofile_bold"><!--[gt text="Manage your password"]--></span><br /><br/>
+<span class="myprofile_bold"><!--[gt domain="module_myprofile" text="Manage your password"]--></span><br /><br/>
 <!--[pnformlabel for="1pass" __text="If you want to change your password enter the new one"]-->:<br />
 <!--[pnformtextinput id="1pass" textMode="password" maxLength='20']--><br /><br />
 <!--[pnformlabel for="2pass" __text="and repeat the new password please"]-->:<br />
@@ -70,11 +70,11 @@
 </div>
 
 <div class="myprofile_separator" id="myprofile_email">
-<span class="myprofile_bold"><!--[gt text="Change email address"]--></span> (<!--[pnusergetvar name="email"]-->)<br /><br/>
+<span class="myprofile_bold"><!--[gt domain="module_myprofile" text="Change email address"]--></span> (<!--[pnusergetvar name="email"]-->)<br /><br/>
 <!--[pnformlabel for="users_email" __text="New email address"]-->:<br />
 <!--[pnformemailinput id="users_email"]--><br /><br />
 <!--[if $noverification neq 1]-->
-	<a href="<!--[pnmodurl modname="MyProfile" type="user" func="validatemail"]-->"><!--[gt text="Enter verification code for new email address"]--></a><!--[/if]-->
+	<a href="<!--[pnmodurl modname="MyProfile" type="user" func="validatemail"]-->"><!--[gt domain="module_myprofile" text="Enter verification code for new email address"]--></a><!--[/if]-->
 </div>
 <!--[pnformbutton commandName="update" __text="save / update"]-->
 

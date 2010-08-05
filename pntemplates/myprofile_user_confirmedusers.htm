@@ -1,12 +1,12 @@
 <!--[include file="myprofile_user_header.htm"]-->
 <!--[include file="myprofile_user_statusmsg.htm"]-->
 
-<h1><!--[gt text="Manage users that can see your private data"]--></h1>
+<h1><!--[gt domain="module_myprofile" text="Manage users that can see your private data"]--></h1>
 
 <!--[pnform]-->
 <!--[pnformvalidationsummary]-->
 
-<h3><!--[gt text="Add a new user to your list"]--></h3>
+<h3><!--[gt domain="module_myprofile" text="Add a new user to your list"]--></h3>
 <!--[pnformlabel for="uname" __text='Username']-->:<br />
 <!--[pnformtextinput id="uname" textMode="singleLine" maxLength="25" minLength="25" mandatory='1']--><br /><br />
 
@@ -16,15 +16,15 @@
 <!--[/pnform]-->
 
 <br /><br />
-<h3><!--[gt text="Your list"]--></h3>
+<h3><!--[gt domain="module_myprofile" text="Your list"]--></h3>
 <ul>
 <!--[foreach from=$users item="user"]-->
 	<!--[pnusergetvar name="uname" uid=$user assign="uname"]-->
 	<!--[if $uname ne ""]-->
-		<li><!--[$uname|userprofilelink]--> (<a href="<!--[pnmodurl modname="MyProfile" type="user" func="confirmedusers" delete=$user authid=$authid]-->"><!--[gt text="delete User"]-->)</a></li>
+		<li><!--[$uname|userprofilelink]--> (<a href="<!--[pnmodurl modname="MyProfile" type="user" func="confirmedusers" delete=$user authid=$authid]-->"><!--[gt domain="module_myprofile" text="delete User"]-->)</a></li>
 	<!--[/if]-->
 <!--[foreachelse]-->
-<li><!--[gt text="No entry was made yet"]--></li>
+<li><!--[gt domain="module_myprofile" text="No entry was made yet"]--></li>
 <!--[/foreach]-->
 </ul>
 
