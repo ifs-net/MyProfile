@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zikula component\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-27 12:59+0200\n"
+"POT-Creation-Date: 2010-08-05 22:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,32 +32,43 @@ msgstr ""
 msgid "registered users since"
 msgstr ""
 
-#: pnuserapi.php:97 pntemplates/myprofile_myprofile_tab.htm:70
-#: pntemplates/myprofile_myprofile_tab.htm:77
-#: pntemplates/myprofile_myprofile_tab.htm:84
+#: pnuserapi.php:97 pnuserapi.php:98
+#: pntemplates/myprofile_myprofile_tab.htm:76
+#: pntemplates/myprofile_myprofile_tab.htm:83
+#: pntemplates/myprofile_myprofile_tab.htm:90
 msgid "no permission to view this field"
 msgstr ""
 
-#: pnuserapi.php:392
+#: pnuserapi.php:393
 msgid "You can not request a new validation code before"
 msgstr ""
 
-#: pnuserapi.php:419
+#: pnuserapi.php:420
 msgid ""
 "Attention: You have to activate your new email address before using this "
 "site again! Please read the instructions in the incoming email!"
 msgstr ""
 
-#: pnuserapi.php:431
+#: pnuserapi.php:432
 msgid "Email verification code for"
 msgstr ""
 
-#: pnuserapi.php:431 includes/common_admin.php:19
+#: pnuserapi.php:432 includes/common_admin.php:19
 msgid "at"
 msgstr ""
 
 #: pnuserapi.php:688
 msgid "Show user's profile"
+msgstr ""
+
+#: pnuserapi.php:690
+msgid "Please log in!"
+msgstr ""
+
+#: pnuserapi.php:691
+msgid ""
+"Username is not visible for you - please log in or create an account to be "
+"able to view this information!"
 msgstr ""
 
 #: pnversion.php:17
@@ -205,15 +216,15 @@ msgid ""
 "field and reload the page"
 msgstr ""
 
-#: pnuser.php:132
+#: pnuser.php:131
 msgid "User deleted"
 msgstr ""
 
-#: pnuser.php:136
+#: pnuser.php:135
 msgid "An error occured while trying to delete the user"
 msgstr ""
 
-#: pnuser.php:294 pntemplates/myprofile_user_display.htm:6
+#: pnuser.php:293 pntemplates/myprofile_user_display.htm:6
 msgid "Profile of user"
 msgstr ""
 
@@ -249,23 +260,23 @@ msgstr ""
 msgid "Please check the format you entered for your coordinates!"
 msgstr ""
 
-#: includes/classes/user/main.php:154 includes/classes/user/main.php:178
+#: includes/classes/user/main.php:156 includes/classes/user/main.php:180
 msgid "Updating / creating user attributes failed"
 msgstr ""
 
-#: includes/classes/user/main.php:158
+#: includes/classes/user/main.php:160
 msgid "Profile was updated successfully"
 msgstr ""
 
-#: includes/classes/user/main.php:161
+#: includes/classes/user/main.php:163
 msgid "Creating / Updating profile failed"
 msgstr ""
 
-#: includes/classes/user/main.php:182
+#: includes/classes/user/main.php:184
 msgid "The profile was created successfully"
 msgstr ""
 
-#: includes/classes/user/main.php:185
+#: includes/classes/user/main.php:187
 msgid "Profile creation error"
 msgstr ""
 
@@ -661,49 +672,71 @@ msgstr ""
 msgid "Go back one page"
 msgstr ""
 
-#: pntemplates/myprofile_myprofile_tab.htm:19
+#: pntemplates/myprofile_myprofile_tab.htm:14
+msgid ""
+"You are not logged in. You need to register to view profiles, contact other "
+"users or to see their photogalleries..."
+msgstr ""
+
+#: pntemplates/myprofile_myprofile_tab.htm:15
+msgid "Please"
+msgstr ""
+
+#: pntemplates/myprofile_myprofile_tab.htm:15
+msgid "Log in"
+msgstr ""
+
+#: pntemplates/myprofile_myprofile_tab.htm:15
+msgid "or"
+msgstr ""
+
+#: pntemplates/myprofile_myprofile_tab.htm:15
+msgid "register a new account"
+msgstr ""
+
+#: pntemplates/myprofile_myprofile_tab.htm:25
 msgid "edit"
 msgstr ""
 
-#: pntemplates/myprofile_myprofile_tab.htm:29
+#: pntemplates/myprofile_myprofile_tab.htm:35
 msgid "User's gallery"
 msgstr ""
 
-#: pntemplates/myprofile_myprofile_tab.htm:29
-#: pntemplates/myprofile_myprofile_tab.htm:32
+#: pntemplates/myprofile_myprofile_tab.htm:35
+#: pntemplates/myprofile_myprofile_tab.htm:38
 msgid "picture(s)"
 msgstr ""
 
-#: pntemplates/myprofile_myprofile_tab.htm:32
+#: pntemplates/myprofile_myprofile_tab.htm:38
 msgid "User linked at"
 msgstr ""
 
-#: pntemplates/myprofile_myprofile_tab.htm:41
+#: pntemplates/myprofile_myprofile_tab.htm:47
 msgid "Override individual profile template"
 msgstr ""
 
-#: pntemplates/myprofile_myprofile_tab.htm:46
+#: pntemplates/myprofile_myprofile_tab.htm:52
 msgid "edit my profile"
 msgstr ""
 
-#: pntemplates/myprofile_myprofile_tab.htm:126
+#: pntemplates/myprofile_myprofile_tab.htm:133
 msgid "Registerd since"
 msgstr ""
 
-#: pntemplates/myprofile_myprofile_tab.htm:129
+#: pntemplates/myprofile_myprofile_tab.htm:136
 msgid "Last update"
 msgstr ""
 
-#: pntemplates/myprofile_myprofile_tab.htm:133
+#: pntemplates/myprofile_myprofile_tab.htm:140
 msgid "Last login"
 msgstr ""
 
-#: pntemplates/myprofile_myprofile_tab.htm:148
-#: pntemplates/myprofile_myprofile_tab.htm:155
+#: pntemplates/myprofile_myprofile_tab.htm:157
+#: pntemplates/myprofile_myprofile_tab.htm:164
 msgid "Send private message"
 msgstr ""
 
-#: pntemplates/myprofile_myprofile_tab.htm:161
+#: pntemplates/myprofile_myprofile_tab.htm:170
 msgid "Add as buddy or memorize user"
 msgstr ""
 
