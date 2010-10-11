@@ -2,7 +2,7 @@
 /**
  * @package      MyProfile
  * @version      $Id$
- * @author       Florian Schießl
+ * @author       Florian Schieï¿½l
  * @link         http://www.ifs-net.de
  * @copyright    Copyright (C) 2008
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
@@ -129,7 +129,7 @@ function mp_systemInit()
 	if (!pnUserLoggedIn()) {
 		return true;
 	} else {
-	  	pnUserSetVar('lastlogin',date("Y-m-d h:i:s",time()),pnUserGetVar('uid'));
+	  	pnUserSetVar('lastlogin',date("Y-m-d H:i:s",time()),pnUserGetVar('uid'));
 	}
 
 	// Integrate generation of statistics here
