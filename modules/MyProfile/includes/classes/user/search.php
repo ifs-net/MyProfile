@@ -2,7 +2,7 @@
 /**
  * @package      MyProfile
  * @version      $Id$
- * @author       Florian Schießl
+ * @author       Florian Schieï¿½l
  * @link         http://www.ifs-net.de
  * @copyright    Copyright (C) 2008
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
@@ -72,10 +72,15 @@ class MyProfile_user_SearchHandler
 		$customtemplate = pnModGetVar('MyProfile','searchtemplate');
 		if (file_exists('modules/MyProfile/pntemplates/'.$customtemplate)) $render->assign('customTemplate', $customtemplate);
 		$this->pager($render);
-		
-		$showall 		= (int)		FormUtil::getPassedValue('showall');
+
+                // showall value is to show all profiles directly
+		$showall 	= (int)     FormUtil::getPassedValue('showall');
+                // string is to search a given string in all searchable fields
 		$string         = (string)  FormUtil::getPassedValue('string');
-		$direct_uname 	= (string)	FormUtil::getPassedValue('direct_uname');
+                // string_soft is to search a given string in all searchable fields (soft search mode)
+		$string_soft    = (string)  FormUtil::getPassedValue('string_soft');
+                // direct_uname is important to show a special profile
+		$direct_uname 	= (string)  FormUtil::getPassedValue('direct_uname');
 		if ($showall == 1) {
 		  	$obj = $render->pnFormGetValues();
 		  	$args = array (
@@ -92,6 +97,18 @@ class MyProfile_user_SearchHandler
 		  			'string'     	=> $string
 		  			);
 		  	$render->assign('string', $string);
+		  	if (empty($obj)) $this->handleCommand($render,$args);
+		}
+		if ($string_soft != '') {
+		  	$obj = $render->pnFormGetValues();
+		  	$args = array (
+			  		'commandName' 	=> 'update',
+		  			'string'     	=> $string_soft,
+                                        'searchoption'  => 'soft',
+                                        'connector'     => 'or'
+		  			);
+		  	$render->assign('string', $string_soft);
+                        $render->assign('searchoption', 'soft');
 		  	if (empty($obj)) $this->handleCommand($render,$args);
 		}
 		
@@ -136,9 +153,11 @@ class MyProfile_user_SearchHandler
 			}
 			// check for string search query via url call (get)
 			if (isset($args['string']) && ($args['string'] != '')) {
-                unset($obj);
-                $obj['string'] = $args['string'];
-            }
+                            unset($obj);
+                            $obj['string'] = $args['string'];
+                            $obj['searchoption'] = $args['searchoption'];
+                            $obj['connector'] = $args['connector'];
+                        }
 			// use the string search field and apply it to all fields
 			if ($obj['string'] != '') {
                 if (pnusergetvar('uid') == 3230) {
