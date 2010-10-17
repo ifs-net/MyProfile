@@ -12,6 +12,7 @@ class MyProfile_user_SearchHandler
 {
   	var $fields;
   	var $page;
+        var $customsearch;
 	function initialize(&$render)
 	{	    
         $dom = ZLanguage::getModuleDomain('MyProfile');
@@ -96,32 +97,69 @@ class MyProfile_user_SearchHandler
             if (empty($obj)) $this->handleCommand($render,$args);
         }
         if ($string != '') {
-                $obj = $render->pnFormGetValues();
-                $args = array (
-                                'commandName' 	=> 'update',
-                                'string'     	=> $string
-                                );
-                $render->assign('string', $string);
-                if (empty($obj)) $this->handleCommand($render,$args);
+            $obj = $render->pnFormGetValues();
+            $args = array (
+                            'commandName' 	=> 'update',
+                            'string'     	=> $string
+                            );
+            $render->assign('string', $string);
+            if (empty($obj)) $this->handleCommand($render,$args);
         }
         if ($string_soft != '') {
-                $obj = $render->pnFormGetValues();
-                $args = array (
-                                'commandName' 	=> 'update',
-                                'string'     	=> $string_soft,
-                                'searchoption'  => 'soft',
-                                'connector'     => 'or'
-                                );
-                $render->assign('string', $string_soft);
-                $render->assign('searchoption', 'soft');
-                if (empty($obj)) $this->handleCommand($render,$args);
+            $obj = $render->pnFormGetValues();
+            $args = array (
+                            'commandName' 	=> 'update',
+                            'string'     	=> $string_soft,
+                            'searchoption'  => 'soft',
+                            'connector'     => 'or'
+                            );
+            $render->assign('string', $string_soft);
+            $render->assign('searchoption', 'soft');
+            if (empty($obj)) $this->handleCommand($render,$args);
         }
+        //
+        // BEGIN OF "PATCH"
+        //
+
+        // this is a sample to show how you can add a search with multiple
+        // custom fields: one is wildcat, another is for specified fields, see
+        // handler class below...
+        if (!$this->customsearch) {
+            $string_custom1 = (string) FormUtil::getPassedValue('string_custom1');
+            $string_custom2 = (string) FormUtil::getPassedValue('string_custom2');
+            if (($string_custom1 != '') || ($string_custom2 != '')) {
+                $commandName = FormUtil::getPassedValue('commandName');
+                //prayer($_SERVER);
+                if (($commandName != 'nextPage') && ($commandName != 'prevPage')) {
+                    $commandName = 'update';
+                }
+                $args = array (
+                                'commandName'       => $commandName,
+                                'string_custom1'    => $string_custom1,
+                                'string_custom2'    => $string_custom2,
+                                'searchoption'      => 'soft',
+                                'connector'         => 'or'
+                                );
+//                prayer($args);
+                $render->assign('string_custom1', $string_custom1);
+                $render->assign('string_custom2', $string_custom2);
+                if (empty($obj)) $this->handleCommand($render,$args);
+                print "...".(int)$this->customsearch;
+                $this->customsearch = true;
+            }
+        }
+        // end of sample
+
+        //
+        // END OF "PATCH"
+        //
         return true;
     }
 
     function handleCommand(&$render, &$args)
     {
         $dom = ZLanguage::getModuleDomain('MyProfile');
+//      die(prayer($args));
         if ($args['commandName']=='prevPage') {
             $this->page--;
             $args['commandName'] = 'update';
@@ -217,6 +255,47 @@ class MyProfile_user_SearchHandler
 
             // make it possible to show all members as result?
             if ((count($whereArray) == 0) && (pnModGetVar('MyProfile','allowmemberlist') == 1)) $whereArray[] = "tbl.id > 0";
+
+            //
+            // BEGIN OF "PATCH"
+            //
+
+            // this is for custom search - if you have custom strings (2 by
+            // default) thex will be handled here
+            // end of custom search
+            $string_custom1 = (string) FormUtil::getPassedValue('string_custom1');
+            $string_custom2 = (string) FormUtil::getPassedValue('string_custom2');
+//            $string_custom1 = $args['string_custom1'];
+//            $string_custom2 = $args['string_custom2'];
+            if (($string_custom1 != '') || ($string_custom2 != '')) {
+                // delete anything that was entered by the regular search mask
+                unset($whereArray);
+                $where_custom = array();
+                // now create custom (has to be different for each
+                // installation) where part.
+                if ($string_custom1 != '') {
+                    $string_custom1 = DataUtil::formatForStore($string_custom1);
+                    // custom1 should be applied for all (!!!) fields.
+                    foreach ($this->fields as $field) {
+                        if ($field['searchable'] == 1) {
+                            $where_custom1[] = "tbl.MyProfile_".$field['identifier']." like '%".$string_custom1."%'";
+                        }
+                    }
+                    $where_custom_parts[] = "(".implode($where_custom1,' OR ').")";
+                }
+                if ($string_custom2 != '') {
+                    $string_custom2 = DataUtil::formatForStore($string_custom2);
+                    // custom2 should only be applied for defined fields
+                    $where_custom_parts[] = "tbl.MyProfile_ort like '%".$string_custom2."%' or tbl.MyProfile_plz like '%".$string_custom2."%'";
+                }
+                $where_custom = "(".implode($where_custom_parts,' AND ').")";
+                $whereArray = $where_custom;
+                $where = $where_custom;
+                //print $where;
+            }
+            //
+            //  END OF "PATCH"
+            //
 
             if (count($whereArray) > 0) {
                 // special case for showall option
